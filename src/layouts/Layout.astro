@@ -1,0 +1,76 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import LanguageToggle from '../components/LanguageToggle.astro';
+
+interface Props {
+	title: string;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="dark">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Game Designer Portfolio" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-gray-950 text-gray-100 font-sans min-h-screen flex flex-col">
+    <header class="border-b border-gray-800 bg-gray-900/50 backdrop-blur sticky top-0 z-50">
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href={`/${lang}`} class="text-xl font-bold tracking-tighter hover:text-blue-400 transition-colors">
+          <span class="text-blue-500">&lt;</span>Designer<span class="text-blue-500">/&gt;</span>
+        </a>
+        <nav class="flex items-center gap-6">
+          <a href={`/${lang}`} class="text-sm font-medium text-gray-400 hover:text-white transition-colors">
+            {useTranslations(lang)('nav.home')}
+          </a>
+          <a href={`/${lang}/about`} class="text-sm font-medium text-gray-400 hover:text-white transition-colors">
+            {useTranslations(lang)('nav.about')}
+          </a>
+          <LanguageToggle />
+        </nav>
+      </div>
+    </header>
+    
+		<main class="flex-grow container mx-auto px-4 py-8">
+			<slot />
+		</main>
+
+    <footer class="border-t border-gray-800 py-8 mt-12 text-center text-gray-500 text-sm">
+      <p>&copy; {new Date().getFullYear()} Game Designer Portfolio. Built with Astro.</p>
+    </footer>
+	</body>
+</html>
+
+<style is:global>
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #111827; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #374151; 
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4b5563; 
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>

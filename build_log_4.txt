@@ -1,0 +1,41 @@
+
+> portfolio@0.0.1 build
+> astro build
+
+[2m16:59:40[22m [34m[content][39m Syncing content
+[33m[1m16:59:40[22m [WARN] [glob-loader][39m No files found matching "**/*.md,!**/_*/**/*.md,!**/_*.md" in directory "src\content\projects"
+[2m16:59:40[22m [34m[content][39m Synced content
+[2m16:59:40[22m [34m[types][39m Generated [2m268ms[22m
+[2m16:59:40[22m [34m[build][39m output: [34m"static"[39m
+[2m16:59:40[22m [34m[build][39m mode: [34m"static"[39m
+[2m16:59:40[22m [34m[build][39m directory: [34mD:\ElectricArc\Portfolio\dist\[39m
+[2m16:59:40[22m [34m[build][39m Collecting build info...
+[2m16:59:40[22m [34m[build][39m [32m鉁?Completed in 285ms.[39m
+[2m16:59:40[22m [34m[build][39m Building static entrypoints...
+[33m[1m16:59:40[22m [WARN] [vite][39m [33m"useState" and "useEffect" are imported from external module "react" but never used in "src/components/VideoPlayer.jsx".[39m
+[2m16:59:40[22m [34m[vite][39m [32m鉁?built in 608ms[39m
+[2m16:59:40[22m [34m[build][39m [32m鉁?Completed in 634ms.[39m
+
+[42m[30m building client (vite) [39m[49m
+[2m16:59:40[22m [34m[vite][39m transforming...
+[2m16:59:42[22m [34m[vite][39m [32m鉁?[39m 667 modules transformed.
+[2m16:59:42[22m [34m[vite][39m rendering chunks...
+[2m16:59:42[22m [34m[vite][39m computing gzip size...
+[2m16:59:42[22m [34m[vite][39m [2mdist/[22m[36m_astro/jsx-runtime.D_zvdyIk.js    [39m[1m[2m  0.73 kB[22m[1m[22m[2m 鈹?gzip:  0.46 kB[22m
+[2m16:59:42[22m [34m[vite][39m [2mdist/[22m[36m_astro/VideoPlayer.aXVEDK2p.js    [39m[1m[2m  1.14 kB[22m[1m[22m[2m 鈹?gzip:  0.65 kB[22m
+[2m16:59:42[22m [34m[vite][39m [2mdist/[22m[36m_astro/index.Bwx26VoV.js          [39m[1m[2m  3.89 kB[22m[1m[22m[2m 鈹?gzip:  1.52 kB[22m
+[2m16:59:42[22m [34m[vite][39m [2mdist/[22m[36m_astro/index.BfkTPTwy.js          [39m[1m[2m  8.36 kB[22m[1m[22m[2m 鈹?gzip:  3.28 kB[22m
+[2m16:59:42[22m [34m[vite][39m [2mdist/[22m[36m_astro/client.CfQHnMcm.js         [39m[1m[2m182.74 kB[22m[1m[22m[2m 鈹?gzip: 57.61 kB[22m
+[2m16:59:42[22m [34m[vite][39m [2mdist/[22m[36m_astro/SkillPieChart.Be7o14Ha.js  [39m[1m[2m322.61 kB[22m[1m[22m[2m 鈹?gzip: 98.01 kB[22m
+[2m16:59:42[22m [34m[vite][39m [32m鉁?built in 1.51s[39m
+
+[42m[30m generating static routes [39m[49m
+[2m16:59:42[22m [32m鈻?[39m src/pages/[lang]/about.astro
+useTranslations is not defined
+  Stack trace:
+    at file:///D:/ElectricArc/Portfolio/dist/chunks/Layout_CbzQryKY.mjs:67:1150
+    at AstroComponentInstance.init (file:///D:/ElectricArc/Portfolio/dist/chunks/astro/server_DZHM0IGT.mjs:1571:29)
+    at Object.render (file:///D:/ElectricArc/Portfolio/dist/chunks/astro/server_DZHM0IGT.mjs:1970:23)
+    at file:///D:/ElectricArc/Portfolio/dist/chunks/astro/server_DZHM0IGT.mjs:1076:18
+    at createBufferedRenderer (file:///D:/ElectricArc/Portfolio/dist/chunks/astro/server_DZHM0IGT.mjs:914:10)
+[2m16:59:42[22m   [34m鈹溾攢[39m [2m/en/about/index.html[22m

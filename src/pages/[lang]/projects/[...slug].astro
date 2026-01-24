@@ -1,0 +1,116 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import { useTranslations } from '../../../i18n/utils';
+import SkillPieChart from '../../../components/SkillPieChart';
+import VideoPlayer from '../../../components/VideoPlayer';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  
+  const paths = [];
+  projects.forEach(project => {
+    paths.push({ params: { lang: 'en', slug: project.slug }, props: { project } });
+    paths.push({ params: { lang: 'zh', slug: project.slug }, props: { project } });
+  });
+
+  return paths;
+}
+
+const { lang } = Astro.params;
+const { project } = Astro.props;
+const { Content } = await project.render();
+const t = useTranslations(lang as 'en' | 'zh');
+
+const { title, description, tags, roles, techStack, metrics, video, repoUrl, releaseUrl } = project.data;
+
+// Mock data for pie chart if not present (in real app, add to content schema)
+const pieData = [
+  { name: 'System Design', value: 40 },
+  { name: 'Scripting', value: 30 },
+  { name: 'Level Design', value: 30 },
+];
+---
+
+<Layout title={`${title} | Portfolio`}>
+  <div class="max-w-4xl mx-auto">
+    {/* Header */}
+    <header class="mb-10">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {tags.map(tag => (
+          <span class="px-3 py-1 rounded-full bg-blue-900/30 text-blue-400 text-sm border border-blue-800">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">{title}</h1>
+      <p class="text-xl text-gray-400">{description}</p>
+    </header>
+
+    {/* Media & Stats Grid */}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <div class="md:col-span-2 space-y-6">
+        {video ? (
+          <VideoPlayer 
+            client:visible 
+            url={video.url} 
+            subtitles={{ en: video.subtitles_en, zh: video.subtitles_cn }}
+            lang={lang} 
+          />
+        ) : (
+          <div class="aspect-video bg-gray-800 rounded-lg flex items-center justify-center text-gray-600">
+            No Video Available
+          </div>
+        )}
+      </div>
+      
+      <div class="space-y-6">
+        <SkillPieChart client:visible data={pieData} />
+        
+        <div class="bg-gray-900/50 p-6 rounded-lg border border-gray-800">
+          <h3 class="font-bold text-gray-300 mb-4 uppercase text-sm tracking-wider">Project Info</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex justify-between">
+              <span class="text-gray-500">Role</span>
+              <span class="text-gray-200 text-right">{roles.join(', ')}</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="text-gray-500">Tech</span>
+              <span class="text-gray-200 text-right">{techStack.join(', ')}</span>
+            </li>
+            {metrics?.hours && (
+              <li class="flex justify-between">
+                <span class="text-gray-500">{t('metric.hours')}</span>
+                <span class="text-blue-400 font-mono">{metrics.hours}h</span>
+              </li>
+            )}
+            {metrics?.sales && (
+              <li class="flex justify-between">
+                <span class="text-gray-500">{t('metric.sales')}</span>
+                <span class="text-green-400 font-mono">{metrics.sales}</span>
+              </li>
+            )}
+          </ul>
+
+          <div class="mt-6 space-y-3">
+            {releaseUrl && (
+              <a href={releaseUrl} target="_blank" class="block w-full py-2 px-4 bg-blue-600 hover:bg-blue-500 text-white text-center rounded font-bold transition-colors">
+                {t('btn.release')}
+              </a>
+            )}
+            {repoUrl && (
+              <a href={repoUrl} target="_blank" class="block w-full py-2 px-4 bg-gray-800 hover:bg-gray-700 text-gray-300 text-center rounded font-bold transition-colors border border-gray-700">
+                {t('btn.source')}
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* MDX Content */}
+    <article class="prose prose-invert prose-lg max-w-none prose-headings:text-blue-400 prose-a:text-blue-400 hover:prose-a:text-blue-300">
+      <Content />
+    </article>
+  </div>
+</Layout>

@@ -1,0 +1,26 @@
+
+> portfolio@0.0.1 build
+> astro build
+
+16:58:01 [vite] (ssr) Error when evaluating SSR module D:\ElectricArc\Portfolio\astro.config.mjs: "" is not a function
+      at D:\ElectricArc\Portfolio\astro.config.mjs:1:4
+      at ESModulesEvaluator.runInlinedModule (file:///D:/ElectricArc/Portfolio/node_modules/vite/dist/node/module-runner.js:1070:6)
+      at SSRCompatModuleRunner.directRequest (file:///D:/ElectricArc/Portfolio/node_modules/vite/dist/node/module-runner.js:1284:82)
+      at SSRCompatModuleRunner.directRequest (file:///D:/ElectricArc/Portfolio/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:25274:35)
+      at SSRCompatModuleRunner.cachedRequest (file:///D:/ElectricArc/Portfolio/node_modules/vite/dist/node/module-runner.js:1179:28)
+      at SSRCompatModuleRunner.import (file:///D:/ElectricArc/Portfolio/node_modules/vite/dist/node/module-runner.js:1117:23)
+      at async instantiateModule (file:///D:/ElectricArc/Portfolio/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:25231:12)
+      at async loadConfigWithVite (file:///D:/ElectricArc/Portfolio/node_modules/astro/dist/core/config/vite-load.js:36:17)
+      at async loadConfig (file:///D:/ElectricArc/Portfolio/node_modules/astro/dist/core/config/config.js:59:12)
+      at async resolveConfig (file:///D:/ElectricArc/Portfolio/node_modules/astro/dist/core/config/config.js:88:22)
+[astro] Unable to load your Astro config
+
+"" is not a function
+  Location:
+    D:\ElectricArc\Portfolio\node_modules\vite\dist\node\module-runner.js:1070:6
+  Stack trace:
+    at D:\ElectricArc\Portfolio\astro.config.mjs:1:4
+    at SSRCompatModuleRunner.directRequest (file:///D:/ElectricArc/Portfolio/node_modules/vite/dist/node/module-runner.js:1284:82)
+    at SSRCompatModuleRunner.cachedRequest (file:///D:/ElectricArc/Portfolio/node_modules/vite/dist/node/module-runner.js:1179:28)
+    at async instantiateModule (file:///D:/ElectricArc/Portfolio/node_modules/vite/dist/node/chunks/dep-D4NMHUTW.js:25231:12)
+    at async loadConfig (file:///D:/ElectricArc/Portfolio/node_modules/astro/dist/core/config/config.js:59:12)

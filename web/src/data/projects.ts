@@ -401,9 +401,9 @@ Used UE Blueprints to build minimal but effective gameplay concept validations, 
 *   Clearly recognized root causes of current difficulties, and formulated and executed solutions
     `,
         images: ['/assets/images/FR_SystemDiagram.png'],
-        video: null,
+        video: undefined,
         links: [
-            { labelCN: '系统架构简图', labelEN: 'System Architecture Diagram', urlCN: '/assets/images/FR_SystemDiagram.png', type: 'document' }
+            { labelCN: '系统架构简图', labelEN: 'System Architecture Diagram', urlCN: '/assets/images/FR_SystemDiagram.png', type: 'doc' }
         ]
     },
     {
@@ -560,7 +560,7 @@ Ensured DT's worldview, characters, and location settings lay cognitive foundati
 *   Mainline tension manifestation, male-female Protagonist romantic pacing, peaks deployment frequency and other details still under discussion and iteration
     `,
         images: [],
-        video: null,
+        video: undefined,
         links: []
     },
     {

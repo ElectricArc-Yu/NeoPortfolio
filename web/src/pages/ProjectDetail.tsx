@@ -68,7 +68,9 @@ const ProjectDetail: React.FC = () => {
                         <ul className={styles.infoList}>
                             <li>
                                 <span>{t('Type')}</span>
-                                <span className={styles.highlight}>{project.gameType || project.type}</span>
+                                <span className={styles.highlight}>
+                                    {(Array.isArray(project.gameType) ? project.gameType.join(', ') : project.gameType) || project.type}
+                                </span>
                             </li>
                             {getPlatform() && (
                                 <li>
@@ -98,6 +100,12 @@ const ProjectDetail: React.FC = () => {
                                 <span>{isCommercial ? t('Sales') : t('Work Hours')}</span>
                                 <span className={styles.highlight}>{isCommercial ? project.sales : (project.workHours ? `${project.workHours}h` : 'N/A')}</span>
                             </li>
+                            {(isCommercial && (language === 'CN' ? project.priceCN : project.priceEN)) && (
+                                <li>
+                                    <span>{language === 'CN' ? '售价' : 'Price'}</span>
+                                    <span className={styles.highlight}>{language === 'CN' ? project.priceCN : project.priceEN}</span>
+                                </li>
+                            )}
                             <li>
                                 <span>{t('Tech Stack')}</span>
                                 <div className={styles.techStack}>

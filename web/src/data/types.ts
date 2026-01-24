@@ -1,6 +1,6 @@
 export type ProjectType = 'Commercial' | 'Personal' | 'Miscellaneous';
 export type Engine = 'Unity' | 'Unreal' | 'Python' | 'Other';
-export type GameType = 'Action' | 'RPG' | 'Strategy' | 'Puzzle' | 'Simulation' | 'Survival' | 'Platformer' | 'Tool' | 'Analysis' | 'Other';
+export type GameType = 'Action' | 'RPG' | 'Strategy' | 'Puzzle' | 'Simulation' | 'Survival' | 'Horror' | 'Platformer' | 'Tool' | 'Analysis' | 'Visual Novel' | 'Action RPG' | 'Other';
 
 export interface ProjectLink {
     labelCN: string;
@@ -16,7 +16,7 @@ export interface Project {
     type: ProjectType;
     showPriority: number; // Higher number = shown first
     engine: Engine; // For icon display
-    gameType?: GameType; // For colored tag on cards
+    gameType?: GameType | GameType[]; // For colored tag on cards
     role: string[]; // e.g. ["Design", "Program"]
     techStack: string[]; // e.g. ["Unity", "C#"]
     thumbnail: string;
@@ -34,6 +34,8 @@ export interface Project {
     // Metrics
     workHours?: number; // For personal projects
     sales?: string; // For commercial projects
+    priceCN?: string; // e.g. "¥48"
+    priceEN?: string; // e.g. "$9.99"
 
     // Detail Page Data
     descriptionCN: string; // Markdown supported

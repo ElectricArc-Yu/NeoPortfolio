@@ -57,9 +57,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                     <div className={styles.tagGroup}>
                         {/* 1. Game Type */}
                         {project.gameType && (
-                            <span className={`${styles.tag} ${styles.gameTypeTag}`} data-type={project.gameType}>
-                                {project.gameType}
-                            </span>
+                            Array.isArray(project.gameType) ? (
+                                project.gameType.map(type => (
+                                    <span key={type} className={`${styles.tag} ${styles.gameTypeTag}`} data-type={type}>
+                                        {type}
+                                    </span>
+                                ))
+                            ) : (
+                                <span className={`${styles.tag} ${styles.gameTypeTag}`} data-type={project.gameType}>
+                                    {project.gameType}
+                                </span>
+                            )
                         )}
 
                         {/* 2. Roles (Color Coded) */}

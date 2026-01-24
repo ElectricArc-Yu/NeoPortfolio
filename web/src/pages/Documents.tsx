@@ -14,8 +14,8 @@ const Documents: React.FC = () => {
                 <h1 className={styles.title}>{language === 'CN' ? '过往文档' : 'Past Documents'}</h1>
                 <p className={styles.subtitle}>
                     {language === 'CN'
-                        ? '包含GDD、LDD、以及学术分析论文。'
-                        : 'Collection of Game Design Documents, Level Designs, and Analysis Papers.'}
+                        ? '包含可公开的设计文档及分析文章。'
+                        : 'Collection of publicable Game Design Documents & Analysis Articles.'}
                 </p>
             </header>
 

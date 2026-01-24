@@ -1,0 +1,278 @@
+.container {
+    padding-bottom: var(--spacing-xl);
+}
+
+.header {
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: var(--spacing-md);
+}
+
+.titleContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.engineIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tags {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.role {
+    background: var(--accent-color);
+    color: #000;
+    padding: 0.2rem 0.8rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+    /* Fix layout shift */
+}
+
+@media (min-width: 900px) {
+    .grid {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.mainContent {
+    /* Main area */
+    flex: 1;
+    min-width: 0;
+    /* Prevent overflow issues */
+}
+
+.markdown {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+    color: var(--text-primary);
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.markdown p {
+    margin-bottom: 1em;
+}
+
+.markdown ul {
+    list-style: disc;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    position: sticky;
+    /* Sticky support for better UX */
+    top: 2rem;
+}
+
+.card {
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.infoList {
+    display: flex;
+    flex-direction: column;
+}
+
+.infoList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 0.95rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 1.5rem;
+    /* Disable interaction but allow selection */
+    pointer-events: none;
+    user-select: text;
+}
+
+.infoList li:last-child {
+    border-bottom: none;
+}
+
+.infoList li span:first-child {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.highlight {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.projectRoles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: flex-end;
+    pointer-events: none;
+    /* Ensure container is non-interactive */
+}
+
+.roleTag {
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--text-primary);
+    pointer-events: none;
+    user-select: text;
+}
+
+.techStack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: flex-end;
+    pointer-events: none;
+}
+
+.techStack span {
+    font-size: 0.75rem;
+    background: rgba(0, 173, 181, 0.1);
+    border: 1px solid rgba(0, 173, 181, 0.2);
+    color: var(--accent-color);
+    padding: 2px 8px;
+    border-radius: 4px;
+    pointer-events: none;
+    user-select: text;
+}
+
+/* ... existing button styles ... */
+
+.actionButton {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius-sm);
+    text-align: center;
+    transition: all 0.3s;
+    text-decoration: none;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+}
+
+.actionButton:hover {
+    background: var(--accent-color);
+    color: #000;
+}
+
+.quickLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.quickLinkItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.8rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    /* Interactive links must have pointer-events auto */
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.quickLinkItem:hover {
+    background: rgba(77, 182, 172, 0.1);
+    border-color: var(--accent-color);
+}
+
+.linkLabel {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.linkType {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.workDistribution {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    /* Chart interaction? user said disable project info interaction. 
+       Usually charts have tooltips. If strictly "no hover", we might need to kill it. 
+       But user likely meant the text pills/tags. I'll leave chart interactive for now 
+       unless specified, as it's data visualization. 
+       Actually, "project information related modules" might include distribution. 
+       I typically shouldn't kill chart tooltips. */
+}
+
+.workDistribution h4 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

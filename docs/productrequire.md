@@ -1,70 +1,102 @@
-# Product Requirement Document (PRD): Game Designer Personal Portfolio
+# Portfolio Website Requirements Document (RD)
 
 ## 1. Project Overview
-**Project Name:** Game Designer Personal Portfolio
-**Target Audience:** Recruiters, Game Studios, Collaborators, Players (Global Audience)
-**Goal:** To showcase game design projects with a focus on readability, minimalism, and "game" aesthetics. The site must be bilingual (Chinese/English) and provide detailed, data-driven insights into the designer's contribution.
+**Goal:** Create a new, static game designer portfolio website to showcase the user's game design and development work.
+**Target Audience:** Recruiters, Studio Leads, Peers.
+**Core Identity:** Professional Game Designer & Developer (Technical Designer / System Designer focus).
 
-## 2. User Stories
-- **As a Global Recruiter**, I want to view the portfolio in my native language (English or Chinese) with appropriate context (e.g., GitHub vs Gitee).
-- **As a Studio Head**, I want to see a clear breakdown of the designer's specific contribution (Pie Chart) and the project's success metrics (Sales/Downloads) or effort (Personal Hours).
-- **As a Peer**, I want to quickly identify the tech stack via icons and the designer's specific role (e.g., System Design, IP Planning).
-- **As the Designer**, I want to write content using Markdown mixed with custom components (MDX) for flexibility.
+## 2. Design & User Experience
+### 2.1 Visual Identity
+*   **Style:** Minimalist, High Readability.
+*   **Aesthetics:** "Premium" feel. Avoid generic "black text on white background".
+*   **Theme:** Dark or soft-toned background with gamified visual elements (e.g., subtle UI animations, tech-inspired borders).
+*   **Responsiveness:**
+    *   **Desktop:** Full layout utilization.
+    *   **Mobile:** Stacked layout, touch-friendly navigation.
+    *   **Constraint:** Must look good on all devices.
 
-## 3. Functional Requirements
+### 2.2 Internationalization (i18n)
+*   **Languages:** English (EN) and Chinese (CN).
+*   **Mechanism:**
+    *   Global language toggle switch.
+    *   Content must be independently editable data for each language.
+*   **Link Behavior:**
+    *   **EN Mode:** project link type 1.
+    *   **CN Mode:** project link type 2.
 
-### 3.1. Global Features
-- **Bilingual Support:** 
-    - Full site translation (UI + Content).
-    - Toggle between Chinese (CN) and English (EN).
-    - **Context-Aware Links:** "Release" buttons link to Gitee in CN mode and GitHub in EN mode (configurable per project).
-- **Design Aesthetic:** 
-    - **Minimalist & Readable:** High contrast, clean typography for easy reading.
-    - **Game Style:** Subtle game UI elements (e.g., tech-style borders, hover sound effects or visual feedback, pixel or vector icons).
+## 3. Homepage Structure
 
-### 3.2. Home Page (Project Showcase)
-- **Layout:** Single page listing **ALL** projects directly.
-- **Sections:**
-    1.  **Personal Projects:**
-        -   Metric Display: **Total Personal Work Hours**.
-    2.  **Commercial Projects:**
-        -   Metric Display: **Approximate Sales / Downloads**.
-- **Project Card Elements:**
-    -   **Thumbnail:** High-quality visual.
-    -   **Core Skill Tags:** Text tags (e.g., System Design, Gameplay Design, Feature Iteration, Project Management, World Building, IP Design).
-    -   **Tech Stack:** **Icons Only** (Unity, Unreal, Python, Lua, etc.).
-    -   **Domain/Role:** Tag indicating broad category (Management, Design, Programming, Art).
+### 3.1 Hero / Introduction
+*   Brief introduction (synced from Resume "About Me" or similar).
+*   Social Links (LinkedIn, GitHub, Email, etc.).
 
-### 3.3. Project Detail Page
-- **Contribution Visualization:** A **Pie Chart** showing the distribution of work (e.g., 40% System Design, 30% Scripting, 30% PM).
-- **Video Player:**
-    -   Support for **YouTube** embeds and **Local/Self-hosted** video files.
-    -   **Subtitle Support:** Must support external subtitles (.vtt/.srt).
-    -   **Auto-Language:** Play English subtitles in EN mode, Chinese subtitles in CN mode.
-- **Content Format:** 
-    -   **MDX / Hybrid:** Content written in Markdown but supports embedding code components (e.g., the Pie Chart, interactive demos).
-- **Quick Links:**
-    -   Prominent "Play/Download" or "Source Code" buttons.
-    -   Logic to switch destination based on language (CN -> Gitee, EN -> GitHub).
+### 3.2 Key Projects Display (Core Feature)
+**Layout:** Split/Two-Column Layout representing two categories side-by-side or distinct sections.
+*   **Left/Section A:** Commercial Projects (e.g., Hunan Nuoxiyou projects).
+*   **Right/Section B:** Personal Projects (e.g., Illegal Assembly, The Mountain Sea).
 
-### 3.4. Tag & Icon Library
--   **Centralized Management:** A dedicated configuration file or data source to manage:
-    -   Skill Tags (Text + Color).
-    -   Tech Stack (Icon SVG/Path + Name).
-    -   Role Tags (Text + Category).
+**Card Metadata:**
+*   **Commercial Projects:** Display "Approx. Sales/Downloads" (e.g., "1M+ units sold").
+*   **Personal Projects:** Display "Total Work Hours" (e.g., "60 hours").
 
-### 3.5. About / Resume
--   Brief professional bio.
--   Resume download (CN/EN versions).
+**Tagging System:**
+*   **Roles:** Management, Design, Program, Art. (Distinct visual style for each).
+*   **Competencies:** System Design, Gameplay Design, Feature Iteration, Project Management, World/IP Building.
+*   **Tech Stack:** **Icons only** (Unity, Unreal, Python, C#, etc.). Text tooltips on hover.
 
-## 4. Non-Functional Requirements
--   **Performance:** Static site generation for speed.
--   **Responsiveness:** Mobile-friendly.
--   **Maintainability:** Easy to add new tags/icons without hardcoding in every file.
--   **SEO:** Basic SEO for name and "Game Designer".
+**Sorting & Filtering:**
+*   Custom sort order (Manual "Pin/Top" support).
+*   Filter by tag (Role/Engine).
 
-## 5. Technical Constraints & Stack
--   **Type:** Static Site Generator (SSG). Recommended: **Astro** or **Next.js** (for MDX and Internationalization support).
--   **Styling:** TailwindCSS (for rapid, custom styling).
--   **Icons:** React Icons or a custom SVG sprite system.
--   **Deployment:** GitHub Actions -> GitHub Pages.
+## 4. Project Detail Page
+**Layout Structure:**
+1.  **Header:** Title, Subtitle, Tags.
+2.  **Work Summary:** Brief bullet points of specific contributions.
+3.  **Media Carousel/Player:**
+    *   Support for YouTube embed and Local Video (MP4).
+    *   Image Gallery/Carousel.
+    *   Support for PDF preview.
+    *   must be responsive and mobile-friendly.
+    *   has a carousel function 
+    *   **Requirement:** Video subtitles must match the selected language (CN/EN).
+4.  **Charts:**
+    *   **Pie Chart** (Replacting old Ring Chart): Shows distribution of work (e.g., 40% Design, 60% Code).
+    *   Connection lines labeling the segments with percentages.
+5.  **Project Context:**
+    *   Background/Lore (if applicable).
+    *   Detailed Design/Technical breakdown.
+    *   Floating Window
+    *   **GDD Integration:** Specific support for embedding/linking "The Mountain Sea" and "Shanhai" GDDs for direct viewing.
+6.  **Quick Links:**
+    *   "View on Store" / "Download Demo" / "Repo" button (floating or prominent).
+7.  **Content Format:** Markdown supported with Syntax Highlighting for code blocks.
+
+## 5. Past Outputs & Miscellaneous
+**Location:** Bottom of the page / Footer area or strictly defined "Archive" section.
+**Content:**
+*   Job Test Assignments (e.g., Quest of Velar Level Design).
+*   Historical Documents.
+*   Old Resume versions / Archive.
+**Interaction:**
+*   Clicking a document opens a **Web-based PDF Preview Modal** (Popup).
+*   Each item includes a brief background/context description.
+
+## 6. Resume & Data Integration
+*   **Source of Truth:** Data must be mapped from `docs/resume` (content-wise).
+*   **Display:**
+    *   Render resume content directly on the page (HTML approach).
+    *   **NO** direct "Download Resume PDF" button as the primary call to action (focus on the portfolio itself).
+*   **Handling Missing Info:** Use stylish placeholders for TBD data.
+
+## 7. Engineering & Maintenance
+*   **Tech Stack:** Static Site Generator (SSG) or Single Page App (SPA). (User preference: React/Next.js/Vite typically implies SPA/SSG hybrid). *Constraint: Requirements ask for Static Web Page result.*
+*   **Configuration:**
+    *   Data-driven content (JSON/YAML/Markdown frontmatter) for easy updates.
+    *   `productrequire.md` to be used for tracking future feature requirements (to be created/synced).
+*   **Assets:** Minimize repository size. Use `.gitignore` effectively.
+*   **Legacy Assets:** Migration from `docs/old portfolio`.
+
+## 8. Reference Material Pointers
+*   **Text content tone style ref:** [David Shaver Portfolio](https://www.davidshaver.net/) (Structure reference, but visual needs update).
+*   **Content & Visual ContentSource:** `docs/old portfolio/Writerside/topics` (Project descriptions).
+*   **Resume Source:** `docs/resume/cv.tex`.

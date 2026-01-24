@@ -1,0 +1,99 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.hero {
+    text-align: center;
+    padding: 6rem 0 4rem;
+    background: radial-gradient(circle at center, rgba(77, 182, 172, 0.1) 0%, transparent 70%);
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(180deg, #fff 0%, #aaa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+}
+
+.heroSubtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+    font-weight: 300;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.filterChip {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.filterChip:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.activeChip {
+    background: var(--accent-color);
+    color: #000;
+    border-color: var(--accent-color);
+}
+
+.activeChip:hover {
+    background: var(--accent-hover);
+}
+
+.splitLayout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+@media (min-width: 900px) {
+    .splitLayout {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.categoryColumn {
+    flex: 1;
+    width: 100%;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+.icon {
+    font-size: 1.2rem;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}

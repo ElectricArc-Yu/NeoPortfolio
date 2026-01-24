@@ -249,8 +249,6 @@ Concentrated 90% of design effort on combat systems and their dependencies, deli
         durationEN: 'About 1.5 years',
         teamSizeCN: '3人 + 其他可用人员',
         teamSizeEN: '3 People + Other people',
-        budgetCN: '',
-        budgetEN: '',
         descriptionCN: `
 ## 项目背景与挑战
 

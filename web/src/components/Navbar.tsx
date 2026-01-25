@@ -11,6 +11,7 @@ const Navbar: React.FC = () => {
         <nav className={styles.navbar}>
             <div className={styles.logo}>
                 <NavLink to="/">Personal Site</NavLink>
+                <span className={styles.wipBadge}>WIP</span>
             </div>
             <div className={styles.links}>
                 <NavLink to="/" className={({ isActive }) => isActive ? styles.active : ''}>{language === 'CN' ? '作品集' : 'Portfolio'}</NavLink>

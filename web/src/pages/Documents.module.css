@@ -21,6 +21,27 @@
     font-size: 1rem;
 }
 
+/* Section Styles */
+.section {
+    margin-bottom: var(--spacing-xxl);
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.sectionTitle svg {
+    color: var(--accent-color);
+}
+
 .grid {
     display: flex;
     flex-direction: column;
@@ -38,8 +59,7 @@
     position: relative;
     width: 100%;
     max-width: 1150px;
-    min-height: 200px;
-    /* Approximate height requested, flexible for content */
+    min-height: 180px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,15 +72,64 @@
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Paper Card Special Styling */
+.paperCard {
+    border-left: 3px solid #f7931e;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(247, 147, 30, 0.05) 100%);
+}
+
+.paperCard:hover {
+    border-color: #f7931e;
+    box-shadow: 0 5px 25px rgba(247, 147, 30, 0.15);
+}
+
+/* Category Badge */
+.categoryBadge {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.categoryBadge[data-category="Paper"] {
+    background: linear-gradient(135deg, #f7931e 0%, #ffcc00 100%);
+    color: #1a1a1a;
+}
+
+.categoryBadge[data-category="GDD"] {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+}
+
 .cardHeader {
     margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    padding-right: 80px;
+    /* Space for badge */
 }
 
 .docTitle {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--text-primary);
     margin: 0;
     font-weight: 700;
+    line-height: 1.4;
+}
+
+.externalIcon {
+    color: var(--accent-color);
+    flex-shrink: 0;
+    margin-top: 0.3rem;
 }
 
 .metaRow {
@@ -91,11 +160,61 @@
 .description {
     color: var(--text-secondary);
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .abstractLabel {
     font-weight: 700;
     color: var(--text-primary);
     margin-right: 0.5rem;
+}
+
+/* Expand/Collapse Button */
+.expandBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 0.5rem;
+    transition: opacity 0.2s ease;
+}
+
+.expandBtn:hover {
+    opacity: 0.8;
+}
+
+.expandBtn svg {
+    transition: transform 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    .cardHeader {
+        padding-right: 0;
+        flex-direction: column;
+    }
+
+    .categoryBadge {
+        position: static;
+        align-self: flex-start;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .docTitle {
+        font-size: 1.2rem;
+    }
+
+    .metaRow {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .separator {
+        display: none;
+    }
 }

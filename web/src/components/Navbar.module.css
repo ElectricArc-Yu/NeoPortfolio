@@ -26,6 +26,38 @@
     text-transform: uppercase;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.wipBadge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffcc00 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+    color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
 .links {
     display: flex;
     gap: var(--spacing-xl);

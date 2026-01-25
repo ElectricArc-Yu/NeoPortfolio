@@ -28,5 +28,5 @@ Thumbs.db
 # Video/Media (if large)
 # public/videos/
 
-docs/
+/docs/
 .agent/

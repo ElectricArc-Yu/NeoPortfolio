@@ -3,7 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { publicDocs } from '../data/documents';
 import PdfModal from '../components/PdfModal';
 import styles from './Documents.module.css';
-import { FileText, ExternalLink, BookOpen, ChevronDown, ChevronUp } from 'lucide-react';
+import { FileText, BookOpen, ChevronDown, ChevronUp } from 'lucide-react';
 import { getAssetPath } from '../utils/assetPath';
 
 const Documents: React.FC = () => {
@@ -45,7 +45,97 @@ const Documents: React.FC = () => {
             return parseDate(b.date).getTime() - parseDate(a.date).getTime();
         });
 
-    const renderCard = (doc: typeof publicDocs[0]) => {
+    // Render Paper Card (new layout)
+    const renderPaperCard = (doc: typeof publicDocs[0]) => {
+        const description = language === 'CN' ? doc.descriptionCN : doc.descriptionEN;
+        const isLongAbstract = description.length > 150;
+        const isExpanded = expandedAbstracts.has(doc.id);
+        const displayDescription = isLongAbstract && !isExpanded
+            ? description.slice(0, 150) + '...'
+            : description;
+
+        return (
+            <div key={doc.id} className={styles.paperCard}>
+                {/* Top Row: Info Cards + Links */}
+                <div className={styles.paperTopRow}>
+                    {/* Left: Info badges */}
+                    <div className={styles.paperInfoBadges}>
+                        {doc.paperType && (
+                            <span className={styles.paperTypeBadge}>{doc.paperType}</span>
+                        )}
+                        {doc.journal && (
+                            <span className={styles.journalBadge}>{doc.journal}</span>
+                        )}
+                        {doc.impactFactor && doc.impactFactor !== 'N/A' && (
+                            <span className={styles.impactFactorBadge}>IF: {doc.impactFactor}</span>
+                        )}
+                    </div>
+                    {/* Right: Links */}
+                    <div className={styles.paperLinks}>
+                        {doc.preprintUrl && (
+                            <a
+                                href={doc.preprintUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.paperLinkBtn}
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                {language === 'CN' ? '预印本' : 'Preprint'}
+                            </a>
+                        )}
+                        {doc.externalUrl && (
+                            <a
+                                href={doc.externalUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`${styles.paperLinkBtn} ${styles.primaryLink}`}
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                {language === 'CN' ? '发布页' : 'Published'}
+                            </a>
+                        )}
+                    </div>
+                </div>
+
+                {/* Title */}
+                <h3 className={styles.paperTitle}>
+                    {language === 'CN' ? doc.titleCN : doc.titleEN}
+                </h3>
+
+                {/* Basic Info Row */}
+                <div className={styles.paperBasicInfo}>
+                    <span>{doc.date}</span>
+                    <span className={styles.separator}>|</span>
+                    <span>{language === 'CN' ? doc.lengthCN : doc.lengthEN}</span>
+                    <span className={styles.separator}>|</span>
+                    <span>{language === 'CN' ? doc.originalLangCN : doc.originalLangEN}</span>
+                </div>
+
+                {/* Abstract */}
+                <div className={styles.description}>
+                    <span className={styles.abstractText}>
+                        <span className={styles.abstractLabel}>{language === 'CN' ? '摘要: ' : 'Abstract: '}</span>
+                        {displayDescription}
+                    </span>
+                    {isLongAbstract && (
+                        <button
+                            className={styles.expandBtn}
+                            onClick={(e) => toggleAbstract(doc.id, e)}
+                        >
+                            {isExpanded ? (
+                                <>{language === 'CN' ? '收起' : 'Collapse'} <ChevronUp size={14} /></>
+                            ) : (
+                                <>{language === 'CN' ? '展开' : 'Expand'} <ChevronDown size={14} /></>
+                            )}
+                        </button>
+                    )}
+                </div>
+            </div>
+        );
+    };
+
+    // Render GDD Card (original layout)
+    const renderGDDCard = (doc: typeof publicDocs[0]) => {
         const description = language === 'CN' ? doc.descriptionCN : doc.descriptionEN;
         const isLongAbstract = description.length > 150;
         const isExpanded = expandedAbstracts.has(doc.id);
@@ -56,13 +146,13 @@ const Documents: React.FC = () => {
         return (
             <div
                 key={doc.id}
-                className={`${styles.card} ${doc.category === 'Paper' ? styles.paperCard : ''}`}
+                className={styles.card}
                 onClick={() => handleCardClick(doc)}
             >
                 {/* Category Badge */}
                 <div className={styles.categoryBadge} data-category={doc.category}>
-                    {doc.category === 'Paper' ? <BookOpen size={14} /> : <FileText size={14} />}
-                    <span>{doc.category}</span>
+                    <FileText size={14} />
+                    <span>GDD</span>
                 </div>
 
                 {/* Title Row */}
@@ -70,38 +160,33 @@ const Documents: React.FC = () => {
                     <h3 className={styles.docTitle}>
                         {language === 'CN' ? doc.titleCN : doc.titleEN}
                     </h3>
-                    {doc.externalUrl && <ExternalLink size={18} className={styles.externalIcon} />}
                 </div>
 
                 {/* Meta Row */}
                 <div className={styles.metaRow}>
-                    <span className={styles.metaItem}>
-                        {doc.date}
-                    </span>
+                    <span className={styles.metaItem}>{doc.date}</span>
                     <span className={styles.separator}>|</span>
                     <span className={styles.metaItem}>
-                        {language === 'CN' ? `原文语言: ${doc.originalLang}` : `Original Language: ${doc.originalLang}`}
+                        {language === 'CN' ? `原文语言: ${doc.originalLangCN}` : `Original Language: ${doc.originalLangEN}`}
                     </span>
                     <span className={styles.separator}>|</span>
                     <span className={styles.metaItem}>
                         {language === 'CN' ? `文章长度: ${doc.lengthCN}` : `Length: ${doc.lengthEN}`}
                     </span>
-                    {!doc.externalUrl && (
-                        <>
-                            <span className={styles.separator}>|</span>
-                            <span className={`${styles.metaItem} ${styles.internalTag}`}>
-                                {language === 'CN'
-                                    ? (doc.isInternal ? '内部文档: 是' : '内部文档: 否')
-                                    : (doc.isInternal ? 'Internal Doc: Yes' : 'Internal Doc: No')}
-                            </span>
-                        </>
-                    )}
+                    <span className={styles.separator}>|</span>
+                    <span className={`${styles.metaItem} ${styles.internalTag}`}>
+                        {language === 'CN'
+                            ? (doc.isInternal ? '内部文档: 是' : '内部文档: 否')
+                            : (doc.isInternal ? 'Internal Doc: Yes' : 'Internal Doc: No')}
+                    </span>
                 </div>
 
                 {/* Abstract / Description */}
                 <div className={styles.description}>
-                    <span className={styles.abstractLabel}>{language === 'CN' ? '摘要: ' : 'Abstract: '}</span>
-                    {displayDescription}
+                    <span className={styles.abstractText}>
+                        <span className={styles.abstractLabel}>{language === 'CN' ? '摘要: ' : 'Abstract: '}</span>
+                        {displayDescription}
+                    </span>
                     {isLongAbstract && (
                         <button
                             className={styles.expandBtn}
@@ -138,20 +223,20 @@ const Documents: React.FC = () => {
                         {language === 'CN' ? '学术论文' : 'Academic Papers'}
                     </h2>
                     <div className={styles.grid}>
-                        {papers.map(renderCard)}
+                        {papers.map(renderPaperCard)}
                     </div>
                 </section>
             )}
 
             {/* GDDs Section */}
             {gdds.length > 0 && (
-                <section className={styles.section}>
+                <section className={`${styles.section} ${styles.gddSection}`}>
                     <h2 className={styles.sectionTitle}>
                         <FileText size={20} />
                         {language === 'CN' ? '过往文书案例' : 'Past Paper Work Examples'}
                     </h2>
                     <div className={styles.grid}>
-                        {gdds.map(renderCard)}
+                        {gdds.map(renderGDDCard)}
                     </div>
                 </section>
             )}

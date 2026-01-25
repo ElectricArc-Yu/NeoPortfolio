@@ -27,7 +27,13 @@
 }
 
 .paperSection {
-    margin-bottom: calc(var(--spacing-xxl) * 2);
+    margin-bottom: calc(var(--spacing-xxl) * 3);
+    padding-bottom: var(--spacing-xxl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gddSection {
+    padding-top: 30px;
 }
 
 .sectionTitle {
@@ -76,15 +82,135 @@
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Paper Card Special Styling */
+/* Paper Card - New Layout */
 .paperCard {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-left: 3px solid #f7931e;
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(247, 147, 30, 0.05) 100%);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    position: relative;
+    width: 100%;
+    max-width: 1150px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(247, 147, 30, 0.03) 100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .paperCard:hover {
+    transform: translateY(-2px);
     border-color: #f7931e;
     box-shadow: 0 5px 25px rgba(247, 147, 30, 0.15);
+}
+
+.paperCard {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Paper Top Row - Badges Left, Links Right */
+.paperTopRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.paperInfoBadges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.paperTypeBadge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #f7931e 0%, #ffcc00 100%);
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.journalBadge {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.impactFactorBadge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    background: rgba(74, 222, 128, 0.15);
+    color: #4ade80;
+    border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+/* Paper Links */
+.paperLinks {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.paperLinkBtn {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.paperLinkBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.paperLinkBtn.primaryLink {
+    background: rgba(247, 147, 30, 0.15);
+    color: #f7931e;
+    border-color: rgba(247, 147, 30, 0.3);
+}
+
+.paperLinkBtn.primaryLink:hover {
+    background: rgba(247, 147, 30, 0.25);
+    border-color: #f7931e;
+}
+
+/* Paper Title */
+.paperTitle {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* Paper Basic Info */
+.paperBasicInfo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-family: monospace;
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Category Badge */
@@ -165,6 +291,16 @@
     color: var(--text-secondary);
     font-size: 1rem;
     line-height: 1.7;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+}
+
+.abstractText {
+    flex: 1;
+    min-width: 0;
 }
 
 .abstractLabel {
@@ -173,7 +309,7 @@
     margin-right: 0.5rem;
 }
 
-/* Expand/Collapse Button - Improved touch target */
+/* Expand/Collapse Button - Positioned right */
 .expandBtn {
     display: inline-flex;
     align-items: center;
@@ -186,9 +322,10 @@
     font-weight: 500;
     cursor: pointer;
     padding: 0.4rem 0.8rem;
-    margin-left: 0.75rem;
-    margin-top: 0.5rem;
     transition: all 0.2s ease;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 0.2rem;
 }
 
 .expandBtn:hover {

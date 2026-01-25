@@ -1,6 +1,7 @@
 import React from 'react';
 import { X } from 'lucide-react';
 import styles from './PdfModal.module.css';
+import { getAssetPath } from '../utils/assetPath';
 
 interface PdfModalProps {
     url: string;
@@ -9,6 +10,7 @@ interface PdfModalProps {
 }
 
 const PdfModal: React.FC<PdfModalProps> = ({ url, title, onClose }) => {
+    const resolvedUrl = getAssetPath(url);
     return (
         <div className={styles.overlay} onClick={onClose}>
             <div className={styles.modal} onClick={e => e.stopPropagation()}>
@@ -19,8 +21,8 @@ const PdfModal: React.FC<PdfModalProps> = ({ url, title, onClose }) => {
                     </button>
                 </div>
                 <div className={styles.content}>
-                    <iframe src={url} className={styles.iframe} title={title}>
-                        <p>Your browser does not support iframes. <a href={url}>Download PDF</a></p>
+                    <iframe src={resolvedUrl} className={styles.iframe} title={title}>
+                        <p>Your browser does not support iframes. <a href={resolvedUrl}>Download PDF</a></p>
                     </iframe>
                 </div>
             </div>

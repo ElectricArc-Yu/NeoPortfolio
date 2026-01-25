@@ -5,6 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import styles from './ProjectCard.module.css';
 import EngineIcon from './EngineIcon';
 import DocumentIcon from './DocumentIcon';
+import { getAssetPath } from '../utils/assetPath';
 
 interface ProjectCardProps {
     project: Project;
@@ -23,7 +24,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <NavLink to={`/project/${project.id}`} className={styles.card}>
             {project.thumbnail && (
                 <div className={styles.thumbnailWrapper}>
-                    <div className={styles.thumbnailPlaceholder} style={{ backgroundImage: `url(${project.thumbnail})` }} />
+                    <div className={styles.thumbnailPlaceholder} style={{ backgroundImage: `url(${getAssetPath(project.thumbnail)})` }} />
 
                     {/* GDD Available Badge */}
                     {hasGDD && (

@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { ChevronLeft, ChevronRight, Play, Volume2 } from 'lucide-react';
 import styles from './MediaGallery.module.css';
+import { getAssetPath } from '../utils/assetPath';
 
 interface MediaGalleryProps {
     images: string[];
@@ -33,11 +34,11 @@ const VideoSlide: React.FC<{ src: string; poster: string }> = ({ src, poster }) 
         <div className={styles.videoWrapper}>
             <video
                 ref={videoRef}
-                src={src}
+                src={getAssetPath(src)}
                 controls
                 muted
                 className={styles.image}
-                poster={poster}
+                poster={getAssetPath(poster)}
                 onVolumeChange={handleVolumeChange}
             />
             {showUnmute && (
@@ -88,7 +89,7 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ images, video }) => {
                 {isVideo(slides[currentIndex]) ? (
                     <VideoSlide src={slides[currentIndex]} poster={images[0]} />
                 ) : (
-                    <img src={slides[currentIndex]} alt={`Slide ${currentIndex}`} className={styles.image} />
+                    <img src={getAssetPath(slides[currentIndex])} alt={`Slide ${currentIndex}`} className={styles.image} />
                 )}
 
                 {slides.length > 1 && (
@@ -113,8 +114,8 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ images, video }) => {
                             onClick={() => setCurrentIndex(idx)}
                             style={{
                                 backgroundImage: isVid
-                                    ? `url(${images[0]})` // Fallback to first image for thumbnail bg
-                                    : `url(${slide})`,
+                                    ? `url(${getAssetPath(images[0])})` // Fallback to first image for thumbnail bg
+                                    : `url(${getAssetPath(slide)})`,
                                 position: 'relative'
                             }}
                         >
@@ -132,3 +133,4 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ images, video }) => {
 };
 
 export default MediaGallery;
+

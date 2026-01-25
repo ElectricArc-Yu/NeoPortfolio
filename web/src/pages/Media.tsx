@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { mediaItems } from '../data/media';
 import styles from './Media.module.css';
 import { PlayCircle, Globe, Clock, List, ExternalLink } from 'lucide-react';
+import { getAssetPath } from '../utils/assetPath';
 
 const Media: React.FC = () => {
     const { language, t } = useLanguage();
@@ -37,7 +38,7 @@ const Media: React.FC = () => {
                         className={styles.mediaCard}
                     >
                         <div className={styles.thumbnailWrapper}>
-                            {item.thumbnail && <img src={item.thumbnail} alt={item.title} className={styles.thumbnail} />}
+                            {item.thumbnail && <img src={getAssetPath(item.thumbnail)} alt={item.title} className={styles.thumbnail} />}
                             <div className={styles.playOverlay}>
                                 <PlayCircle size={40} />
                             </div>

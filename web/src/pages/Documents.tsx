@@ -32,9 +32,18 @@ const Documents: React.FC = () => {
         }
     };
 
-    // Group by category
+    // Group by category and sort GDDs by date (newest first)
     const papers = publicDocs.filter(d => d.category === 'Paper');
-    const gdds = publicDocs.filter(d => d.category === 'GDD');
+    const gdds = publicDocs
+        .filter(d => d.category === 'GDD')
+        .sort((a, b) => {
+            // Parse date strings like "2024.01" or "2024.03"
+            const parseDate = (dateStr: string) => {
+                const parts = dateStr.split('.');
+                return new Date(parseInt(parts[0]), parseInt(parts[1] || '1') - 1);
+            };
+            return parseDate(b.date).getTime() - parseDate(a.date).getTime();
+        });
 
     const renderCard = (doc: typeof publicDocs[0]) => {
         const description = language === 'CN' ? doc.descriptionCN : doc.descriptionEN;
@@ -123,7 +132,7 @@ const Documents: React.FC = () => {
 
             {/* Papers Section */}
             {papers.length > 0 && (
-                <section className={styles.section}>
+                <section className={`${styles.section} ${styles.paperSection}`}>
                     <h2 className={styles.sectionTitle}>
                         <BookOpen size={20} />
                         {language === 'CN' ? '学术论文' : 'Academic Papers'}
@@ -139,7 +148,7 @@ const Documents: React.FC = () => {
                 <section className={styles.section}>
                     <h2 className={styles.sectionTitle}>
                         <FileText size={20} />
-                        {language === 'CN' ? '设计文档' : 'Design Documents'}
+                        {language === 'CN' ? '过往文书案例' : 'Past Paper Work Examples'}
                     </h2>
                     <div className={styles.grid}>
                         {gdds.map(renderCard)}

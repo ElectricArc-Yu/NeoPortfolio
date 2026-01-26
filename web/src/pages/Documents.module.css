@@ -371,3 +371,214 @@
         display: none;
     }
 }
+
+/* ========== GDD Type Grouping Styles ========== */
+.gddTypeGroup {
+    margin-bottom: var(--spacing-md);
+}
+
+.gddTypeGroup:last-child {
+    margin-bottom: 0;
+}
+
+.gddTypeHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--border-radius-md);
+    margin-bottom: 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.gddTypeHeader:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%);
+}
+
+.gddTypeHeader:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.gddTypeGroup.expanded .gddTypeHeader {
+    margin-bottom: var(--spacing-lg);
+    border-color: var(--accent-color);
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(168, 85, 247, 0.02) 100%);
+    position: sticky;
+    top: 80px;
+    /* Account for main navigation header height */
+    z-index: 10;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.expandIndicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.gddTypeHeader:hover .expandIndicator {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.gddTypeGroup.expanded .expandIndicator {
+    background: rgba(168, 85, 247, 0.2);
+    color: var(--accent-color);
+}
+
+/* Collapsible cards container */
+.gddTypeCards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding-left: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cardsCollapsed {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    pointer-events: none;
+}
+
+.cardsExpanded {
+    max-height: 2000px;
+    opacity: 1;
+    margin-top: var(--spacing-lg);
+    pointer-events: auto;
+}
+
+.gddTypeIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent-color) 0%, rgba(168, 85, 247, 0.8) 100%);
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(168, 85, 247, 0.25);
+}
+
+.gddTypeInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.gddTypeTitle {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.25rem 0;
+}
+
+.gddTypeDesc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.gddTypeCount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+/* Target Position Styling */
+.targetPosition {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+/* Enhanced Category Badge for different GDD types */
+.categoryBadge[data-category="Test"] {
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    color: white;
+}
+
+.categoryBadge[data-category="Analysis"] {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    color: white;
+}
+
+.categoryBadge[data-category="Methodology"] {
+    background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+    color: #1a1a1a;
+}
+
+.categoryBadge[data-category="GDD"] {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+}
+
+/* Card hover effects for different types */
+.card:hover .categoryBadge[data-category="Test"] {
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+}
+
+.card:hover .categoryBadge[data-category="Analysis"] {
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.5);
+}
+
+.card:hover .categoryBadge[data-category="Methodology"] {
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
+}
+
+/* Responsive adjustments for GDD type headers */
+@media (max-width: 768px) {
+    .gddTypeHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .gddTypeIcon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .gddTypeCount {
+        position: absolute;
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+    }
+
+    .gddTypeHeader {
+        position: relative;
+    }
+
+    .gddTypeTitle {
+        font-size: 1.05rem;
+    }
+
+    .gddTypeDesc {
+        font-size: 0.8rem;
+    }
+}

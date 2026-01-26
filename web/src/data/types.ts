@@ -68,9 +68,66 @@ export interface Project {
     gddPdfUrl?: string; // Path to PDF
 }
 
+// Platform types for media links
+export type MediaPlatform = 'Bilibili' | 'YouTube' | 'XiaoYuZhou' | 'Gcores' | 'GameRes' | 'Podcast' | 'Local' | 'Other';
+
+// Link to a specific platform
+export interface PlatformLink {
+    platform: MediaPlatform;
+    url: string;
+    label?: string; // Optional custom label
+}
+
+// Single episode/video in a series
+export interface MediaEpisode {
+    id: string;
+    episodeNumber: string; // e.g., "00", "01", "02"
+    type?: ('video' | 'article') | ('video' | 'article')[]; // Allow single or multiple types
+    titleCN: string;
+    titleEN: string;
+    descriptionCN?: string;
+    descriptionEN?: string;
+    date: string;
+    duration?: string;
+    thumbnail?: string;
+    links: PlatformLink[]; // Multiple platform links
+    isPublished?: boolean; // Default true, set false for unreleased
+    scheduledDate?: string; // Expected release date for unreleased content
+}
+
+// Podcast episode (simpler, just for listing)
+export interface PodcastEpisode {
+    id: string;
+    episodeNumber: string;
+    titleCN: string;
+    titleEN: string;
+    isPublished?: boolean; // Default true, set false for unreleased
+    scheduledDate?: string; // Expected release date for unreleased content
+}
+
+// A media series (collection of episodes)
+export interface MediaSeries {
+    id: string;
+    seriesNameCN: string;
+    seriesNameEN: string;
+    type: 'video-series' | 'podcast-series';
+    seriesBadges?: string[]; // Optional explicit badges for the series header (e.g., ["Video", "Article"])
+    language: 'Chinese' | 'English' | 'Mixed';
+    descriptionCN: string;
+    descriptionEN: string;
+    thumbnail?: string;
+    // For video series: individual episodes with their own links
+    episodes?: MediaEpisode[];
+    // For podcast series: main link + episode list
+    mainLinks?: PlatformLink[];
+    podcastEpisodes?: PodcastEpisode[];
+    episodesCount?: number; // Total count if not listing all
+}
+
+// Legacy MediaItem for backwards compatibility (demo videos, etc.)
 export interface MediaItem {
     id: string;
-    title: string; // One common title
+    title: string;
     type: 'video' | 'podcast' | 'analysis';
     carrier: 'Bilibili' | 'YouTube' | 'Local' | 'XiaoYuZhou' | 'Other';
     language: 'Chinese' | 'English' | 'Mixed';
@@ -80,8 +137,8 @@ export interface MediaItem {
     descriptionEN: string;
     date: string;
     isCollection: boolean;
-    duration?: string; // For single episodes
-    episodesCount?: number; // For collections
+    duration?: string;
+    episodesCount?: number;
 }
 
 export interface ResumeData {

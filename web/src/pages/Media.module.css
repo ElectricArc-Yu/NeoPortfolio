@@ -5,7 +5,7 @@
 }
 
 .header {
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
 }
 
 .title {
@@ -20,10 +20,582 @@
     font-size: 1rem;
 }
 
+/* ============================================
+   Series List Layout
+   ============================================ */
+.seriesList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.seriesCard {
+    background: var(--bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-md);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+}
+
+/* Gold Glow for Content Series */
+.goldSeries:hover {
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.15), 0 0 15px rgba(255, 215, 0, 0.1);
+    z-index: 10;
+}
+
+.goldSeries.expanded {
+    border-color: #FFD700;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 215, 0, 0.2);
+}
+
+/* Cyan Glow for Misc */
+.cyanSeries:hover {
+    border-color: rgba(0, 173, 181, 0.5);
+    box-shadow: 0 0 35px rgba(0, 173, 181, 0.15), 0 0 15px rgba(0, 173, 181, 0.1);
+    z-index: 10;
+}
+
+.cyanSeries.expanded {
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 173, 181, 0.2);
+}
+
+.seriesHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2rem;
+    cursor: pointer;
+    background: var(--bg-secondary);
+    border-top-left-radius: var(--border-radius-md);
+    border-top-right-radius: var(--border-radius-md);
+    min-height: 80px;
+    /* Ensure stable height */
+}
+
+.seriesHeader:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.seriesHeader.sticky {
+    position: sticky;
+    top: 60px;
+    z-index: 100;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.seriesInfo {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.seriesIcon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.seriesIcon.videoIcon {
+    background: linear-gradient(135deg, var(--accent-color), #0d8a91);
+}
+
+.seriesIcon.podcastIcon {
+    background: linear-gradient(135deg, #9B59B6, #6C3483);
+}
+
+.seriesTitles {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.seriesName {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.seriesDescription {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0.35rem 0 0 0;
+    line-height: 1.5;
+    /* allow wrapping since single line ellipsis was requested to be removed for completeness */
+}
+
+.seriesMetaHeader {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-shrink: 0;
+}
+
+.seriesBadges {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.expandIcon {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* ============================================
+   Badges
+   ============================================ */
+.badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.typeBadge {
+    background: linear-gradient(135deg, rgba(0, 173, 181, 0.15), rgba(0, 173, 181, 0.05));
+    color: var(--accent-color);
+    border: 1px solid rgba(0, 173, 181, 0.3);
+}
+
+.carrierBadge {
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    background: rgba(0, 173, 181, 0.05);
+}
+
+/* ============================================
+   Series Content
+   ============================================ */
+.seriesContent {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0 2rem 1.5rem 2rem;
+    background: rgba(0, 0, 0, 0.15);
+    border-bottom-left-radius: var(--border-radius-md);
+    border-bottom-right-radius: var(--border-radius-md);
+}
+
+.expandedDescription {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin: 1.5rem 0;
+    line-height: 1.6;
+}
+
+.contentSeparator {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+    margin-bottom: 1.5rem;
+}
+
+.mainLinksSection {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.mainLinksLabel {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   Platform Links
+   ============================================ */
+.platformLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.platformLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 110px;
+    width: fit-content;
+    white-space: nowrap;
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    background: rgba(0, 173, 181, 0.05);
+    border: 1px solid rgba(0, 173, 181, 0.3);
+    color: var(--accent-color);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.platformLink:hover {
+    background: rgba(0, 173, 181, 0.15);
+    border-color: var(--accent-color);
+    transform: translateX(-4px);
+    box-shadow: 0 4px 12px rgba(0, 173, 181, 0.2);
+}
+
+/* Link Color Variants */
+.redLink {
+    background: rgba(255, 68, 68, 0.05) !important;
+    border-color: rgba(255, 68, 68, 0.3) !important;
+    color: #ff4444 !important;
+}
+
+.redLink:hover {
+    background: rgba(255, 68, 68, 0.15) !important;
+    border-color: #ff4444 !important;
+}
+
+.purpleLink {
+    background: rgba(155, 89, 182, 0.05) !important;
+    border-color: rgba(155, 89, 182, 0.3) !important;
+    color: #9B59B6 !important;
+}
+
+.purpleLink:hover {
+    background: rgba(155, 89, 182, 0.15) !important;
+    border-color: #9B59B6 !important;
+}
+
+.greenLink {
+    background: rgba(76, 175, 80, 0.05) !important;
+    border-color: rgba(76, 175, 80, 0.3) !important;
+    color: #4CAF50 !important;
+}
+
+.greenLink:hover {
+    background: rgba(76, 175, 80, 0.15) !important;
+    border-color: #4CAF50 !important;
+}
+
+.goldLink {
+    background: rgba(255, 215, 0, 0.05) !important;
+    border-color: rgba(255, 215, 0, 0.3) !important;
+    color: #FFD700 !important;
+}
+
+.goldLink:hover {
+    background: rgba(255, 215, 0, 0.15) !important;
+    border-color: #FFD700 !important;
+}
+
+.blueLink {
+    background: rgba(33, 150, 243, 0.05) !important;
+    border-color: rgba(33, 150, 243, 0.3) !important;
+    color: #2196F3 !important;
+}
+
+.blueLink:hover {
+    background: rgba(33, 150, 243, 0.15) !important;
+    border-color: #2196F3 !important;
+}
+
+.pinkLink {
+    background: rgba(233, 30, 99, 0.05) !important;
+    border-color: rgba(233, 30, 99, 0.3) !important;
+    color: #E91E63 !important;
+}
+
+.pinkLink:hover {
+    background: rgba(233, 30, 99, 0.15) !important;
+    border-color: #E91E63 !important;
+}
+
+.orangeLink {
+    background: rgba(255, 152, 0, 0.05) !important;
+    border-color: rgba(255, 152, 0, 0.3) !important;
+    color: #FF9800 !important;
+}
+
+.orangeLink:hover {
+    background: rgba(255, 152, 0, 0.15) !important;
+    border-color: #FF9800 !important;
+}
+
+/* Badge Color Variants */
+.redBadge {
+    background: rgba(255, 68, 68, 0.1);
+    color: #ff4444;
+    border: 1px solid rgba(255, 68, 68, 0.3);
+}
+
+.purpleBadge {
+    background: rgba(155, 89, 182, 0.1);
+    color: #9B59B6;
+    border: 1px solid rgba(155, 89, 182, 0.3);
+}
+
+.greenBadge {
+    background: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.goldBadge {
+    background: rgba(255, 215, 0, 0.1);
+    color: #FFD700;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.blueBadge {
+    background: rgba(33, 150, 243, 0.1);
+    color: #2196F3;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.pinkBadge {
+    background: rgba(233, 30, 99, 0.1);
+    color: #E91E63;
+    border: 1px solid rgba(233, 30, 99, 0.3);
+}
+
+.orangeBadge {
+    background: rgba(255, 152, 0, 0.1);
+    color: #FF9800;
+    border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+/* ============================================
+   Episode Items (Rows)
+   ============================================ */
+.episodesList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.episodeCard {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.25rem 1.75rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: all 0.3s ease;
+}
+
+/* Left Area: Sequence + Enlarged Icon */
+.episodeHeaderArea {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-shrink: 0;
+}
+
+.episodeIcons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.episodeNumber {
+    padding: 0 14px;
+    height: 40px;
+    min-width: fit-content;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(0, 173, 181, 0.2), rgba(0, 173, 181, 0.05));
+    border: 1px solid rgba(0, 173, 181, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--accent-color);
+    position: relative;
+}
+
+.headerIcon {
+    opacity: 0.9;
+    color: var(--accent-color);
+    /* Set color logic if needed, currently accent */
+}
+
+.episodeContent {
+    flex: 1;
+    min-width: 0;
+}
+
+.episodeTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.episodeTitleRow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
+}
+
+.typeBadgeSmall {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+    height: fit-content;
+}
+
+.episodeDescription {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0.3rem 0;
+    opacity: 0.8;
+}
+
+.episodeMetaUnder {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 0.4rem;
+}
+
+.episodeDate,
+.episodeDuration,
+.scheduledDate {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-secondary);
+}
+
+.scheduledDate {
+    color: #f59e0b;
+    font-weight: 600;
+}
+
+.episodeActions {
+    flex-shrink: 0;
+    margin-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.comingSoon {
+    padding: 0.5rem 1rem;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 8px;
+    color: #f59e0b;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Glow Effects */
+.publishedGlow:hover {
+    border-color: rgba(76, 175, 80, 0.6);
+    box-shadow: 0 0 35px rgba(76, 175, 80, 0.25), 0 0 15px rgba(76, 175, 80, 0.15);
+    background: rgba(76, 175, 80, 0.04);
+    z-index: 10;
+}
+
+.unreleasedGlow:hover {
+    border-color: rgba(245, 158, 11, 0.6);
+    box-shadow: 0 0 35px rgba(245, 158, 11, 0.25), 0 0 15px rgba(245, 158, 11, 0.15);
+    background: rgba(245, 158, 11, 0.04);
+    z-index: 10;
+}
+
+.lockIcon {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    color: #f59e0b;
+}
+
+/* ============================================
+   Podcast Episodes List
+   ============================================ */
+.podcastEpisodesList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.podcastEpisodeItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    /* Add default border for glow to attach to */
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.podcastEpisodeNumber {
+    min-width: 48px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(155, 89, 182, 0.1);
+    border: 1px solid rgba(155, 89, 182, 0.2);
+    color: #9B59B6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.podcastEpisodeTitle {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.podcastScheduled {
+    font-size: 0.75rem;
+    color: #f59e0b;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(245, 158, 11, 0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+/* ============================================
+   Legacy / Miscellaneous Media Cards (Stripe)
+   ============================================ */
 .mediaList {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 0.75rem;
 }
 
 .mediaCard {
@@ -33,15 +605,8 @@
     border-radius: var(--border-radius-md);
     overflow: hidden;
     height: 160px;
-    /* Approximately 150px content + borders */
-    transition: all 0.3s ease;
     text-decoration: none;
-}
-
-.mediaCard:hover {
-    border-color: var(--accent-color);
-    background: rgba(255, 255, 255, 0.02);
-    transform: translateX(10px);
+    transition: all 0.3s ease;
 }
 
 .thumbnailWrapper {
@@ -49,31 +614,22 @@
     height: 100%;
     position: relative;
     flex-shrink: 0;
-    overflow: hidden;
 }
 
 .thumbnail {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.mediaCard:hover .thumbnail {
-    transform: scale(1.05);
 }
 
 .playOverlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(0, 0, 0, 0.2);
-    color: var(--text-primary);
+    color: #fff;
     opacity: 0.8;
 }
 
@@ -88,44 +644,20 @@
 .cardHeader {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-bottom: 0.5rem;
+    align-items: center;
 }
 
 .mediaTitle {
-    font-size: 1.25rem;
-    color: var(--text-primary);
-    margin: 0;
+    font-size: 1.2rem;
     font-weight: 700;
-}
-
-.badges {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-}
-
-.badge {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-.carrierBadge {
-    border: 1px solid var(--accent-color);
-    color: var(--accent-color);
-    background: rgba(0, 173, 181, 0.05);
+    margin: 0;
 }
 
 .description {
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.5;
-    margin-bottom: 1rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
@@ -137,13 +669,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 1rem;
 }
 
 .metaInfo {
     display: flex;
     gap: 1.5rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
-    font-size: 0.85rem;
 }
 
 .metaItem {
@@ -153,15 +686,26 @@
 }
 
 .viewAction {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
     color: var(--accent-color);
     font-weight: 700;
     font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
+/* ============================================
+   Responsive
+   ============================================ */
 @media (max-width: 900px) {
+    .seriesHeader {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .seriesName {
+        font-size: 1.15rem;
+    }
+
     .mediaCard {
         height: auto;
         flex-direction: column;
@@ -169,10 +713,32 @@
 
     .thumbnailWrapper {
         width: 100%;
-        height: 200px;
+        height: 180px;
     }
 
-    .content {
-        padding: 1.5rem;
+    .episodeCard {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .episodeActions {
+        margin-left: 0;
+        align-items: flex-start;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .seriesHeader.sticky {
+        top: 50px;
+    }
+
+    .seriesContent {
+        padding: 0 1.25rem 1.5rem 1.25rem;
     }
 }

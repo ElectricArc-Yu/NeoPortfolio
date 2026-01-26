@@ -2,9 +2,12 @@ import type { Project } from './types';
 
 export const projects: Project[] = [
     // --- Commercial Projects ---
-    {
+    {//Nuclear Survival
         id: 'nuclear-survival',
+        mainProjectId: 'netease-minecraft-mod',
         title: 'Nuclear Survival',
+        titleCN: '辐射生存',
+        titleEN: 'Nuclear Survival',
         type: 'Commercial',
         showPriority: 100,
         engine: 'Python',
@@ -14,11 +17,19 @@ export const projects: Project[] = [
         thumbnail: '/assets/images/FOCover.png',
         shortDescriptionCN: '后启示录题材的家园建设与探索模组,通过自动化系统优化玩家体验。',
         shortDescriptionEN: 'Post-apocalyptic base-building and exploration mod with progressive automation systems.',
+        introduceCN: `后启示录题材的家园建设与探索向 MC 模组，
+以基地建设->外出探索->资源带回->自动化解放重复劳动为核心循环，
+明确将设计重点放在降低挖矿等低价值重复操作的时间占比，通过逐步解锁的自动化系统引导玩家将精力转移至探索决策、基地规划与长期发展目标。`,
+        introduceEN: `A post-apocalyptic base-building and exploration Minecraft mod.
+Focuses on the core loop of Base Building -> Exploration -> Resource Collection -> Automation for repetition relief.
+The design prioritizes reducing low-value repetitive tasks like mining, guiding players to shift their focus toward exploration decisions, base planning, and long-term goals through progressive automation systems.`,
         sales: '100K+ Units',
         platformCN: '我的世界 (中国版)',
         platformEN: 'Minecraft (NetEase)',
         durationCN: '约4个月',
         durationEN: 'About 4 months',
+        startDate: '2023.07',
+        endDate: '2023.10',
         teamSizeCN: '9人',
         teamSizeEN: '9 People',
         priceCN: '¥10',
@@ -97,12 +108,15 @@ Built the experience around mech combat as the primary hook, introduced monster 
         images: ['/assets/images/FOCover.png', '/assets/images/Fallout_01.png', '/assets/images/Fallout_02.png'],
         video: '/assets/images/FallOut.mp4',
         links: [
-            { labelCN: '发布页面', labelEN: 'Release Page', urlCN: 'https://resource-minecraft.h5.163.com/#/detail?id=4664344300463689714', type: 'demo' }
+            { labelCN: '发布页面', labelEN: 'Release Page', urlCN: 'https://resource-minecraft.h5.163.com/#/detail?id=4664344300463689714', type: 'Release Page' }
         ]
     },
-    {
+    {//Horror Isle
         id: 'horror-isle',
+        mainProjectId: 'netease-minecraft-mod',
         title: 'Horror Isle',
+        titleCN: '恐怖岛',
+        titleEN: 'Horror Isle',
         type: 'Commercial',
         showPriority: 90,
         engine: 'Python',
@@ -112,11 +126,21 @@ Built the experience around mech combat as the primary hook, introduced monster 
         thumbnail: '/assets/images/KBDCover.png',
         shortDescriptionCN: '恐怖主题的半线性RPG模组,通过战斗系统聚焦短期刺激体验。',
         shortDescriptionEN: 'Horror-themed semi-linear RPG mod focused on combat-driven short-session gameplay.',
+        introduceCN: `恐怖主题的半线性 RPG 模组，
+        以探索->打怪->掉落物换武器->提升战斗能力->打Boss->推剧情进度为进度控制循环，
+        以探索->SAN与饱食度消耗->食物、药物消耗->延迟制作为节奏控制循环，
+        通过战斗系统反馈节点同质化交换稳定的成长思路以确保不超过目标用户的认知负荷，并通过战斗表现的优化和聚焦满足目标用户的底层需求。`,
+        introduceEN: `A semi-linear horror-themed RPG mod.
+        The progress control loop is exploration->kill->drop->weapon upgrade->boss->story progress,
+        The pace control loop is exploration->SAN and hunger consumption->food and medicine consumption->delay,
+        Through the feedback of the combat system, the same type of exchange is used to ensure that the growth does not exceed the cognitive load of the target user, and the optimization and focus of the combat performance are satisfied by the target user.`,
         sales: '100K+ Units',
         platformCN: '我的世界 (中国版)',
         platformEN: 'Minecraft (NetEase)',
         durationCN: '约2个月',
         durationEN: 'About 2 months',
+        startDate: '2023.11',
+        endDate: '2023.12',
         teamSizeCN: '7人',
         teamSizeEN: '7 People',
         priceCN: '¥10',
@@ -227,14 +251,16 @@ Concentrated 90% of design effort on combat systems and their dependencies, deli
     `,
         images: ['/assets/images/KBDCover.png', '/assets/images/HorrorIsland_01.png', '/assets/images/HorrorIsland_02.png', '/assets/images/HorrorIsland_03.png'],
         links: [
-            { labelCN: '发布页面', labelEN: 'Release Page', urlCN: 'https://resource-minecraft.h5.163.com/#/detail?id=4665488888721273907', type: 'demo' }
+            { labelCN: '发布页面', labelEN: 'Release Page', urlCN: 'https://resource-minecraft.h5.163.com/#/detail?id=4665488888721273907', type: 'Release Page' }
         ]
     },
-    {
+    {//Project FR
         id: 'project-fr',
         title: 'Project FR',
+        titleCN: 'Project FR',
+        titleEN: 'Project FR',
         type: 'Commercial',
-        showPriority: 95,
+        showPriority: 75,
         engine: 'Unreal',
         gameType: ['Action RPG'],
         role: ['Creative Director'],
@@ -247,6 +273,8 @@ Concentrated 90% of design effort on combat systems and their dependencies, deli
         platformEN: 'PC',
         durationCN: '约1年半',
         durationEN: 'About 1.5 years',
+        startDate: '2023.01',
+        endDate: 'Present',
         teamSizeCN: '3人 + 其他可用人员',
         teamSizeEN: '3 People + Other people',
         descriptionCN: `
@@ -401,14 +429,16 @@ Used UE Blueprints to build minimal but effective gameplay concept validations, 
         images: ['/assets/images/FR_SystemDiagram.png'],
         video: undefined,
         links: [
-            { labelCN: '系统架构简图', labelEN: 'System Architecture Diagram', urlCN: '/assets/images/FR_SystemDiagram.png', type: 'doc' }
+            // { labelCN: '系统架构简图', labelEN: 'System Architecture Diagram', urlCN: '/assets/images/FR_SystemDiagram.png', type: 'doc' }
         ]
     },
-    {
+    {//Project DT
         id: 'project-dt',
         title: 'Project DT',
+        titleCN: 'Project DT',
+        titleEN: 'Project DT',
         type: 'Commercial',
-        showPriority: 85,
+        showPriority: 75,
         engine: 'Other',
         gameType: ['Visual Novel'],
         role: ['Creative Director', 'Lead Writer'],
@@ -421,6 +451,8 @@ Used UE Blueprints to build minimal but effective gameplay concept validations, 
         platformEN: 'PC',
         durationCN: '约2个月',
         durationEN: 'About 2 months',
+        startDate: '2024.04',
+        endDate: 'Present',
         teamSizeCN: '10+人 (3全职)',
         teamSizeEN: '10+ People (3 full-time)',
         descriptionCN: `
@@ -561,11 +593,14 @@ Ensured DT's worldview, characters, and location settings lay cognitive foundati
         video: undefined,
         links: []
     },
-    {
+    {//Lightning Hero
         id: 'lightning-hero',
+        mainProjectId: 'netease-minecraft-mod',
         title: 'Lightning Hero',
+        titleCN: '闪电英雄',
+        titleEN: 'Lightning Hero',
         type: 'Commercial',
-        showPriority: 75,
+        showPriority: 70,
         engine: 'Python',
         gameType: 'RPG',
         role: ['Lead Designer'],
@@ -578,6 +613,8 @@ Ensured DT's worldview, characters, and location settings lay cognitive foundati
         platformEN: 'Minecraft (NetEase)',
         durationCN: '5天',
         durationEN: '5 days',
+        startDate: '2023.05',
+        endDate: '2023.05',
         teamSizeCN: '3人',
         teamSizeEN: '3 People',
         priceCN: '¥6',
@@ -691,52 +728,286 @@ This project's success is non-replicable—it depends on specific market windows
         images: ['/assets/images/LHCover.png'],
         video: '/assets/images/Lightning Hero.mp4',
         links: [
-            { labelCN: '发布页面', labelEN: 'Release Page', urlCN: 'https://resource-minecraft.h5.163.com/#/detail?id=4664383590833725456', type: 'demo' }
+            { labelCN: '发布页面', labelEN: 'Release Page', urlCN: 'https://resource-minecraft.h5.163.com/#/detail?id=4664383590833725456', type: 'Release Page' }
         ]
     },
-    {
-        id: 'overwatch-mc',
-        title: 'Overwatch in Minecraft',
+    {//Real World Project
+        id: 'rwp-worldview',
+        title: 'Real World Project (RWP)',
+        titleCN: 'RWP 世界观',
+        titleEN: 'Real World Project (RWP)',
         type: 'Commercial',
-        showPriority: 70,
-        engine: 'Python',
-        gameType: 'Action',
-        role: ['Lead Designer'],
-        techStack: ['Minecraft Mod', 'Python+JSON'],
-        thumbnail: '/assets/images/OWMCCover.png',
-        shortDescriptionCN: '在Minecraft中复刻守望先锋角色与6v6战斗。',
-        shortDescriptionEN: 'Recreating Overwatch characters and 6v6 battles in Minecraft.',
-        sales: '10K+ Units (Series Total)',
-        platformCN: '我的世界 (中国版)',
-        platformEN: 'Minecraft (China)',
-        durationCN: '2023.04 - 2023.06',
-        durationEN: 'Apr 2023 - Jun 2023',
-        teamSizeCN: '5-8人',
-        teamSizeEN: '5-8 People',
+        showPriority: 75,
+        engine: 'Other',
+        gameType: ['World-building', 'IP Framework'],
+        role: ['Creative Director'],
+        techStack: ['Narrative Design', 'IP Strategy'],
+        thumbnail: '',
+        shortDescriptionCN: '原创IP的世界观框架构建,支撑跨品类游戏产品与长期IP矩阵战略。',
+        shortDescriptionEN: 'Original IP world framework construction, supporting cross-genre game products and long-term IP matrix strategy.',
+        sales: 'IP Foundation',
+        platformCN: 'IP 基础设施',
+        platformEN: 'IP Infrastructure',
+        durationCN: '约1年 (持续完善)',
+        durationEN: 'About 1 year (implementing)',
+        startDate: '2023.06',
+        endDate: 'Present',
+        teamSizeCN: '4人核心团队',
+        teamSizeEN: '4-person Core Team',
         descriptionCN: `
-# 先锋对决 (Overwatch in Minecraft)
-**角色:** Lead Designer  
-**公司:** Hunan Nuoxiyou Technology Co. Ltd.
+## 项目定位与战略价值
 
-包含一系列DLC模组。允许玩家使用守望先锋中的角色在固定地图上进行6v6战斗。
-        `,
+**商业战略 - IP矩阵而非产品IP化:**
+RWP是支撑公司长期发展的IP基础设施,战略目标为"IP衍生产品"而非"产品IP化"。通过构建可跨品类、跨媒体、跨界的世界观框架,形成以游戏为核心圈的业务矩阵。
+
+**打破品类限制:**
+确保IP不被困在AVG产线,为未来ARPG(Project FR)及更多品类提供世界观支撑。投资人对IP框架表现出兴趣(虽仅关注D轮IPO阶段),验证了长期战略价值。
+
+## 世界观规模与架构
+
+**时空规模:**
+*   **时间跨度:** 群星历前9263年(创世)至群星历4284年,明确时间线跨度0-3713年
+*   **空间规模:** 3倍地球大小,已设计5个大陆、8个大国,其中3个已有可用设定
+
+**核心设定维度 (20大项,40+文档):**
+种族、国家、魔法、科技、历史、信仰、世界划分、生物分类学、计量学、地理、时代等全维度构建,并建立专门的优先级表控制"哪些先做/哪些不做"与质量Checklist。
+
+**设定打通策略:**
+融合修仙、魔法、COC等主流设计体系,确定策划需要了解的核心内容,进行大方向规划后剪枝,实现"从一边到另一边,哪里都没有它,哪里都需要它"的底层逻辑支撑。
+
+## 设计方法论 - 充分必要设计
+
+**核心原则: 精确、收敛、逻辑自洽**
+*   **收敛:** 不过度发散方向,避免世界观过度设计
+*   **精确:** 信息密度高,能10个字写清不写20个字,能列表不一段话,阅读效率极高
+*   **逻辑自洽:** 添加新设定时可在逻辑脉络上追溯,确保扩展性
+
+**"限制现在,保留未来":**
+建立30+条充分必要设定原则,确保"足够支撑AVG剧情、未来扩展基调",但不提前投入短期用不到的细节。深度由细节决定,但优先广度(打下记忆点),后续再拓展深度(彩蛋、细节关联)。
+
+**"先一步考虑项目可以怎么用":**
+每个设定从设计之初就考虑可玩性而非纯设定集。没有一天在写游戏设计文档,但没有一笔不代表着游戏设计立场。确保"不忽略摄像机不会照到的人"——世界是被创造而非复制。
+
+**验证方式:**
+*   找熟人看,内部意见一致
+*   陌生人段落观看,验证"看完之后能不能理解我要表达什么,他说的印象和我的印象一致"
+*   满不满意不重要,重要是合不合适
+
+## 开发过程与挑战
+
+**时间与团队:**
+*   框架搭建历时约1年,4人核心团队
+*   进行大量Research,打碎消化各类参考体系
+
+**重大迭代与推翻:**
+*   生物分类学设计后期发现所有参考都有逻辑起点问题,导致"世界不像是被创造而像是复制",推翻重做
+*   多次调整以确保逻辑自洽与可扩展性
+
+**与具体项目的协同:**
+*   **Project FR(ARPG):** 剁成臊子各处洒下,投放与剧情深度绑定
+*   **Project DT(AVG):** 投放世界观框架、物种、国家、魔法等设定,为玩家建立认知基础
+*   **预埋设计:** AVG预埋ARPG,ARPG预埋其他未来项目,形成IP矩阵连贯性
+
+## 核心产出
+
+**文档体系 (20大项,40+文档,数万字):**
+*   历史年表(群星历前9263年至群星历4284年)
+*   各分类下的核心设定(种族/国家/魔法/科技/信仰/生物分类学/计量学/地理等)
+*   未来宣发用的小故事
+*   优先级控制表与质量Checklist
+
+**设计工具与方法论:**
+*   充分必要设定原则
+*   拉高下限用高层面情感设计方法论
+*   世界观扩展规则与逻辑追溯体系
+
+**核心USP:**
+"够充分,且不忽略摄像机不会照到的人"——世界观的完整性与可信度不依赖玩家视角,而是具备内在逻辑完整性。
+
+## 能力成长与方法论沉淀
+
+**跨项目IP管理能力:**
+建立了从IP框架到具体项目的完整投放策略,确保世界观既能支撑ARPG的玩法需求,也能服务AVG的叙事需求,同时为未来项目预留扩展空间。
+
+**"没啥收获,又全都是收获":**
+世界观构建是一个没有明确终点的过程,每一次设定调整、每一次逻辑推演、每一次团队argue,都在强化"如何在不确定中建立确定性"的能力。这种能力无法量化,但渗透在后续所有项目的设计决策中。
+    `,
         descriptionEN: `
-# Overwatch in Minecraft
-**Role:** Lead Designer  
-**Company:** Hunan Nuoxiyou Technology Co. Ltd.
+## Project Positioning & Strategic Value
 
-This project covers a series of DLC mods. It allows players to use characters from Overwatch to engage in 6v6 battles on fixed maps.
-        `,
+**Business Strategy - IP Matrix, Not Product IP-ization:**
+RWP is the IP infrastructure supporting the company's long-term development. Strategic goal: "IP-derived products" rather than "product IP-ization". By building a world framework capable of cross-genre, cross-media, and cross-industry expansion, forms a business matrix with games as the core circle.
+
+**Breaking Genre Limitations:**
+Ensures IP isn't confined to AVG production lines, providing worldview support for future ARPG (Project FR) and more genres. Investor interest in IP framework (though focused on Series D IPO stage) validates long-term strategic value.
+
+## World Scale & Architecture
+
+**Spatiotemporal Scale:**
+*   **Time Span:** Starlight Calendar Year -9263 (Genesis) to Year 4284; explicit timeline span 0-3713 years
+*   **Spatial Scale:** 3x Earth size; 5 continents, 8 major nations designed; 3 with usable settings
+
+**Core Setting Dimensions (20 major categories, 40+ documents):**
+Comprehensive construction across races, nations, magic, technology, history, faith, world divisions, biological taxonomy, metrology, geography, eras, etc. Dedicated priority table controls "what to do first/what not to do" with quality checklist.
+
+**Setting Integration Strategy:**
+Integrates cultivation, magic, COC and other mainstream design systems; determines core content designers need to understand; conducts macro-level planning then prunes; achieves "from one end to the other, nowhere without it, everywhere needing it" foundational logic support.
+
+## Design Methodology - Sufficient-Necessary Design
+
+**Core Principles: Precision, Convergence, Logical Consistency**
+*   **Convergence:** No excessive directional divergence; avoids world over-design
+*   **Precision:** High information density; if 10 words suffice don't write 20; prefer lists over paragraphs; extremely efficient reading
+*   **Logical Consistency:** When adding new settings, can trace back through logical framework ensuring extensibility
+
+**"Limit Now, Preserve Future":**
+Established 30+ sufficient-necessary setting principles ensuring "adequate support for AVG narratives, future expansion tone" without prematurely investing in short-term unused details. Depth determined by details, but prioritize breadth (establish memory anchors), then expand depth later (Easter eggs, detail correlations).
+
+**"Think One Step Ahead About Project Usage":**
+Every setting considers playability from inception, not pure setting collections. Not one day spent writing game design documents, yet every stroke represents game design stance. Ensures "don't ignore people the camera won't see"—world is created, not copied.
+
+**Validation Methods:**
+*   Have acquaintances review; internal consensus
+*   Strangers read segments; verify "after reading, can they understand what I'm expressing; does their impression match mine"
+*   Satisfaction doesn't matter; appropriateness matters
+
+## Development Process & Challenges
+
+**Time & Team:**
+*   Framework construction took ~1 year; 4-person core team
+*   Extensive research; breaking down and digesting various reference systems
+
+**Major Iterations & Overhauls:**
+*   Late-stage biological taxonomy design discovered all references had logical starting point issues, causing "world seems copied not created"; overhauled and redone
+*   Multiple large-scale adjustments to ensure logical consistency and extensibility
+
+**Coordination with Specific Projects:**
+*   **Project FR (ARPG):** Chopped into morsels scattered throughout; deployment deeply tied to plot
+*   **Project DT (AVG):** Deploys world framework, species, nations, magic settings; establishes player cognitive foundation
+*   **Embedded Design:** AVG embeds ARPG; ARPG embeds other future projects; forms IP matrix coherence
+
+## Core Deliverables
+
+**Documentation System (20 major categories, 40+ documents, tens of thousands of words):**
+*   Historical timeline (Starlight Calendar Year -9263 to Year 4284)
+*   Core settings under each classification (races/nations/magic/technology/faith/biological taxonomy/metrology/geography, etc.)
+*   Small stories for future marketing
+*   Priority control table and quality checklist
+
+**Design Tools & Methodologies:**
+*   Sufficient-necessary setting principles
+*   Raising baseline using high-level emotional design methodology
+*   World expansion rules and logical traceability system
+
+**Core USP:**
+"Sufficiently complete, and doesn't ignore people the camera won't see"—world integrity and credibility don't depend on player perspective, but possess intrinsic logical completeness.
+
+## Capability Growth & Methodology Crystallization
+
+**Cross-project IP Management Capability:**
+Established complete deployment strategy from IP framework to specific projects, ensuring worldview supports both ARPG gameplay needs and AVG narrative needs, while reserving expansion space for future projects.
+
+**"No Growth, Yet All Growth":**
+World-building is a process without clear endpoint; every setting adjustment, every logical deduction, every team argument reinforces the ability to "establish certainty within uncertainty". This capability cannot be quantified, but permeates all subsequent project design decisions.
+    `,
+        images: [],
+        video: undefined,
+        links: []
+    },
+    {//Overwatch in Minecraft
+        id: 'owmc',
+        mainProjectId: 'netease-minecraft-mod',
+        title: 'Overwatch in Minecraft',
+        titleCN: '先锋对决',
+        titleEN: 'Overwatch in Minecraft',
+        type: 'Commercial',
+        showPriority: 60,
+        engine: 'Python',
+        gameType: ['FPS', 'Hero Shooter'],
+        role: ['Designer'],
+        techStack: ['UX Design'],
+        thumbnail: '/assets/images/OWMCCover.png',
+        shortDescriptionCN: '守望先锋核心玩法移植至MC,负责英雄移植与移动端UX适配。',
+        shortDescriptionEN: 'Overwatch core gameplay ported to Minecraft; responsible for hero porting and mobile UX adaptation.',
+        sales: '10K+',
+        platformCN: '我的世界 (中国版)',
+        platformEN: 'Minecraft (NetEase)',
+        durationCN: '约3周',
+        durationEN: 'About 3 Weeks',
+        teamSizeCN: '4 人',
+        teamSizeEN: '4 people',
+        priceCN: '10 RMB',
+        priceEN: '1.99 USD',
+        startDate: '2023.02',
+        endDate: '2023.02',
+        descriptionCN: `
+## 项目背景
+
+作为Onboarding期间的过渡项目,承接管理层要求将守望先锋核心玩法移植至MC平台。项目规模较小,采用分拆销售策略,市场表现中等。
+
+## 工作内容
+
+**英雄移植与调优:**
+负责多个英雄角色的移植设计(包括源氏、士兵76、半藏等),将守望先锋的英雄技能与玩法机制适配至MC的技术框架与操作环境。
+
+**移动端UX适配:**
+*   设计选角界面、设置界面与游玩主界面的UX流程
+*   解决MC移动端的核心操作挑战:将PC端的射击逻辑适配为移动端点击屏幕操作
+*   设计并实现"允许一边点击屏幕一边射击"的操作逻辑,平衡移动端的操作便利性与射击游戏的手感需求
+
+**操作手感优化:**
+针对MC与守望先锋的操作差异进行调优,确保移植后的英雄在MC环境下依然能提供可接受的操作体验。
+
+## 技术与能力积累
+
+**平台差异认知:**
+这是第一次深入理解手游操作与端游操作差异的项目,建立了对移动端触控交互与PC端鼠标键盘交互在射击类游戏中的差异化设计认知。
+
+**技术栈熟悉:**
+通过项目接触网易MC API,建立了对MC模组开发技术栈的初步理解,为后续辐射生存、恐怖岛等大型项目的技术决策奠定基础。
+
+**Onboarding平稳落地:**
+作为入职过渡期项目,成功完成设计任务并交付,验证了快速适应新环境与技术栈的能力。
+    `, descriptionEN: `
+## Project Background
+
+As a transitional project during onboarding period, undertook management's requirement to port Overwatch core gameplay to MC platform. Relatively small-scale project with unbundled sales strategy; moderate market performance.
+
+## Work Content
+
+**Hero Porting & Tuning:**
+Responsible for porting multiple hero characters (including Genji, Soldier: 76, Hanzo, etc.), adapting Overwatch hero abilities and gameplay mechanics to MC's technical framework and operational environment.
+
+**Mobile UX Adaptation:**
+*   Designed UX flows for character selection interface, settings interface, and main gameplay interface
+*   Solved core operational challenges for MC mobile: adapted PC shooting logic to mobile screen-tap operations
+*   Designed and implemented "allow screen tapping while shooting" operational logic, balancing mobile operational convenience with shooter game feel requirements
+
+**Operation Feel Optimization:**
+Tuned for operational differences between MC and Overwatch, ensuring ported heroes could still provide acceptable operational experience in MC environment.
+
+## Technical & Capability Accumulation
+
+**Platform Difference Awareness:**
+First project to deeply understand mobile vs. PC operational differences, establishing differentiated design awareness for mobile touch interactions vs. PC mouse-keyboard interactions in shooter games.
+
+**Tech Stack Familiarity:**
+Gained exposure to NetEase MC API through project, establishing preliminary understanding of MC mod development tech stack, laying foundation for technical decisions in subsequent large-scale projects like Nuclear Survival and Horror Isle.
+
+**Smooth Onboarding Landing:**
+As an onboarding transitional project, successfully completed design tasks and delivered, validating ability to rapidly adapt to new environments and tech stacks.
+    `,
         images: ['/assets/images/OWMCCover.png', '/assets/images/Overwatch.png'],
+        video: '/assets/images/OWMC.mp4',
         links: [
-            { labelCN: '发布页面', labelEN: 'Release Page', urlCN: 'https://resource-minecraft.h5.163.com/#/detail?id=4662108906629006831', type: 'demo' }
+            { labelCN: '发布页面', labelEN: 'Release Page', urlCN: 'https://resource-minecraft.h5.163.com/#/detail?id=4662108906629006831', type: 'Release Page' }
         ]
     },
-
-    // --- Personal Projects ---
-    {
+    {//Illegal Assembly
         id: 'illegal-assembly',
         title: 'Illegal Assembly',
+        titleCN: '非法组装',
+        titleEN: 'Illegal Assembly',
         type: 'Personal',
         showPriority: 95,
         engine: 'Unreal',
@@ -746,36 +1017,74 @@ This project covers a series of DLC mods. It allows players to use characters fr
         thumbnail: '/assets/images/IllagelAssemblyLogo.PNG',
         shortDescriptionCN: '一款俯视角的3D工厂建设自动化游戏。',
         shortDescriptionEN: 'A top-down 3D factory-building automation game.',
-        workHours: 120,
+        workHours: 462,
         platformCN: 'PC',
         platformEN: 'PC',
         durationCN: '2024.03 - 2024.05',
         durationEN: 'Mar 2024 - May 2024',
-        teamSizeCN: '个人 / 小组',
-        teamSizeEN: 'Solo / Small Group',
+        startDate: '2024.03',
+        endDate: '2024.05',
+        teamSizeCN: '8人',
+        teamSizeEN: '8 People',
         descriptionCN: `
-# 非法组装 (Illegal Assembly)
-**引擎:** Unreal Engine 5
+## 项目背景与救场策略
 
-该项目为一款使用Unreal Engine 5制作的俯视角3D工厂建设游戏，游戏中玩家需要实现各种产品的自动化处理，建造大型工厂并持续优化生产线，完成配方难度不断增高的自动化生产。
+**救场背景:**
+本项目为学期作业的备份方案。原项目主策划因故退出，为确保8人团队能顺利完成学业交付，我启用了此提前准备的备选案。
 
-**主要工作内容：**
-*   游戏整体设计与实现的把控，包括游戏核心玩法、系统、战斗、UX设计等，并进行公开演讲。
-*   分解项目工作内容，与PM合作确保进度，控制项目规模并及时汇报工作进度。
-*   负责游戏主体框架、玩法功能、UI API的设计与实现。
-*   制定适合项目的美术资产合并流程。
+**双重职责定位:**
+作为主策划与主程序，我需要在保证设计可玩性的同时，直接负责核心系统的代码实现，确保设计需求与技术实现的无缝对接，通过"自己设计自己写"的方式最大化开发效率。
+
+## 设计与开发
+
+**核心循环设计与MVP:**
+*   **设计思路:** 围绕"产品→产线→销售"的经典自动化循环构建核心玩法。选择这一循环的原因在于其系统深度足够，且能最大程度复用我在自动化游戏领域的积累。
+*   **全栈系统构建:** 亲自设计并用蓝图落地了6大核心系统：**建筑系统、物品系统、配方系统、任务系统、科技树、建筑插件**。所有系统均在设计阶段就充分考虑了实现的可行性与扩展性。
+*   **Vertical Slice:** 快速产出包含教程到通关流程的垂直切片，验证核心玩法的闭环，作为中期汇报的展示成果。
+
+**技术攻坚与适配:**
+*   **技术栈突破:** 面对从未深入接触过的Unreal蓝图，采取"边学边做"的策略，快速掌握并应用到项目中。
+*   **交互体验保障:** 鉴于自动化游戏对交互的要求，我亲自介入UI层开发，协助UI程序修复了5+关键Bug，确保了建造、管理等核心操作的流畅性。
+
+## 成果与反思
+
+**项目交付:**
+*   **完整可玩性:** 成功交付了具备完整流程（教程至通关）的Vertical Slice版本。
+*   **行业验证:** 主持了三次公开Presentation及行业内专家试玩会，反馈从初期的质疑转变为试玩后的高度认可，验证了敏捷Scope管理的有效性。
+
+**深度反思 - 关于"第一次失败":**
+*   **预期落差:** 这是一个关于"第一次失败"的教训。尽管项目按时交付且获得了不错的外部评价，但最终成品在深度与打磨程度上远未达到我最初的设想。
+*   **技术驱动:** 这次经历让我深刻意识到设计理想与技术边界的差距，这种"做不出来"的不甘成为了我后续钻研技术、追求技术与设计双修的最大动力。
         `,
         descriptionEN: `
-# Illegal Assembly
-**Engine:** Unreal Engine 5
+## Project Background & Rescue Strategy
 
-A top-down 3D factory-building game developed in Unreal Engine 5. Players automate production lines, construct massive factories, and optimize workflows to complete increasingly complex recipes.
+**Crisis Context:**
+Initiated as a well-prepared backup plan to salvage the semester's delivery for an 8-person team after the original lead designer departed. 
 
-**Key Contributions:**
-*   Overall design and implementation (Core mechanics, Systems, Combat, UX) and public presentation.
-*   Project task breakdown, scope control, and milestone tracking with PM.
-*   Designed and implemented main game framework, gameplay features, and UI APIs.
-*   Established efficient asset integration pipeline.
+**Dual Role Positioning:**
+As both Lead Designer & Lead Programmer, I balanced ensuring design playability with directly implementing core systems. This "design-it-then-code-it-myself" approach maximized efficiency by eliminating communication overhead between design requirements and technical implementation.
+
+## Design & Development
+
+**Core Loop & MVP:**
+*   **Design Rationale:** Built gameplay around the classic "Product → Production Line → Sales" automation loop. Chosen for its systemic depth and ability to leverage my prior experience in the genre.
+*   **Full-Stack System Building:** Personally designed and implemented (Blueprint) 6 core systems: **Building, Item, Recipe, Quest, Tech Tree, Plugin**. All systems were architected with feasibility and scalability in mind from the design phase.
+*   **Vertical Slice:** Rapidly produced a vertical slice covering the tutorial-to-ending flow to validate the core loop, serving as the milestone deliverable.
+
+**Technical Execution:**
+*   **Tech Stack Breakthrough:** Faced with zero prior Unreal Blueprint experience, adopted a "learn-by-doing" strategy to rapidly master and apply the technology.
+*   **UX Assurance:** Given the genre's high interaction demands, personally intervened in UI development, assisting in fixing 5+ critical bugs to ensure smooth construction and management operations.
+
+## Outcomes & Reflection
+
+**Delivery:**
+*   **Playable Status:** Successfully delivered a fully playable Vertical Slice with a complete flow.
+*   **Industry Validation:** Hosted 3 public presentations and industry playtests. Feedback shifted from initial skepticism to high praise after hands-on sessions, validating the effectiveness of agile scope management.
+
+**Deep Reflection - The "First Failure":**
+*   **Expectation Gap:** A lesson in "successful failure". While delivered on time with positive external reception, the final product's depth and polish fell far short of my original vision.
+*   **Technical Drive:** This experience highlighted the gap between design ambition and technical boundaries. The frustration of "not being able to build it all" became the primary catalyst for my subsequent pursuit of technical excellence alongside design.
         `,
         images: ['/assets/images/IllagelAssemblyLogo.PNG', '/assets/images/IA_06.png', '/assets/images/IA_01.png', '/assets/images/IA_02.png', '/assets/images/IA_03.png', '/assets/images/IA_04.png', '/assets/images/IA_05.png', '/assets/images/IA_07.png', '/assets/images/IA_08.png'],
         video: '/assets/images/Illegal Assembly.mp4',
@@ -783,15 +1092,17 @@ A top-down 3D factory-building game developed in Unreal Engine 5. Players automa
             { labelCN: '下载试玩', labelEN: 'Download Demo', urlCN: 'https://github.com/ElectricArc-Yu/GD10Final/releases', type: 'demo' }
         ],
         workDistribution: [
-            { label: 'Design', percentage: 40 },
-            { label: 'Programming', percentage: 60 }
+            { label: 'Design', percentage: 50 },
+            { label: 'Programming', percentage: 50 }
         ]
     },
-    {
+    {//The Mountain Sea
         id: 'the-mountain-sea',
         title: 'The Mountain Sea',
+        titleCN: '山海',
+        titleEN: 'The Mountain Sea',
         type: 'Personal',
-        showPriority: 85,
+        showPriority: 75,
         engine: 'Unity',
         gameType: 'Platformer',
         role: ['Designer', 'Lead Programmer'],
@@ -799,36 +1110,100 @@ A top-down 3D factory-building game developed in Unreal Engine 5. Players automa
         thumbnail: '/assets/images/MountainSea.png',
         shortDescriptionCN: '2D动作平台游戏，核心为近战与远程的双形态切换。',
         shortDescriptionEN: '2D action platformer focused on switching between melee and ranged forms.',
-        workHours: 80,
+        workHours: 132,
         platformCN: 'PC',
         platformEN: 'PC',
         durationCN: '2023.10 - 2023.12',
         durationEN: 'Oct 2023 - Dec 2023',
-        teamSizeCN: '小组',
-        teamSizeEN: 'Small Group',
+        startDate: '2023.10',
+        endDate: '2023.12',
+        teamSizeCN: '4人',
+        teamSizeEN: '4-person',
         descriptionCN: `
-# 山海 (The Mountain Sea)
-**引擎:** Unity
+## 项目背景与约束
 
-一款2D动作平台跳跃游戏，核心玩法为形态切换、攻击、跳跃和闪避。玩家需要合理切换近战（引爆）和远程（叠层）两种形态，击杀拦路小怪及最终Boss。
+**课程作业的极限挑战:**
+2D游戏开发课程作业，4人团队（2美术、1策划、1程序），开发周期仅2个月，且需同时应对全日制课程压力。作为团队唯一程序，这是我首次独立使用Unity进行完整项目开发，此前仅有Java全栈背景。
 
-**主要工作内容：**
-*   游戏整体设计与实现的把控，包括核心玩法、系统、战斗，制作GDD，并进行公开演讲。
-*   逆向学习其他项目的制作方式，并指导同组内其他程序实现功能。
-*   制定美术资产合并流程，并协调指导美术正确使用Unity和Git。
-*   在项目出现重大问题时，整合资源确保项目按时完成。
+**设计初心:**
+团队目标并非商业化，而是证明4人的策划实力——设计一款我们认为具有新意的游戏。这一定位决定了我们在设计阶段投入了大量精力构思复杂系统，但也为后续的实现埋下了隐患。早期玩法设计请查看GDD。
+
+## 核心机制设计
+
+**双形态战斗系统 - 叠层与引爆:**
+*   **远程形态（叠层）：** 命中敌人时为其叠加层数，层数越高后续引爆伤害越高
+*   **近战形态（引爆）：** 贴身攻击引爆敌人身上的所有层数，造成爆发伤害，但需承担受伤风险
+*   **设计灵感：** 源自一次耍棍的灵感闪现，将"蓄力-释放"的节奏感转化为双形态切换的策略抉择
+
+**风险收益权衡:**
+玩家需在"安全叠层"与"冒险引爆"间持续决策。远程叠层安全但DPS有限，近战引爆高收益但需承担被命中风险，形成核心的风险收益博弈。
+
+## 开发过程与挑战
+
+**技术攻坚 - 从零到一:**
+*   作为首个Unity项目，采用"逆向工程+边学边做"策略，通过分析其他2D游戏源码快速掌握Unity开发模式
+*   独立完成角色控制、战斗系统、敌人AI、Boss战等核心系统的代码实现
+*   主导建立美术资产合并流程，协调指导美术团队正确使用Unity与Git
+
+**团队危机管理:**
+项目中期遭遇团队成员退学的重大变故，导致团队大重组。在资源骤减的情况下，快速调整Scope，将原设计的多敌人多关卡收敛至1种小兵+1个Boss的最小可行方案，确保项目按时交付。
+
+## 成果与反思
+
+**交付成果:**
+*   成功交付完整可玩的Demo，核心双形态战斗机制运作良好
+*   手感经过反复调优，玩家反馈"短但不烂"，战斗手感获得认可
+*   公开演讲获得良好评价，GDD完整呈现设计思路
+
+**诚实的遗憾:**
+*   主角移动存在"飘"的问题，受限于对Unity 2D物理系统的经验不足未能完美解决
+*   内容量受限，仅有1种小兵和1个Boss，未能完整呈现设计构想
+
+**深度反思 - 关于"Scope管理"的教训:**
+这是一次关于"过度设计"的深刻教训。回顾来看，我应该更早地叫停复杂的设计扩张，告诉团队：**我们没有能力做Prototype Polish，没有条件反复试验手感。我们应该专注打磨核心玩法，用GDD证明设计深度，而不是追求一个平庸的Demo。** 最终结果是GDD平庸，项目成果也平庸——两头都没抓住。这一教训深刻影响了我后续项目的Scope管理策略。
         `,
         descriptionEN: `
-# The Mountain Sea
-**Engine:** Unity
+## Project Context & Constraints
 
-A 2D action platformer. Players switch between melee and ranged modes to deal damage and defeat enemies (Stacking layers vs Detonating).
+**Extreme Challenge of Coursework:**
+A 2D game development course project with a 4-person team (2 artists, 1 designer, 1 programmer) and only 2 months of development time, while managing full-time coursework. As the sole programmer, this was my first complete Unity project—my prior experience was limited to Java full-stack development.
 
-**Key Contributions:**
-*   Overall design and implementation (Gameplay, System, Combat), GDD creation, and presentation.
-*   Reverse-engineered mechanics from other projects and mentored team programmers.
-*   Managed asset pipeline and coordinated with artists on Unity/Git workflow.
-*   Crisis management to ensure on-time delivery despite technical hurdles.
+**Design Intent:**
+The team's goal wasn't commercialization but proving our collective design capabilities—creating a game we believed was genuinely innovative. This positioning led us to invest heavily in designing complex systems upfront, which later became a liability during implementation. Early gameplay design can be found in the GDD.
+
+## Core Mechanic Design
+
+**Dual-Form Combat System - Stacking & Detonation:**
+*   **Ranged Form (Stacking):** Hitting enemies adds layers; more layers mean higher detonation damage later
+*   **Melee Form (Detonation):** Close-range attacks detonate all accumulated layers for burst damage, but require taking damage risks
+*   **Design Inspiration:** Born from a spontaneous moment while practicing stick techniques—translating the "charge-release" rhythm into strategic dual-form switching
+
+**Risk-Reward Trade-off:**
+Players continuously choose between "safe stacking" and "risky detonation." Ranged stacking is safe but DPS-limited; melee detonation offers high rewards but exposure to damage—creating the core risk-reward dynamic.
+
+## Development Process & Challenges
+
+**Technical Breakthrough - Zero to One:**
+*   As my first Unity project, adopted a "reverse-engineering + learn-by-doing" approach, rapidly mastering Unity patterns by analyzing other 2D game source code
+*   Independently implemented character controls, combat system, enemy AI, and boss fight core systems
+*   Led establishment of art asset pipeline, coordinating and training artists on Unity and Git workflows
+
+**Team Crisis Management:**
+Mid-project, a team member's departure caused major team restructuring. With suddenly reduced resources, I rapidly adjusted scope—converging the original multi-enemy, multi-level design down to a minimum viable 1 enemy type + 1 boss approach, ensuring on-time delivery.
+
+## Outcomes & Reflection
+
+**Deliverables:**
+*   Successfully delivered a fully playable demo with functional dual-form combat mechanics
+*   Combat feel was iteratively tuned; player feedback was "short but not bad"—combat feel was validated
+*   Public presentation received positive reception; GDD comprehensively presented design thinking
+
+**Honest Shortcomings:**
+*   Character movement felt "floaty"—limited by inexperience with Unity's 2D physics system
+*   Content was limited to 1 enemy type and 1 boss, failing to fully realize the design vision
+
+**Deep Reflection - A Lesson in Scope Management:**
+This was a profound lesson in "over-design." In retrospect, I should have called a halt to design expansion earlier, telling the team: **We don't have the capability for Prototype Polish. We can't iterate on game feel. We should focus on polishing core mechanics and use the GDD to demonstrate design depth, rather than chasing a mediocre demo.** The result was a mediocre GDD AND a mediocre project—neither goal achieved. This lesson profoundly influenced my scope management strategy in subsequent projects.
         `,
         images: ['/assets/images/MountainSea.png', '/assets/images/Shanhai_01.png', '/assets/images/Shanhai_02.png'],
         gddPdfUrl: '/assets/docs/TheMountainSeaGDD.pdf',
@@ -841,45 +1216,143 @@ A 2D action platformer. Players switch between melee and ranged modes to deal da
             { label: 'Programming', percentage: 50 }
         ]
     },
-    {
+    {//All Story
         id: 'all-story',
         title: 'All Story',
+        titleCN: 'All Story',
+        titleEN: 'All Story',
         type: 'Personal',
-        showPriority: 97,
+        showPriority: 75,
         engine: 'Other',
         gameType: 'RPG',
-        role: ['Design Consultant'],
+        role: ['Designer'],
         techStack: ['AI', 'TRPG'],
-        thumbnail: '/assets/images/event_dispatch_code_dark.png', // Temporary
-        shortDescriptionCN: '一款AI驱动的电子TRPG游戏。',
-        shortDescriptionEN: 'An AI-powered electronic TRPG game.',
-        workHours: 40,
+        thumbnail: '/assets/images/AllStory.png',
+        shortDescriptionCN: '一款AI驱动的电子COC跑团游戏。',
+        shortDescriptionEN: 'An AI-powered electronic COC TRPG game.',
+        workHours: 25,
         platformCN: '网页 / App',
         platformEN: 'Web / App',
-        durationCN: '2024.06 - 至今',
-        durationEN: 'Jun 2024 - Present',
-        teamSizeCN: '小组',
-        teamSizeEN: 'Small Group',
+        durationCN: '5 天',
+        durationEN: '5 days',
+        startDate: '2024.06',
+        endDate: '2024.06',
+        teamSizeCN: '5 人',
+        teamSizeEN: '5-person',
         descriptionCN: `
-# All Story
-**角色:** Design Consultant
+## 项目背景
 
-作为设计顾问加入并推动项目。这是一款由AI驱动的电子TRPG游戏。
+**AdventureX的5天极限挑战:**
+5天Hackathon项目，5人团队（1策划+4程序）。作为唯一策划，主导全部设计决策，程序团队负责评估技术可行性并实现。
+
+**目标痛点:**
+*   解决线下COC跑团"找不到KP"的核心痛点
+*   让新手玩家能零门槛体验COC跑团的魅力
+
+## 核心设计
+
+**"故事世界"而非"AI KP":**
+区别于传统AI跑团产品将AI定位为"KP"的思路，我们将AI定位为**整个故事世界本身**——AI不仅扮演KP的叙事职能，更扮演故事中的每一个角色：调查员、NPC、路人甲、甚至街边的小市民。玩家通过文字输入与这个"活的世界"交互。
+
+**COC规则的完整保留:**
+*   完整的骰子系统与属性系统
+*   大量保留COC核心规则，确保跑团体验的正统性
+*   通过数据结构设计支撑角色状态、技能检定、理智值(SAN)等核心机制
+
+**Prompt工程实践:**
+*   从豆包迁移至Kimi，优化生成质量与响应稳定性
+*   设计并迭代提示词结构，确保AI输出符合COC风格与规则约束
+*   调整数据结构以支撑复杂的角色状态与世界状态管理
+
+## 工作内容
+
+**全栈设计职责:**
+*   **功能需求设计：** 定义产品功能边界与优先级
+*   **数据结构设计：** 设计角色、世界、剧情的数据模型
+*   **提示词工程：** 编写并迭代AI行为的Prompt结构
+*   **剧本书写：** 创作演示用的COC剧本内容
+*   **测试与调优：** 持续测试AI输出质量并反馈优化
+
+**策划工具开发 - RAG Clause Create Tool:**
+为提升剧本配置效率，使用Python开发了RAG线索管理工具。该工具用于管理RAG数据库所需的线索条目——例如某个地点在不同时期与哪些NPC、事件、物品相关联。通过可视化的条目关联配置，大幅加速了剧本信息的结构化录入。
+
+
+## 成果与影响
+
+**Hackathon成果:**
+*   成功交付可运行的Prototype
+*   路演环节获得大量试玩与好评，验证了产品方向的可行性
+
+**个人转变 - AI Native的起点:**
+这个项目成为我转向AI Native工作方式的关键节点。此后，AI工具深度融入我的日常工作流，成为设计与开发的核心辅助手段。
+
+<details>
+<summary>调查员角色Schema</summary>
+<code-loader src="/NeoPortfolio/assets/docs/Break.json"></code-loader>
+</details>
         `,
         descriptionEN: `
-# All Story
-**Role:** Design Consultant
+## Project Background
 
-Joining and pushing the project as a Design Consultant. This project is an AI-powered electronic TRPG game.
+**5-Day Hackathon Sprint:**
+A 5-day Hackathon project with a 5-person team (1 designer + 4 programmers). As the sole designer, I led all design decisions while the programming team assessed technical feasibility and implemented features.
+
+**Target Pain Points:**
+*   Solve the core pain point of "can't find a Keeper" for offline COC sessions
+*   Enable newcomers to experience COC TRPG with zero barriers to entry
+
+## Core Design
+
+**"Story World" Instead of "AI Keeper":**
+Unlike traditional AI TRPG products that position AI as "the Keeper," we positioned AI as **the entire story world itself**—AI not only fulfills the Keeper's narrative function but embodies every character in the story: investigators, NPCs, bystanders, even ordinary citizens on the street. Players interact with this "living world" through text input.
+
+**Comprehensive COC Rule Preservation:**
+*   Complete dice system and attribute system
+*   Substantial preservation of core COC rules, ensuring authentic TRPG experience
+*   Data structure design supporting character states, skill checks, Sanity (SAN), and other core mechanics
+
+**Prompt Engineering Practice:**
+*   Migrated from Doubao to Kimi for improved generation quality and response stability
+*   Designed and iterated prompt structures ensuring AI output adheres to COC style and rule constraints
+*   Adjusted data structures to support complex character and world state management
+
+## Work Content
+
+**Full-Stack Design Responsibilities:**
+*   **Feature Requirements:** Defined product feature boundaries and priorities
+*   **Data Structure Design:** Designed data models for characters, world, and narrative
+*   **Prompt Engineering:** Authored and iterated AI behavior prompt structures
+*   **Scenario Writing:** Created COC scenario content for demonstrations
+*   **Testing & Tuning:** Continuously tested AI output quality and provided optimization feedback
+
+**Design Tool Development - RAG Clause Create Tool:**
+To improve scenario configuration efficiency, developed a Python-based RAG clue management tool. This tool manages clue entries required by the RAG database—for example, which NPCs, events, and items a location is associated with across different time periods. Through visual entry association configuration, it significantly accelerated structured scenario data input.
+
+## Outcomes & Impact
+
+**Hackathon Results:**
+*   Successfully delivered a functional Prototype
+*   Demo session received extensive playtesting and positive feedback, validating product direction viability
+
+**Personal Transformation - The Starting Point of AI Native:**
+This project marked my pivotal transition to an AI Native workflow. Since then, AI tools have been deeply integrated into my daily work, becoming a core assistant for both design and development.
+
+<details>
+<summary>Investigator Role Schema</summary>
+
+<code-loader src="/NeoPortfolio/assets/docs/Break.json"></code-loader>
+</details>
         `,
-        images: [],
+        images: ['/assets/images/AllStory.png', '/assets/images/DesignTool.png'],
         links: []
     },
-    {
+    {//VR Goldfish
         id: 'vr-goldfish',
         title: 'VR Goldfish Catching',
+        titleCN: 'VR 捞金鱼',
+        titleEN: 'VR Goldfish Catching',
         type: 'Personal',
-        showPriority: 60,
+        showPriority: 50,
         engine: 'Unity',
         gameType: 'Simulation',
         role: ['Designer', 'Lead Programmer'],
@@ -887,47 +1360,85 @@ Joining and pushing the project as a Design Consultant. This project is an AI-po
         thumbnail: '/assets/images/VRCatchThemAll.jpg',
         shortDescriptionCN: '第一人称VR捞金鱼游戏。',
         shortDescriptionEN: 'First-person VR goldfish scooping game.',
-        workHours: 40,
+        workHours: 132,
         platformCN: 'Oculus Quest 2',
         platformEN: 'Oculus Quest 2',
         durationCN: '2024.01',
         durationEN: 'Jan 2024',
-        teamSizeCN: '个人',
-        teamSizeEN: 'Solo',
+        teamSizeCN: '7人',
+        teamSizeEN: '7-person',
         descriptionCN: `
-# VR捞金鱼
-**引擎:** Unity (Oculus)
+## 项目背景与波折
 
-使用Unity + Oculus VR制作的第一人称捞金鱼游戏，核心挑战为保持手部平稳的同时快速的以匹配金鱼的速度将其捞起。
+**三次方向调整的VR课程作业:**
+这是一个充满波折的VR课程作业。团队最初尝试制作VR指挥家，但技术难度过高而放弃；转向VR堂吉诃德砍风车后，中途又遭遇成员退学；最终我们加入另一个组，组成7人团队（2程序+2策划+3美术）完成了这个VR捞金鱼项目。
 
-**主要工作内容：**
-*   完成项目整体框架及玩法功能的实现，与策划协调后在极有限时间内保留核心玩法。
-*   使用水位线对象池技术保证VR流畅性。
-*   为策划提供扩展接口，使其可以高度自定义游戏。
-*   快速学习VR制作方式，实现所需功能。
+**核心挑战的选择:**
+选择"手部平稳"作为核心挑战，是在团队VR API理解深度有限的情况下，在可控范围内选择的最有趣方向——玩家需要保持手部平稳的同时，快速匹配金鱼的移动速度将其捞起。
+
+## 技术挑战与实现
+
+**VR开发的苦力活:**
+*   VR测试环境搭建极其困难，2个程序花了半周时间才让一台机器能正常测试
+*   大量时间消耗在阅读和调试Oculus SDK API上
+*   原本设计了震动反馈，但最终效果不理想而移除
+
+**性能优化 - 对象池技术:**
+VR对性能要求极高。针对金鱼和烟花特效（策划坚持要加的功能）实现了对象池系统，确保不掉帧的前提下保留视觉表现。
+
+**策划友好的配置系统:**
+使用Odin插件将所有可配置项直接暴露给策划，使其能自主微调手感参数，减少程序与策划的沟通成本。
+
+## 成果与反思
+
+**交付成果:**
+成功交付可运行的Demo。虽然试玩反馈认为不如之前的项目，但考虑到所有程序都是"赶鸭子上架"——132小时只是有记录的部分，熬了多少夜已数不清——能完成交付本身已是团队的极限努力。
+
+**能力边界认知:**
+这个项目让我深刻认识到VR开发的能力边界，以及在逆境中如何成为"把任务尽可能做好的人"。
         `,
         descriptionEN: `
-# VR Goldfish Catching
-**Engine:** Unity (Oculus)
+## Project Background & Turbulence
 
-A first-person goldfish scooping game developed in Unity with Oculus VR integration.
+**VR Coursework with Three Direction Pivots:**
+A turbulent VR course project. The team initially attempted a VR Conductor game, abandoned due to excessive technical difficulty; pivoted to VR Don Quixote windmill-slashing, then lost a member mid-development; finally joined another team, forming a 7-person group (2 programmers + 2 designers + 3 artists) to complete this VR goldfish scooping game.
 
-**Key Contributions:**
-*   Implemented project framework and gameplay features under tight deadlines.
-*   Used Object Pooling for water level performance.
-*   Created extension interfaces for high customizability.
-*   Rapidly adapted to VR development workflows.
+**Core Challenge Selection:**
+Chose "hand stability" as the core challenge within the limits of the team's VR API understanding—selecting the most interesting direction within controllable scope. Players must keep their hands steady while quickly matching goldfish movement speed to scoop them.
+
+## Technical Challenges & Implementation
+
+**The Grind of VR Development:**
+*   VR testing environment setup was extremely difficult; 2 programmers spent half a week just getting one machine to test properly
+*   Massive time spent reading and debugging Oculus SDK APIs
+*   Originally designed haptic feedback, but removed due to unsatisfying results
+
+**Performance Optimization - Object Pooling:**
+VR demands extreme performance. Implemented object pooling for goldfish and firework effects (a feature the designer insisted on including), ensuring visual quality without frame drops.
+
+**Designer-Friendly Configuration System:**
+Used Odin Inspector to expose all configurable parameters directly to designers, enabling them to fine-tune game feel independently, reducing programmer-designer communication overhead.
+
+## Outcomes & Reflection
+
+**Deliverables:**
+Successfully delivered a functional Demo. Although playtest feedback rated it below previous projects, considering all programmers were "thrown into the deep end"—132 hours is only the recorded portion, countless all-nighters uncounted—completing delivery itself represented the team's maximum effort.
+
+**Capability Boundary Awareness:**
+This project gave me profound awareness of VR development capability boundaries, and how to be "someone who gets the job done as well as possible" under adversity.
         `,
         images: ['/assets/images/VRCatchThemAll.jpg'],
         links: [
             { labelCN: '仓库地址', labelEN: 'Repo', urlCN: 'https://github.com/ElectricArc-Yu/Portfolio/tree/main/Writerside/downloadable/LFS_Download/GoldFishScrooping', type: 'repo' }
         ]
     },
-    {
+    {//Chan Shi Ye Shi Guan
         id: 'chanshiyeshiguan',
         title: 'Chan Shi Ye Shi Guan',
+        titleCN: '铲屎官也是官',
+        titleEN: 'Chan Shi Ye Shi Guan',
         type: 'Personal',
-        showPriority: 50,
+        showPriority: 30,
         engine: 'Unity',
         gameType: 'RPG',
         role: ['Programmer'],
@@ -935,35 +1446,63 @@ A first-person goldfish scooping game developed in Unity with Oculus VR integrat
         thumbnail: '/assets/images/ChanShiGuanYeShiGuan.png',
         shortDescriptionCN: '类似以撒的2D Roguelike RPG。',
         shortDescriptionEN: '2D Roguelike RPG similar to The Binding of Isaac.',
-        workHours: 60,
+        workHours: 100,
         platformCN: 'PC',
         platformEN: 'PC',
         durationCN: '2023.09',
         durationEN: 'Sep 2023',
-        teamSizeCN: '小组',
-        teamSizeEN: 'Small Group',
+        startDate: '2023.09',
+        endDate: '2023.09',
+        teamSizeCN: '10+ 人',
+        teamSizeEN: '10+ People',
         descriptionCN: `
-# 铲屎官也是官
-**引擎:** Unity
+## 项目背景
 
-一款俯视角2D RPG游戏，玩家将在固定大世界中冒险、养成、探索世界的真相。我在项目中负责部分Ingredients制作与框架代码修改。
+**机核暴造 (Gcores BOOOM) Game Jam:**
+一款俯视角2D Roguelike RPG游戏，玩家在固定大世界中冒险、养成、探索真相。作为10+人大团队的程序之一参与。
+
+## 工作内容
+
+**执行向程序工作:**
+*   将策划的抽象设计转化为可配置的数据表
+*   实现可交互物与Ingredients
+*   进行小幅度框架代码修改
+
+## 学习收获
+
+**大型项目框架学习:**
+加入这个项目的主要目的是"偷师"——通过参与大团队项目，学习成熟的Unity大型项目框架架构。接任务、交任务的工作方式让我专注于理解现有代码结构，而非主导设计决策。
         `,
         descriptionEN: `
-# Chan Shi Ye Shi Guan
-**Engine:** Unity
+## Project Background
 
-An isometric 2D RPG/Roguelike game. I was responsible for implementing ingredients and adapting framework code.
+**Gcores BOOOM Game Jam:**
+An isometric 2D Roguelike RPG where players adventure, develop characters, and uncover world truths. Participated as one of the programmers in a 10+ person team.
+
+## Work Content
+
+**Execution-Focused Programming:**
+*   Translated designers' abstract concepts into configurable data tables
+*   Implemented interactable objects and Ingredients
+*   Made minor framework code modifications
+
+## Learning Gains
+
+**Large-Scale Project Framework Study:**
+The primary purpose of joining this project was to "learn from the masters"—understanding mature Unity large-project framework architecture through participation. The task-in-task-out workflow allowed me to focus on understanding existing code structure rather than leading design decisions.
         `,
         images: ['/assets/images/ChanShiGuanYeShiGuan.png', '/assets/images/CSYSG_01.png', '/assets/images/CSYSG_02.png'],
         links: [
             { labelCN: '游戏页面', labelEN: 'Game Page', urlCN: 'https://www.gcores.com/games/126694', type: 'demo' }
         ]
     },
-    {
+    {//Slime
         id: 'slime',
         title: 'Slime',
+        titleCN: '怪盗史莱姆',
+        titleEN: 'Slime',
         type: 'Personal',
-        showPriority: 40,
+        showPriority: 30,
         engine: 'Unity',
         gameType: 'Platformer',
         role: ['Gameplay Designer'],
@@ -971,33 +1510,47 @@ An isometric 2D RPG/Roguelike game. I was responsible for implementing ingredien
         thumbnail: '/assets/images/SLIME.png',
         shortDescriptionCN: '3D/2D平台跳跃动作游戏，利用粘液机制解谜。',
         shortDescriptionEN: '3D/2D platformer action game using slime mechanics.',
-        workHours: 48,
+        workHours: 100,
         platformCN: 'PC',
         platformEN: 'PC',
         durationCN: '2023.11',
         durationEN: 'Nov 2023',
+        startDate: '2023.11',
+        endDate: '2023.11',
         teamSizeCN: '小组 (Game Jam)',
         teamSizeEN: 'Small Group (Game Jam)',
         descriptionCN: `
-# 怪盗史莱姆 (Slime)
-**引擎:** Unity
+## 项目背景
 
-3D+2D platformer jumping action game. Players utilize limited mucus resources to cross obstacles through jumps and sprints.
+**吉比特 (G-bits) Game Jam 参赛作品:**
+一款3D+2D平台跳跃解谜游戏。作为玩法设计师参与，负责核心玩法机制的设计。
+
+## 核心机制设计
+
+**粘液体型变化系统:**
+我提出并设计了核心的粘液系统——史莱姆角色根据体内粘液量的多少动态改变体型，不同体型对应不同的能力与限制，玩家需要合理管理有限的粘液资源，通过跳跃和冲刺消耗粘液来跨越障碍，这一机制将资源管理与平台跳跃解谜融合，为关卡设计提供了丰富的设计空间。
         `,
         descriptionEN: `
-# Slime
-**Engine:** Unity
+## Project Background
 
-A 3D+2D platformer developed for a Game Jam. Players utilize limited mucus resources to cross layers of obstacles through jumps and sprints.
+**G-bits Game Jam Entry:**
+A 3D+2D platformer puzzle game. Participated as Gameplay Designer, responsible for core gameplay mechanic design.
+
+## Core Mechanic Design
+
+**Slime Size-Shifting System:**
+I proposed and designed the core slime system—the slime character dynamically changes body size based on internal mucus quantity, with different sizes corresponding to different abilities and limitations, Players must strategically manage limited mucus resources, consuming mucus through jumps and sprints to cross obstacles. This mechanic fuses resource management with platformer puzzling, providing rich design space for level creation.
         `,
         images: ['/assets/images/SLIME.png'],
         links: [
             { labelCN: '预告片', labelEN: 'Trailer', urlCN: 'https://www.bilibili.com/video/BV14g4y1F7Lz', type: 'video' }
         ]
     },
-    {
+    {//Detection
         id: 'detection',
         title: 'Detection!',
+        titleCN: '看破 (Detection!)',
+        titleEN: 'Detection!',
         type: 'Personal',
         showPriority: 25,
         engine: 'Other',
@@ -1005,59 +1558,244 @@ A 3D+2D platformer developed for a Game Jam. Players utilize limited mucus resou
         role: ['Solo Creator'],
         techStack: ['Board Game'],
         thumbnail: '',
-        shortDescriptionCN: '专注于观察与推理的桌游（看破）。',
-        shortDescriptionEN: 'Board game focused on observation and inference.',
-        workHours: 40,
+        shortDescriptionCN: '为内向者设计的无需开口社交桌游。',
+        shortDescriptionEN: 'A social board game designed for introverts—no talking required.',
+        workHours: 300,
         platformCN: '实体桌游',
         platformEN: 'Physical Board Game',
-        durationCN: '2024.04',
-        durationEN: 'Apr 2024',
+        durationCN: '2024.04 - 至今',
+        durationEN: 'Apr 2024 - Present',
+        startDate: '2024.04',
+        endDate: 'Present',
         teamSizeCN: '个人',
         teamSizeEN: 'Solo',
-        descriptionCN: '独力设计的桌游《看破》（Detection!），专注于心理博弈、细节观察与逻辑推理。现正处于打磨阶段。',
-        descriptionEN: 'A solo-created board game focused on psychological play, observation, and inference. Currently in the polishing phase.',
+        descriptionCN: `
+## 设计动机
+
+**为"不想说话"的人设计的社交游戏:**
+在一次社交聚会上，朋友介绍了各种破冰游戏，但我的一个INFP朋友明显脱离群体——他不喜欢说话，在熟络之前也不敢太多开口。这个场景触发了设计思考：**能不能设计一款所有人不说话也能玩完的社交游戏？**
+
+## 核心设计
+
+**观察-推理机制:**
+玩家通过观察其他人的行为，推测对方遵循的隐藏规则。核心乐趣来自"看破"他人的行为模式，而非口头交流。
+
+**沉默友好的社交体验:**
+*   **全程无需开口：** 游戏流程中不强制任何口头交流，内向玩家可以完全沉浸在观察与思考中
+*   **低冷启动压力：** 无需自我介绍或主动发言，通过行为而非语言建立互动
+*   **渐进式社交：** 随着游戏推进，玩家自然产生想要交流的欲望，而非被迫破冰
+
+**游戏规格:**
+3-6人游戏，根据模式不同，时长在15-60分钟之间。
+
+## 开发过程
+
+**300+小时的实地测试:**
+大量时间花在KFC和咖啡馆寻找测试者进行Playtest。收集到的反馈涵盖正负两面——例如有人反馈规则太多不好记，有人反馈规则太少不够有趣，针对性地进行了简化调整。
+
+## 当前状态与未来规划
+
+初步试玩阶段已完成，规则经过多轮迭代趋于稳定。下一步计划是继续扩大测试范围，收集更多反馈后启动众筹，将这款桌游正式制作出版。
+        `,
+        descriptionEN: `
+## Design Motivation
+
+**A Social Game for "Those Who Don't Want to Talk":**
+At a social party, a friend introduced various icebreaker games, but my INFP friend was clearly disengaged—he dislikes talking and feels hesitant to speak before feeling comfortable with the group. This scenario sparked a design question: **Can we design a social game that can be played completely without speaking?**
+
+## Core Design
+
+**Observation-Deduction Mechanism:**
+Players observe others' behaviors and deduce the hidden rules they're following. The core fun comes from "seeing through" behavioral patterns, not verbal communication.
+
+**Silence-Friendly Social Experience:**
+*   **No Speaking Required:** The entire game flow requires no verbal communication; introverted players can fully immerse in observation and thought
+*   **Low Cold-Start Pressure:** No self-introductions or proactive speaking required; interaction built through actions, not words
+*   **Progressive Socialization:** As the game progresses, players naturally develop desire to communicate, rather than being forced to break ice
+
+**Game Specifications:**
+3-6 players, 15-60 minutes depending on game mode.
+
+## Development Process
+
+**300+ Hours of Field Testing:**
+Significant time spent finding testers at KFCs and cafes for playtesting. Feedback collected covered both positive and negative aspects, e.g. some found too many rules hard to remember, some found rules too simple not interesting enough, leading to targeted simplification adjustments.
+
+## Current Status & Future Plans
+
+Initial playtesting phase complete; rules have stabilized through multiple iterations. Next steps include expanding testing scope, collecting more feedback, then launching crowdfunding to officially produce and publish this board game.
+        `,
         images: [],
         links: []
     },
-    {
+    {//EI18NT
         id: 'easy-l10n',
         title: 'Easy Localization Tool',
-        type: 'Personal',
+        titleCN: 'Easy Localization Tool (UE5 插件)',
+        titleEN: 'Easy Localization Tool',
+        type: 'Commercial',
         showPriority: 45,
         engine: 'Unreal',
         gameType: 'Tool',
         role: ['Solo Creator'],
         techStack: ['Unreal Engine', 'Plugin'],
-        thumbnail: '',
-        shortDescriptionCN: 'UE5国际化与本地化配置插件。',
-        shortDescriptionEN: 'Unreal Engine localization configuration plugin.',
+        thumbnail: '/assets/images/Nodes.png',
+        shortDescriptionCN: 'UE5极简本地化插件，一个节点搞定多语言切换。',
+        shortDescriptionEN: 'Minimalist UE5 localization plugin—one node for language switching.',
         workHours: 100,
         platformCN: '虚幻引擎插件',
         platformEN: 'Unreal Engine Plugin',
+        priceCN: '9.99 美元',
+        priceEN: '$9.99',
+        sales: '5+',
         durationCN: '2024.04',
         durationEN: 'Apr 2024',
+        startDate: '2024.04',
+        endDate: '2024.04',
+        teamSizeCN: '1 人',
+        teamSizeEN: 'Solo',
+        descriptionCN: `
+## 设计动机
+
+**解决UE本地化的复杂度痛点:**
+朋友抱怨他们的项目文本量不大，但UE原生本地化系统的学习成本和配置复杂度都太高了。他们只需要一些简单的翻译功能，却不得不面对整套复杂的本地化工作流。于是我设计了这个极简插件：**一个Data Table存翻译，一个蓝图节点切语言，与任何现有系统零冲突。**
+
+## 核心功能
+
+**极简设计理念:**
+*   **一个Data Table：** 所有翻译文本集中管理，无需配置复杂的Localization Target
+*   **一个蓝图节点：** 运行时语言切换，无需任何额外代码
+*   **零冲突：** 与UE原生本地化系统完全独立，不影响项目现有架构
+
+## 开发与上架
+
+**工时分配:**
+*   设计：约10小时
+*   开发：约60小时（含文档查阅与Bug修复）
+*   上架流程：约20小时
+*   文档编写：约10小时
+
+## 经验价值
+
+**全流程打通:**
+这个项目最大的价值在于跑通了"UE插件开发→商店上架"的完整流程，为之后开发个人提效小工具打下了基础。功能刻意保持精简——再多就会拉高学习难度，违背了"让本地化变简单"的初衷。
+        `,
+        descriptionEN: `
+## Design Motivation
+
+**Solving UE Localization Complexity:**
+A friend complained that their project had minimal text content, but UE's native localization system had excessive learning curves and configuration complexity. They only needed simple translation features but had to face an entire complex localization workflow. So I designed this minimalist plugin: **One Data Table for translations, one Blueprint node for language switching, zero conflicts with existing systems.**
+
+## Core Features
+
+**Minimalist Design Philosophy:**
+*   **One Data Table:** All translation text centrally managed, no need to configure complex Localization Targets
+*   **One Blueprint Node:** Runtime language switching without any additional code
+*   **Zero Conflicts:** Completely independent from UE's native localization system, doesn't affect existing project architecture
+
+## Development & Publishing
+
+**Time Allocation:**
+*   Design:About 10 hours
+*   Development: About 60 hours (including documentation research and bug fixes)
+*   Publishing process: About 20 hours
+*   Documentation: About 10 hours
+
+## Experience Value
+
+**End-to-End Pipeline:**
+The greatest value of this project was completing the full "UE plugin development → store publishing" pipeline, laying groundwork for future personal productivity tools. Features were intentionally kept minimal—adding more would increase learning difficulty, contradicting the goal of "making localization simple."
+        `,
+        images: ['/assets/images/Nodes.png', '/assets/images/Nodes2.png', '/assets/images/Nodes3.png', '/assets/images/Nodes4.png'],
+        links: [
+            { labelCN: 'Fab商店', labelEN: 'Fab Store', urlCN: 'https://www.fab.com/listings/4415394c-b086-4c56-bc63-e3325f70e592', type: 'Release Page' }
+        ]
+    },
+    {//Portfolio Website
+        id: 'portfolio-website',
+        title: 'Portfolio Website',
+        titleCN: '个人作品集网站',
+        titleEN: 'Portfolio Website',
+        type: 'Personal',
+        showPriority: 60,
+        engine: 'Other',
+        gameType: 'Web Site',
+        role: ['Full Stack Developer'],
+        techStack: ['React', 'TypeScript', 'Vite', 'CSS'],
+        thumbnail: '',
+        shortDescriptionCN: '你正在浏览的这个网站，AI辅助开发的现代化作品集。',
+        shortDescriptionEN: 'The website you are viewing now—an AI-assisted modern portfolio.',
+        workHours: 40,
+        platformCN: 'Web',
+        platformEN: 'Web',
+        durationCN: '2025.01',
+        durationEN: 'Jan 2025',
+        startDate: '2025.01',
+        endDate: '2025.01',
         teamSizeCN: '个人',
         teamSizeEN: 'Solo',
         descriptionCN: `
-# Easy Localization & Internationalization Tool
-**引擎:** Unreal Engine
+## 项目概述
 
-本插件旨在将开发者从虚幻引擎复杂的本地化配置过程中释放出来。通过用户友好且功能完备的蓝图节点，快速搭建本地化结构，为项目提供完整的国际化解决方案。
+你正在浏览的就是这个项目本身——一个使用 React + TypeScript + Vite 构建的现代化个人作品集网站。
+
+## 技术栈
+
+*   **前端框架：** React 18 + TypeScript
+*   **构建工具：** Vite
+*   **样式方案：** 纯 CSS（无框架依赖）
+*   **部署：** GitHub Pages
+
+## AI 辅助开发
+
+本项目全程使用 AI 辅助开发（Claude + Gemini），从架构设计到代码实现均通过人机协作完成。这是 AI Native 工作方式的实践案例：
+*   **效率提升：** 约 40 小时完成从零到部署的全流程
+*   **质量保障：** AI 辅助代码审查与优化
+*   **设计迭代：** 快速实现设计想法并即时调整
+
+## 功能特点
+
+*   **中英双语：** 全站支持中英文切换
+*   **响应式设计：** 适配桌面端与移动端
+*   **项目展示：** 结构化展示游戏设计与开发作品
+*   **简历集成：** 在线简历与可下载 PDF
         `,
         descriptionEN: `
-# Easy Localization Tool
-**Engine:** Unreal Engine
+## Project Overview
 
-This plugin spares developers from complex UE localization configuration. Provides user-friendly blueprint nodes to set up localization structures quickly for any project.
+You are viewing this project itself—a modern personal portfolio website built with React + TypeScript + Vite.
+
+## Tech Stack
+
+*   **Frontend Framework:** React 18 + TypeScript
+*   **Build Tool:** Vite
+*   **Styling:** Pure CSS (no framework dependencies)
+*   **Deployment:** GitHub Pages
+
+## AI-Assisted Development
+
+This project was developed entirely with AI assistance (Claude + Gemini), from architecture design to code implementation through human-AI collaboration. This is a practical case of AI Native workflow:
+*   **Efficiency Boost:** Completed zero-to-deployment in ~40 hours
+*   **Quality Assurance:** AI-assisted code review and optimization
+*   **Design Iteration:** Rapid implementation of design ideas with instant adjustments
+
+## Features
+
+*   **Bilingual:** Full Chinese-English language switching
+*   **Responsive Design:** Adapts to desktop and mobile
+*   **Project Showcase:** Structured display of game design and development work
+*   **Resume Integration:** Online resume with downloadable PDF
         `,
         images: [],
         links: [
-            { labelCN: 'Fab商店', labelEN: 'Fab Store', urlCN: 'https://www.fab.com/listings/4415394c-b086-4c56-bc63-e3325f70e592', type: 'demo' }
+            { labelCN: 'GitHub 仓库', labelEN: 'GitHub Repo', urlCN: 'https://github.com/ElectricArc-Yu/Portfolio', type: 'repo' }
         ]
     },
-    {
+    {//CGCS/WGS
         id: 'cgcs-batch',
         title: 'CGCS/WGS Batch Converter',
+        titleCN: 'CGCS/WGS 坐标转换工具',
+        titleEN: 'CGCS/WGS Batch Converter',
         type: 'Personal',
         showPriority: 10,
         engine: 'Other',
@@ -1065,8 +1803,8 @@ This plugin spares developers from complex UE localization configuration. Provid
         role: ['Solo Creator'],
         techStack: ['Tool'],
         thumbnail: '',
-        shortDescriptionCN: '坐标系批量转换工具。',
-        shortDescriptionEN: 'Coordinate system batch converter.',
+        shortDescriptionCN: '为建筑师设计的坐标系批量转换工具。',
+        shortDescriptionEN: 'Batch coordinate system converter for architects.',
         workHours: 20,
         platformCN: 'Windows 桌面端',
         platformEN: 'Windows Desktop',
@@ -1074,216 +1812,78 @@ This plugin spares developers from complex UE localization configuration. Provid
         durationEN: 'Feb 2024',
         teamSizeCN: '个人',
         teamSizeEN: 'Solo',
-        descriptionCN: '为地理工作者/建筑师设计的工具，一键批量转换CGCS2000与WGS84数据。',
-        descriptionEN: 'A specialized tool for Geographers and Architects to batch convert between CGCS2000 and WGS84 coordinates in one click.',
+        descriptionCN: `
+## 开发动机
+
+女朋友在工作中需要批量转换CGCS2000与WGS84坐标数据，手动操作效率极低。于是我花了20小时快速开发了这个一键批量转换工具。
+
+## 用户验证
+
+项目开源后收到了GitHub issue，证明确实有建筑师同行存在相同需求——解决实际问题比任何产品验证都有说服力。
+        `,
+        descriptionEN: `
+## Development Motivation
+
+My girlfriend needed to batch convert CGCS2000 and WGS84 coordinate data at work, but manual operations were extremely inefficient. So I spent 20 hours quickly developing this one-click batch conversion tool.
+
+## User Validation
+
+After open-sourcing the project, I received a GitHub issue proving that architects in the field have the same need—solving real problems is more convincing than any product validation.
+        `,
         images: [],
         links: [
             { labelCN: 'GitHub发布页', labelEN: 'GitHub Release', urlCN: 'https://github.com/ElectricArc-Yu/CGCS-Simple-Batch-Converter/releases/tag/v1.3', type: 'repo' }
         ]
     },
-    {
-        id: 'quest-of-velar',
-        title: 'Quest Of Velar Level',
-        type: 'Personal',
-        showPriority: 30,
-        engine: 'Unity',
-        gameType: 'RPG',
-        role: ['Level Designer', 'Programmer'],
-        techStack: ['Unity'],
-        thumbnail: '/assets/images/TurnalLevel.png',
-        shortDescriptionCN: '60工时内完成的夜晚主题关卡设计及技术修复。',
-        shortDescriptionEN: 'Night-themed level design and technical fixes completed in 60 hours.',
-        workHours: 60,
-        platformCN: 'PC',
-        platformEN: 'PC',
-        durationCN: '2024.02',
-        durationEN: 'Feb 2024',
-        teamSizeCN: '个人 (练习项目)',
-        teamSizeEN: 'Solo (Exercise)',
-        descriptionCN: `
-# Quest Of Velar Level Design
-根据现有资产为Quest of Velar制作的夜晚主题关卡。
-
-**主要工作内容：**
-*   在60工时内完成LDD、白模、Placeholder、玩法机制和打磨优化。
-*   全流程Playtest。
-*   **技术修复：** 修复了无法打包、钥匙运行、金币收集读取、门开启等重大GSR错误。
-        `,
-        descriptionEN: `
-# Quest Of Velar Level Design
-Night background levels created based on existing assets.
-
-**Key Contributions:**
-*   Completed LDD, whitebox, gameplay, and polish in 60 hours.
-*   Conducted full-process playtests.
-*   **Technical Fixes:** Resolved critical issues including build failures, key mechanics, coin collection saving, and door interaction errors.
-        `,
-        images: ['/assets/images/TurnalLevel.png', '/assets/images/IntroLevel.png'],
-        links: []
-    },
-    {
-        id: 'event-dispatch',
-        title: 'Event Dispatch Class',
-        type: 'Personal',
-        showPriority: 15,
-        engine: 'Other',
-        gameType: 'Tool',
-        role: ['Programmer'],
-        techStack: ['C#', 'Framework Design'],
-        thumbnail: '/assets/images/event_dispatch_code.png',
-        shortDescriptionCN: '高性能、解耦的事件分发中心类。',
-        shortDescriptionEN: 'High-performance, decoupled Event Dispatch Class.',
-        workHours: 10,
-        platformCN: '代码库',
-        platformEN: 'Code Library',
-        durationCN: '2024.04',
-        durationEN: 'Apr 2024',
-        teamSizeCN: '个人',
-        teamSizeEN: 'Solo',
-        descriptionCN: `
-# 事件分发中心 (Event Dispatch Class)
-支持单例模式的通用事件分发系统，旨在通过解耦模块通信提高代码的可扩展性和性能。支持多参数传递及带返回值的委托调用。
-        `,
-        descriptionEN: `
-# Event Dispatch Class
-A universal event management system designed to decouple module communication, enhancing scalability and performance. Supports multiple parameters and return values.
-        `,
-        images: ['/assets/images/event_dispatch_code.png', '/assets/images/event_dispatch_code_dark.png'],
-        links: []
-    },
-    {
+    {//Real Estate Platform
         id: 'jiajiang-platform',
         title: 'Jiajiang Real Estate Platform',
-        type: 'Personal',
+        titleCN: '夹江县不动产登记信息管理平台',
+        titleEN: 'Jiajiang Real Estate Platform',
+        type: 'Commercial',
         showPriority: 5,
         engine: 'Other',
-        gameType: 'Tool',
+        gameType: 'Web Site',
         role: ['Full Stack Developer'],
-        techStack: ['Web', 'SQL'],
+        techStack: ['C#', 'SQL'],
         thumbnail: '',
-        shortDescriptionCN: '夹江县不动产登记信息管理平台。',
-        shortDescriptionEN: 'Jiajiang Real Estate Registration Information Management Platform.',
+        shortDescriptionCN: '政务内网不动产登记信息管理系统。',
+        shortDescriptionEN: 'Government intranet real estate registration management system.',
         workHours: 200,
         platformCN: 'Web (政务内网)',
         platformEN: 'Web (Intranet)',
         durationCN: '2022.06 - 2022.09',
         durationEN: 'Jun 2022 - Sep 2022',
-        teamSizeCN: '小组',
-        teamSizeEN: 'Small Group',
+        startDate: '2022.06',
+        endDate: '2022.09',
+        priceCN: '保密',
+        priceEN: 'Confidential',
+        sales: '1 Unit',
+        teamSizeCN: '3人',
+        teamSizeEN: '3 People',
         descriptionCN: `
-# 夹江县不动产登记信息管理平台
-**角色:** Full Stack Developer
+## 项目性质
 
-为夹江县不动产登记局开发并维护的基于Web的不动产登记信息管理系统，跟踪系统的使用和运行情况。
+政务内网系统，具体业务细节涉密。
+
+## 工作内容
+
+*   **前端开发：** 独立负责全部前端开发工作
+*   **后端辅助：** 参与部分后端功能开发
+*   **交付维护：** 系统上线后协助修复若干Bug
         `,
         descriptionEN: `
-# Jiajiang Real Estate Registration Information Management Platform
-**Role:** Full Stack Developer
+## Project Nature
 
-Developed and maintained a web-based real estate registration information management system for the Jiajiang Real Estate Registration Bureau.
+Government intranet system; specific business details are confidential.
+
+## Work Content
+
+*   **Frontend Development:** Independently responsible for all frontend development
+*   **Backend Assistance:** Participated in partial backend feature development
+*   **Post-Delivery Maintenance:** Assisted in fixing several bugs after system launch
         `,
         images: [],
         links: []
-    },
-
-    // --- Miscellaneous Projects ---
-    {
-        id: 'ff14-frontline',
-        title: 'FF14 Frontline New Rule',
-        type: 'Miscellaneous',
-        showPriority: 75,
-        engine: 'Other',
-        gameType: 'Strategy',
-        role: ['Game Designer'],
-        techStack: ['GDD', 'Combat Design'],
-        thumbnail: '/assets/images/FF14PvPSDD.png',
-        shortDescriptionCN: '最终幻想14战场新规则提案。',
-        shortDescriptionEN: 'Proposed new rules for Final Fantasy XIV Frontline.',
-        platformCN: '策划文档',
-        platformEN: 'Design Document',
-        durationCN: '2024.01',
-        durationEN: 'Jan 2024',
-        teamSizeCN: '个人',
-        teamSizeEN: 'Solo',
-        descriptionCN: '基于FF14现有架构设计的战场新规则，重点优化战斗节奏与团队协作。通过新的得分点和战斗机制改善当前PVP体验。',
-        descriptionEN: 'Proposed new mechanics for FFXIV Frontline PVP focusing on pacing and team cooperation. Redesigning scoring points and combat flow.',
-        images: ['/assets/images/FF14PvPSDD.png'],
-        gddPdfUrl: '/assets/docs/FF14FrontlineDesign.pdf',
-        links: [
-            { labelCN: '查看GDD', labelEN: 'View GDD', urlCN: '/assets/docs/FF14FrontlineDesign.pdf', type: 'doc' }
-        ]
-    },
-    {
-        id: 'ff14-mail-system',
-        title: 'FF14 Mail System Analysis',
-        type: 'Miscellaneous',
-        showPriority: 73,
-        engine: 'Other',
-        gameType: 'Analysis',
-        role: ['Game Designer'],
-        techStack: ['Systems Analysis', 'UX Design'],
-        thumbnail: '/assets/images/MailSystem.png',
-        shortDescriptionCN: '最终幻想14邮件系统拆解案。',
-        shortDescriptionEN: 'Deconstruction and analysis of the FFXIV Mail System.',
-        platformCN: '分析文档',
-        platformEN: 'Analysis Document',
-        durationCN: '2024.02',
-        durationEN: 'Feb 2024',
-        teamSizeCN: '个人',
-        teamSizeEN: 'Solo',
-        descriptionCN: `
-# 最终幻想14邮件系统拆解案
-**角色:** Game Designer  
-
-深入拆解《最终幻想14》的邮件系统，以尽可能还原游戏内的设计方式。
-
-**关键分析点：**
-*   **系统目的：** 提供平衡的非即时性玩家沟通、道具转移、付费道具/活动奖励送达渠道。
-*   **规则约束：** 仅限同服好友通信，跨服/跨数据中心状态下的功能限制逻辑。
-*   **容量设计：** 好友邮件(100封/20个附件)、购物奖励(20封/100个附件)、GM邮件(10封/50个附件)的独立上限平衡。
-*   **流程拆解：** 包含邮件解锁逻辑、入口设计（邮差莫古力及交互对象）以及多类邮件的处理逻辑。
-        `,
-        descriptionEN: `
-# FFXIV Mail System Analysis
-**Role:** Game Designer
-
-A comprehensive deconstruction of the mail system in Final Fantasy XIV, aiming to restore the internal design patterns.
-
-**Key Analysis Points:**
-*   **System Objectives:** Providing balanced asynchronous communication, item transfer, and premium/event reward delivery.
-*   **Constraint Logic:** Server-side restrictions on cross-world/cross-datacenter states and friend-only communication rules.
-*   **Capacity Design:** Analysis of independent limits for Friend Mail (100 msgs/20 items), Reward Mail (20 msgs/100 items), and GM Mail (10 msgs/50 items).
-*   **UX & Flow:** Deconstructing system unlock progression, NPC interaction design, and multi-source mail handling.
-        `,
-        images: [],
-        links: [
-            { labelCN: '飞书文档', labelEN: 'Feishu Doc', urlCN: 'https://github.com/ElectricArc-Yu/GD10Final/releases', type: 'doc' }
-        ]
-    },
-    {
-        id: 'mmorpg-exploration',
-        title: 'MMORPG Exploration Design',
-        type: 'Miscellaneous',
-        showPriority: 72,
-        engine: 'Other',
-        gameType: 'RPG',
-        role: ['Game Designer'],
-        techStack: ['GDD', 'World Building'],
-        thumbnail: '/assets/images/MountainSea.png', // Fallback
-        shortDescriptionCN: 'MMORPG中的特殊场景探索玩法设计。',
-        shortDescriptionEN: 'Special scene exploration gameplay design for MMORPGs.',
-        platformCN: '策划文档',
-        platformEN: 'Design Document',
-        durationCN: '2024.03',
-        durationEN: 'Mar 2024',
-        teamSizeCN: '个人',
-        teamSizeEN: 'Solo',
-        descriptionCN: '探讨如何在MMORPG中通过场景交互、动态事件和非线性叙事提升探索感。重点剖析《最终幻想14》中的云冠群岛、优雷卡及天佑女王系列。',
-        descriptionEN: 'Analysis on enhancing exploration in MMORPGs through interaction, dynamic events, and non-linear narrative, focusing on FFXIV\'s Eureka and Bozja systems.',
-        images: [],
-        gddPdfUrl: '/assets/docs/SpecialExplorationDesign.pdf',
-        links: [
-            { labelCN: '查看论文', labelEN: 'View Paper', urlCN: '/assets/docs/SpecialExplorationDesign.pdf', type: 'doc' }
-        ]
     }
 ];

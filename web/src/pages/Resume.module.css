@@ -6,9 +6,8 @@
 
 .header {
     text-align: left;
-    margin-bottom: var(--spacing-xl);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: var(--spacing-xl);
+    padding-bottom: 10px;
+    margin-bottom: var(--spacing-md);
 }
 
 .name {
@@ -25,7 +24,18 @@
 .subtitle {
     font-size: 1.5rem;
     color: var(--text-secondary);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.about {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1.25rem;
+    border-radius: var(--border-radius-md);
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
 }
 
 .contactInfo {
@@ -139,12 +149,24 @@
 .period {
     font-size: 0.9rem;
     color: var(--accent-color);
-    font-family: monospace;
+    letter-spacing: -0.5px;
 }
 
 .company {
     color: var(--text-secondary);
     font-weight: 600;
+}
+
+.companyRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.companySize {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    letter-spacing: -0.5px;
 }
 
 .details {
@@ -158,16 +180,50 @@
 
 .details li {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.5rem;
     color: var(--text-secondary);
     font-size: 1rem;
     line-height: 1.6;
+    align-items: flex-start;
 }
 
 .details li::before {
     content: '→';
     color: var(--accent-color);
     font-weight: bold;
+    margin-top: 2px;
+}
+
+.pointContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+}
+
+.detailBadge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(0, 173, 181, 0.1);
+    border: 1px solid rgba(0, 173, 181, 0.3);
+    border-radius: 4px;
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 3px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.detailBadge:hover {
+    background: var(--accent-color);
+    color: #000;
+}
+
+.detailText {
+    flex: 1;
 }
 
 .skillsList {
@@ -253,29 +309,562 @@
     color: var(--accent-color);
 }
 
+.timelineHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.timelineHeader .sectionTitle {
+    margin-bottom: 0;
+    flex: 0 1 auto;
+}
+
+.timelineHeader .sectionTitle::after {
+    display: none;
+}
+
+.filterGroup {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filterButton {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filterButton:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.activeFilter {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #1a1c22;
+    font-weight: 600;
+}
+
+.skillList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.skillItem {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.1rem 0.6rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.highlightSkill {
+    border-color: #ffd700;
+    color: #ffd700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    font-weight: 600;
+}
+
+.projectRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.projectRow:hover {
+    background: rgba(0, 173, 181, 0.05);
+    border-color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.projectMainInfo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+.projectDate {
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    letter-spacing: -0.5px;
+    min-width: 140px;
+}
+
+.projectTitleTimeline {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.projectRolesTimeline {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.roleTagTimeline {
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: var(--text-secondary);
+}
+
+.roleTagProgrammer {
+    color: #b39ddb;
+    /* Light Purple */
+    background: rgba(179, 157, 219, 0.1);
+    border-color: rgba(179, 157, 219, 0.2);
+}
+
+.roleTagDesigner {
+    color: var(--accent-color);
+    background: rgba(0, 173, 181, 0.1);
+    border-color: rgba(0, 173, 181, 0.2);
+}
+
+.roleTagCreator {
+    color: #ffcc80;
+    /* Light Orange/Gold */
+    background: rgba(255, 204, 128, 0.1);
+    border-color: rgba(255, 204, 128, 0.2);
+}
+
+.projectTypeBadges {
+    display: flex;
+    gap: 0.4rem;
+    margin-left: 0.75rem;
+}
+
+.projectTypeTimeline {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    background: rgba(0, 173, 181, 0.1);
+    border: 1px solid rgba(0, 173, 181, 0.2);
+    padding: 1px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .projectRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .projectMainInfo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .projectDate {
+        min-width: auto;
+    }
+
+    .projectMetaTimeline {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
 .actions {
-    margin-top: var(--spacing-xl);
     display: flex;
     justify-content: center;
+    margin-top: 3rem;
 }
 
 .pdfButton {
     background: var(--accent-color);
     color: #000;
     border: none;
-    padding: 0.8rem 2rem;
+    padding: 0.8rem 1.5rem;
     border-radius: var(--border-radius-sm);
     font-weight: 700;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.75rem;
     transition: all 0.3s;
+    text-align: center;
+    max-width: 100%;
 }
 
 .pdfButton:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0, 173, 181, 0.3);
+}
+
+/* Group & Modal Styles */
+.groupRow {
+    cursor: pointer;
+    border-left: 4px solid var(--accent-color);
+}
+
+.groupRow:hover {
+    background: rgba(0, 173, 181, 0.08);
+    /* Stronger highlight for group */
+}
+
+.projectRowContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(8px);
+    padding: 2rem;
+}
+
+.modalContent {
+    background: #0a0f12;
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 173, 181, 0.5), 0 0 30px rgba(0, 173, 181, 0.1);
+    border-radius: var(--border-radius-lg);
+    width: 100%;
+    max-width: 900px;
+    max-height: 85vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: modalIn 0.3s ease-out;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modalHeader {
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.modalHeader h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    line-height: 1.2;
+}
+
+.modalTitleArea {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.modalSubtitle {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.modalActions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    transition: all 0.2s;
+}
+
+.closeButton:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.externalLink {
+    color: var(--text-secondary);
+    transition: color 0.2s;
+}
+
+.externalLink:hover {
+    color: var(--accent-color);
+}
+
+.projectGrid {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    overflow-y: auto;
+}
+
+.modalProjectCard {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modalProjectCard:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    background: rgba(0, 173, 181, 0.05);
+}
+
+.modalThumbnailWrapper {
+    height: 160px;
+    overflow: hidden;
+}
+
+.modalThumbnailWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Ensure block display */
+    transition: transform 0.5s;
+    background: rgba(255, 255, 255, 0.02);
+    /* Placeholder color while loading */
+}
+
+.modalProjectCard:hover .modalThumbnailWrapper img {
+    transform: scale(1.05);
+}
+
+.modalProjectInfo {
+    padding: 1.25rem;
+}
+
+.modalProjectInfo h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.modalProjectInfo p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.detailModal {
+    max-width: 1000px;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 25px rgba(0, 173, 181, 0.6), 0 0 50px rgba(0, 173, 181, 0.2);
+    background: #0a0f12;
+}
+
+.detailScrollArea {
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.detailMarkdown {
+    margin-top: 2rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.detailMarkdown h1,
+.detailMarkdown h2,
+.detailMarkdown h3 {
+    color: var(--text-primary);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.detailMarkdown p {
+    margin-bottom: 1.2rem;
+    white-space: pre-wrap;
+    /* Preserve line breaks if any are single */
+}
+
+.detailMarkdown ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.detailMarkdown ol {
+    list-style-type: decimal;
+    margin-left: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.detailMarkdown li {
+    margin-bottom: 0.5rem;
+    display: list-item;
+    /* Ensure it behaves like a standard list item to show bullets */
+}
+
+.detailMarkdown strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.detailMarkdown details {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+}
+
+.detailMarkdown summary {
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--accent-color);
+    user-select: none;
+    transition: background 0.2s;
+    list-style: none;
+    /* Hide default arrow in some browsers if desired, but default is usually fine */
+}
+
+.detailMarkdown summary:hover {
+    background: rgba(0, 173, 181, 0.1);
+}
+
+.detailMarkdown details[open] summary {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detailMarkdown details>div,
+.detailMarkdown details>p,
+.detailMarkdown details>pre {
+    padding: 1rem;
+    margin: 0;
+}
+
+/* Ensure code blocks inside details have correct spacing */
+.detailMarkdown details pre {
+    margin: 1rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detailMarkdown code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-family: monospace;
+}
+
+.detailMarkdown pre {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detailMarkdown pre code {
+    background: none;
+    padding: 0;
+}
+
+.detailMarkdown blockquote {
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-bottom: 1.2rem;
+    font-style: italic;
+    color: var(--text-primary);
+    opacity: 0.8;
+}
+
+.detailMarkdown table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.2rem;
+}
+
+.detailMarkdown th,
+.detailMarkdown td {
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.detailMarkdown th {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 768px) {
+    .modalOverlay {
+        padding: 0;
+    }
+
+    .modalContent {
+        height: 100%;
+        max-height: 100%;
+        border-radius: 0;
+    }
+
+    .projectGrid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media print {

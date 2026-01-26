@@ -1,0 +1,1020 @@
+  "Schemas_definition": {
+    "Schema_player_character": {
+      "note": "用于定义玩家所控制的调查员角色的模式。",
+      "Properties": {
+        "InvestigatorName": {
+          "note": "调查员的显示名称。",
+          "Datatype": "string",
+          "DefaultValue": "新调查员"
+        },
+        "InvestigatorInformation": {
+          "note": "调查员的基本信息",
+          "sub_notes": {
+            "Operator": "调查员的操作者UUID。",
+            "Age": "年龄应当在15-90岁之间。",
+            "CurrentTime": "调查员当前的年代背景，1：1920s，2：现代",
+            "Job": "调查员的职业,1:会计师，2:杂技演员，3:演员-戏剧演员，4:演员-电影演员，5:事务所侦探、保安，6:精神病医生（古典），7:动物训练师，8:文物学家（原作向），9:古董商，10:考古学家（原作向），11:建筑师，12:艺术家，13:精神病院看护，14:运动员，15:作家（原作向），16:酒保，17:猎人，18:书商，19:赏金猎人，20:拳击手、摔跤手，21:管家、男仆、女仆，22:神职人员，23:程序员、电子工程师（现代），24:黑客/骇客（现代），25:牛仔，26:工匠，27:罪犯-刺客，28:罪犯-银行劫匪，29:罪犯-打手、暴徒，30:罪犯-窃贼，31:罪犯-欺诈师，32:罪犯-独行罪犯，33:罪犯-女飞贼（古典），34:罪犯-赃物贩子，35:罪犯-赝造者，36:罪犯-走私者，37:罪犯-混混，38:教团首领，39:除魅师（现代），40:设计师，41:业余艺术爱好者（原作向），42:潜水员，43:医生（原作向），44:流浪者，45:司机-私人司机，46:司机-司机，47:司机-出租车司机，48:编辑，49:政府官员，50:工程师，51:艺人，52:探险家（古典），53:农民，54:联邦探员，55:消防员，56:驻外记者，57:法医，58:赌徒，59:黑帮-黑帮老大，60:黑帮-马仔,61：绅士、淑女,62：游民,63：勤杂护工,64：记者(原作向)-调查记者,65：记者(原作向)-通讯，66：法官,67：实验室助理,68：工人-非熟练工人,69：工人-伐木工,70：工人-矿工,71：律师,72：图书馆管理员（原作向）,73：技师,74：军官,75：传教士,76：登山家,77：博物馆管理员,78：音乐家,79：护士,80：神秘学家,81：旅行家,82：超心理学家,83：药剂师,84：摄影师-摄影师,85：摄影师-摄影记者,86：飞行员-飞行员,87：飞行员-特技飞行员（古典）,88：警方(原作向)-警探,89：警方(原作向)-巡警,90：私家侦探,91：教授（原作向）,92：淘金客,93：性工作者,94：精神病学家,95：心理学家、精神分析学家,96：研究员,97：海员-军舰海员,98：海员-民船海员,99：推销员,100:科学家，101:秘书，102:店老板，103:士兵、海军陆战队士兵，104:间谍，105:学生、实习生，106:替身演员，107:部落成员，108:殡葬师，109:工会活动家，110:服务生，111:白领工人-职员、主管，112:白领工人-中高层管理人员，113:狂热者，114:饲养员，115：自定义职业",
+            "Gender": "性别，1：男性，2：女性，3：自定义性别",
+            "CustomGender": "当性别选择自定义性别时，填写具体性别名称。",
+            "Residence": "调查员的常驻地。",
+            "Birthplace": "调查员的故乡。"
+          },
+          "Datatype": "dictionary",
+          "DefaultValue": {
+            "Operator": "00000000-0000-0000-0000-000000000000",
+            "Age": 25,
+            "CurrentTime": 1,
+            "Job": "会计师",
+            "Gender": "男性",
+            "Residence": "未知",
+            "Birthplace": "未知"
+          }
+        },
+        "BasicProperties": {
+          "note": "角色基础数据。",
+          "Datatype": "dictionary",
+          "DefaultValue": {
+            "STR": 60,
+            "CON": 60,
+            "DEX": 60,
+            "INT": 60,
+            "POW": 60,
+            "APP": 60,
+            "SIZ": 60,
+            "EDU": 60,
+            "LUK": 60,
+            "MagicRevival": 1
+          }
+        },
+        "InitialLivingStatus": {
+          "note": "角色初始的生存状态。",
+          "Datatype": "dictionary",
+          "DefaultValue": {
+            "HitPoints": 12,
+            "Sanity": 99,
+            "MagicPoints": 12,
+            "HealthStatus": 0,
+            "SanityStatus": 0,
+            "ArmorType": 0,
+            "MOV": 8,
+            "Conditions": []
+          }
+        },
+        "Skills": {
+          "note": "角色技能列表，每个技能包含名称：初始值、成长值、职业点数、兴趣点数、最终值。",
+          "Datatype": "dictionary",
+          "DefaultValue": {
+            "Accounting": [
+              5,
+              0,
+              0,
+              0,
+              5
+            ],
+            "Anthropology": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Appraisal": [
+              5,
+              0,
+              0,
+              0,
+              5
+            ],
+            "Archaeology": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "ArtAndCraft-1": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ArtAndCraft-2": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ArtAndCraft-3": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Charm": [
+              15,
+              0,
+              0,
+              0,
+              15
+            ],
+            "Climb": [
+              20,
+              0,
+              0,
+              0,
+              20
+            ],
+            "ComputerUse": [
+              5,
+              0,
+              0,
+              0,
+              5
+            ],
+            "CreditRating": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "CthulhuMythos": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Disguise": [
+              5,
+              0,
+              0,
+              0,
+              5
+            ],
+            "Dodge": [
+              30,
+              0,
+              0,
+              0,
+              40
+            ],
+            "DriveAuto": [
+              20,
+              0,
+              0,
+              0,
+              20
+            ],
+            "ElectricalRepair": [
+              10,
+              0,
+              0,
+              0,
+              10
+            ],
+            "Electronics": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "FastTalk": [
+              5,
+              0,
+              0,
+              0,
+              5
+            ],
+            "Fighting-1": [
+              25,
+              0,
+              0,
+              0,
+              25
+            ],
+            "Fighting-2": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Fighting-3": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Fighting-4": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Firearms-1": [
+              20,
+              0,
+              0,
+              0,
+              20
+            ],
+            "Firearms-2": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Firearms-3": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Firearms-4": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "FirstAid": [
+              30,
+              0,
+              0,
+              0,
+              30
+            ],
+            "History": [
+              5,
+              0,
+              0,
+              0,
+              5
+            ],
+            "Intimidate": [
+              15,
+              0,
+              0,
+              0,
+              15
+            ],
+            "Jump": [
+              20,
+              0,
+              0,
+              0,
+              20
+            ],
+            "Language-1": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Language-2": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Language-3": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Language-MotherTongue": [
+              60,
+              0,
+              0,
+              0,
+              60
+            ],
+            "Law": [
+              5,
+              0,
+              0,
+              0,
+              5
+            ],
+            "LibraryUse": [
+              20,
+              0,
+              0,
+              0,
+              20
+            ],
+            "Listen": [
+              20,
+              0,
+              0,
+              0,
+              20
+            ],
+            "Locksmith": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "MechanicalRepair": [
+              10,
+              0,
+              0,
+              0,
+              10
+            ],
+            "Medicine": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "NaturalWorld": [
+              10,
+              0,
+              0,
+              0,
+              10
+            ],
+            "Navigate": [
+              10,
+              0,
+              0,
+              0,
+              10
+            ],
+            "Occult": [
+              5,
+              0,
+              0,
+              0,
+              5
+            ],
+            "OperateHeavyMachinery": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Persuade": [
+              10,
+              0,
+              0,
+              0,
+              10
+            ],
+            "Pilot": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Psychotherapy": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Psychology": [
+              10,
+              0,
+              0,
+              0,
+              10
+            ],
+            "Ride": [
+              5,
+              0,
+              0,
+              0,
+              5
+            ],
+            "Science-1": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Science-2": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Science-3": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "SleightOfHand": [
+              10,
+              0,
+              0,
+              0,
+              10
+            ],
+            "SpotHidden": [
+              25,
+              0,
+              0,
+              0,
+              25
+            ],
+            "Stealth": [
+              20,
+              0,
+              0,
+              0,
+              20
+            ],
+            "Survival": [
+              10,
+              0,
+              0,
+              0,
+              10
+            ],
+            "Swim": [
+              20,
+              0,
+              0,
+              0,
+              20
+            ],
+            "Throw": [
+              20,
+              0,
+              0,
+              0,
+              20
+            ],
+            "Track": [
+              5,
+              0,
+              0,
+              0,
+              5
+            ],
+            "BeastTraining": [
+              5,
+              0,
+              0,
+              0,
+              5
+            ],
+            "Diving": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Demolitions": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "ReadLips": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Hypnosis": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Artillery": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ],
+            "Knowledge": [
+              1,
+              0,
+              0,
+              0,
+              1
+            ]
+          }
+        },
+        "OptionSkills": {
+          "note": "角色自选技能对应值字典，字典中各项分别表示：技艺1~3、格斗1~4、射击1~4、驾驶、科学1~3",
+          "sub_notes": {
+            "ArtAndCrafts": "0: 无，1: 表演，2：理发，3：书法，4：木匠，5：厨艺，6：写作，7：乐理，8：莫里斯舞，9：歌剧歌唱，10：粉刷匠与油漆工，11：摄影，12：舞蹈，13：美术，14：伪造，15：制陶，16：技术制图，17：耕作，18：打字，19：速记，20：吹制玻璃管，21：裁缝，22：酿酒，23：捕鱼，24：雕塑，25：杂技，26：自定义技艺",
+            "Fighting": "0: 无，1: 鞭子，2：电锯，3：斗殴，4：斧，5：剑，6：绞具，7：链枷，8：矛，9：自定义格斗",
+            "Firearms": "0: 无，1: 步枪/霰弹枪，2：冲锋枪，3：弓术，4：火焰喷射器，5：机关枪，6：手枪，7：重武器，8：自定义射击",
+            "Science": "0: 无，1: 地质学，2：化学，3：生物学，4：数学，5：天文学，6：物理学，7：药学，8：植物学，9：动物学，10：密码学，11：工程学，12：气象学，13：司法科学，14：自定义科学",
+            "Pilot": "0: 无，1: 飞行器，2：船，3：自定义驾驶"
+          },
+          "Datatype": "dictionary",
+          "DefaultValue": {
+            "ArtAndCraft-1": 0,
+            "ArtAndCraft-2": 0,
+            "ArtAndCraft-3": 0,
+            "Fighting-1": 3,
+            "Fighting-2": 0,
+            "Fighting-3": 0,
+            "Fighting-4": 0,
+            "Firearms-1": 6,
+            "Firearms-2": 0,
+            "Firearms-3": 0,
+            "Firearms-4": 0,
+            "Pilot": 0,
+            "Science-1": 0,
+            "Science-2": 0,
+            "Science-3": 0
+          }
+        },
+        "CustomSkills": {
+          "note": "角色自定义技能名称字典，字典中各项分别表示：自定义技艺、自定义格斗、自定义射击、自定义驾驶、自定义科学、语言1~3、母语、生存、学识",
+          "Datatype": "dictionary",
+          "DefaultValue": {
+            "CustomArtAndCraft": "无",
+            "CustomFighting": "无",
+            "CustomFirearms": "无",
+            "CustomPilot": "无",
+            "CustomScience": "无",
+            "Language-1": "无",
+            "Language-2": "无",
+            "Language-3": "无",
+            "Language-MotherTongue": "母语",
+            "Survival": "生存",
+            "Knowledge": "学识"
+          }
+        },
+        "ExperiencePackage": {
+          "note": "角色经历包。0: 无，1: 战场经历包（普通士兵），2: 战场经历包（军官），3: 警务经历包，4: 罪犯经历包，5: 医务经历包，6: 神话经历包，7: 自定义经历包",
+          "Datatype": "integer",
+          "DefaultValue": 0
+        },
+        "CustomExperience": {
+          "note": "当经历包选择自定义经历包时，自定义经历包的UUID。",
+          "Datatype": "string",
+          "DefaultValue": "00000000-0000-0000-0000-000000000000"
+        },
+        "Weapons": {
+          "note": "角色持有的武器属性，每个武器包含名称（Name）、类型（Type）和附加属性（AdditionalProperties）。依赖技能（RelatedSkill）、伤害（Damage）、弹药（Ammunition）、射程（Range）、故障值（MalfunctionValue）由数据库查询。",
+          "sub_notes": {
+            "Name": "武器名称、用户自定义。",
+            "Type": "武器类型，0: 肉搏，1: 弓箭，2: 黄铜指虎，3: 长鞭，4: 燃烧的火把，5: 电锯，6: 包皮铁棍(甩棍、护身短棒)，7: 大型棍状物(棒球棍、板球棒、拨火棍等)，8: 小型棍状物(警棍等)，9: 弩，10: 绞具，11: 斧头/镰刀，12: 大型刀具(大砍刀等)，13: 中型刀具(切肉菜刀等)，14: 小型刀具(弹簧折叠刀等)，15: 220v通电导线，16: 催泪瓦斯，17: 双节棍，18: 投石，19: 手里剑，20: 矛、骑士长枪，21: 掷矛，22: 大型剑(马刀)，23: 中型剑(佩剑等)，24: 轻剑(击剑、剑杖等)，25: 电棍，26: 电击枪(远程)，27: 利刃回旋镖，28: 伐木斧，29: 遂发枪，30:.22 短口自动手枪，31:.25 短口手枪 (单管)，32:.32 or 7.65mm 左轮手枪，33:.32 or 7.65mm 自动手枪，34:.357 Magnum 左轮手枪，35:.38 or 9mm 左轮手枪，36:.38 自动手枪，37:贝雷塔M9,38:格洛克17 9mm 自动手枪,39:鲁格P08,40:.41 左轮手枪,41:.44 马格南左轮手枪,42:.45 左轮手枪,43:.45 自动手枪,44:沙漠之鹰,45:.58 斯普林菲尔德步枪,46:.22 杠杆式枪机步枪,47:.30 卡宾枪,48:.45 马提尼·亨利步枪,49:莫兰上校的气动步枪,50:加兰德M1、M2步枪,51:SKS半自动步枪,52:.303 (7.7mm) 李恩菲尔德,53:.30——06 (7.62mm) 栓式枪机步枪,54:.30——06 (7.62mm) 半自动步枪,55:.444 (11.28mm) 马林步枪,56:猎象枪(双管),57:20号霰弹枪(双管),58:16号霰弹枪(双管),59:12号霰弹枪(双管),60:12号泵动霰弹枪,61:12号半自动霰弹枪,62:削短12号双管霰弹枪,63:10号霰弹枪(双管),64:12号贝里尼M3 (折叠式枪托),65:12号SPAS (折叠式枪托),66:AK——47 or AKM,67:AK——74,68:巴雷特M82,69:FN FAL Light Automatic,70:Galil Assault Rifle,71:M16A2,72:M4,73:Steyr AUG,74:巴雷特M70/90,75:贝格曼MP181/ MP2811,76:黑克勒——科赫MP5,77:MAC——11,78:蝎式冲锋枪,79:汤普森冲锋枪,80:乌兹微型冲锋枪,81:M1882加特林机枪,82:M1918式勃朗宁自动步枪,83:M1917A1式勃朗宁重机枪,84:布伦式轻机枪,85:刘易斯式轻机枪,86:Minigun,87:FNMinimi5.56mm轻机枪,88:维克斯MK1式机枪,89:燃烧瓶,90:信号枪,91:M79榴弹发射器,92:土制炸药,93:雷管,94:管状炸弹,95:塑胶炸弹(C4) 100克,96:手榴弹,97:81mm迫击炮,98:75mm野战炮,99:120mm坦克炮(稳定),100:5英寸舰载炮(稳定),101:反步兵地雷,102:阔剑地雷,103:火焰喷射器,104:轻型反坦克武器",
+            "AdditionalProperties": "附加属性Flag，如启用则允许例如1<<0:淬毒,1<<1:点燃,1<<2:消音等，根据规则而定"
+          },
+          "Datatype": "array",
+          "DefaultValue": [
+            {
+              "Name": "",
+              "Type": 0,
+              "AdditionalProperties": 0
+            }
+          ]
+        },
+        "InvestigatorBackground": {
+          "note": "调查员背景故事。",
+          "sub_notes": {
+            "PersonalDescription": "调查员的外貌和个性描述。",
+            "IdeologyBeliefs": "调查员的信念和意识形态。",
+            "SignificantPeople": "对调查员影响深远的人物。",
+            "MeaningfulLocations": "对调查员有特殊意义的地点。",
+            "TreasuredPossessions": "调查员珍视的物品。",
+            "Traits": "调查员的个性特征或习惯。",
+            "InjuriesScars": "调查员的伤痕或残疾。",
+            "PhobiasManias": "调查员的恐惧症或狂躁症。",
+            "SpecificationStory": "调查员的详细背景故事。"
+          },
+          "Datatype": "dictionary",
+          "DefaultValue": {
+            "PersonalDescription": "（调查员的外貌和个性描述，示例：）身材中等偏瘦，常年穿着洗得发白的深色风衣，袖口总沾着淡淡的咖啡渍。面容清瘦，左眉骨有一道浅疤，眼神锐利如鹰却藏着不易察觉的疲惫。性格沉稳内敛，说话时习惯轻叩桌面，面对突发状况总能保持冷静，却在谈及旧物时会流露出难得的温和。",
+            "IdeologyBeliefs": "（调查员的信念和意识形态，示例：）坚信 “真相永远藏在细节里”，拒绝接受任何未经证实的结论。认为正义或许会迟到，但不该被掩埋，即使真相残酷到令人窒息，也必须被揭开。对体制内的形式主义嗤之以鼻，始终坚守 “用证据说话” 的底线。",
+            "SignificantPeople": "（对调查员影响深远的人物，示例：）已故的警校导师张启明，曾在他陷入职业迷茫时赠予一本手写笔记，扉页 “保持好奇，守住良知” 的题字成为他的人生信条；失踪三年的搭档林岚，两人曾联手破获多起悬案，对方的失踪至今是他心中未解的执念。",
+            "MeaningfulLocations": "对调查员有特殊意义的地点，示例：）城南老街区的旧书店，是他年轻时与搭档交换线索的秘密据点，书架第三层永远留着一本《福尔摩斯探案集》作为暗号；郊外的废弃灯塔，三年前在此发现搭档遗留的钢笔，从此每月都会独自前往静坐。",
+            "TreasuredPossessions": "（调查员珍视的物品，示例：）磨损严重的牛皮笔记本，里面记录着十五年间的案件细节和观察心得，扉页夹着与搭档的合影；父亲留下的铜制怀表，表盘刻着 “守时即守信”，每逢重大决策都会打开查看时间。",
+            "Traits": "（调查员的个性特征或习惯，示例：）习惯用左手记录，右手始终握着钢笔随时准备标注；喝咖啡必须加两勺糖，认为甜味能中和案件带来的压抑；独处时会轻声哼唱老派民谣，以此缓解精神压力。",
+            "InjuriesScars": "（调查员的伤痕或残疾，示例：）左肩胛骨有一道长约五厘米的刀疤，是五年前追查连环杀手时被袭击留下的；右耳听力轻微受损，阴雨天会隐隐作痛，起因是一次爆炸案中的冲击波伤害。",
+            "PhobiasManias": "（调查员的恐惧症或狂躁症，示例：）极度恐惧密闭空间，电梯内必须保持通风口畅通，否则会出现呼吸急促的症状；有轻微的整理癖，文件必须按时间顺序排列，物品摆放偏离中轴线会反复调整。",
+            "SpecificationStory": "（调查员的详细背景故事，示例：）出身于警察世家，父亲因追查 corruption 案牺牲时他年仅十六岁，从此立志继承父业。警校毕业后拒绝进入总部机关，主动申请调入基层刑侦队，凭借敏锐的观察力屡破奇案。三年前在调查一起文物走私案时，搭档林岚在追踪嫌犯过程中离奇失踪，所有线索都指向一个神秘组织。此案被上级以 “证据不足” 为由搁置后，他选择调离刑侦队成为独立调查员，一边接案维持生计，一边暗中追查搭档失踪的真相。如今他经手的每起案件，都会不自觉地寻找与那个神秘组织相关的蛛丝马迹，怀表和笔记本成为他对抗黑暗的唯一武器。\u200B\n"
+          }
+        },
+        "Assets": {
+          "note": "调查员的资产列表，每个资产包含名称（Name）、类型（Type）和价值（Value）。",
+          "sub_notes": {
+            "Name": "资产名称、用户自定义。",
+            "Type": "资产类型，0: 现金，1: 房产，2: 车辆，3: 艺术品，4: 古董，5: 股票，6: 其他",
+            "Value": "资产的估计价值，以美元计。"
+          },
+          "Datatype": "array",
+          "DefaultValue": [
+            {
+              "Name": "",
+              "Type": 0,
+              "Value": 0
+            }
+          ]
+        },
+        "BroughtItems": {
+          "note": "调查员携带的物品列表，每个物品包含名称（Name）、数量（Quantity）、是否可见（Visible）、所属调查员ID（Belonging）和装备位置（EquippedPosition）。",
+          "sub_notes": {
+            "Visible": "物品是否他人可直接看见，默认为true。",
+            "Belonging": "物品所属调查员ID，默认值为0，属于自己，否则为UUID读取到的InvestigatorName。",
+            "EquippedPosition": "装备位置，0: 背包，1: 头部，2: 眼部，3: 颈部，4: 身体，5: 手部，6: 腰部，7: 腿部，8: 脚部",
+            "Name": "物品名称、用户自定义。",
+            "Quantity": "物品的数量。"
+          },
+          "Datatype": "array",
+          "DefaultValue": [
+            {
+              "Name": "背包",
+              "Quantity": 1,
+              "Visible": true,
+              "Belonging": "0",
+              "EquippedPosition": 4
+            }
+          ]
+        },
+        "ExperiencedInvestigate": {
+          "note": "调查员经历过的调查列表，每个调查包含模组名称（Name）和人物变化描述（Result）。",
+          "sub_notes": {
+            "Name": "模组名称、用户自定义。",
+            "Result": "人物变化描述，格式为【SAN-6,HP-2,侦察+2】。"
+          },
+          "Datatype": "array",
+          "DefaultValue": []
+        },
+        "Cash": {
+          "note": "调查员持有的现金。",
+          "Datatype": "integer",
+          "DefaultValue": 0
+        },
+        "ThirdPartyContacts": {
+          "note": "第三类接触，关于古籍、咒文、神话知识、神秘现象等的接触的记录列表，每个接触包含接触内容（Contacted）、结果（Result）、备注（Remarks）和累计接触次数（Accumulated）。",
+          "sub_notes": {
+            "Contacted": "接触了什么，例如：米-戈、修格斯",
+            "Result": "接触导致的结果，例如：克苏鲁+7，克苏鲁（疯）+1，SAN-5。",
+            "Remarks": "备注，例如：第一次神话疯狂，相信者规则激活。",
+            "Accumulated": "累计接触，例如：6。"
+          },
+          "Datatype": "array",
+          "DefaultValue": []
+        },
+        "InvestigatorFriendships": {
+          "note": "调查员的友谊关系列表，每个友谊包含朋友的调查员UUID（Name）、玩家UUID（PlayerID）、注释（Remarks）、造成的改变（Result）和剧本（Script）。",
+          "sub_notes": {
+            "Name": "朋友的调查员UUID，为UUID读取到的InvestigatorName。",
+            "PlayerID": "朋友调查员的玩家UUID，为UUID读取到的UserName。",
+            "Remarks": "注释，例如：一起出生入死的医生小姐。",
+            "Result": "造成的改变，例如：成为了挚友、结为了夫妻。",
+            "Script": "剧本，例如：某某模组。"
+          },
+          "Datatype": "array",
+          "DefaultValue": []
+        },
+        "AvailableMagic": {
+          "note": "调查员可以使用的魔法列表，每个魔法包含名称（Name）、消耗（Cost）、持续时间（Duration）和效果描述（Result）。示例：{ \"Name\": \"召唤死者\", \"Cost\": \"{'MagicPoint':'8','Sanity':'1D6','Time':60}\", \"Duration\": \"60\", \"Result\": \"可以控制死去的人，直到腐烂为止\" }",
+          "sub_notes": {
+            "Name": "魔法名称。",
+            "Cost": "魔法的消耗，例如：{”MagicPoint“：“8”，”Sanity“：“1D6”，”Time“：60}。其中MagicPoint为魔法点数，Sanity为理智点数，Time为时间，8.0表示消耗8点理智，1D6表示消耗1D6的理智，60为60分钟。",
+            "Duration": "魔法的持续时间，分钟计，例如：60。0为永久",
+            "Result": "魔法的效果描述。如：可以控制死去的人，直到腐烂为止"
+          },
+          "Datatype": "array",
+          "DefaultValue": []
+        }
+      }
+    },
+    "schema_npc_character": {
+      "note": "用于定义拥有对话和位置的标准非玩家角色（NPC）的模式。",
+      "Properties": {
+        "CharacterName": {
+          "note": "NPC的显示名称。",
+          "Datatype": "string",
+          "DefaultValue": "未命名NPC"
+        },
+        "BasicProperties": {
+          "note": "NPC的基本属性。",
+          "Datatype": "dictionary",
+          "DefaultValue": {
+            "STR": 70,
+            "CON": 120,
+            "SIZ": 80,
+            "DEX": 55,
+            "INT": 65,
+            "APP": -1,
+            "POW": 75,
+            "EDU": -1,
+            "SAN": 0,
+            "HP": 20,
+            "MP": 15,
+            "Armor": 6
+          }
+        },
+        "AdvancedProperties": {
+          "note": "NPC的高级属性。",
+          "Datatype": "dictionary",
+          "sub_notes": {
+            "DamageBonus": "伤害加值。",
+            "BodySize": "体型大小，1: 小型生物，2: 中型生物，3: 大型生物。",
+            "MagicPoints": "魔法点数。",
+            "MovementSpeed": "移动速度。",
+            "AttackPerTurn": "每回合攻击次数。",
+            "AttackDescription": "攻击描述，例如：特纳的徒手攻击范围和通常的人形生物相同，他装备着小刀。",
+            "AttackSet": "技能列表，每个技能包含ID、名称、成功率、固定伤害、伤害、是否可用伤害加值。",
+            "DodgeRate": "闪避率。",
+            "CheckableSkills": "可检查的技能列表，例如：{“Stealth”:55}，表示隐匿技能的成功率为55%。"
+          },
+          "DefaultValue": {
+            "DamageBonus": "1D4",
+            "BodySize": 1,
+            "MagicPoints": 15,
+            "MovementSpeed": 7,
+            "AttackPerTurn": 1,
+            "AttackDescription": "特纳的徒手攻击范围和通常的人形生\n物相同，他装备着小刀。",
+            "AttackSet": [
+              {
+                "ID": "Fighting-1",
+                "Name": "格斗-斗殴",
+                "SuccessRate": 50,
+                "FixDamage": 0,
+                "Damage": "1D3",
+                "DamageBonusAvailable": true,
+                "SpecialEffects": [],
+                "Weight": 0.1
+              },
+              {
+                "ID": "Fighting-2",
+                "Name": "格斗-小刀",
+                "SuccessRate": 50,
+                "FixDamage": 1,
+                "Damage": "1D6",
+                "DamageBonusAvailable": true,
+                "SpecialEffects": [],
+                "Weight": 0.1
+              },
+              {
+                "ID": "Firearms-1",
+                "Name": "射击-.30-06手动枪机式步枪",
+                "SuccessRate": 40,
+                "FixDamage": 4,
+                "Damage": "2D6",
+                "DamageBonusAvailable": false,
+                "SpecialEffects": [],
+                "Weight": 0.1
+              },
+              {
+                "ID": "Bite",
+                "Name": "紧咬不放（战技）",
+                "SuccessRate": 80,
+                "FixDamage": 0,
+                "Damage": "1D6",
+                "DamageBonusAvailable": false,
+                "SpecialEffects": [
+                  {
+                    "Target": "Target",
+                    "AddedCondition": "Bitten"
+                  }
+                ],
+                "Weight": 0.7
+              }
+            ],
+            "DodgeRate": 15,
+            "CheckableSkills": [
+              {
+                "Stealth": 55
+              }
+            ]
+          }
+        },
+        "SanityCheckWhenFound": {
+          "note": "NPC被发现时的理智检查。",
+          "Datatype": "dictionary",
+          "DefaultValue": {
+            "SuccessLoss": "1",
+            "FailedLoss": "1D8"
+          }
+        },
+        "FindableItems": {
+          "note": "NPC身上可找到的物品列表，每个物品包含名称（Name）、数量（Quantity）、是否可见（Visible）、所属调查员ID（Belonging）和装备位置（EquippedPosition）。",
+          "sub_notes": {
+            "Visible": "物品是否他人可直接看见，默认为true。",
+            "EquippedPosition": "装备位置，0: 背包，1: 头部，2: 眼部，3: 颈部，4: 身体，5: 手部，6: 腰部，7: 腿部，8: 脚部",
+            "Name": "物品名称、用户自定义。",
+            "Quantity": "物品的数量。"
+          },
+          "Datatype": "array",
+          "DefaultValue": [
+            {
+              "Name": ".30-06手动枪机式步枪",
+              "Quantity": 1,
+              "Visible": false,
+              "EquippedPosition": 4
+            }
+          ]
+        },
+        "SpecialAbilities": {
+          "note": "NPC的特殊能力列表，每个特殊能力包含名称（Name）、描述（Description）、效果（Effect）。例如：{ \"Name\": \"法术\", \"Description\": \"拜亚基有40%的几率拥有1D4种法术。这\n种法术可能和哈斯塔以及和哈斯塔相关的存在有关。\", \"Effect\": \"进行一次1D100暗投，结果小于40时，进行一次1D4暗投，根据结果随机从magic_related_hasta获得对应数量的法术\" }",
+          "Datatype": "array",
+          "DefaultValue": []
+        },
+        "SpecialEffects": {
+          "note": "NPC的特殊效果列表，每个特殊效果包含触发条件（Triggers）、效果描述（Description）、结算方式（Settlement）、效果（Effects）、持续时间（Duration)。",
+          "sub_notes": {
+            "Triggers": "触发条件列表，每个条件包含目标（Target）、时机（Timing）和动作或条件（ActionOrCondition）。例如：{ \"Target\": \"self\", \"Timing\": \"With\", \"ActionOrCondition\": \"Bite\" } 表示当NPC使用咬击时触发，{ \"Target\": \"Any\", \"Timing\": \"TurnBegin\", \"ActionOrCondition\": \"Bitten\" } 表示当任何目标在回合开始时被咬伤时触发。",
+            "Description": "效果描述，例如：吸血将削减受害者3D10的力量，直至死亡（STR为0）。",
+            "Settlement": "结算方式，例如：Immediate表示立即结算。",
+            "Effects": "效果列表，每个效果包含目标（Target）、目标属性（TargetProperties）和结果（Result）。例如：{ \"Target\": \"Target\", \"TargetProperties\": [\"STR\"], \"Result\": \"-3D10\" }",
+            "Duration": "持续时间，-1表示永久。"
+          },
+          "Datatype": "array",
+          "DefaultValue": [
+            {
+              "Triggers": [
+                {
+                  "Target": "self",
+                  "Timing": "With",
+                  "ActionOrCondition": "Bite"
+                },
+                {
+                  "Target": "Any",
+                  "Timing": "TurnBegin",
+                  "ActionOrCondition": "Bitten"
+                }
+              ],
+              "Description": "吸血将削减受\n害者3D10的力量，直至死亡（STR为0）",
+              "Settlement": "Immediate",
+              "Effects": [
+                {
+                  "Target": "Target",
+                  "TargetProperties": [
+                    "STR"
+                  ],
+                  "Result": "-3D10"
+                }
+              ],
+              "Duration": -1
+            }
+          ]
+        },
+        "Secrets": {
+          "note": "NPC的秘密列表，每个秘密包含ID(ID)，注释（note）。",
+          "Datatype": "array",
+          "DefaultValue": [
+            {
+              "ID": "Info_001",
+              "note": "特纳是一个拜亚基的仆从，正在寻找机会召唤哈斯塔。"
+            }
+          ]
+        },
+        "Background": {
+          "note": "NPC的背景故事。",
+          "Datatype": "string",
+          "DefaultValue": "特纳是一个神秘的拜亚基仆从，隐藏在城市的阴影中。他的任务是寻找机会召唤哈斯塔，并将其带入人间。特纳擅长格斗和射击，拥有强大的身体素质和敏锐的直觉。他的外表看似普通，但内心深处隐藏着不可告人的秘密。"
+        },
+        "Mannerisms": {
+          "note": "NPC对待玩家的默认态度。",
+          "Datatype": "string",
+          "DefaultValue": "特纳对待玩家时表现出冷漠和疏离，偶尔会露出一丝不屑。他的语气平淡，眼神中透露出一丝警惕和不信任。特纳习惯用简短的回答来应对玩家的问题，避免透露过多信息。他的行为举止透露出他对玩家的怀疑和防备。"
+        },
+        "RelationList": {
+          "note": "NPC的关系列表包含所有的有关系的NPCID，无关系的NPC适用Mannerism",
+          "Datatype": "array",
+          "DefaultValue": [
+            {
+              "ID": "npc_gerard_fraser",
+              "Relation": "友好"
+            },
+            {
+              "ID": "npc_policeman_jos",
+              "Relation": "敌对"
+            }
+          ]
+        }
+      }
+    },
+    "schema_main_quest_list": {
+      "描述": "用于追踪任务或调查线索的模式。",
+      "属性": {
+        "标题": {
+          "描述": "任务的显示标题。",
+          "数据类型": "字符串",
+          "默认值": "新任务"
+        },
+        "状态": {
+          "描述": "任务的总体状态。",
+          "数据类型": "枚举",
+          "可选值": [
+            "未开始",
+            "进行中",
+            "成功完成",
+            "失败告终",
+            "任务失败"
+          ],
+          "默认值": "未开始"
+        },
+        "当前阶段": {
+          "描述": "任务当前阶段或目标的ID。",
+          "数据类型": "字符串",
+          "默认值": "阶段一"
+        },
+        "关联实体": {
+          "描述": "与此任务相关的实体（NPC、物品、地点）的ID列表。",
+          "数据类型": "数组",
+          "是否为关系ID": true,
+          "默认值": []
+        }
+      }
+    },
+    "schema_location": {
+      "描述": "用于定义游戏世界中一个地点的模式。",
+      "属性": {
+        "名称": {
+          "描述": "地点的显示名称。",
+          "数据类型": "字符串",
+          "默认值": "未知地点"
+        },
+        "是否已发现": {
+          "描述": "玩家是否已经发现了这个地点。",
+          "数据类型": "布尔值",
+          "默认值": false
+        },
+        "是否可进入": {
+          "描述": "玩家当前能否进入或访问此地点。",
+          "数据类型": "布尔值",
+          "默认值": true
+        },
+        "父级位置ID": {
+          "描述": "此地点所属的更大区域的ID（例如：房间之于建筑）。",
+          "数据类型": "字符串",
+          "是否为关系ID": true,
+          "默认值": null
+        },
+        "地点状态标记": {
+          "描述": "记录此地点特有状态的字典（布尔值）。",
+          "数据类型": "对象",
+          "默认值": {}
+        }
+      }
+    },
+    "schema_mythos_entity": {
+      "描述": "用于定义主要神话实体或其化身的模式。",
+      "属性": {
+        "名称": {
+          "描述": "该实体的名称或称号。",
+          "数据类型": "字符串",
+          "默认值": "未知的恐怖"
+        },
+        "状态": {
+          "描述": "该实体的当前状态。",
+          "数据类型": "枚举",
+          "可选值": [
+            "休眠中",
+            "成长中",
+            "活动中",
+            "已放逐",
+            "已摧毁"
+          ],
+          "默认值": "休眠中"
+        },
+        "主要位置ID": {
+          "描述": "该实体的主要所在地ID。",
+          "数据类型": "字符串",
+          "是否为关系ID": true,
+          "默认值": ""
+        },
+        "自定义属性": {
+          "描述": "用于存放该实体特有属性的对象，例如'成长进度'。",
+          "数据类型": "对象",
+          "默认值": {}
+        }
+      }
+    }
+  },
+}

@@ -191,6 +191,15 @@
     border-color: #f7931e;
 }
 
+.paperLinkBtn.disabled {
+    background: rgba(255, 255, 255, 0.03) !important;
+    color: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
 /* Paper Title */
 .paperTitle {
     font-size: 1.4rem;

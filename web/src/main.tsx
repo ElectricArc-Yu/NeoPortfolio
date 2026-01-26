@@ -8,3 +8,14 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </StrictMode>,
 )
+
+// Prevent right-click and copy
+window.addEventListener('contextmenu', (e) => e.preventDefault());
+window.addEventListener('copy', (e) => e.preventDefault());
+window.addEventListener('keydown', (e) => {
+  // Prevent Ctrl+C, Ctrl+Shift+I, etc.
+  if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'C')) {
+    e.preventDefault();
+  }
+});
+

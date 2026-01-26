@@ -44,7 +44,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 <div className={styles.header}>
                     <div className={styles.titleContainer}>
                         <EngineIcon engine={project.engine} className={styles.engineIcon} />
-                        <h3 className={styles.title}>{project.title}</h3>
+                        <h3 className={styles.title}>{language === 'CN' ? project.titleCN : project.titleEN}</h3>
                     </div>
                     {/* Sales/Time metric in the corner */}
                     <span className={styles.topMetric}>

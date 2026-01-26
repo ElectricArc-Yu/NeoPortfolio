@@ -72,24 +72,30 @@ const Documents: React.FC = () => {
                     </div>
                     {/* Right: Links */}
                     <div className={styles.paperLinks}>
-                        {doc.preprintUrl && (
+                        {doc.preprintUrl !== undefined && (
                             <a
-                                href={doc.preprintUrl}
+                                href={doc.preprintUrl || undefined}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={styles.paperLinkBtn}
-                                onClick={(e) => e.stopPropagation()}
+                                className={`${styles.paperLinkBtn} ${!doc.preprintUrl ? styles.disabled : ''}`}
+                                onClick={(e) => {
+                                    if (!doc.preprintUrl) e.preventDefault();
+                                    e.stopPropagation();
+                                }}
                             >
                                 {language === 'CN' ? '预印本' : 'Preprint'}
                             </a>
                         )}
-                        {doc.externalUrl && (
+                        {doc.externalUrl !== undefined && (
                             <a
-                                href={doc.externalUrl}
+                                href={doc.externalUrl || undefined}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`${styles.paperLinkBtn} ${styles.primaryLink}`}
-                                onClick={(e) => e.stopPropagation()}
+                                className={`${styles.paperLinkBtn} ${styles.primaryLink} ${!doc.externalUrl ? styles.disabled : ''}`}
+                                onClick={(e) => {
+                                    if (!doc.externalUrl) e.preventDefault();
+                                    e.stopPropagation();
+                                }}
                             >
                                 {language === 'CN' ? '发布页' : 'Published'}
                             </a>

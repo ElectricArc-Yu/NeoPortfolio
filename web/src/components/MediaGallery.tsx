@@ -6,6 +6,7 @@ import { getAssetPath } from '../utils/assetPath';
 interface MediaGalleryProps {
     images: string[];
     video?: string; // Optional video URL
+    onImageClick?: (src: string) => void;
 }
 
 // Sub-component for Video with specific behavior
@@ -51,7 +52,7 @@ const VideoSlide: React.FC<{ src: string; poster: string }> = ({ src, poster }) 
     );
 };
 
-const MediaGallery: React.FC<MediaGalleryProps> = ({ images, video }) => {
+const MediaGallery: React.FC<MediaGalleryProps> = ({ images, video, onImageClick }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     // Combine images and video into a single slide array
@@ -89,7 +90,13 @@ const MediaGallery: React.FC<MediaGalleryProps> = ({ images, video }) => {
                 {isVideo(slides[currentIndex]) ? (
                     <VideoSlide src={slides[currentIndex]} poster={images[0]} />
                 ) : (
-                    <img src={getAssetPath(slides[currentIndex])} alt={`Slide ${currentIndex}`} className={styles.image} />
+                    <img
+                        src={getAssetPath(slides[currentIndex])}
+                        alt={`Slide ${currentIndex}`}
+                        className={styles.image}
+                        onClick={() => onImageClick?.(slides[currentIndex])}
+                        style={{ cursor: onImageClick ? 'zoom-in' : 'default' }}
+                    />
                 )}
 
                 {slides.length > 1 && (

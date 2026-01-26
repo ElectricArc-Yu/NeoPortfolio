@@ -1,18 +1,32 @@
 export type ProjectType = 'Commercial' | 'Personal' | 'Miscellaneous';
 export type Engine = 'Unity' | 'Unreal' | 'Python' | 'Other';
-export type GameType = 'Action' | 'RPG' | 'Strategy' | 'Puzzle' | 'Simulation' | 'Survival' | 'Horror' | 'Platformer' | 'Tool' | 'Analysis' | 'Visual Novel' | 'Action RPG' | 'Other';
+export type GameType = 'Action' | 'RPG' | 'Strategy' | 'Puzzle' | 'Web Site' | 'Simulation' | 'Survival' | 'Horror' | 'Platformer' | 'Tool' | 'Analysis' | 'Visual Novel' | 'Action RPG' | 'FPS' | 'Hero Shooter' | 'World-building' | 'IP Framework' | 'SoC' | 'Other';
+
+export interface MainProject {
+    id: string;
+    titleCN: string;
+    titleEN: string;
+    descriptionCN?: string;
+    descriptionEN?: string;
+    gameType?: GameType | GameType[];
+}
 
 export interface ProjectLink {
     labelCN: string;
     labelEN: string;
     urlCN?: string;
     urlEN?: string; // If different, or fallback
-    type: 'repo' | 'demo' | 'doc' | 'video';
+    type: 'repo' | 'demo' | 'doc' | 'video' | 'Release Page';
 }
 
 export interface Project {
     id: string;
+    mainProjectId?: string; // Link to a MainProject
     title: string;
+    titleCN: string;
+    titleEN: string;
+    timelineTitleCN?: string; // Optional: separate title for resume timeline
+    timelineTitleEN?: string;
     type: ProjectType;
     showPriority: number; // Higher number = shown first
     engine: Engine; // For icon display
@@ -22,12 +36,16 @@ export interface Project {
     thumbnail: string;
     shortDescriptionCN: string;
     shortDescriptionEN: string;
+    introduceCN?: string; // For Project Introduce section
+    introduceEN?: string;
 
     // Localized Fields
     platformCN?: string;
     platformEN?: string;
     durationCN?: string;
     durationEN?: string;
+    startDate?: string; // YYYY.MM
+    endDate?: string | 'Present';   // YYYY.MM or 'Present'
     teamSizeCN?: string;
     teamSizeEN?: string;
 
@@ -68,9 +86,12 @@ export interface MediaItem {
 
 export interface ResumeData {
     header: {
-        name: string;
+        name: {
+            cn: string;
+            en: string;
+        };
         email: string;
-        phone: string;
+        phone?: string;
         role: string;
         links: { label: string; url: string }[];
     };
@@ -102,6 +123,11 @@ export interface ResumeData {
     skills: {
         category: string;
         categoryCN: string;
-        items: string[];
+        items: { name: string; highlight?: boolean }[];
     }[];
+    cta?: {
+        textCN: string;
+        textEN: string;
+        link: string;
+    };
 }

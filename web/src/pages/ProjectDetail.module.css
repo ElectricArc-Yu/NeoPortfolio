@@ -3,16 +3,37 @@
 }
 
 .header {
-    margin-bottom: var(--spacing-lg);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: var(--spacing-md);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.backButton {
+    align-self: flex-start;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.backButton:hover {
+    color: var(--primary-color);
+    transform: translateX(-4px);
 }
 
 .titleContainer {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: var(--spacing-sm);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .engineIcon {
@@ -94,13 +115,75 @@
     margin-bottom: 1em;
 }
 
+.markdown details {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 1.2rem;
+    overflow: visible;
+    /* Important for sticky to work */
+}
+
+.markdown summary {
+    position: sticky;
+    top: 4rem;
+    /* Lowered to avoid being covered by header */
+    z-index: 10;
+    background: var(--bg-color);
+    opacity: 1;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--accent-color);
+    user-select: none;
+    transition: all 0.2s ease;
+    list-style: none;
+    border-bottom: 1px solid transparent;
+    border-radius: var(--border-radius-sm);
+}
+
+.markdown summary:hover {
+    background: var(--accent-color);
+    color: #000;
+}
+
+.markdown details[open] summary {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.markdown details>div,
+.markdown details>p,
+.markdown details>pre {
+    padding: 1rem;
+    margin: 0;
+}
+
+.markdown details pre {
+    margin: 0;
+    background: transparent;
+    border: none;
+}
+
+.markdown pre {
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.markdown code {
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
 .sidebar {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
     position: sticky;
     /* Sticky support for better UX */
-    top: 2rem;
+    top: 5rem;
 }
 
 .card {
@@ -121,6 +204,20 @@
 .infoList {
     display: flex;
     flex-direction: column;
+}
+
+.introduceText {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.introduceText p {
+    margin-bottom: 0.8rem;
+}
+
+.introduceText p:last-child {
+    margin-bottom: 0;
 }
 
 .infoList li {
@@ -154,26 +251,7 @@
     font-weight: 700;
 }
 
-.projectRoles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    justify-content: flex-end;
-    pointer-events: none;
-    /* Ensure container is non-interactive */
-}
-
-.roleTag {
-    font-size: 0.75rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2px 8px;
-    border-radius: 4px;
-    color: var(--text-primary);
-    pointer-events: none;
-    user-select: text;
-}
-
+.projectRoles,
 .techStack {
     display: flex;
     flex-wrap: wrap;
@@ -182,15 +260,25 @@
     pointer-events: none;
 }
 
-.techStack span {
-    font-size: 0.75rem;
-    background: rgba(0, 173, 181, 0.1);
-    border: 1px solid rgba(0, 173, 181, 0.2);
-    color: var(--accent-color);
-    padding: 2px 8px;
-    border-radius: 4px;
-    pointer-events: none;
-    user-select: text;
+.roleTag {
+    font-size: 0.75rem !important;
+    font-family: var(--font-family) !important;
+    letter-spacing: 0px !important;
+    text-transform: none !important;
+    background: rgba(0, 173, 181, 0.1) !important;
+    border: 1px solid rgba(0, 173, 181, 0.3) !important;
+    color: var(--accent-color) !important;
+    padding: 0.15rem 0.6rem !important;
+    border-radius: 4px !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.roleTag:hover {
+    background: rgba(0, 173, 181, 0.2) !important;
+    border-color: rgba(0, 173, 181, 0.5) !important;
 }
 
 /* ... existing button styles ... */

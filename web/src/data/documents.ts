@@ -43,9 +43,9 @@ export const publicDocs: PublicDoc[] = [
         lengthEN: '4 Pages',
         isInternal: false,
         journal: 'IEEE ToG (Under Review)',
-        impactFactor: '99999999',
-        preprintUrl: 'blank.page',
-        externalUrl: 'blank.page'
+        impactFactor: '0',
+        preprintUrl: '',
+        externalUrl: ''
     },
     // --- GDDs ---
     {

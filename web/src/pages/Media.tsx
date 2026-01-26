@@ -47,7 +47,7 @@ const formatScheduledDate = (dateStr: string, language: 'CN' | 'EN'): string => 
 };
 
 const Media: React.FC = () => {
-    const { language, t } = useLanguage();
+    const { language } = useLanguage();
     const [expandedSeries, setExpandedSeries] = useState<string[]>([]);
     const [showMiscellaneous, setShowMiscellaneous] = useState(false);
 

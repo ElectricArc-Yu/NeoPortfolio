@@ -3,7 +3,13 @@ import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import styles from './Layout.module.css';
 
+import { siteConfig } from '../data/siteConfig';
+import { useLanguage } from '../context/LanguageContext';
+
 const Layout: React.FC = () => {
+    const { language } = useLanguage();
+    const { footer } = siteConfig;
+
     return (
         <div className={styles.container}>
             <Navbar />
@@ -13,11 +19,13 @@ const Layout: React.FC = () => {
             <footer className={styles.footer}>
                 <div className={styles.footerContent}>
                     <p className={styles.copyright}>
-                        © {new Date().getFullYear()} YuChenhaoran. All Rights Reserved. / 完全版权所有
+                        © {footer.year} {footer.owner}. {language === 'CN' ? footer.disclaimerCN : footer.disclaimerEN}
                     </p>
-                    <p className={styles.disclaimer}>
-                        Game Designer Portfolio & Case Studies
-                    </p>
+                    {(language === 'CN' ? footer.subFooterCN : footer.subFooterEN) && (
+                        <p className={styles.disclaimer}>
+                            {language === 'CN' ? footer.subFooterCN : footer.subFooterEN}
+                        </p>
+                    )}
                 </div>
             </footer>
         </div>

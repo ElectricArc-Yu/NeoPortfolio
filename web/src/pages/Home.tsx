@@ -4,6 +4,8 @@ import { projects } from '../data/projects';
 import ProjectCard from '../components/ProjectCard';
 import styles from './Home.module.css';
 
+import { siteConfig } from '../data/siteConfig';
+
 const Home: React.FC = () => {
     const { language, t } = useLanguage();
 
@@ -15,9 +17,11 @@ const Home: React.FC = () => {
     return (
         <div className={styles.container}>
             <section className={styles.hero}>
-                <h1 className={styles.heroTitle}>{language === 'CN' ? '于陈浩然' : 'Yu Chenhaoran'}</h1>
+                <h1 className={styles.heroTitle}>
+                    {language === 'CN' ? siteConfig.pages.home.titleCN : siteConfig.pages.home.titleEN}
+                </h1>
                 <p className={styles.heroSubtitle}>
-                    {language === 'CN' ? '游戏设计师 & 游戏开发者' : 'Game Designer & Game Developer'}
+                    {language === 'CN' ? siteConfig.pages.home.subtitleCN : siteConfig.pages.home.subtitleEN}
                 </p>
             </section>
 

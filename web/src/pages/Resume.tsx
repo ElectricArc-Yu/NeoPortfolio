@@ -11,6 +11,7 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import MediaGallery from '../components/MediaGallery';
 import { getAssetPath } from '../utils/assetPath';
+import { siteConfig } from '../data/siteConfig';
 
 const Resume: React.FC = () => {
     const { language, t } = useLanguage();
@@ -209,9 +210,11 @@ const Resume: React.FC = () => {
         <div className={styles.container}>
             <header className={styles.header}>
                 <h1 className={styles.name}>
-                    {language === 'CN' ? resumeData.header.name.cn : resumeData.header.name.en}
+                    {language === 'CN' ? siteConfig.pages.resume.titleCN : siteConfig.pages.resume.titleEN}
                 </h1>
-                <p className={styles.subtitle}>{resumeData.header.role}</p>
+                <p className={styles.subtitle}>
+                    {language === 'CN' ? siteConfig.pages.resume.subtitleCN : siteConfig.pages.resume.subtitleEN}
+                </p>
 
                 {/* About Me Section in Header */}
                 <p className={styles.about}>
@@ -221,7 +224,7 @@ const Resume: React.FC = () => {
                 <div className={styles.contactInfo}>
                     <div className={styles.contactItem}>
                         <Mail size={16} />
-                        <a href={`mailto:${resumeData.header.email}`}>{resumeData.header.email}</a>
+                        <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>
                     </div>
                     {resumeData.header.phone && (
                         <div className={styles.contactItem}>

@@ -5,6 +5,7 @@ import styles from './Media.module.css';
 import { PlayCircle, Globe, Clock, List, ExternalLink, ChevronDown, Mic, Video, Lock, Calendar, X, FileText } from 'lucide-react';
 import { getAssetPath } from '../utils/assetPath';
 import type { MediaSeries, MediaEpisode, PodcastEpisode, PlatformLink } from '../data/types';
+import { siteConfig } from '../data/siteConfig';
 
 // Platform icon/color mapping
 const platformConfig: Record<string, { color: string; label: string }> = {
@@ -364,11 +365,13 @@ const Media: React.FC = () => {
     return (
         <div className={styles.container}>
             <header className={styles.header}>
-                <h1 className={styles.title}>{t('Media')}</h1>
+                <h1 className={styles.title}>
+                    {language === 'CN' ? siteConfig.pages.media.titleCN : siteConfig.pages.media.titleEN}
+                </h1>
                 <p className={styles.subtitle}>
                     {language === 'CN'
-                        ? '游戏设计分析、演示视频与自媒体内容展示。'
-                        : 'Game design analysis, showcase videos, and media content.'}
+                        ? siteConfig.pages.media.subtitleCN
+                        : siteConfig.pages.media.subtitleEN}
                 </p>
             </header>
 

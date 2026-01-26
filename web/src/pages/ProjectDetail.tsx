@@ -130,7 +130,7 @@ const ProjectDetail: React.FC = () => {
                                         />
                                     );
                                 }
-                            }}
+                            } as Record<string, any>}
                         >
                             {description}
                         </ReactMarkdown>

@@ -6,6 +6,7 @@ import styles from './ProjectCard.module.css';
 import EngineIcon from './EngineIcon';
 import DocumentIcon from './DocumentIcon';
 import { getAssetPath } from '../utils/assetPath';
+import { getRoleCategory } from '../utils/projectUtils';
 
 interface ProjectCardProps {
     project: Project;
@@ -73,10 +74,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
                         {/* 2. Roles (Color Coded) */}
                         {project.role.slice(0, 2).map(role => {
-                            let roleType = 'Other';
-                            const r = role.toLowerCase();
-                            if (r.includes('design') || r.includes('producer') || r.includes('consultant')) roleType = 'Design';
-                            if (r.includes('program') || r.includes('developer') || r.includes('creator')) roleType = 'Program';
+                            const roleType = getRoleCategory(role);
 
                             return (
                                 <span key={role} className={`${styles.tag} ${styles.roleTag}`} data-role={roleType}>

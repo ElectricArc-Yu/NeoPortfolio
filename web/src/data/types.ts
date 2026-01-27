@@ -112,7 +112,7 @@ export interface MediaSeries {
     seriesNameEN: string;
     type: 'video-series' | 'podcast-series';
     seriesBadges?: string[]; // Optional explicit badges for the series header (e.g., ["Video", "Article"])
-    language: 'Chinese' | 'English' | 'Mixed';
+    languages: string[];
     descriptionCN: string;
     descriptionEN: string;
     thumbnail?: string;
@@ -130,7 +130,7 @@ export interface MediaItem {
     title: string;
     type: 'video' | 'podcast' | 'analysis';
     carrier: 'Bilibili' | 'YouTube' | 'Local' | 'XiaoYuZhou' | 'Other';
-    language: 'Chinese' | 'English' | 'Mixed';
+    languages: string[];
     url: string;
     thumbnail?: string;
     descriptionCN: string;

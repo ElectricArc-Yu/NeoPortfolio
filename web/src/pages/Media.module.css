@@ -697,13 +697,30 @@
 /* ============================================
    Responsive
    ============================================ */
-@media (max-width: 900px) {
+@media (max-width: 1500px) {
     .seriesHeader {
-        padding: 1.25rem 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.5rem;
+        height: auto;
+        min-height: unset;
     }
 
-    .seriesName {
-        font-size: 1.15rem;
+    .seriesMetaHeader {
+        width: 100%;
+        justify-content: space-between;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: 0.75rem;
+    }
+
+    .seriesBadges {
+        flex-wrap: wrap;
+    }
+
+    .episodeCard {
+        gap: 1.5rem;
+        padding: 1.25rem;
     }
 
     .mediaCard {
@@ -713,19 +730,30 @@
 
     .thumbnailWrapper {
         width: 100%;
-        height: 180px;
+        height: 200px;
     }
 
+    .content {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 900px) {
     .episodeCard {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1rem;
     }
 
     .episodeActions {
         margin-left: 0;
         align-items: flex-start;
         width: 100%;
+    }
+
+    .platformLinks {
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 }
 
@@ -735,7 +763,7 @@
     }
 
     .seriesHeader.sticky {
-        top: 50px;
+        top: 55px;
     }
 
     .seriesContent {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import styles from './LanguageSwitch.module.css';
 
@@ -13,6 +12,9 @@ const LanguageSwitch: React.FC = () => {
         >
             <span className={`${styles.option} ${language === 'CN' ? styles.active : ''}`}>CN</span>
             <span className={`${styles.option} ${language === 'EN' ? styles.active : ''}`}>EN</span>
+            <div className={styles.mobileIcon}>
+                <span>{language}</span>
+            </div>
             <div className={`${styles.slider} ${language === 'EN' ? styles.right : ''}`} />
         </button>
     );

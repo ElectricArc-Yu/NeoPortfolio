@@ -12,6 +12,7 @@ import rehypeRaw from 'rehype-raw';
 import MediaGallery from '../components/MediaGallery';
 import { getAssetPath } from '../utils/assetPath';
 import { siteConfig } from '../data/siteConfig';
+import { getRoleCategory } from '../utils/projectUtils';
 
 const Resume: React.FC = () => {
     const { language, t } = useLanguage();
@@ -46,14 +47,13 @@ const Resume: React.FC = () => {
     };
 
     const getRoleClass = (role: string) => {
-        const r = role.toLowerCase();
-        // Designer category
-        if (r.includes('design') || r.includes('creative') || r.includes('writer') || r.includes('策划')) return styles.roleTagDesigner;
-        // Programmer category
-        if (r.includes('programmer') || r.includes('developer') || r.includes('engineer') || r.includes('程序')) return styles.roleTagProgrammer;
-        // Creator/Management category
-        if (r.includes('research') || r.includes('creator') || r.includes('management') || r.includes('创造者')) return styles.roleTagCreator;
-        return '';
+        const category = getRoleCategory(role);
+        switch (category) {
+            case 'Design': return styles.roleTagDesigner;
+            case 'Program': return styles.roleTagProgrammer;
+            case 'Creator': return styles.roleTagCreator;
+            default: return '';
+        }
     };
 
     // Grouping Logic

@@ -41,3 +41,55 @@
 .right {
     transform: translateX(100%);
 }
+
+.mobileIcon {
+    display: none;
+}
+
+@media (max-width: 1500px) {
+    .switch {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        border-radius: 12px;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .switch:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--accent-color);
+        transform: translateY(-2px);
+    }
+
+    .switch:active {
+        transform: translateY(0) scale(0.95);
+    }
+
+    .option {
+        display: none;
+    }
+
+    .mobileIcon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        color: var(--text-primary);
+    }
+
+    .mobileIcon span {
+        font-size: 0.85rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--accent-color);
+    }
+
+    .slider {
+        display: none;
+    }
+}

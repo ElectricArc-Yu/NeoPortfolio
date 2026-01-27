@@ -20,3 +20,9 @@
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     margin-top: auto;
 }
+
+@media (max-width: 1500px) {
+    .main {
+        padding: var(--spacing-md);
+    }
+}

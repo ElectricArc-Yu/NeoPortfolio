@@ -68,6 +68,50 @@ const Media: React.FC = () => {
         }
     };
 
+    const renderBadge = (badge: string, key: string | number, isTypeBadge = false) => {
+        let displayBadge = badge;
+        let badgeClass = styles.badge;
+        const upperBadge = badge.toUpperCase();
+
+        if (upperBadge.startsWith('%R%')) {
+            displayBadge = badge.substring(3);
+            badgeClass = `${styles.badge} ${styles.redBadge}`;
+        } else if (upperBadge.startsWith('%P%')) {
+            displayBadge = badge.substring(3);
+            badgeClass = `${styles.badge} ${styles.purpleBadge}`;
+        } else if (upperBadge.startsWith('%G%')) {
+            displayBadge = badge.substring(3);
+            badgeClass = `${styles.badge} ${styles.greenBadge}`;
+        } else if (upperBadge.startsWith('%Y%')) {
+            displayBadge = badge.substring(3);
+            badgeClass = `${styles.badge} ${styles.goldBadge}`;
+        } else if (upperBadge.startsWith('%B%')) {
+            displayBadge = badge.substring(3);
+            badgeClass = `${styles.badge} ${styles.blueBadge}`;
+        } else if (upperBadge.startsWith('%K%')) {
+            displayBadge = badge.substring(3);
+            badgeClass = `${styles.badge} ${styles.pinkBadge}`;
+        } else if (upperBadge.startsWith('%O%')) {
+            displayBadge = badge.substring(3);
+            badgeClass = `${styles.badge} ${styles.orangeBadge}`;
+        } else if (isTypeBadge) {
+            badgeClass = `${styles.badge} ${styles.typeBadge}`;
+        }
+
+        // Default translations
+        if (displayBadge === 'Video') displayBadge = (language === 'CN' ? '视频' : 'Video');
+        else if (displayBadge === 'Article') displayBadge = (language === 'CN' ? '文章' : 'Article');
+        else if (displayBadge === 'Podcast') displayBadge = (language === 'CN' ? '播客' : 'Podcast');
+        else if (displayBadge === 'Chinese') displayBadge = (language === 'CN' ? '中文' : 'Chinese');
+        else if (displayBadge === 'English') displayBadge = (language === 'CN' ? '英文' : 'English');
+
+        return (
+            <span key={key} className={badgeClass}>
+                {displayBadge}
+            </span>
+        );
+    };
+
     const renderPlatformLinks = (links: PlatformLink[]) => {
         return (
             <div className={styles.platformLinks}>
@@ -270,57 +314,13 @@ const Media: React.FC = () => {
                             {!isExpanded && (
                                 <>
                                     {series.seriesBadges ? (
-                                        series.seriesBadges.map((badge, idx) => {
-                                            let displayBadge = badge;
-                                            let badgeClass = styles.typeBadge;
-                                            const upperBadge = badge.toUpperCase();
-
-                                            if (upperBadge.startsWith('%R%')) {
-                                                displayBadge = badge.substring(3);
-                                                badgeClass = styles.redBadge;
-                                            } else if (upperBadge.startsWith('%P%')) {
-                                                displayBadge = badge.substring(3);
-                                                badgeClass = styles.purpleBadge;
-                                            } else if (upperBadge.startsWith('%G%')) {
-                                                displayBadge = badge.substring(3);
-                                                badgeClass = styles.greenBadge;
-                                            } else if (upperBadge.startsWith('%Y%')) {
-                                                displayBadge = badge.substring(3);
-                                                badgeClass = styles.goldBadge;
-                                            } else if (upperBadge.startsWith('%B%')) {
-                                                displayBadge = badge.substring(3);
-                                                badgeClass = styles.blueBadge;
-                                            } else if (upperBadge.startsWith('%K%')) {
-                                                displayBadge = badge.substring(3);
-                                                badgeClass = styles.pinkBadge;
-                                            } else if (upperBadge.startsWith('%O%')) {
-                                                displayBadge = badge.substring(3);
-                                                badgeClass = styles.orangeBadge;
-                                            }
-
-                                            // Default mapping for standard badges if no prefix
-                                            if (displayBadge === 'Video') displayBadge = (language === 'CN' ? '视频' : 'Video');
-                                            else if (displayBadge === 'Article') displayBadge = (language === 'CN' ? '文章' : 'Article');
-                                            else if (displayBadge === 'Podcast') displayBadge = (language === 'CN' ? '播客' : 'Podcast');
-
-                                            return (
-                                                <span key={idx} className={`${styles.badge} ${badgeClass}`}>
-                                                    {displayBadge}
-                                                </span>
-                                            );
-                                        })
+                                        series.seriesBadges.map((badge, idx) => renderBadge(badge, `type-${idx}`, true))
                                     ) : (
-                                        <span className={`${styles.badge} ${styles.typeBadge}`}>
-                                            {isVideoSeries
-                                                ? (language === 'CN' ? '视频' : 'Video')
-                                                : (language === 'CN' ? '播客' : 'Podcast')
-                                            }
-                                        </span>
+                                        renderBadge(isVideoSeries ? 'Video' : 'Podcast', 'type-default', true)
                                     )}
-                                    <span className={styles.badge}>{series.language}</span>
                                 </>
                             )}
-                            <span className={styles.badge}>{series.language}</span>
+                            {series.languages.map((lang, idx) => renderBadge(lang, `lang-${idx}`))}
                             <span className={styles.badge}>
                                 {episodeCount} {language === 'CN' ? '集' : 'Eps'}
                             </span>
@@ -444,7 +444,7 @@ const Media: React.FC = () => {
                                                     <h3 className={styles.mediaTitle}>{item.title}</h3>
                                                     <div className={styles.badges}>
                                                         <span className={`${styles.badge} ${styles.carrierBadge}`}>{item.carrier}</span>
-                                                        <span className={styles.badge}>{item.language}</span>
+                                                        {item.languages.map((lang, idx) => renderBadge(lang, `misc-lang-${idx}`))}
                                                     </div>
                                                 </div>
 

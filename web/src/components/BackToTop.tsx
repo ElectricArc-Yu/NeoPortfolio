@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import styles from './BackToTop.module.css';
+import { UI_CONSTANTS } from '../data/uiConstants';
 
 const BackToTop: React.FC = () => {
     const { t } = useLanguage();
@@ -8,7 +9,7 @@ const BackToTop: React.FC = () => {
 
     React.useEffect(() => {
         const toggleVisibility = () => {
-            if (window.pageYOffset > 500) {
+            if (window.pageYOffset > UI_CONSTANTS.BACK_TO_TOP_THRESHOLD) {
                 setIsVisible(true);
             } else {
                 setIsVisible(false);

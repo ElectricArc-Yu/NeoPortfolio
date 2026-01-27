@@ -13,6 +13,7 @@ import MediaGallery from '../components/MediaGallery';
 import { getAssetPath } from '../utils/assetPath';
 import { siteConfig } from '../data/siteConfig';
 import { getRoleCategory } from '../utils/projectUtils';
+import { getLocalizedValue } from '../utils/i18n';
 
 const Resume: React.FC = () => {
     const { language, t } = useLanguage();
@@ -161,8 +162,8 @@ const Resume: React.FC = () => {
                     </span>
                     <span className={styles.projectTitleTimeline}>
                         {isGroup
-                            ? (language === 'CN' ? project.titleCN : project.titleEN)
-                            : (language === 'CN' ? (project.timelineTitleCN || project.titleCN) : (project.timelineTitleEN || project.titleEN))
+                            ? getLocalizedValue(project.titles, language)
+                            : (getLocalizedValue(project.timelineTitles, language) || getLocalizedValue(project.titles, language))
                         }
                     </span>
                     <div className={styles.projectTypeBadges}>
@@ -174,7 +175,7 @@ const Resume: React.FC = () => {
                                 : <span className={styles.projectTypeTimeline}>{t(project.gameType)}</span>
                         ) : (
                             <span className={styles.projectTypeTimeline}>
-                                {(isGroup ? 'Commercial' : project.type) === 'Commercial' ? (language === 'CN' ? '商业' : 'Commercial') : (language === 'CN' ? '个人' : 'Personal')}
+                                {(isGroup ? 'Commercial' : project.type) === 'Commercial' ? (getLocalizedValue({ CN: '商业', EN: 'Commercial', JA: '商業' }, language)) : (getLocalizedValue({ CN: '个人', EN: 'Personal', JA: '個人' }, language))}
                             </span>
                         )}
                     </div>
@@ -210,15 +211,15 @@ const Resume: React.FC = () => {
         <div className={styles.container}>
             <header className={styles.header}>
                 <h1 className={styles.name}>
-                    {language === 'CN' ? siteConfig.pages.resume.titleCN : siteConfig.pages.resume.titleEN}
+                    {getLocalizedValue(siteConfig.pages.resume.titles, language)}
                 </h1>
                 <p className={styles.subtitle}>
-                    {language === 'CN' ? siteConfig.pages.resume.subtitleCN : siteConfig.pages.resume.subtitleEN}
+                    {getLocalizedValue(siteConfig.pages.resume.subtitles, language)}
                 </p>
 
                 {/* About Me Section in Header */}
                 <p className={styles.about}>
-                    {language === 'CN' ? resumeData.about.cn : resumeData.about.en}
+                    {getLocalizedValue(resumeData.about, language)}
                 </p>
 
                 <div className={styles.contactInfo}>
@@ -234,11 +235,11 @@ const Resume: React.FC = () => {
                     )}
                     <div className={styles.contactItem}>
                         <Github size={16} />
-                        <a href={resumeData.header.links.find(l => l.label === 'GitHub')?.url} target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href={getLocalizedValue(resumeData.header.links.find(l => l.labels.EN === 'GitHub')?.urls, language)} target="_blank" rel="noopener noreferrer">GitHub</a>
                     </div>
                     <div className={styles.contactItem}>
                         <Linkedin size={16} />
-                        <a href={resumeData.header.links.find(l => l.label === 'LinkedIn')?.url} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href={getLocalizedValue(resumeData.header.links.find(l => l.labels.EN === 'LinkedIn')?.urls, language)} target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     </div>
                 </div>
             </header>
@@ -254,21 +255,21 @@ const Resume: React.FC = () => {
                                     <div className={styles.jobHeader}>
                                         <div className={styles.roleHeader}>
                                             <h3 className={styles.jobRole}>
-                                                {language === 'CN' ? job.roleCN : job.roleEN}
+                                                {getLocalizedValue(job.roles, language)}
                                             </h3>
                                             <span className={styles.period}>{job.period}</span>
                                         </div>
                                         <div className={styles.companyRow}>
                                             <span className={styles.company}>
-                                                {language === 'CN' ? job.companyCN : job.companyEN}
+                                                {getLocalizedValue(job.companies, language)}
                                             </span>
                                             <span className={styles.companySize}>
-                                                {language === 'CN' ? job.sizeCN : job.sizeEN}
+                                                {getLocalizedValue(job.sizes, language)}
                                             </span>
                                         </div>
                                     </div>
                                     <ul className={styles.details}>
-                                        {(language === 'CN' ? job.detailsCN : job.detailsEN).map((point, idx) => (
+                                        {(getLocalizedValue(job.details, language) || []).map((point, idx) => (
                                             <li key={idx}>
                                                 {renderDetailPoint(point)}
                                             </li>
@@ -287,7 +288,7 @@ const Resume: React.FC = () => {
                             {resumeData.skills.map((category, index) => (
                                 <div key={index} className={styles.skillCategory}>
                                     <h3 className={styles.categoryTitle}>
-                                        {language === 'CN' ? category.categoryCN : category.category}
+                                        {getLocalizedValue(category.categories, language)}
                                     </h3>
                                     <div className={styles.skillList}>
                                         {category.items.map(item => (
@@ -310,10 +311,10 @@ const Resume: React.FC = () => {
                             {resumeData.education.map((edu, index) => (
                                 <div key={index} className={styles.educationItem}>
                                     <h3 className={styles.schoolName}>
-                                        {language === 'CN' ? edu.schoolCN : edu.schoolEN}
+                                        {getLocalizedValue(edu.schools, language)}
                                     </h3>
                                     <p className={styles.degree}>
-                                        {language === 'CN' ? edu.degreeCN : edu.degreeEN}
+                                        {getLocalizedValue(edu.degrees, language)}
                                     </p>
                                     <div className={styles.eduMeta}>
                                         <span className={styles.period}>{edu.period}</span>
@@ -339,9 +340,7 @@ const Resume: React.FC = () => {
                     to={resumeData.cta?.link || "/contact"}
                 >
                     <Send size={18} />
-                    {language === 'CN'
-                        ? (resumeData.cta?.textCN || '立即联系我！')
-                        : (resumeData.cta?.textEN || 'Contact Me Now!')}
+                    {getLocalizedValue(resumeData.cta?.texts, language)}
                 </Link>
             </div>
 
@@ -375,9 +374,9 @@ const Resume: React.FC = () => {
                     <div className={styles.modalContent} onClick={e => e.stopPropagation()}>
                         <header className={styles.modalHeader}>
                             <div className={styles.modalTitleArea}>
-                                <h3>{language === 'CN' ? activeGroup.main.titleCN : activeGroup.main.titleEN}</h3>
+                                <h3>{getLocalizedValue(activeGroup.main.titles, language)}</h3>
                                 <p className={styles.modalSubtitle}>
-                                    {language === 'CN' ? activeGroup.main.descriptionCN : activeGroup.main.descriptionEN}
+                                    {getLocalizedValue(activeGroup.main.descriptions, language)}
                                 </p>
                             </div>
                             <button onClick={() => setActiveGroup(null)} className={styles.closeButton}><X size={20} /></button>
@@ -386,11 +385,11 @@ const Resume: React.FC = () => {
                             {activeGroup.subProjects.map(p => (
                                 <div key={p.id} className={styles.modalProjectCard} onClick={() => setSelectedProject(p)}>
                                     <div className={styles.modalThumbnailWrapper}>
-                                        <img src={getAssetPath(p.thumbnail)} alt={p.title} />
+                                        <img src={getAssetPath(p.thumbnail)} alt={getLocalizedValue(p.titles, language)} />
                                     </div>
                                     <div className={styles.modalProjectInfo}>
-                                        <h4>{language === 'CN' ? p.titleCN : p.titleEN}</h4>
-                                        <p>{language === 'CN' ? p.shortDescriptionCN : p.shortDescriptionEN}</p>
+                                        <h4>{getLocalizedValue(p.titles, language)}</h4>
+                                        <p>{getLocalizedValue(p.shortDescriptions, language)}</p>
                                     </div>
                                 </div>
                             ))}
@@ -404,7 +403,7 @@ const Resume: React.FC = () => {
                 <div className={styles.modalOverlay} onClick={() => setSelectedProject(null)}>
                     <div className={`${styles.modalContent} ${styles.detailModal}`} onClick={e => e.stopPropagation()}>
                         <header className={styles.modalHeader}>
-                            <h3>{language === 'CN' ? selectedProject.titleCN : selectedProject.titleEN}</h3>
+                            <h3>{getLocalizedValue(selectedProject.titles, language)}</h3>
                             <div className={styles.modalActions}>
                                 <Link
                                     to={`/project/${selectedProject.id}`}
@@ -424,7 +423,7 @@ const Resume: React.FC = () => {
                             <MediaGallery images={selectedProject.images} video={selectedProject.video} />
                             <div className={styles.detailMarkdown}>
                                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-                                    {language === 'CN' ? selectedProject.descriptionCN : selectedProject.descriptionEN}
+                                    {getLocalizedValue(selectedProject.descriptions, language) || ''}
                                 </ReactMarkdown>
                             </div>
                         </div>

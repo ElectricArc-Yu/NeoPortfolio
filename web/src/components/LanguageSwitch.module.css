@@ -1,7 +1,7 @@
 .switch {
     display: flex;
     position: relative;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 4px;
@@ -10,12 +10,18 @@
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.switch:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .option {
     z-index: 2;
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
     width: 50%;
     text-align: center;
     color: var(--text-secondary);
@@ -34,7 +40,7 @@
     height: calc(100% - 8px);
     background: var(--accent-color);
     border-radius: 16px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
 }
 
@@ -42,7 +48,115 @@
     transform: translateX(100%);
 }
 
-.mobileIcon {
+/* Dropdown Styles (3+ Languages) */
+.dropdownContainer {
+    position: relative;
+}
+
+.dropdownTrigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dropdownTrigger:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--accent-color);
+}
+
+.globeIcon {
+    opacity: 0.7;
+    color: var(--accent-color);
+}
+
+.arrow {
+    opacity: 0.5;
+    transition: transform 0.3s ease;
+}
+
+.arrowOpen {
+    transform: rotate(180deg);
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 160px;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 6px;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menuItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.menuItem:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.menuItemActive {
+    background: rgba(var(--accent-color-rgb), 0.15);
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.langLabel {
+    flex: 1;
+    text-align: left;
+}
+
+.langCode {
+    font-size: 0.7rem;
+    opacity: 0.5;
+    font-family: var(--font-mono);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* Mobile Toggles */
+.mobileIcon,
+.mobileToggle {
     display: none;
 }
 
@@ -54,42 +168,41 @@
         border-radius: 12px;
         justify-content: center;
         background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .switch:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: var(--accent-color);
-        transform: translateY(-2px);
-    }
-
-    .switch:active {
-        transform: translateY(0) scale(0.95);
-    }
-
-    .option {
+    .option,
+    .slider,
+    .dropdownTrigger {
         display: none;
     }
 
     .mobileIcon {
         display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-color);
+        font-weight: 800;
+        font-size: 0.85rem;
+    }
+
+    .mobileToggle {
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        color: var(--accent-color);
+        cursor: pointer;
         gap: 2px;
-        color: var(--text-primary);
     }
 
-    .mobileIcon span {
-        font-size: 0.85rem;
+    .mobileToggle span {
+        font-size: 0.65rem;
         font-weight: 800;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: var(--accent-color);
-    }
-
-    .slider {
-        display: none;
     }
 }

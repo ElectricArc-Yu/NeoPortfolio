@@ -12,6 +12,7 @@ import PdfModal from '../components/PdfModal';
 import BackToTop from '../components/BackToTop';
 import CodeLoader from '../components/CodeLoader';
 import ImageModal from '../components/ImageModal';
+import { getLocalizedValue } from '../utils/i18n';
 import styles from './ProjectDetail.module.css';
 
 const ProjectDetail: React.FC = () => {
@@ -27,18 +28,17 @@ const ProjectDetail: React.FC = () => {
         return <Navigate to="/" replace />;
     }
 
-    const description = language === 'CN' ? project.descriptionCN : project.descriptionEN;
+    const description = getLocalizedValue(project.descriptions, language) || '';
     const isCommercial = project.type === 'Commercial';
 
     // Helper to get localized data
-    const getPlatform = () => language === 'CN' ? project.platformCN : project.platformEN;
-    const getDuration = () => language === 'CN' ? project.durationCN : project.durationEN;
-    const getTeamSize = () => language === 'CN' ? project.teamSizeCN : project.teamSizeEN;
+    const getPlatform = () => getLocalizedValue(project.platforms, language);
+    const getDuration = () => getLocalizedValue(project.durations, language);
+    const getTeamSize = () => getLocalizedValue(project.teamSizes, language);
 
     // Helper to get the correct URL based on language
-    const getUrl = (urlCN?: string, urlEN?: string) => {
-        if (language === 'CN' && urlCN) return urlCN;
-        return urlEN || urlCN;
+    const getUrl = (urls: Record<string, string>) => {
+        return getLocalizedValue(urls, language);
     };
 
     const handleLinkClick = (e: React.MouseEvent, url: string, label: string, type: string) => {
@@ -66,7 +66,7 @@ const ProjectDetail: React.FC = () => {
                 </button>
                 <div className={styles.titleContainer}>
                     {/* Header icon removed as per req #5 */}
-                    <h1 className={styles.title}>{language === 'CN' ? project.titleCN : project.titleEN}</h1>
+                    <h1 className={styles.title}>{getLocalizedValue(project.titles, language)}</h1>
                 </div>
             </header>
 
@@ -146,7 +146,9 @@ const ProjectDetail: React.FC = () => {
                             <li>
                                 <span>{t('Type')}</span>
                                 <span className={styles.highlight}>
-                                    {(Array.isArray(project.gameType) ? project.gameType.join(', ') : project.gameType) || project.type}
+                                    {Array.isArray(project.gameType)
+                                        ? project.gameType.map(gt => t(gt)).join(', ')
+                                        : t(project.gameType || project.type)}
                                 </span>
                             </li>
                             {getPlatform() && (
@@ -177,10 +179,10 @@ const ProjectDetail: React.FC = () => {
                                 <span>{isCommercial ? t('Sales') : t('Work Hours')}</span>
                                 <span className={styles.highlight}>{isCommercial ? project.sales : (project.workHours ? `${project.workHours}h` : 'N/A')}</span>
                             </li>
-                            {(isCommercial && (language === 'CN' ? project.priceCN : project.priceEN)) && (
+                            {(isCommercial && getLocalizedValue(project.prices, language)) && (
                                 <li>
-                                    <span>{language === 'CN' ? '售价' : 'Price'}</span>
-                                    <span className={styles.highlight}>{language === 'CN' ? project.priceCN : project.priceEN}</span>
+                                    <span>{t('Price')}</span>
+                                    <span className={styles.highlight}>{getLocalizedValue(project.prices, language)}</span>
                                 </li>
                             )}
                             <li>
@@ -201,11 +203,11 @@ const ProjectDetail: React.FC = () => {
                     </div>
 
                     {/* Project Introduce Card */}
-                    {(language === 'CN' ? project.introduceCN : project.introduceEN) && (
+                    {getLocalizedValue(project.introduces, language) && (
                         <div className={styles.card}>
                             <h3>{t('Project Introduce')}</h3>
                             <div className={styles.introduceText}>
-                                {(language === 'CN' ? project.introduceCN : project.introduceEN)?.split('\n').map((line, i) => (
+                                {getLocalizedValue(project.introduces, language)?.split('\n').map((line, i) => (
                                     <p key={i} style={{ marginBottom: line.trim() ? '0.5rem' : '1rem' }}>{line}</p>
                                 ))}
                             </div>
@@ -218,12 +220,12 @@ const ProjectDetail: React.FC = () => {
                             <h3>{t('Quick Links')}</h3>
                             <div className={styles.quickLinks}>
                                 {project.links.map((link, index) => {
-                                    const url = getUrl(link.urlCN, link.urlEN);
+                                    const url = getUrl(link.urls);
                                     if (!url) return null;
-                                    const localizedLabel = language === 'CN' ? link.labelCN : link.labelEN;
+                                    const localizedLabel = getLocalizedValue(link.labels, language) || '';
                                     return (
                                         <a
-                                            key={`${link.labelEN}-${index}`}
+                                            key={`${index}`}
                                             href={url}
                                             target="_blank"
                                             rel="noopener noreferrer"

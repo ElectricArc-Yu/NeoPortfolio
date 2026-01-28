@@ -1,96 +1,116 @@
 
 export type SiteStatus = 'WIP' | 'Launched' | 'OutDated';
+export type TitleFormat = 'GlobalPage' | 'PageGlobal' | 'GlobalOnly' | 'PageOnly';
 
 export interface SiteConfig {
-    /**
-     * The target status of the site. 
-     * Even if set to 'WIP' or 'Launched', it will automatically switch to 'OutDated'
-     * if the current date is after the autoOutdatedDate.
-     */
+    i18n: {
+        languages: { code: string; label: string }[];
+        defaultLanguage: string;
+    };
     status: SiteStatus;
-    /**
-     * The date when the site status automatically changes to 'OutDated'.
-     * Format: YYYY-MM-DD
-     */
     autoOutdatedDate: string;
-    /**
-     * Display labels for each status (CN/EN)
-     */
-    statusLabels: Record<SiteStatus, { cn: string, en: string, color: string }>;
-    /**
-     * Footer configuration
-     */
+    statusLabels: Record<SiteStatus, { labels: Record<string, string>, color: string }>;
     footer: {
         owner: string;
         year: string;
-        disclaimerCN: string;
-        disclaimerEN: string;
-        subFooterCN?: string;
-        subFooterEN?: string;
+        disclaimers: Record<string, string>;
+        subFooters?: Record<string, string>;
     };
     contact: {
         email: string;
     };
     pages: {
-        home: {
-            titleCN: string;
-            titleEN: string;
-            subtitleCN: string;
-            subtitleEN: string;
+        [key: string]: {
+            titles: Record<string, string>;
+            subtitles: Record<string, string>;
         };
-        media: {
-            titleCN: string;
-            titleEN: string;
-            subtitleCN: string;
-            subtitleEN: string;
-        };
-        resume: {
-            titleCN: string;
-            titleEN: string;
-            subtitleCN: string;
-            subtitleEN: string;
-        };
+    };
+    brand: {
+        titles: Record<string, string>;
+        favicon: string;
+        titleFormat: TitleFormat;
     };
 }
 
 export const siteConfig: SiteConfig = {
+    i18n: {
+        languages: [
+            { code: 'CN', label: '中文' },
+            { code: 'EN', label: 'English' },
+            { code: 'JA', label: '日本語' }
+        ],
+        defaultLanguage: 'EN'
+    },
     status: 'Launched',
     autoOutdatedDate: '2026-06-30',
     statusLabels: {
-        WIP: { cn: '开发中', en: 'WIP', color: '#f59e0b' },
-        Launched: { cn: '正式版', en: 'Launched', color: '#10b981' },
-        OutDated: { cn: '旧版本', en: 'Outdated', color: '#6b7280' }
+        WIP: { labels: { CN: '开发中', EN: 'WIP', JA: '開発中' }, color: '#f59e0b' },
+        Launched: { labels: { CN: '正式版', EN: 'Launched', JA: '正式版' }, color: '#10b981' },
+        OutDated: { labels: { CN: '旧版本', EN: 'Outdated', JA: '旧バージョン' }, color: '#6b7280' }
     },
     footer: {
         owner: 'YuChenhaoran',
         year: '2026',
-        disclaimerCN: 'All Rights Reserved.',
-        disclaimerEN: 'All Rights Reserved.',
-        subFooterCN: '',
-        subFooterEN: ''
+        disclaimers: {
+            CN: 'All Rights Reserved.',
+            EN: 'All Rights Reserved.',
+            JA: 'All Rights Reserved.'
+        },
+        subFooters: {
+            CN: '',
+            EN: '',
+            JA: ''
+        }
     },
     contact: {
         email: 'yuchenhaoran@preludegames.com'
     },
     pages: {
         home: {
-            titleCN: '于陈浩然',
-            titleEN: 'Yu Chenhaoran',
-            subtitleCN: '游戏设计师 & 游戏开发者',
-            subtitleEN: 'Game Designer & Game Developer'
+            titles: { CN: '作品集', EN: 'Portfolio', JA: 'ポートフォリオ' },
+            subtitles: {
+                CN: '游戏设计师 & 游戏开发者',
+                EN: 'Game Designer & Game Developer',
+                JA: 'ゲームデザイナー & ゲーム開発者'
+            }
         },
         media: {
-            titleCN: '媒体与内容',
-            titleEN: 'Media & Content',
-            subtitleCN: '游戏设计分析、演示视频与自媒体内容展示。',
-            subtitleEN: 'Game design analysis, showcase videos, and media content.'
+            titles: { CN: '媒体', EN: 'Media', JA: 'メディア' },
+            subtitles: {
+                CN: '游戏设计分析、演示视频与自媒体内容展示。',
+                EN: 'Game design analysis, showcase videos, and media content.',
+                JA: 'ゲームデザイン分析、デモビデオ、メディアコンテンツ。'
+            }
         },
         resume: {
-            titleCN: '于陈浩然',
-            titleEN: 'Yu Chenhaoran',
-            subtitleCN: '游戏设计师',
-            subtitleEN: 'Game Designer'
+            titles: { CN: '简历', EN: 'Resume', JA: 'レジュメ' },
+            subtitles: { CN: '游戏设计师', EN: 'Game Designer', JA: 'ゲームデザイナー' }
+        },
+        contact: {
+            titles: { CN: '联系我', EN: 'Contact', JA: 'お問い合わせ' },
+            subtitles: {
+                CN: '如果您有任何项目合作或咨询，欢迎通过以下方式联系。',
+                EN: 'If you have any project collaboration or inquiries, feel free to contact me.',
+                JA: 'プロジェクトのコラボレーションやお問い合わせなど、お気軽にご連絡ください。'
+            }
+        },
+        documents: {
+            titles: { CN: '文档', EN: 'Documents', JA: 'ドキュメント' },
+            subtitles: {
+                CN: '包含可公开的设计文档、分析文章及学术论文。',
+                EN: 'Collection of publicable Game Design Documents, Analysis Articles & Academic Papers.',
+                JA: '公開可能なゲームデザインドキュメント、分析記事、学術論文のコレクション。'
+            }
         }
+    },
+    brand: {
+        titles: {
+            CN: "于陈浩然",
+            EN: "Yu Chenhaoran",
+            JA: "于陳浩然"
+        },
+        favicon: '/NeoPortfolio/webicon.ico',
+        titleFormat: 'GlobalPage'
     }
 };
 

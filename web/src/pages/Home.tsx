@@ -5,6 +5,7 @@ import ProjectCard from '../components/ProjectCard';
 import styles from './Home.module.css';
 
 import { siteConfig } from '../data/siteConfig';
+import { getLocalizedValue } from '../utils/i18n';
 
 const Home: React.FC = () => {
     const { language, t } = useLanguage();
@@ -18,10 +19,10 @@ const Home: React.FC = () => {
         <div className={styles.container}>
             <section className={styles.hero}>
                 <h1 className={styles.heroTitle}>
-                    {language === 'CN' ? siteConfig.pages.home.titleCN : siteConfig.pages.home.titleEN}
+                    {getLocalizedValue(siteConfig.pages.home.titles, language)}
                 </h1>
                 <p className={styles.heroSubtitle}>
-                    {language === 'CN' ? siteConfig.pages.home.subtitleCN : siteConfig.pages.home.subtitleEN}
+                    {getLocalizedValue(siteConfig.pages.home.subtitles, language)}
                 </p>
             </section>
 

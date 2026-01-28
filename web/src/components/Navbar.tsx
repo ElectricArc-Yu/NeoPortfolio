@@ -9,7 +9,8 @@ import { LayoutGrid, FileText, Library, Play, Mail } from 'lucide-react';
 const Navbar: React.FC = () => {
     const { language, t } = useLanguage();
     const currentStatus = getComputedStatus();
-    const statusLabel = siteConfig.statusLabels[currentStatus];
+    const statusInfo = siteConfig.statusLabels[currentStatus];
+    const statusLabel = statusInfo.labels[language] || statusInfo.labels['EN'] || '';
 
     return (
         <nav className={styles.navbar}>
@@ -18,11 +19,11 @@ const Navbar: React.FC = () => {
                 <span
                     className={styles.statusBadge}
                     style={{
-                        background: statusLabel.color,
-                        boxShadow: `0 2px 8px ${statusLabel.color}66`
+                        background: statusInfo.color,
+                        boxShadow: `0 2px 8px ${statusInfo.color}66`
                     }}
                 >
-                    {language === 'CN' ? statusLabel.cn : statusLabel.en}
+                    {statusLabel}
                 </span>
             </div>
             <div className={styles.links}>

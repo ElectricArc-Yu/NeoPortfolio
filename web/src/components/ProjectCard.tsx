@@ -7,6 +7,7 @@ import EngineIcon from './EngineIcon';
 import DocumentIcon from './DocumentIcon';
 import { getAssetPath } from '../utils/assetPath';
 import { getRoleCategory } from '../utils/projectUtils';
+import { getLocalizedValue } from '../utils/i18n';
 
 interface ProjectCardProps {
     project: Project;
@@ -14,8 +15,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     const { language, t } = useLanguage();
-
-    const description = language === 'CN' ? project.shortDescriptionCN : project.shortDescriptionEN;
+    const description = getLocalizedValue(project.shortDescriptions, language) || '';
     const isCommercial = project.type === 'Commercial';
 
     // Check if GDD is available
@@ -45,7 +45,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 <div className={styles.header}>
                     <div className={styles.titleContainer}>
                         <EngineIcon engine={project.engine} className={styles.engineIcon} />
-                        <h3 className={styles.title}>{language === 'CN' ? project.titleCN : project.titleEN}</h3>
+                        <h3 className={styles.title}>{getLocalizedValue(project.titles, language)}</h3>
                     </div>
                     {/* Sales/Time metric in the corner */}
                     <span className={styles.topMetric}>
@@ -62,12 +62,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                             Array.isArray(project.gameType) ? (
                                 project.gameType.map(type => (
                                     <span key={type} className={`${styles.tag} ${styles.gameTypeTag}`} data-type={type}>
-                                        {type}
+                                        {t(type)}
                                     </span>
                                 ))
                             ) : (
                                 <span className={`${styles.tag} ${styles.gameTypeTag}`} data-type={project.gameType}>
-                                    {project.gameType}
+                                    {t(project.gameType)}
                                 </span>
                             )
                         )}
@@ -78,14 +78,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
                             return (
                                 <span key={role} className={`${styles.tag} ${styles.roleTag}`} data-role={roleType}>
-                                    {role}
+                                    {t(role)}
                                 </span>
                             );
                         })}
 
                         {/* 3. Tech Stack */}
                         {project.techStack.slice(0, 3).map(tech => (
-                            <span key={tech} className={styles.tag}>{tech}</span>
+                            <span key={tech} className={styles.tag}>{t(tech)}</span>
                         ))}
                     </div>
                 </div>

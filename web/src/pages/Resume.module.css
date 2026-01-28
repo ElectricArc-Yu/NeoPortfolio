@@ -274,6 +274,14 @@
     padding: var(--spacing-md);
     border-radius: var(--border-radius-md);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.educationItem:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .schoolName {
@@ -307,6 +315,172 @@
 .awardItem {
     font-size: 0.85rem;
     color: var(--accent-color);
+}
+
+.certificationsListRow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    width: 100%;
+}
+
+.certRowItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-md);
+    transition: all 0.3s ease;
+}
+
+.certRowItem:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.certRowHighlighted {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.03);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+}
+
+.certRowHighlighted:hover {
+    border-color: #ffd700;
+    background: #ffd700;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+}
+
+.certRowHighlighted:hover .certFullTitle,
+.certRowHighlighted:hover .certIconDefault,
+.certRowHighlighted:hover .certVerifiedOn {
+    color: #0c1214;
+}
+
+.certRowHighlighted:hover .certAbbrTag {
+    background: rgba(0, 0, 0, 0.15);
+    border-color: rgba(0, 0, 0, 0.3);
+    color: #0c1214;
+}
+
+.certRowHighlighted:hover .certLinkBadge {
+    background: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #0c1214;
+}
+
+.certRowHighlighted:hover .certLinkBadge:hover {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: #000;
+}
+
+.certRowHighlighted .certFullTitle {
+    color: #ffd700;
+}
+
+.certRowHighlighted .certIconDefault {
+    color: #ffd700;
+}
+
+.certLeft {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.certRight {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.certIconImg {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.certIconEmoji {
+    font-size: 1.25rem;
+    width: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.certIconDefault {
+    color: var(--accent-color);
+    opacity: 0.7;
+}
+
+.certAbbrTag {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.certFullTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.certVerifiedOn {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-family: monospace;
+    white-space: nowrap;
+}
+
+.certLinkBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: rgba(0, 173, 181, 0.1);
+    border: 1px solid rgba(0, 173, 181, 0.3);
+    border-radius: 20px;
+    color: var(--accent-color);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.certLinkBadge:hover {
+    background: var(--accent-color);
+    color: #0c1214;
+    border-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .certRowItem {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem;
+    }
+
+    .certLeft {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .certRight {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
 }
 
 .timelineHeader {
@@ -369,6 +543,14 @@
     font-size: 0.75rem;
     color: var(--text-secondary);
     transition: all 0.2s ease;
+    cursor: default;
+}
+
+.skillItem:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+    color: var(--text-primary);
+    background: rgba(0, 173, 181, 0.1);
 }
 
 .highlightSkill {
@@ -376,6 +558,13 @@
     color: #ffd700;
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
     font-weight: 600;
+}
+
+.highlightSkill:hover {
+    background: #ffd700;
+    color: #0c1214;
+    border-color: #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
 }
 
 .projectRow {
@@ -466,6 +655,18 @@
     padding: 1px 8px;
     border-radius: 4px;
     white-space: nowrap;
+}
+
+.collectionBadge {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #ffcc80;
+    background: rgba(255, 204, 128, 0.1);
+    border: 1px solid rgba(255, 204, 128, 0.3);
+    padding: 1px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    text-transform: uppercase;
 }
 
 @media (max-width: 768px) {

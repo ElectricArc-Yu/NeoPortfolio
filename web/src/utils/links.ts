@@ -2,7 +2,7 @@ import type { ProjectLink } from '../data/types';
 import type { Language } from '../context/LanguageContext';
 
 export const getDisplayUrl = (link: ProjectLink, language: Language): string | undefined => {
-    if (language === 'CN' && link.urlCN) return link.urlCN;
-    if (language === 'EN' && link.urlEN) return link.urlEN;
-    return link.urlCN || link.urlEN;
+    if (link.urls[language]) return link.urls[language];
+    // Fallbacks
+    return link.urls['EN'] || link.urls['CN'] || Object.values(link.urls)[0];
 };

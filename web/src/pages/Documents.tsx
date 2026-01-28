@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { publicDocs } from '../data/documents';
-import type { GDDType } from '../data/documents';
+import type { GDDType, PublicDoc } from '../data/types';
 import PdfModal from '../components/PdfModal';
 import styles from './Documents.module.css';
+import { siteConfig } from '../data/siteConfig';
+import { getLocalizedValue } from '../utils/i18n';
 import { FileText, BookOpen, ChevronDown, ChevronUp, FlaskConical, GraduationCap, ClipboardList, FileCode } from 'lucide-react';
 
 // Icon mapping for GDD types
@@ -14,31 +16,35 @@ const gddTypeIcons: Record<GDDType, React.ReactNode> = {
     GDD: <FileCode size={18} />
 };
 
-// Labels for GDD types
-const gddTypeLabels = {
-    Test: { cn: '策划测试题', en: 'Design Tests' },
-    Analysis: { cn: '分析研究', en: 'Analysis & Research' },
-    Methodology: { cn: '方法论与教程', en: 'Methodology & Tutorials' },
-    GDD: { cn: '完整设计文档', en: 'Full Game Design Documents' }
+// Labels for GDD types (using Localized format internally or just mapping)
+const gddTypeLabels: Record<GDDType, { CN: string, EN: string, JA?: string }> = {
+    Test: { CN: '策划测试题', EN: 'Design Tests', JA: '企画テスト' },
+    Analysis: { CN: '分析研究', EN: 'Analysis & Research', JA: '分析・研究' },
+    Methodology: { CN: '方法论与教程', EN: 'Methodology & Tutorials', JA: 'メソッド・チュートリアル' },
+    GDD: { CN: '完整设计文档', EN: 'Full Game Design Documents', JA: 'ゲーム企画書' }
 };
 
 // Descriptions for each category
-const gddTypeDescriptions = {
+const gddTypeDescriptions: Record<GDDType, { CN: string, EN: string, JA?: string }> = {
     Test: {
-        cn: '求职过程中完成的策划岗位测试题，展示系统设计与问题解决能力。',
-        en: 'Design tests completed during job applications, demonstrating system design and problem-solving skills.'
+        CN: '求职过程中完成的策划岗位测试题，展示系统设计与问题解决能力。',
+        EN: 'Design tests completed during job applications, demonstrating system design and problem-solving skills.',
+        JA: '採用選考中に作成された企画職用テスト。システム設計と問題解決能力を示しています。'
     },
     Analysis: {
-        cn: '对已发布游戏内容的深度分析，探索设计理念与系统架构。',
-        en: 'In-depth analysis of published game content, exploring design philosophy and system architecture.'
+        CN: '对已发布游戏内容的深度分析，探索设计理念与系统架构。',
+        EN: 'In-depth analysis of published game content, exploring design philosophy and system architecture.',
+        JA: 'リリース済みゲームタイトルの詳細な分析。デザイン哲学とシステム構成を掘り下げます。'
     },
     Methodology: {
-        cn: '设计方法论与职业发展教程，帮助提升专业能力。',
-        en: 'Design methodologies and professional development tutorials to enhance professional skills.'
+        CN: '设计方法论与职业发展教程，帮助提升专业能力。',
+        EN: 'Design methodologies and professional development tutorials to enhance professional skills.',
+        JA: 'デザイン手法とキャリア開発のチュートリアル。専門能力の向上を目的としています。'
     },
     GDD: {
-        cn: '完整的游戏设计文档，涵盖系统设计与关卡规划。',
-        en: 'Complete game design documents covering system design and level planning.'
+        CN: '完整的游戏设计文档，涵盖系统设计与关卡规划。',
+        EN: 'Complete game design documents covering system design and level planning.',
+        JA: 'システム設計からレベルプランニングまで網羅した完全なゲーム企画書。'
     }
 };
 
@@ -73,12 +79,11 @@ const Documents: React.FC = () => {
         });
     };
 
-    const handleCardClick = (doc: typeof publicDocs[0]) => {
+    const handleCardClick = (doc: PublicDoc) => {
         if (doc.externalUrl) {
             window.open(doc.externalUrl, '_blank', 'noopener,noreferrer');
         } else if (doc.url) {
-            // Don't apply getAssetPath here - PdfModal handles it internally
-            setSelectedDoc({ url: doc.url, title: language === 'CN' ? doc.titleCN : doc.titleEN });
+            setSelectedDoc({ url: doc.url, title: getLocalizedValue(doc.titles, language) || '' });
         }
     };
 
@@ -92,7 +97,7 @@ const Documents: React.FC = () => {
         if (!acc[type]) acc[type] = [];
         acc[type].push(doc);
         return acc;
-    }, {} as Record<GDDType, typeof gdds>);
+    }, {} as Record<GDDType, PublicDoc[]>);
 
     // Sort each group by date
     Object.keys(gddsByType).forEach(type => {
@@ -108,9 +113,9 @@ const Documents: React.FC = () => {
     // Define display order for GDD types
     const gddTypeOrder: GDDType[] = ['Test', 'Analysis', 'Methodology', 'GDD'];
 
-    // Render Paper Card (same as before)
-    const renderPaperCard = (doc: typeof publicDocs[0]) => {
-        const description = language === 'CN' ? doc.descriptionCN : doc.descriptionEN;
+    // Render Paper Card
+    const renderPaperCard = (doc: PublicDoc) => {
+        const description = getLocalizedValue(doc.descriptions, language) || '';
         const isLongAbstract = description.length > 150;
         const isExpanded = expandedAbstracts.has(doc.id);
         const displayDescription = isLongAbstract && !isExpanded
@@ -119,9 +124,7 @@ const Documents: React.FC = () => {
 
         return (
             <div key={doc.id} className={styles.paperCard}>
-                {/* Top Row: Info Cards + Links */}
                 <div className={styles.paperTopRow}>
-                    {/* Left: Info badges */}
                     <div className={styles.paperInfoBadges}>
                         {doc.paperType && (
                             <span className={styles.paperTypeBadge}>{doc.paperType}</span>
@@ -133,7 +136,6 @@ const Documents: React.FC = () => {
                             <span className={styles.impactFactorBadge}>IF: {doc.impactFactor}</span>
                         )}
                     </div>
-                    {/* Right: Links */}
                     <div className={styles.paperLinks}>
                         {doc.preprintUrl !== undefined && (
                             <a
@@ -146,7 +148,7 @@ const Documents: React.FC = () => {
                                     e.stopPropagation();
                                 }}
                             >
-                                {language === 'CN' ? '预印本' : 'Preprint'}
+                                {language === 'CN' ? '预印本' : (language === 'JA' ? 'プレプリント' : 'Preprint')}
                             </a>
                         )}
                         {doc.externalUrl !== undefined && (
@@ -160,30 +162,29 @@ const Documents: React.FC = () => {
                                     e.stopPropagation();
                                 }}
                             >
-                                {language === 'CN' ? '发布页' : 'Published'}
+                                {language === 'CN' ? '发布页' : (language === 'JA' ? '掲載ページ' : 'Published')}
                             </a>
                         )}
                     </div>
                 </div>
 
-                {/* Title */}
                 <h3 className={styles.paperTitle}>
-                    {language === 'CN' ? doc.titleCN : doc.titleEN}
+                    {getLocalizedValue(doc.titles, language)}
                 </h3>
 
-                {/* Basic Info Row */}
                 <div className={styles.paperBasicInfo}>
                     <span>{doc.date}</span>
                     <span className={styles.separator}>|</span>
-                    <span>{language === 'CN' ? doc.lengthCN : doc.lengthEN}</span>
+                    <span>{getLocalizedValue(doc.lengths, language)}</span>
                     <span className={styles.separator}>|</span>
-                    <span>{language === 'CN' ? doc.originalLangCN : doc.originalLangEN}</span>
+                    <span>{getLocalizedValue(doc.originalLangs, language)}</span>
                 </div>
 
-                {/* Abstract */}
                 <div className={styles.description}>
                     <span className={styles.abstractText}>
-                        <span className={styles.abstractLabel}>{language === 'CN' ? '摘要: ' : 'Abstract: '}</span>
+                        <span className={styles.abstractLabel}>
+                            {language === 'CN' ? '摘要: ' : (language === 'JA' ? '要約: ' : 'Abstract: ')}
+                        </span>
                         {displayDescription}
                     </span>
                     {isLongAbstract && (
@@ -192,9 +193,9 @@ const Documents: React.FC = () => {
                             onClick={(e) => toggleAbstract(doc.id, e)}
                         >
                             {isExpanded ? (
-                                <>{language === 'CN' ? '收起' : 'Collapse'} <ChevronUp size={14} /></>
+                                <>{language === 'CN' ? '收起' : (language === 'JA' ? '閉じる' : 'Collapse')} <ChevronUp size={14} /></>
                             ) : (
-                                <>{language === 'CN' ? '展开' : 'Expand'} <ChevronDown size={14} /></>
+                                <>{language === 'CN' ? '展开' : (language === 'JA' ? '展開' : 'Expand')} <ChevronDown size={14} /></>
                             )}
                         </button>
                     )}
@@ -203,15 +204,15 @@ const Documents: React.FC = () => {
         );
     };
 
-    // Render GDD Card (enhanced with target position)
-    const renderGDDCard = (doc: typeof publicDocs[0]) => {
-        const description = language === 'CN' ? doc.descriptionCN : doc.descriptionEN;
+    // Render GDD Card
+    const renderGDDCard = (doc: PublicDoc) => {
+        const description = getLocalizedValue(doc.descriptions, language) || '';
         const isLongAbstract = description.length > 150;
         const isExpanded = expandedAbstracts.has(doc.id);
         const displayDescription = isLongAbstract && !isExpanded
             ? description.slice(0, 150) + '...'
             : description;
-        const targetPosition = language === 'CN' ? doc.targetPositionCN : doc.targetPositionEN;
+        const targetPosition = getLocalizedValue(doc.targetPositions, language);
 
         return (
             <div
@@ -219,43 +220,41 @@ const Documents: React.FC = () => {
                 className={styles.card}
                 onClick={() => handleCardClick(doc)}
             >
-                {/* Category Badge */}
                 <div className={styles.categoryBadge} data-category={doc.gddType || 'GDD'}>
                     {gddTypeIcons[doc.gddType || 'GDD']}
                 </div>
 
-                {/* Title Row */}
                 <div className={styles.cardHeader}>
                     <h3 className={styles.docTitle}>
-                        {language === 'CN' ? doc.titleCN : doc.titleEN}
+                        {getLocalizedValue(doc.titles, language)}
                     </h3>
                 </div>
 
-                {/* Meta Row */}
                 <div className={styles.metaRow}>
                     <span className={styles.metaItem}>{doc.date}</span>
                     <span className={styles.separator}>|</span>
                     <span className={styles.metaItem}>
-                        {language === 'CN' ? doc.originalLangCN : doc.originalLangEN}
+                        {getLocalizedValue(doc.originalLangs, language)}
                     </span>
                     <span className={styles.separator}>|</span>
                     <span className={styles.metaItem}>
-                        {language === 'CN' ? doc.lengthCN : doc.lengthEN}
+                        {getLocalizedValue(doc.lengths, language)}
                     </span>
                     {targetPosition && (
                         <>
                             <span className={styles.separator}>|</span>
                             <span className={`${styles.metaItem} ${styles.targetPosition}`}>
-                                {language === 'CN' ? '目标岗位: ' : 'Target: '}{targetPosition}
+                                {language === 'CN' ? '目标岗位: ' : (language === 'JA' ? '志望職種: ' : 'Target: ')}{targetPosition}
                             </span>
                         </>
                     )}
                 </div>
 
-                {/* Abstract / Description */}
                 <div className={styles.description}>
                     <span className={styles.abstractText}>
-                        <span className={styles.abstractLabel}>{language === 'CN' ? '摘要: ' : 'Abstract: '}</span>
+                        <span className={styles.abstractLabel}>
+                            {language === 'CN' ? '摘要: ' : (language === 'JA' ? '要約: ' : 'Abstract: ')}
+                        </span>
                         {displayDescription}
                     </span>
                     {isLongAbstract && (
@@ -264,9 +263,9 @@ const Documents: React.FC = () => {
                             onClick={(e) => toggleAbstract(doc.id, e)}
                         >
                             {isExpanded ? (
-                                <>{language === 'CN' ? '收起' : 'Collapse'} <ChevronUp size={14} /></>
+                                <>{language === 'CN' ? '收起' : (language === 'JA' ? '閉じる' : 'Collapse')} <ChevronUp size={14} /></>
                             ) : (
-                                <>{language === 'CN' ? '展开' : 'Expand'} <ChevronDown size={14} /></>
+                                <>{language === 'CN' ? '展开' : (language === 'JA' ? '展開' : 'Expand')} <ChevronDown size={14} /></>
                             )}
                         </button>
                     )}
@@ -278,11 +277,11 @@ const Documents: React.FC = () => {
     return (
         <div className={styles.container}>
             <header className={styles.header}>
-                <h1 className={styles.title}>{language === 'CN' ? '过往文档' : 'Past Documents'}</h1>
+                <h1 className={styles.title}>
+                    {getLocalizedValue(siteConfig.pages.documents.titles, language)}
+                </h1>
                 <p className={styles.subtitle}>
-                    {language === 'CN'
-                        ? '包含可公开的设计文档、分析文章及学术论文。'
-                        : 'Collection of publicable Game Design Documents, Analysis Articles & Academic Papers.'}
+                    {getLocalizedValue(siteConfig.pages.documents.subtitles, language)}
                 </p>
             </header>
 
@@ -291,7 +290,7 @@ const Documents: React.FC = () => {
                 <section className={`${styles.section} ${styles.paperSection}`}>
                     <h2 className={styles.sectionTitle}>
                         <BookOpen size={20} />
-                        {language === 'CN' ? '学术论文' : 'Academic Papers'}
+                        {language === 'CN' ? '学术论文' : (language === 'JA' ? '学術論文' : 'Academic Papers')}
                     </h2>
                     <div className={styles.grid}>
                         {papers.map(renderPaperCard)}
@@ -303,7 +302,7 @@ const Documents: React.FC = () => {
             <section className={`${styles.section} ${styles.gddSection}`}>
                 <h2 className={styles.sectionTitle}>
                     <FileText size={20} />
-                    {language === 'CN' ? '过往文书案例' : 'Past Paper Work Examples'}
+                    {language === 'CN' ? '过往文书案例' : (language === 'JA' ? '過去の書類作成事例' : 'Past Paper Work Examples')}
                 </h2>
 
                 {gddTypeOrder.map(type => {
@@ -326,10 +325,10 @@ const Documents: React.FC = () => {
                                 </div>
                                 <div className={styles.gddTypeInfo}>
                                     <h3 className={styles.gddTypeTitle}>
-                                        {language === 'CN' ? gddTypeLabels[type].cn : gddTypeLabels[type].en}
+                                        {getLocalizedValue(gddTypeLabels[type], language)}
                                     </h3>
                                     <p className={styles.gddTypeDesc}>
-                                        {language === 'CN' ? gddTypeDescriptions[type].cn : gddTypeDescriptions[type].en}
+                                        {getLocalizedValue(gddTypeDescriptions[type], language)}
                                     </p>
                                 </div>
                                 <span className={styles.gddTypeCount}>{docs.length}</span>

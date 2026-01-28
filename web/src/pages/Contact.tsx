@@ -4,6 +4,7 @@ import styles from './Contact.module.css';
 import { Send } from 'lucide-react';
 import { siteConfig } from '../data/siteConfig';
 import { contactData, getContactIcon } from '../data/contact';
+import { getLocalizedValue } from '../utils/i18n';
 
 const Contact: React.FC = () => {
     const { language, t } = useLanguage();
@@ -20,9 +21,7 @@ const Contact: React.FC = () => {
             <header className={styles.header}>
                 <h1 className={styles.title}>{t('Contact Me')}</h1>
                 <p className={styles.subtitle}>
-                    {language === 'CN'
-                        ? '随时欢迎通过邮件与我联系。'
-                        : 'Feel free to reach out via email.'}
+                    {t('Contact Subtitle')}
                 </p>
             </header>
 
@@ -33,17 +32,20 @@ const Contact: React.FC = () => {
                             {getContactIcon(section.iconName)}
                         </div>
                         <h2 className={styles.cardTitle}>
-                            {language === 'CN' ? section.titleCN : section.titleEN}
+                            {getLocalizedValue(section.titles, language)}
                         </h2>
                         <p className={styles.cardDesc}>
-                            {language === 'CN' ? section.descCN : section.descEN}
+                            {getLocalizedValue(section.descriptions, language)}
                         </p>
                         <a
-                            href={getMailto(section.subject, section.body)}
+                            href={getMailto(
+                                getLocalizedValue(section.subjects, language) || '',
+                                getLocalizedValue(section.bodies, language) || ''
+                            )}
                             className={styles.contactButton}
                         >
                             <Send size={16} />
-                            {language === 'CN' ? '立即联系' : 'Contact Immediately'}
+                            {t('Contact Immediately')}
                         </a>
                     </div>
                 ))}

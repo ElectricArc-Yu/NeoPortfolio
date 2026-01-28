@@ -4,6 +4,7 @@ import { mediaSeries, mediaItems } from '../data/media';
 import styles from './Media.module.css';
 import { PlayCircle, Globe, Clock, List, ExternalLink, ChevronDown, Mic, Video, Lock, Calendar, X, FileText } from 'lucide-react';
 import { getAssetPath } from '../utils/assetPath';
+import { getLocalizedValue } from '../utils/i18n';
 import type { MediaSeries, MediaEpisode, PodcastEpisode, PlatformLink } from '../data/types';
 import { siteConfig } from '../data/siteConfig';
 
@@ -28,7 +29,7 @@ const isFutureDate = (dateStr?: string): boolean => {
 };
 
 // Format scheduled date for display
-const formatScheduledDate = (dateStr: string, language: 'CN' | 'EN'): string => {
+const formatScheduledDate = (dateStr: string, language: string): string => {
     const normalizedDate = dateStr.replace(/\./g, '-');
     const date = new Date(normalizedDate);
     if (language === 'CN') {
@@ -116,7 +117,8 @@ const Media: React.FC = () => {
         return (
             <div className={styles.platformLinks}>
                 {links.map((link, idx) => {
-                    const label = link.label || platformConfig[link.platform]?.label || link.platform;
+                    const localizedLabel = getLocalizedValue(link.labels, language);
+                    const label = localizedLabel || platformConfig[link.platform]?.label || link.platform;
                     let displayLabel = label;
                     let customClass = '';
 
@@ -148,7 +150,7 @@ const Media: React.FC = () => {
                     return (
                         <a
                             key={idx}
-                            href={link.url}
+                            href={getLocalizedValue(link.urls, language)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`${styles.platformLink} ${customClass}`}
@@ -226,12 +228,12 @@ const Media: React.FC = () => {
 
                 <div className={styles.episodeContent}>
                     <h4 className={styles.episodeTitle}>
-                        {language === 'CN' ? episode.titleCN : episode.titleEN}
+                        {getLocalizedValue(episode.titles, language)}
                     </h4>
 
-                    {episode.descriptionCN && (
+                    {getLocalizedValue(episode.descriptions, language) && (
                         <p className={styles.episodeDescription}>
-                            {language === 'CN' ? episode.descriptionCN : episode.descriptionEN}
+                            {getLocalizedValue(episode.descriptions, language)}
                         </p>
                     )}
 
@@ -267,7 +269,7 @@ const Media: React.FC = () => {
                         {episode.episodeNumber}
                     </span>
                     <span className={styles.podcastEpisodeTitle}>
-                        {language === 'CN' ? episode.titleCN : episode.titleEN}
+                        {getLocalizedValue(episode.titles, language)}
                     </span>
                 </div>
                 {isScheduled && episode.scheduledDate && (
@@ -300,11 +302,11 @@ const Media: React.FC = () => {
                         </div>
                         <div className={styles.seriesTitles}>
                             <h2 className={styles.seriesName}>
-                                {language === 'CN' ? series.seriesNameCN : series.seriesNameEN}
+                                {getLocalizedValue(series.seriesNames, language)}
                             </h2>
                             {!isExpanded && (
                                 <p className={styles.seriesDescription}>
-                                    {language === 'CN' ? series.descriptionCN : series.descriptionEN}
+                                    {getLocalizedValue(series.descriptions, language)}
                                 </p>
                             )}
                         </div>
@@ -334,7 +336,7 @@ const Media: React.FC = () => {
                 {isExpanded && (
                     <div className={styles.seriesContent}>
                         <p className={styles.expandedDescription}>
-                            {language === 'CN' ? series.descriptionCN : series.descriptionEN}
+                            {getLocalizedValue(series.descriptions, language)}
                         </p>
                         <div className={styles.contentSeparator} />
 
@@ -366,12 +368,10 @@ const Media: React.FC = () => {
         <div className={styles.container}>
             <header className={styles.header}>
                 <h1 className={styles.title}>
-                    {language === 'CN' ? siteConfig.pages.media.titleCN : siteConfig.pages.media.titleEN}
+                    {getLocalizedValue(siteConfig.pages.media.titles, language)}
                 </h1>
                 <p className={styles.subtitle}>
-                    {language === 'CN'
-                        ? siteConfig.pages.media.subtitleCN
-                        : siteConfig.pages.media.subtitleEN}
+                    {getLocalizedValue(siteConfig.pages.media.subtitles, language)}
                 </p>
             </header>
 
@@ -430,7 +430,7 @@ const Media: React.FC = () => {
                                                 {item.thumbnail && (
                                                     <img
                                                         src={getAssetPath(item.thumbnail)}
-                                                        alt={item.title}
+                                                        alt={getLocalizedValue(item.titles, language)}
                                                         className={styles.thumbnail}
                                                     />
                                                 )}
@@ -441,7 +441,7 @@ const Media: React.FC = () => {
 
                                             <div className={styles.content}>
                                                 <div className={styles.cardHeader}>
-                                                    <h3 className={styles.mediaTitle}>{item.title}</h3>
+                                                    <h3 className={styles.mediaTitle}>{getLocalizedValue(item.titles, language)}</h3>
                                                     <div className={styles.badges}>
                                                         <span className={`${styles.badge} ${styles.carrierBadge}`}>{item.carrier}</span>
                                                         {item.languages.map((lang, idx) => renderBadge(lang, `misc-lang-${idx}`))}
@@ -449,7 +449,7 @@ const Media: React.FC = () => {
                                                 </div>
 
                                                 <p className={styles.description}>
-                                                    {language === 'CN' ? item.descriptionCN : item.descriptionEN}
+                                                    {getLocalizedValue(item.descriptions, language)}
                                                 </p>
 
                                                 <div className={styles.footer}>

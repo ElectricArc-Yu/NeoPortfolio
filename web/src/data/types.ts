@@ -2,139 +2,116 @@ export type ProjectType = 'Commercial' | 'Personal' | 'Miscellaneous';
 export type Engine = 'Unity' | 'Unreal' | 'Python' | 'Other';
 export type GameType = 'Action' | 'RPG' | 'Strategy' | 'Puzzle' | 'Web Site' | 'Simulation' | 'Survival' | 'Horror' | 'Platformer' | 'Tool' | 'Analysis' | 'Visual Novel' | 'Action RPG' | 'FPS' | 'Hero Shooter' | 'World-building' | 'IP Framework' | 'SoC' | 'Other';
 
+/**
+ * Generic localized structure
+ */
+export type Localized<T = string> = Record<string, T>;
+
 export interface MainProject {
     id: string;
-    titleCN: string;
-    titleEN: string;
-    descriptionCN?: string;
-    descriptionEN?: string;
+    titles: Localized;
+    descriptions?: Localized;
     gameType?: GameType | GameType[];
 }
 
 export interface ProjectLink {
-    labelCN: string;
-    labelEN: string;
-    urlCN?: string;
-    urlEN?: string; // If different, or fallback
+    labels: Localized;
+    urls: Localized; // Usually same URL, but can vary by language
     type: 'repo' | 'demo' | 'doc' | 'video' | 'Release Page';
 }
 
 export interface Project {
     id: string;
-    mainProjectId?: string; // Link to a MainProject
-    title: string;
-    titleCN: string;
-    titleEN: string;
-    timelineTitleCN?: string; // Optional: separate title for resume timeline
-    timelineTitleEN?: string;
+    mainProjectId?: string;
+    titles: Localized;
+    timelineTitles?: Localized;
     type: ProjectType;
-    showPriority: number; // Higher number = shown first
-    engine: Engine; // For icon display
-    gameType?: GameType | GameType[]; // For colored tag on cards
-    role: string[]; // e.g. ["Design", "Program"]
-    techStack: string[]; // e.g. ["Unity", "C#"]
+    showPriority: number;
+    engine: Engine;
+    gameType?: GameType | GameType[];
+    role: string[];
+    techStack: string[];
     thumbnail: string;
-    shortDescriptionCN: string;
-    shortDescriptionEN: string;
-    introduceCN?: string; // For Project Introduce section
-    introduceEN?: string;
+    shortDescriptions: Localized;
+    introduces?: Localized;
 
     // Localized Fields
-    platformCN?: string;
-    platformEN?: string;
-    durationCN?: string;
-    durationEN?: string;
-    startDate?: string; // YYYY.MM
-    endDate?: string | 'Present';   // YYYY.MM or 'Present'
-    teamSizeCN?: string;
-    teamSizeEN?: string;
+    platforms?: Localized;
+    durations?: Localized;
+    startDate?: string;
+    endDate?: string | 'Present';
+    teamSizes?: Localized;
 
     // Metrics
-    workHours?: number; // For personal projects
-    sales?: string; // For commercial projects
-    priceCN?: string; // e.g. "¥48"
-    priceEN?: string; // e.g. "$9.99"
+    workHours?: number;
+    sales?: string;
+    prices?: Localized;
 
     // Detail Page Data
-    descriptionCN: string; // Markdown supported
-    descriptionEN: string;
+    descriptions: Localized; // Markdown supported
     images: string[];
-    video?: string; // Optional single video URL for carousel (2nd slot)
+    video?: string;
     videos?: { type: 'youtube' | 'local', src: string, title?: string }[];
-    workDistribution?: { label: string, percentage: number }[]; // For Pie Chart
+    workDistribution?: { labels: Localized, percentage: number }[];
     links: ProjectLink[];
 
     // GDD Integration
-    gddPdfUrl?: string; // Path to PDF
+    gddPdfUrl?: string;
 }
 
-// Platform types for media links
 export type MediaPlatform = 'Bilibili' | 'YouTube' | 'XiaoYuZhou' | 'Gcores' | 'GameRes' | 'Podcast' | 'Local' | 'Other';
 
-// Link to a specific platform
 export interface PlatformLink {
     platform: MediaPlatform;
-    url: string;
-    label?: string; // Optional custom label
+    urls: Localized;
+    labels?: Localized; // If labels start with %X%, it's a styled label.
 }
 
-// Single episode/video in a series
 export interface MediaEpisode {
     id: string;
-    episodeNumber: string; // e.g., "00", "01", "02"
-    type?: ('video' | 'article') | ('video' | 'article')[]; // Allow single or multiple types
-    titleCN: string;
-    titleEN: string;
-    descriptionCN?: string;
-    descriptionEN?: string;
+    episodeNumber: string;
+    type?: ('video' | 'article') | ('video' | 'article')[];
+    titles: Localized;
+    descriptions?: Localized;
     date: string;
     duration?: string;
     thumbnail?: string;
-    links: PlatformLink[]; // Multiple platform links
-    isPublished?: boolean; // Default true, set false for unreleased
-    scheduledDate?: string; // Expected release date for unreleased content
+    links: PlatformLink[];
+    isPublished?: boolean;
+    scheduledDate?: string;
 }
 
-// Podcast episode (simpler, just for listing)
 export interface PodcastEpisode {
     id: string;
     episodeNumber: string;
-    titleCN: string;
-    titleEN: string;
-    isPublished?: boolean; // Default true, set false for unreleased
-    scheduledDate?: string; // Expected release date for unreleased content
+    titles: Localized;
+    isPublished?: boolean;
+    scheduledDate?: string;
 }
 
-// A media series (collection of episodes)
 export interface MediaSeries {
     id: string;
-    seriesNameCN: string;
-    seriesNameEN: string;
+    seriesNames: Localized;
     type: 'video-series' | 'podcast-series';
-    seriesBadges?: string[]; // Optional explicit badges for the series header (e.g., ["Video", "Article"])
+    seriesBadges?: string[];
     languages: string[];
-    descriptionCN: string;
-    descriptionEN: string;
+    descriptions: Localized;
     thumbnail?: string;
-    // For video series: individual episodes with their own links
     episodes?: MediaEpisode[];
-    // For podcast series: main link + episode list
     mainLinks?: PlatformLink[];
     podcastEpisodes?: PodcastEpisode[];
-    episodesCount?: number; // Total count if not listing all
+    episodesCount?: number;
 }
 
-// Legacy MediaItem for backwards compatibility (demo videos, etc.)
 export interface MediaItem {
     id: string;
-    title: string;
+    titles: Localized;
     type: 'video' | 'podcast' | 'analysis';
     carrier: 'Bilibili' | 'YouTube' | 'Local' | 'XiaoYuZhou' | 'Other';
     languages: string[];
     url: string;
     thumbnail?: string;
-    descriptionCN: string;
-    descriptionEN: string;
+    descriptions: Localized;
     date: string;
     isCollection: boolean;
     duration?: string;
@@ -143,48 +120,69 @@ export interface MediaItem {
 
 export interface ResumeData {
     header: {
-        name: {
-            cn: string;
-            en: string;
-        };
+        names: Localized;
         email: string;
         phone?: string;
-        role: string;
-        links: { label: string; url: string }[];
+        roles: Localized;
+        links: { labels: Localized; urls: Localized }[];
     };
-    // Define structure similar to the Latex file
-    about: {
-        cn: string;
-        en: string;
-    };
+    about: Localized;
     experience: {
-        companyCN: string;
-        companyEN: string;
-        roleCN: string;
-        roleEN: string;
+        companies: Localized;
+        roles: Localized;
         period: string;
-        sizeCN: string;
-        sizeEN: string;
-        detailsCN: string[];
-        detailsEN: string[];
+        sizes: Localized;
+        details: Localized<string[]>;
     }[];
     education: {
         period: string;
-        schoolCN: string;
-        schoolEN: string;
-        degreeCN: string;
-        degreeEN: string;
+        schools: Localized;
+        degrees: Localized;
         gpa?: string;
         awards?: string[];
     }[];
+    certifications?: {
+        id: string;
+        abbreviation?: string;
+        titles: Localized;
+        date: string;
+        url?: string;
+        pdfUrl?: string;
+        icon?: string;
+        highlight?: boolean;
+    }[];
     skills: {
         category: string;
-        categoryCN: string;
+        categories: Localized;
         items: { name: string; highlight?: boolean }[];
     }[];
     cta?: {
-        textCN: string;
-        textEN: string;
+        texts: Localized;
         link: string;
     };
+}
+
+export type DocCategory = 'GDD' | 'Paper';
+export type PaperType = 'Letter' | 'Paper' | 'Full Paper' | 'Preprint' | 'Technical Report';
+export type GDDType = 'Test' | 'Analysis' | 'Methodology' | 'GDD';
+
+export interface PublicDoc {
+    id: string;
+    titles: Localized;
+    date: string;
+    descriptions: Localized; // Abstract
+    url?: string; // PDF for internal docs
+    externalUrl?: string; // Published page link
+
+    category: DocCategory;
+    gddType?: GDDType;
+    originalLangs: Localized;
+    lengths: Localized;
+    isInternal: boolean;
+    targetPositions?: Localized;
+
+    paperType?: PaperType;
+    journal?: string;
+    impactFactor?: string;
+    preprintUrl?: string;
 }

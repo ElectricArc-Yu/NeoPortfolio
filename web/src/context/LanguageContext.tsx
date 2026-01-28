@@ -1,45 +1,54 @@
-import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
-
+import React, { createContext, useContext, useState, type ReactNode } from 'react';
 import { translations } from '../data/translations';
-import type { Language } from '../data/translations';
+import { siteConfig } from '../data/siteConfig';
+
+export type Language = string;
 
 interface LanguageContextType {
     language: Language;
     setLanguage: (lang: Language) => void;
     t: (key: string) => string;
+    supportedLanguages: { code: string; label: string }[];
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    // Determine initial language based on browser settings or stored preference
+    const supportedLanguages = siteConfig.i18n.languages;
+
     const getInitialLanguage = (): Language => {
-        const stored = localStorage.getItem('pref-lang') as Language;
-        if (stored === 'EN' || stored === 'CN') return stored;
+        const stored = localStorage.getItem('pref-lang');
+        if (stored && supportedLanguages.some(l => l.code === stored)) {
+            return stored;
+        }
 
         const browserLang = navigator.language.toLowerCase();
-        if (browserLang.includes('zh')) return 'CN';
-        return 'EN';
+        const found = supportedLanguages.find(l =>
+            browserLang.includes(l.code.toLowerCase()) ||
+            (l.code === 'CN' && browserLang.includes('zh'))
+        );
+
+        return found ? found.code : siteConfig.i18n.defaultLanguage;
     };
 
-    const [language, setLanguageState] = useState<Language>('CN'); // Initial junk value for SSR safety if needed, or just call helper
-
-    useEffect(() => {
-        setLanguageState(getInitialLanguage());
-    }, []);
+    const [language, setLanguageState] = useState<Language>(getInitialLanguage);
 
     const setLanguage = (lang: Language) => {
-        setLanguageState(lang);
-        localStorage.setItem('pref-lang', lang);
+        if (supportedLanguages.some(l => l.code === lang)) {
+            setLanguageState(lang);
+            localStorage.setItem('pref-lang', lang);
+        }
     };
 
     const t = (key: string) => {
-        return (translations[language] as any)[key] || key;
+        const langData = translations[language];
+        if (!langData) return key;
+        return langData[key] || key;
     };
 
     return (
-        <div lang={language === 'CN' ? 'zh-CN' : 'en'}>
-            <LanguageContext.Provider value={{ language, setLanguage, t }}>
+        <div lang={language === 'CN' ? 'zh-CN' : (language === 'JA' ? 'ja' : 'en')}>
+            <LanguageContext.Provider value={{ language, setLanguage, t, supportedLanguages }}>
                 {children}
             </LanguageContext.Provider>
         </div>

@@ -1,15 +1,23 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 
+import type { Localized } from '../data/types';
+import { useLanguage } from '../context/LanguageContext';
+import { getLocalizedValue } from '../utils/i18n';
+
 interface WorkChartProps {
-    data: { label: string; percentage: number }[];
+    data: { labels: Localized; percentage: number }[];
 }
 
 const COLORS = ['#00ADB5', '#EEEEEE', '#FF5722', '#393E46'];
 
 const WorkChart: React.FC<WorkChartProps> = ({ data }) => {
-    // Transform key 'label' to 'name' for Recharts if needed, or just map
-    const chartData = data.map(item => ({ name: item.label, value: item.percentage }));
+    const { language } = useLanguage();
+    // Transform key 'labels' to 'name' for Recharts using localization
+    const chartData = data.map(item => ({
+        name: getLocalizedValue(item.labels, language) || 'Unknown',
+        value: item.percentage
+    }));
 
     return (
         <div style={{ width: '100%', height: 300 }}>

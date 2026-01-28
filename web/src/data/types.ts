@@ -123,7 +123,7 @@ export interface ResumeData {
         names: Localized;
         email: string;
         phone?: string;
-        role: string;
+        roles: Localized;
         links: { labels: Localized; urls: Localized }[];
     };
     about: Localized;
@@ -140,6 +140,16 @@ export interface ResumeData {
         degrees: Localized;
         gpa?: string;
         awards?: string[];
+    }[];
+    certifications?: {
+        id: string;
+        abbreviation?: string;
+        titles: Localized;
+        date: string;
+        url?: string;
+        pdfUrl?: string;
+        icon?: string;
+        highlight?: boolean;
     }[];
     skills: {
         category: string;

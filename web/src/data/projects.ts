@@ -5,7 +5,7 @@ export const projects: Project[] = [
     {//Nuclear Survival
         id: 'nuclear-survival',
         mainProjectId: 'netease-minecraft-mod',
-        titles: { CN: "辐射生存", EN: "Nuclear Survival" },
+        titles: { CN: "辐射生存", EN: "Nuclear Survival", JA: "Nuclear Survival" },
         type: 'Commercial',
         showPriority: 100,
         engine: 'Python',
@@ -13,20 +13,24 @@ export const projects: Project[] = [
         role: ['Lead Designer'],
         techStack: ['Full Stack Design'],
         thumbnail: '/assets/images/FOCover.png',
-        shortDescriptions: { CN: "后启示录题材的家园建设与探索模组,通过自动化系统优化玩家体验。", EN: "Post-apocalyptic base-building and exploration mod with progressive automation systems." },
-        introduces: { CN: `后启示录题材的家园建设与探索向 MC 模组，
+        shortDescriptions: { CN: "后启示录题材的家园建设与探索模组,通过自动化系统优化玩家体验。", EN: "Post-apocalyptic base-building and exploration mod with progressive automation systems.", JA: "ポスト・アポカリプスを題材とした基地建設・探索MOD。自動化システムによりプレイヤー体験を最適化。" },
+        introduces: {
+            CN: `后启示录题材的家园建设与探索向 MC 模组，
 以基地建设->外出探索->资源带回->自动化解放重复劳动为核心循环，
 明确将设计重点放在降低挖矿等低价值重复操作的时间占比，通过逐步解锁的自动化系统引导玩家将精力转移至探索决策、基地规划与长期发展目标。`, EN: `A post-apocalyptic base-building and exploration Minecraft mod.
 Focuses on the core loop of Base Building -> Exploration -> Resource Collection -> Automation for repetition relief.
-The design prioritizes reducing low-value repetitive tasks like mining, guiding players to shift their focus toward exploration decisions, base planning, and long-term goals through progressive automation systems.` },
+The design prioritizes reducing low-value repetitive tasks like mining, guiding players to shift their focus toward exploration decisions, base planning, and long-term goals through progressive automation systems.`, JA: `ポスト・アポカリプスを題材とした基地建設・探索系Minecraft MOD。
+「基地建設 → 探索 → 資源回収 → 自動化による単純作業の解放」をコアループとし、
+採掘などの低価値な反復作業の時間を削減することに重点を置いています。段階的に解放される自動化システムを通じて、プレイヤーの関心を探索の意思決定、基地計画、長期的な発展目標へと導きます。` },
         sales: '100K+ Units',
-        platforms: { CN: "我的世界 (中国版)", EN: "Minecraft (NetEase)" },
-        durations: { CN: "约4个月", EN: "About 4 months" },
+        platforms: { CN: "我的世界 (中国版)", EN: "Minecraft (NetEase)", JA: "Minecraft (NetEase中国版)" },
+        durations: { CN: "约4个月", EN: "About 4 months", JA: "約4ヶ月" },
         startDate: '2023.03',
         endDate: '2023.06',
-        teamSizes: { CN: "9人", EN: "9 People" },
-        prices: { CN: "¥10", EN: "$1.99" },
-        descriptions: { CN: `
+        teamSizes: { CN: "9人", EN: "9 People", JA: "9人" },
+        prices: { CN: "¥10", EN: "$1.99", JA: "¥220" },
+        descriptions: {
+            CN: `
 
 ## 设计挑战
 
@@ -95,17 +99,51 @@ Built the experience around mech combat as the primary hook, introduced monster 
 **Team Efficiency Gains:**
 *   As sole designer, coordinated 9-person team (4 programmers, 4 artists, 1 operations) to successful delivery
 *   Introduced Git version control and naming standards, reducing average development cycle from 4 months to 2 months
+    `, JA: `
+## 設計の挑戦
+
+ターゲット層は直接的な感覚刺激を好み、複雑なシステムへの認知能力が限られていた一方で、採掘などの低価値な反復作業を減らしたいと考えていました。爽快なメカ戦闘を提供しつつ、基地建設を単なる装飾ではなく戦略的な価値を持つものにすることが核心的な課題でした。
+
+## 設計ソリューション
+
+**コアループ設計:**
+メカ戦闘を核に体験を構築し、モンスターの襲撃システムを通じて基地を装飾から戦略的拠点へと変貌させました。同時に自動化システムを導入し、プレイヤーを採掘から解放して戦闘と探索に集中できるようにしました。
+
+**認知負荷の管理:**
+*   階層的なコンテンツ導入戦略を採用し、一度に多数の複雑なシステムを提示することを回避。
+*   再利用可能なコンテンツ構造（武器、メカ、建築物など）を設計し、修得した知識を新しいコンテンツに応用できるように。
+*   資源システムを「初期の基礎鉱物（鉄、ダイヤ）→ 後期の食糧鉱物（金）」という明確な進行に簡素化し、自然に自動化へと誘導。
+
+**空間とシステムの設計:**
+*   オープンワールドに20以上の探索可能エリア（廃墟、バンカー、研究所など）を散布。探索の自由度と内容密度のバランスを調整。
+*   8つのコアシステム（家園建設、自動化、メカ戦闘、モンスター襲撃、研究、特殊製造、天候イベント、キャラクター属性）を設計し、コアループを相互にサポート。
+*   50種類以上の武器、30種類以上の敵、5種類のメカ、70種類以上の建築ブロック、40種類以上の食物・薬品、10種類以上のバイオームを実装。
+
+## 成果と検証
+
+**プレイヤーのフィードバックとデータ:**
+*   2000件以上のフィードバックをワードクラウドで分析。メカ戦闘と基地防衛の楽しさが成功裏に伝わっていることを検証。
+*   フィードバックに基づきシステム設計を反復し、売上が10%向上、評価が0.2向上。
+
+**商業パフォーマンス:**
+*   累計販売数10万本を突破。
+*   発売月にプラットフォームランキングのトップ5にランクイン。
+*   アップデート（末日バンカー版など）の継続により製品のライフサイクルを延長。
+
+**チーム効率の向上:**
+*   唯一のプランナーとして9人チーム（プログラマー4人、アーティスト4人、運営1人）を調整し、納品を達成。
+*   Gitによるバージョン管理と命名規則の導入により、平均開発期間を4ヶ月から2ヶ月に短縮。
     ` },
         images: ['/assets/images/FOCover.png', '/assets/images/Fallout_01.png', '/assets/images/Fallout_02.png'],
         video: '/assets/images/FallOut.mp4',
         links: [
-            { labels: { CN: "发布页面", EN: "Release Page" }, urls: { CN: 'https://resource-minecraft.h5.163.com/#/detail?id=4664344300463689714', EN: 'https://resource-minecraft.h5.163.com/#/detail?id=4664344300463689714' }, type: 'Release Page' }
+            { labels: { CN: "发布页面", EN: "Release Page", JA: "リリースページ" }, urls: { CN: 'https://resource-minecraft.h5.163.com/#/detail?id=4664344300463689714', EN: 'https://resource-minecraft.h5.163.com/#/detail?id=4664344300463689714' }, type: 'Release Page' }
         ]
     },
     {//Horror Isle
         id: 'horror-isle',
         mainProjectId: 'netease-minecraft-mod',
-        titles: { CN: "恐怖岛", EN: "Horror Isle" },
+        titles: { CN: "恐怖岛", EN: "Horror Isle", JA: "恐怖の島" },
         type: 'Commercial',
         showPriority: 90,
         engine: 'Python',
@@ -113,22 +151,34 @@ Built the experience around mech combat as the primary hook, introduced monster 
         role: ['Lead Designer'],
         techStack: ['Full Stack Design'],
         thumbnail: '/assets/images/KBDCover.png',
-        shortDescriptions: { CN: "恐怖主题的半线性RPG模组,通过战斗系统聚焦短期刺激体验。", EN: "Horror-themed semi-linear RPG mod focused on combat-driven short-session gameplay." },
-        introduces: { CN: `恐怖主题的半线性 RPG 模组，
-        以探索->打怪->掉落物换武器->提升战斗能力->打Boss->推剧情进度为进度控制循环，
-        以探索->SAN与饱食度消耗->食物、药物消耗->延迟制作为节奏控制循环，
-        通过战斗系统反馈节点同质化交换稳定的成长思路以确保不超过目标用户的认知负荷，并通过战斗表现的优化和聚焦满足目标用户的底层需求。`, EN: `A semi-linear horror-themed RPG mod.
-        The progress control loop is exploration->kill->drop->weapon upgrade->boss->story progress,
-        The pace control loop is exploration->SAN and hunger consumption->food and medicine consumption->delay,
-        Through the feedback of the combat system, the same type of exchange is used to ensure that the growth does not exceed the cognitive load of the target user, and the optimization and focus of the combat performance are satisfied by the target user.` },
+        shortDescriptions: {
+            CN: "恐怖主题的半线性RPG模组,通过战斗系统聚焦短期刺激体验。",
+            EN: "Horror-themed semi-linear RPG mod focused on combat-driven short-session gameplay.",
+            JA: "ホラーをテーマにした半線形RPG MOD。戦闘システムを通じて短期間の刺激的な体験に焦点を当てる。"
+        },
+        introduces: {
+            CN: `恐怖主题的半线性 RPG 模组，
+以探索->打怪->掉落物换武器->提升战斗能力->打Boss->推剧情进度为进度控制循环，
+以探索->SAN与饱食度消耗->食物、药物消耗->延迟制作为节奏控制循环，
+通过战斗系统反馈节点同质化交换稳定的成长思路以确保不超过目标用户的认知负荷，并通过战斗表现的优化和聚焦满足目标用户的底层需求。`,
+            EN: `A semi-linear horror-themed RPG mod.
+The progress control loop is exploration->kill->drop->weapon upgrade->boss->story progress,
+The pace control loop is exploration->SAN and hunger consumption->food and medicine consumption->delay,
+Through the feedback of the combat system, the same type of exchange is used to ensure that the growth does not exceed the cognitive load of the target user, and the optimization and focus of the combat performance are satisfied by the target user.`,
+            JA: `ホラーをテーマにした半線形RPG MOD。
+「探索 → 討伐 → ドロップ品を武器と交換 → 戦闘能力向上 → ボス戦 → ストーリー進行」を進行管理ループとし、
+「探索 → SAN値と満腹度の消費 → 食料・薬品の消費 → クラフトによる遅延」をテンポ管理ループとしています。
+戦闘システムのフィードバックを均質化することで、ターゲットユーザーの認知負荷を超えない安定した成長モデルを構築。戦闘表現の最適化と集中により、ユーザーの根源的なニーズに応えます。`
+        },
         sales: '100K+ Units',
-        platforms: { CN: "我的世界 (中国版)", EN: "Minecraft (NetEase)" },
-        durations: { CN: "约2个月", EN: "About 2 months" },
+        platforms: { CN: "我的世界 (中国版)", EN: "Minecraft (NetEase)", JA: "Minecraft (NetEase中国版)" },
+        durations: { CN: "约2个月", EN: "About 2 months", JA: "約2ヶ月" },
         startDate: '2023.05',
         endDate: '2023.07',
-        teamSizes: { CN: "7人", EN: "7 People" },
-        prices: { CN: "¥10", EN: "$1.99" },
-        descriptions: { CN: `
+        teamSizes: { CN: "7人", EN: "7 People", JA: "7人" },
+        prices: { CN: "¥10", EN: "$1.99", JA: "¥220" },
+        descriptions: {
+            CN: `
 ## 设计挑战
 
 公司需要快速抢占热点IP,目标客群为低龄玩家,具有碎片化时间、短期多次游玩、预算有限的特征,优先追求短期刺激而非长线养成。核心设计难题在于:如何在UGC环境下(玩家游玩顺序与设计顺序差异极大)构建有效的进度体验,同时用极简的辅助系统(~10%内容占比)支撑核心战斗循环。
@@ -179,7 +229,8 @@ Built the experience around mech combat as the primary hook, introduced monster 
 *   原计划通过8个岛屿的完整发布+持续宣发抢占9个IP市场,因策略变更仅完成3个岛屿
 *   后续DLC未能跟进,错失销量拉升机会
 *   四维属性梯度在离职后被修改,导致评分从预期下降至4.3(生存体验受损)
-    `, EN: `
+`,
+            EN: `
 ## Design Challenge
 
 The company needed to rapidly occupy the horror genre hot IP. The target audience consisted of young players with fragmented playtime, short-session preferences, limited budgets, and a priority for immediate stimulation over long-term progression. The core design challenge: how to build effective progression in a UGC environment (where player exploration order drastically differs from design sequence) while supporting the core combat loop with minimal auxiliary systems (~10% content allocation).
@@ -230,15 +281,68 @@ Concentrated 90% of design effort on combat systems and their dependencies, deli
 *   Original plan to capture 9 IP markets through complete 8-island release + sustained marketing; only 3 islands completed due to strategy changes
 *   Follow-up DLC couldn't proceed, missing sales uplift opportunities
 *   Attribute gradient modifications after leaving caused rating drop to 4.3 (survival experience degraded)
-    ` },
-        images: ['/assets/images/KBDCover.png', '/assets/images/HorrorIsland_01.png', '/assets/images/HorrorIsland_02.png', '/assets/images/HorrorIsland_03.png'],
+`,
+            JA: `
+## 設計の挑戦
+人気ホラーIPブームに迅速に対応する必要がありました。ターゲット層は低年齢層で、断片的なプレイ時間、短期・反復的なプレイ傾向、限られた予算といった特徴を持ち、長期的な育成よりも短期的な刺激を求めていました。UGC環境（プレイヤーの探索順序が設計者の意図と大きく異なる）において、いかに効果的な進行体験を構築しつつ、最小限の補助システム（コンテンツ全体の約10%）でコアな戦闘サイクルを支えるかが課題でした。
+
+また、1つのMODで同時に9つの細分化されたIP市場（8つの異次元島＋各島のボス）をカバーし、それらの特色と数値の勾配をいかに設計するかも挑戦でした。
+
+## 設計ソリューション
+**戦闘システム集中戦略:**
+設計リソースの90%を戦闘システムとその依存関係（薬品、食料、特殊な四元ステータス）に集中させ、核となる楽しさを確実に伝達。補助システム（建築、機能ブロック等）を10%に抑えることで、認知負荷を下げ、プレイヤーの注意を戦闘に集中させました。
+
+**半線形的な進行管理:**
+*   メインストーリーは半線形設計を採用：チェックポイント（進行のボトルネック）のみを設置し、クリティカルパス（強制的な経路）は設定しません。
+*   純粋な線形進行による過度な強制を避け、Minecraftの持ち味である自由度とターゲット層の嗜好に合わせました。
+*   進行ループ：**探索 → 敵討伐 → ドロップ品を武器と交換 → 戦闘能力向上 → ボス撃破 → ストーリー進行**
+
+**二重消費によるテンポ調整:**
+*   SAN値（正気度）＋満腹度の二重消費システムを導入し、戦闘の強度とゲーム後半の差別化を制御。
+*   睡眠不足による回避不能なSAN値減少速度、薬品・食料の消費バランス、特殊ステータスが与ダメージに与える影響度を精密に調整。
+*   サバイバルモードにおいてプレイヤーが確かな習得感を得られるようにし、戦闘フィードバックを均質化することで認知負荷を制御しました。
+
+**IPマトリックス設計:**
+*   メインの島1つ＋8つの異次元島で構成。各島を個別のIP（特定のホラーテーマ、バイオーム、モンスターの行動パターン）に対応。
+*   8つの島を繋ぐ構造自体が第9のIPを形成し、「1つのMODで9つのIP市場をカバーする」という商業目標を達成。
+*   各島に独自の特色、数値の勾配、ボス戦を用意し、探索の新鮮さを維持。
+
+**コンテンツ規模:**
+*   10以上の探索地点、10以上の特殊地形、30以上の武器、40以上の敵、3体のボス。
+*   70以上の建築・機能ブロック、50以上の食料、30以上のバフ・デバフ、10以上のバイオーム。
+*   特殊戦闘システム、キャラクター属性システム、進行システム、特殊製造システム、ボス召喚機能、島移動システム。
+
+## 成果と検証
+**商業的パフォーマンス:**
+*   リリース初週からチャート入り。
+*   累計販売数10万本を突破（最初の3つの島がリリースされた段階）。
+*   7人のチームで2ヶ月の開発サイクルで納品を完了。
+
+**プレイヤーのフィードバック:**
+*   2000件以上のフィードバックを収集。
+*   戦闘システムとその周辺設計の有効性が検証され、核となる楽しさへの高い評価を得ました。
+
+**設計の検証:**
+*   「戦闘9：補助1」のリソース配分戦略が有効であることが証明され、認知負荷の軽減に成功。
+*   半線形設計により、自由度とガイドのバランスを最適化。
+
+**未達成の目標:**
+*   当初は8つの島を完遂してIPを拡大する計画でしたが、戦略変更により3つの島で終了。
+*   その後のDLC展開が行われず、さらなる販売機会を逸しました。
+*   離職後に属性の数値勾配が変更され、評価が期待値から4.3へ下落（サバイバル体験の損なわれ）。
+`
+        },
+        images: ['/assets/images/KBDCover.png', '/assets/images/Horror_01.png', '/assets/images/Horror_02.png', '/assets/images/Horror_03.png'],
         links: [
-            { labels: { CN: "发布页面", EN: "Release Page" }, urls: { CN: 'https://resource-minecraft.h5.163.com/#/detail?id=4665488888721273907', EN: 'https://resource-minecraft.h5.163.com/#/detail?id=4665488888721273907' }, type: 'Release Page' }
+            { labels: { CN: "发布页面", EN: "Release Page", JA: "リリースページ" }, urls: { CN: 'https://resource-minecraft.h5.163.com/#/detail?id=4842525790400877148', EN: 'https://resource-minecraft.h5.163.com/#/detail?id=4842525790400877148' }, type: 'Release Page' }
+        ],
+        workDistribution: [
+            { labels: { CN: "Game Design", EN: "Game Design", JA: "ゲームデザイン" }, percentage: 100 }
         ]
     },
     {//Project FR
         id: 'project-fr',
-        titles: { CN: "Project FR", EN: "Project FR" },
+        titles: { CN: "Project FR", EN: "Project FR", JA: "Project FR" },
         type: 'Commercial',
         showPriority: 75,
         engine: 'Unreal',
@@ -246,14 +350,19 @@ Concentrated 90% of design effort on combat systems and their dependencies, deli
         role: ['Creative Director'],
         techStack: ['UE5 Blueprint', 'Full Stack Design', 'Pre-production Management'],
         thumbnail: '/assets/images/FR_SystemDiagram.png',
-        shortDescriptions: { CN: "基于原创IP的中低体量单机ARPG预研,聚焦乐器战斗与主副机协同体验。", EN: "Mid-scale single-player ARPG pre-production with original IP, focused on instrument-based combat and dual-character cooperation." },
+        shortDescriptions: {
+            CN: "基于原创IP的中低体量单机ARPG预研,聚焦乐器战斗与主副机协同体验。",
+            EN: "Mid-scale single-player ARPG pre-production with original IP, focused on instrument-based combat and dual-character cooperation.",
+            JA: "オリジナルIPに基づく中規模シングルプレイヤーARPGのプリプロダクション。楽器を用いた戦闘とメイン・サブキャラクターの連携体験に焦点を当てる。"
+        },
         sales: 'Pre-production',
-        platforms: { CN: "PC", EN: "PC" },
-        durations: { CN: "约1年半", EN: "About 1.5 years" },
+        platforms: { CN: "PC", EN: "PC", JA: "PC" },
+        durations: { CN: "约1年半", EN: "About 1.5 years", JA: "約1.5年" },
         startDate: '2023.01',
         endDate: 'Present',
-        teamSizes: { CN: "3人 + 其他可用人员", EN: "3 People + Other people" },
-        descriptions: { CN: `
+        teamSizes: { CN: "3人 + 其他可用人员", EN: "3 People + Other people", JA: "3人 + その他サポート" },
+        descriptions: {
+            CN: `
 ## 项目背景与挑战
 
 **战略背景:**
@@ -326,7 +435,8 @@ Concentrated 90% of design effort on combat systems and their dependencies, deli
 **逆境中的韧性与判断:**
 *   在团队低产出、资金紧张、人员流失的多重困境下,依然维持项目推进与方向稳定
 *   清晰认知到当前困境的根源,并制定、执行解决方案
-    `, EN: `
+`,
+            EN: `
 ## Project Background & Challenges
 
 **Strategic Context:**
@@ -400,7 +510,82 @@ Used UE Blueprints to build minimal but effective gameplay concept validations, 
 **Resilience & Judgment Under Adversity:**
 *   Maintained project momentum and directional stability despite low team output, financial pressure, and personnel attrition
 *   Clearly recognized root causes of current difficulties, and formulated and executed solutions
-    ` },
+`,
+            JA: `
+## プロジェクトの背景と挑戦
+
+**戦略的背景:**
+オリジナルのIPの拡張可能性（将来的なライセンス展開）を検証し、IPがアドベンチャーゲーム（AVG）のラインに限定されないようにすると同時に、シードラウンドの資金調達段階（目標200万人民元）でアクションRPG（ARPG）というジャンルの実現可能性を証明する必要がありました。この予算内でバーティカルスライス（垂直切片）を完成させることが可能な唯一のベンチマークとして、『イースVII』をモデルに選択しました。
+
+**極限のリソース制約:**
+*   **チーム構成:** この製品ラインには、私とプログラマー1名、運営プランナー1名のみが残り、他はAVGラインのスタッフを必要に応じて活用。
+*   **資金状況:** 会社には数十万の債権しか残っていない状況。
+
+**核心的な設計課題:**
+極めて制限されたリソースの中で、いかに3C（キャラクター、カメラ、コントロール）と核心的な戦闘体験の方向性を明確にし、検証可能なプレイアブル・プロトタイプを構築するか。また、低生産性のチームでもなんとか推進できるよう十分なプロセス基準を確立し、同時に投資家にプロジェクトの潜在能力を確信させる方法が課題でした。
+
+## 設計ソリューション
+
+**核心的な遊びの検証 - 楽器戦闘 + メイン・サブ連携:**
+*   **設計の起源:** 当初はリズムゲームのコンセプトでしたが、IPの設計過程で楽器を武器のモチーフとする反復可能性を発見し、実験の結果、チームもその面白さを認めました。
+*   **メイン・サブメカニクス:** プレイヤーはメイン機（男性主人公）を操作し、サブ機（女性主人公）はAIとして連携戦闘。伴走感と感情的な絆を強化。
+*   **非力化設定:** 世界観の設定上、主人公は「感情と意志が異化した敵」を真に倒すことができず、敵のトドメ（フィニッシュ）は僚機に頼る必要があります。この依存関係を通じて（従来のARPGのポーンやNPC設計とは異なる）「伴走体験」を強化しました。
+*   **POC検証状況:** 入力シーケンスとメイン・サブの操作モードを検証済み。Fabアセットを使用してコンボプロトタイプを構築。手触りの調整は現在も進行中（GASの実装難易度が高い）。
+
+**プリプロダクション段階の優先順位戦略:**
+*   **コア体験を最優先:** 限られた人員の中で、検証可能な内容は優先的に実機で検証し、不可能な内容はペーパーモデルを優先。
+*   **システムフレームワークの構築:** システム構成図、世界観の枠組み、キャラクター/エリア/国家の設定を完了させ、将来的な大規模拡張の基礎を構築。
+*   **レベルコンセプト設計:** 空間体験の構想を支える空間コンセプトを産出。
+
+**プロセスと基準の確立 - 連携コストの削減:**
+低生産性チームに対し、以下のツールを確立し品質の最低ラインを強制：
+*   **10以上のドキュメントテンプレート:** キャラクター設定、エリア設定、LDD、SDD、国家設定、プロジェクト計画書、採用テンプレート、ルール草案、アウトライン等。
+*   **6つの手法ドキュメント:** 感情設計のハイレベル・メソッド、コミュニケーションおよび認知モデル、システム設計チェックリスト、キャラクター設定レビューリスト、設計ドキュメント共通基準、レベル設計SOP。
+*   **自己点検メカニクス:** メンバーに提出前のチェックリストによる自己点検を要求。設計のイテレーション回数を4〜5回から1〜2回に削減。
+
+**UE5ブループリントによる迅速な検証:**
+UEブループリントを使用して、極めてシンプルかつ効果的な遊びのコンセプト検証を構築。テスト結果に基づき設計全体の方向性を調整し、深いプログラミング・サポートがない状況でコア機能のイテレーションを推進しました。
+
+## 成果と現状
+
+**検証成果:**
+*   全体的なIPフレームワークの構築を完了（本ゲームとの関連は限定的だが、会社の戦略的拡張の基礎を提供）。
+*   楽器戦闘＋メイン・サブ連携のコアロジックの実現可能性を検証。
+*   スキルシーケンス、操作モードの初期検証を完了し、システムアーキテクチャの基礎を確立。
+
+**資金調達の進捗:**
+*   複数の投資家と接触。「ポテンシャルあり」とのフィードバックを得たものの、出資契約には至らず。
+
+**プロジェクトの現状:**
+*   プリプロダクションの初期段階で、現在はAVGプロジェクトと並行して緩やかに進行中。
+*   コアとなる遊びのコンセプト検証は完了しているが、実際の開発段階に入るにはまだ多くの作業が必要。
+*   2名の優秀なメンバーを、独立して意思決定と業務推進ができるレベルまで育成。
+
+**主要な困難:**
+*   チームの生産能力が著しく不足。低生産性のメンバーがコミュニケーションや審査を拒否し、効果的な連携が困難。
+*   資金が極めて逼迫し、人員の流出が継続。個人のカリスマ性に頼るチーム維持は困難な状況。
+*   手触りの調整が難航。GASの実装が現在のチームの能力を超えている。
+
+## キャパシティの成長まとめ
+
+**極限制約下でのプロジェクトコントロール:**
+*   クリエイティブディレクターとして、資金配分、執行基準、品質判断、イテレーション制御を含むプロジェクト全体の統制権を保持。社長の意思決定に対しても設計面からの判断を優先。
+*   シードラウンド前の極端なリソース制約下で、立案、システム設計、プロトタイプ検証から投資家への説明までの一連のプロセスを完遂。
+*   週30人時という実効生産性に対し、プロセスツールと基準の確立を通じて納品品質を強制的に引き上げ。
+
+**不確実な段階での収束能力:**
+*   高度な不確実性の中で検証の優先順位を明確にし、発散しがちな設計構想を実行可能なコア・ディレクションへと変換。
+*   体系的なドキュメントテンプレートとレビューメカニクスを確立し、イテレーション回数を半減。
+
+**領域横断的なスキルの拡大:**
+*   UE5ブループリントを使用して遊びのPOC検証を行い、プログラマー不足の短所を補完。
+*   採用、チーム管理、投資家対応など、多重の役割を遂行。
+
+**逆境におけるレジリエンスと判断力:**
+*   低生産性、資金難、人員流失という多重の苦境においても、プロジェクトの推進と方向性の安定を維持。
+*   苦境の根本原因を明確に認識し、解決策を策定・実行。
+`
+        },
         images: ['/assets/images/FR_SystemDiagram.png'],
         video: undefined,
         links: [
@@ -409,7 +594,7 @@ Used UE Blueprints to build minimal but effective gameplay concept validations, 
     },
     {//Project DT
         id: 'project-dt',
-        titles: { CN: "Project DT", EN: "Project DT" },
+        titles: { CN: "Project DT", EN: "Project DT", JA: "Project DT" },
         type: 'Commercial',
         showPriority: 75,
         engine: 'Other',
@@ -417,14 +602,19 @@ Used UE Blueprints to build minimal but effective gameplay concept validations, 
         role: ['Creative Director', 'Lead Writer'],
         techStack: ['Full Stack Design'],
         thumbnail: '',
-        shortDescriptions: { CN: "基于原创IP的成长主题公路剧视觉小说,为ARPG项目铺设获客基础。", EN: "Growth-themed road trip visual novel based on original IP, establishing user acquisition foundation for ARPG project." },
+        shortDescriptions: {
+            CN: "基于原创IP的成长主题公路剧视觉小说,为ARPG项目铺设获客基础。",
+            EN: "Growth-themed road trip visual novel based on original IP, establishing user acquisition foundation for ARPG project.",
+            JA: "オリジナルIPに基づく成長をテーマにしたロードムービー風ビジュアルノベル。ARPGプロジェクトの集客基盤を構築する。"
+        },
         sales: 'Pre-production',
-        platforms: { CN: "PC", EN: "PC" },
-        durations: { CN: "约2个月", EN: "About 2 months" },
+        platforms: { CN: "PC", EN: "PC", JA: "PC" },
+        durations: { CN: "约2个月", EN: "About 2 months", JA: "約2ヶ月" },
         startDate: '2024.04',
         endDate: 'Present',
-        teamSizes: { CN: "10+人 (3全职)", EN: "10+ People (3 full-time)" },
-        descriptions: { CN: `
+        teamSizes: { CN: "10+人 (3全职)", EN: "10+ People (3 full-time)", JA: "10人以上 (フルタイム3名)" },
+        descriptions: {
+            CN: `
 ## 项目背景与战略定位
 
 **商业闭环设计:**
@@ -490,7 +680,8 @@ Project DT作为Project FR(ARPG)的前置获客产品,承担IP曝光、资源提
 **当前挑战:**
 *   资金受限,开发速度受人力约束
 *   主线张力体现、男女主感情节奏、peaks投放频率等细节仍在讨论与迭代中
-    `, EN: `
+`,
+            EN: `
 ## Project Background & Strategic Positioning
 
 **Commercial Loop Design:**
@@ -556,7 +747,75 @@ Ensured DT's worldview, characters, and location settings lay cognitive foundati
 **Current Challenges:**
 *   Limited funding, development speed constrained by manpower
 *   Mainline tension manifestation, male-female Protagonist romantic pacing, peaks deployment frequency and other details still under discussion and iteration
-    ` },
+`,
+            JA: `
+## プロジェクトの背景と戦略的ポジショニング
+
+**ビジネス・クローズドループ設計:**
+Project DTは、Project FR（ARPG）の前段階の集客製品として、IPの露出、リソースの提供、ユーザー転換の機能を担います。ビジネスロジックは：**宣伝 → 世界観ストーリー（AVG） → ロードムービー的な題材による惹きつけ → 関連グッズ販売 → IPユーザー獲得 → 次段階の宣伝リーチへの還流**であり、完全なビジネス・クローズドループを形成し、シードラウンドの資金調達交渉における材料となります。
+
+**市場ポジショニング戦略:**
+*   **全年齢・全性別ターゲット:** 社会情勢を鑑み、従来の恋愛重視のギャルゲーの論争領域を避け、自己実現、成長、葛藤というテーマに焦点を当て、アイデンティティへの欲求が強い16〜24歳のユーザー層を惹きつけます。
+*   **層の突破目標:** この年齢層の突破に成功すれば文化圏（サークル）を形成でき、突破できずとも亜文化圏を確立し、将来的なIP拡張のための基礎ユーザープールを提供します。
+*   **世界観の広さ優先:** ロードムービー形式の構造により、十分な数の場所を移動し（世界地図を広げる）、人手が限られている中で「深さ」よりも「広さ」（場所、種族、国家）を優先し、FRの世界観のための認知基盤を構築します。
+
+**チームとリソースの適合:**
+ビジュアルノベル形式を選択した核心的な理由は、布陣（美術、シナリオ、IP、プログラム、ローカライズ、音楽）が揃っており、かつ「吉里吉里2」エンジンの技術的ハードルが極めて低く、限られたリソース下で迅速に推進できるためです。
+
+## 設計ソリューション
+
+**ロードムービー型叙事構造 - 一期一会:**
+能力と評価体系の乖離により泥沼に陥った男主人公 → 女主人公の導きにより旅が始まる → 徐々に3人の常駐キャラクター（第3/4/5の主人公）が加入 → 複数の村や場所を経由して事件を解決 → 男主人公が冷淡な傍観者から協力の受け入れ、そして自己認識の変化へと至る → 第2部AVGの導入により、男主人公が本質的な変化を遂げる（ただし完全には成熟していない状態）。
+
+**世界観のデプロイ戦略:**
+*   **階層的な提供:** 最初の深いコミュニケーションで世界観の枠組みを提示 → 第3の主人公加入で種族・寿命の設定を提示 → 事件解決の過程で世界観の詳細を提示 → 新しい場所で地域区分を提示し、FRの世界観と繋げる。
+*   **対立を通じた伝達:** 「死は不可避である」というテーマを最初の村での死に直面する事件で確立 → 寿命観・価値観の対立を3名の深い議論を通じて展開 → 男主人公の認識変化を内容的・外部的矛盾によって推進。
+
+**キャラクター関係設計:**
+*   **男女主人公のCP（カップリング）固定:** 公式ペアは男女主人公のみ。他のキャラクターは深い友情や家族に近い関係を維持し、従来のギャルゲーのような曖昧な恋愛ルートを排除。男女主人公の関係性は常に明確に描写されるが、キャラクターの言葉によって定義はされません。
+*   **他のキャラクターの曖昧さ:** 男女主人公以外の主要メンバー間には曖昧なエピソードを盛り込み、叙事の層を厚くします。
+*   **ステレオタイプな位置付けの回避:** どのキャラクターにも「父親・母親」といった役割を強要せず、行動の側面描写を通じて位置付けます。
+*   **第5の主人公の高頻度な登場:** 序盤から中盤にかけて頻繁に登場させ、加入が遅れることによる疎外感を防ぎます。
+
+**テンポ管理（20万〜30万字規模）:**
+「ピーク（感情の高まり）」を大量に配置して単調さを避け、全体的に緊密なテンポを維持。すべての内容において「説教臭さ」を排除し、説教じみた成長宣言ではなく、男主人公の行動の変化に焦点を当てます。
+
+## 業務内容と職責
+
+**全工程の叙事設計を主導（約20時間/週）:**
+*   ストーリーの脈絡と叙事構造（ロードムービー枠組み、対立配置ノード、キャラ加入タイミング）を定義。
+*   アウトライン執筆、キャラクター選定、キャラクター関係設計を主導。
+*   世界観、人物、エリア設定ドキュメントを産出し、Project FRの世界観と統合（主人公がFRの国家を旅し、FRの男主人公と交差する）。
+*   工業化プロセスの教育：方向性の決定 → 案の作成 → 検証の実施 → 思考の修正。10名以上のチーム（フルタイム3名、実稼働約120人時/週）を率いて推進。
+
+**IPフレームワークと必要十分な設定:**
+初期段階で「どの設定を今書くべきか、どれを待てるか」を決定することに多くの時間を費やし、「必要十分な設定原則」を確立。不必要な世界観の詳細に早期から投資することを避けました。
+
+**プロジェクト間の連携:**
+DTの世界観、キャラクター、場所の設定がFRの認知基盤となるよう調整。同時にDTのユーザーフィードバックを通じてIPの魅力を検証し、FRの大規模な推進と資金調達のためのデータと資金の裏付けを提供します。
+
+## 成果と現状
+
+**開発の進捗:**
+*   IPフレームワークの構築と必要十分な設定の区分を完了。
+*   ストーリーの脈絡設計、アウトライン執筆、キャラクター選定を完了。
+*   世界観、人物、エリア設定ドキュメントを産出。
+*   約2ヶ月のアクティブな開発期間、10名以上のチーム（フルタイム3名、120人時/週）。
+
+**検証フィードバック:**
+*   コアなユーザー層からの反応は良好であり、全年齢・全性別＋成長テーマの市場受容性を検証。
+*   一般層向けのテスト段階には未到達。
+
+**戦略的価値:**
+*   Project FRに集客チャネルと世界観の認知の下地を提供。
+*   限られたリソース環境下で、既存の布陣を活用して迅速にIPの露出を確立。
+*   シードラウンドの資金調達交渉において、ビジネス・クローズドループの完全性を論証。
+
+**現在の課題:**
+*   資金制約により、開発速度が人員不足に縛られている。
+*   本編の緊張感の表現、男女主人公の感情のテンポ、ピーク配置の頻度などの詳細は現在も議論と反復（イテレーション）の最中。
+`
+        },
         images: [],
         video: undefined,
         links: []
@@ -564,7 +823,7 @@ Ensured DT's worldview, characters, and location settings lay cognitive foundati
     {//Lightning Hero
         id: 'lightning-hero',
         mainProjectId: 'netease-minecraft-mod',
-        titles: { CN: "闪电英雄", EN: "Lightning Hero" },
+        titles: { CN: "闪电英雄", EN: "Lightning Hero", JA: "ライトニング・ヒーロー" },
         type: 'Commercial',
         showPriority: 70,
         engine: 'Python',
@@ -572,15 +831,20 @@ Ensured DT's worldview, characters, and location settings lay cognitive foundati
         role: ['Lead Designer'],
         techStack: ['Full Stack Design'],
         thumbnail: '/assets/images/LHCover.png',
-        shortDescriptions: { CN: "极轻量变身体验模组,专为大型模组玩家提供无冲突战斗力补充。", EN: "Ultra-lightweight transformation mod designed as conflict-free combat supplement for large-scale mod players." },
+        shortDescriptions: {
+            CN: "极轻量变身体验模组,专为大型模组玩家提供无冲突战斗力补充。",
+            EN: "Ultra-lightweight transformation mod designed as conflict-free combat supplement for large-scale mod players.",
+            JA: "極めて軽量な変身体験MOD。大型MODを遊ぶプレイヤー向けに、競合のない戦闘力補完を提供。"
+        },
         sales: '1M+ Units',
-        platforms: { CN: "我的世界 (中国版)", EN: "Minecraft (NetEase)" },
-        durations: { CN: "5天", EN: "5 days" },
+        platforms: { CN: "我的世界 (中国版)", EN: "Minecraft (NetEase)", JA: "Minecraft (NetEase中国版)" },
+        durations: { CN: "5天", EN: "5 days", JA: "5日間" },
         startDate: '2023.05',
         endDate: '2023.05',
-        teamSizes: { CN: "3人", EN: "3 People" },
-        prices: { CN: "¥6", EN: "$0.99" },
-        descriptions: { CN: `
+        teamSizes: { CN: "3人", EN: "3 People", JA: "3人" },
+        prices: { CN: "¥6", EN: "$0.99", JA: "￥130" },
+        descriptions: {
+            CN: `
 ## 市场洞察与机会窗口
 
 **市场变化识别:**
@@ -652,7 +916,7 @@ Shifted target users from "our product users" to "players who purchased other co
 All 5 skills designed as high-intensity abilities, providing significant combat power boost in high-difficulty large-scale mods. Satisfies player need for "powerful tools to overcome challenges" in complex mods rather than pursuing design complexity.
 
 **IP & Technical Reuse:**
-*   Based on studio's long-accumulated transformation technology (Marvel IP **copying** experience)
+*   Based on studio's long-accumulated transformation technology (Marvel IP copying experience)
 *   Extracted 5 core skills from Flash TV series plot summaries for rapid design convergence
 *   Leveraged mature tech stack to minimize development risk and time cost
 
@@ -684,16 +948,70 @@ Leveraged studio's existing tech accumulation (transformation system) and mature
 
 **"Those Who Learn From Me Live; Those Who Imitate Me Die":**
 This project's success is non-replicable—it depends on specific market windows, technical accumulation, team synergy, and extremely disciplined design decisions. Blindly imitating minimalist design without understanding underlying market logic cannot achieve same results.
-    ` },
+`,
+            JA: `
+## 市場の洞察とチャンスの窓
+
+**市場の変化の識別:**
+2023年、Minecraft MOD市場に構造的な変化が生じました。大手スタジオが提供する単体MODの規模は当社の2〜3倍に達し、複雑さが増し続けていました。大型MODはシステムが複雑なために互換性が低く、プレイヤーは大型MODを遊ぶ際、競合のない少数の軽量MODしか併用できない状況にありました。
+
+**チャンスの窓のポジショニング:**
+ターゲットユーザーを「自社製品のユーザー」から「他社の大型MODを購入したプレイヤー」へとシフト。彼らに**依存関係なし、競合なし、高戦闘力**という補完的な体験を提供することで、大型MODプレイヤーの細分化されたニーズの空白を埋めました。
+
+## 設計戦略 - ROIの最大化
+
+**極限のシンプル設計原則:**
+*   **コンテンツ規模:** 変身アイテム5つ＋特殊スキル5つのみ。補助システムは一切なし。
+*   **技術戦略:** 依存関係ゼロ、パスの競合ゼロ。あらゆる大型MODにシームレスに組み込み可能。
+*   **機能の選択:** 実装が困難な機能は一切排除。ROIの最大化を唯一の意思決定基準としました。
+
+**核心的価値のポジショニング - 戦闘力の補完（チートアイテム）:**
+5つのスキルはすべて高強度な能力として設計され、高難易度の大型MODにおいて顕著な戦闘力向上を提供します。設計の複雑さを追求するのではなく、複雑なMODにおいて「難関を突破するための強力なツールが必要」というプレイヤーの実際のニーズに応えました。
+
+**IPと技術の再利用:**
+*   スタジオが長年蓄積してきた変身体系の技術（マーベルIPの模倣経験）を活用。
+*   ドラマ『THE FLASH/フラッシュ』のあらすじから5つの核心スキルを抽出し、迅速に設計を収束。
+*   成熟した技術スタックを利用することで、開発リスクと時間コストを削減しました。
+
+## 執行と検証
+
+**迅速な納品:**
+*   3人のチームで5日間で開発完了（プランナーの作業時間は約4時間）。
+*   試用期間中の新しいプログラマーを利用して技術的な実現可能性を検証。成功すれば良し、失敗しても本編には影響しない（社長も期待していなかった）というスタンスで進行。
+
+**市場での検証:**
+*   **販売数:** 累計100万本を突破。
+*   **ユーザーフィードバック:** 3000件以上のレビュー、評価4.5。
+*   **市場仮説の検証:** 「軽量＋競合なし＋高戦闘力」の組み合わせが大型MODプレイヤーの市場に見事に食い込み、「市場の窓の観察が正しかった」ことが証明されました。
+
+**商業的成功:**
+*   価格6元。極めて低い開発コスト（3人で5日間）で100万本の販売を達成。
+*   ROI最大化戦略が市場によって検証されました。
+
+## 設計メソッドのまとめ
+
+**市場の窓への迅速な対応:**
+市場構造の変化（大型MODの急増 → 併用ニーズの発生）を継続的に観察することで、見落とされていた細かなチャンスを識別し、最小コストで迅速に参入しました。
+
+**シンプル設計のトレードオフ:**
+「何ができるか」ではなく「何が最もROIが高いか」を基準にしました。アイテム5つ＋スキル5つという極小の規模が、核心的なニーズを的確に満たし、かつすべての技術的リスクを回避しました。
+
+**技術の再利用とIPの活用:**
+スタジオ既存の技術蓄積（変身システム）と外部の成熟したIP（フラッシュ）を活用することで、設計時間を4時間に短縮しました。
+
+**「我に学ぶ者は生き、我に似る者は死す」:**
+このプロジェクトの成功は再現不可能です。それは、特定の市場の窓、技術蓄積、チームの阿吽の呼吸、そして極めて抑制された設計判断に依存しています。背後にある市場ロジックを理解せずにシンプル設計を盲目的に模倣しても、同様の成果を得ることは困難です。
+`
+        },
         images: ['/assets/images/LHCover.png'],
         video: '/assets/images/Lightning Hero.mp4',
         links: [
-            { labels: { CN: "发布页面", EN: "Release Page" }, urls: { CN: 'https://resource-minecraft.h5.163.com/#/detail?id=4664383590833725456', EN: 'https://resource-minecraft.h5.163.com/#/detail?id=4664383590833725456' }, type: 'Release Page' }
+            { labels: { CN: "发布页面", EN: "Release Page", JA: "リリースページ" }, urls: { CN: 'https://resource-minecraft.h5.163.com/#/detail?id=4664383590833725456', EN: 'https://resource-minecraft.h5.163.com/#/detail?id=4664383590833725456' }, type: 'Release Page' }
         ]
     },
     {//Real World Project
         id: 'rwp-worldview',
-        titles: { CN: "RWP 世界观", EN: "Real World Project (RWP)" },
+        titles: { CN: "RWP 世界观", EN: "Real World Project (RWP)", JA: "RWP 世界観" },
         type: 'Commercial',
         showPriority: 75,
         engine: 'Other',
@@ -701,14 +1019,19 @@ This project's success is non-replicable—it depends on specific market windows
         role: ['Creative Director'],
         techStack: ['Narrative Design', 'IP Strategy'],
         thumbnail: '',
-        shortDescriptions: { CN: "原创IP的世界观框架构建,支撑跨品类游戏产品与长期IP矩阵战略。", EN: "Original IP world framework construction, supporting cross-genre game products and long-term IP matrix strategy." },
+        shortDescriptions: {
+            CN: "原创IP的世界观框架构建,支撑跨品类游戏产品与长期IP矩阵战略。",
+            EN: "Original IP world framework construction, supporting cross-genre game products and long-term IP matrix strategy.",
+            JA: "オリジナルIPの世界観フレームワーク構築。クロスジャンルのゲーム製品と長期的なIPマトリックス戦略を支える。"
+        },
         sales: 'IP Foundation',
-        platforms: { CN: "IP 基础设施", EN: "IP Infrastructure" },
-        durations: { CN: "约1年 (持续完善)", EN: "About 1 year (implementing)" },
+        platforms: { CN: "IP 基础设施", EN: "IP Infrastructure", JA: "IPインフラ" },
+        durations: { CN: "约1年 (持续完善)", EN: "About 1 year (implementing)", JA: "約1年 (継続的に改善中)" },
         startDate: '2023.06',
         endDate: 'Present',
-        teamSizes: { CN: "4人核心团队", EN: "4-person Core Team" },
-        descriptions: { CN: `
+        teamSizes: { CN: "4人核心团队", EN: "4-person Core Team", JA: "コアチーム4名" },
+        descriptions: {
+            CN: `
 ## 项目定位与战略价值
 
 **商业战略 - IP矩阵而非产品IP化:**
@@ -861,8 +1184,87 @@ Every setting considers playability from inception, not pure setting collections
 Established complete deployment strategy from IP framework to specific projects, ensuring worldview supports both ARPG gameplay needs and AVG narrative needs, while reserving expansion space for future projects.
 
 **"No Growth, Yet All Growth":**
-World-building is a process without clear endpoint; every setting adjustment, every logical deduction, every team argument reinforces the ability to "establish certainty within uncertainty". This capability cannot be quantified, but permeates all subsequent project design decisions.
-    ` },
+World-building is a process without clear endpoint; every setting adjustment, every logical deduction, every team argument reinforces the ability to "establish certainty within uncertainty". This capability cannot be quantified, but permeates all subsequent project design Decisions.
+`,
+            JA: `
+## プロジェクトのポジショニングと戦略的価値
+
+**ビジネス戦略 - 製品のIP化ではなく、IPマトリックスの構築:**
+RWPは、会社の長期的な発展を支えるIPインフラです。戦略目標は「製品をIP化すること」ではなく、「IPを起点とした派生製品」を生み出すことにあります。ジャンル、メディア、業界を超えて展開可能な世界観フレームワークを構築することで、ゲームを核としたビジネスマトリックスを形成します。
+
+**ジャンルの制限を打破:**
+IPがアドベンチャーゲーム（AVG）のラインに固定されないようにし、将来的なアクションRPG（Project FR）やその他のジャンルに世界観のサポートを提供します。IPフレームワークに対して投資家が関心を示したことは（シリーズDのIPO段階を見据えたものですが）、長期的な戦略価値を証明しています。
+
+## 世界観の規模とアーキテクチャ
+
+**時空の規模:**
+*   **時間軸:** 群星歴前9263年（創世）から群星歴4284年まで。明確なタイムラインのスパンは0〜3713年。
+*   **空間の規模:** 地球の3倍のサイズ。5つの大陸と8つの大国を設計済み。そのうち3つは実用可能な設定が完了。
+
+**核心的な設定項目 (20大項目、40以上のドキュメント):**
+種族、国家、魔法、科学技術、歴史、信仰、世界の区分、生物分類学、計量学、地理、時代など、全次元にわたる構築。また、「何を先にやるか／何をやらないか」を制御するための専用の優先順位表と品質チェックリストを確立。
+
+**設定の統合戦略:**
+修仙、魔法、クトゥルフ（CoC）などの主要な設計体系を融合。プランナーが把握すべき核心的な内容を確定し、大きな方向性を計画した後に枝葉を整理することで、「どこにでもあるようでどこにもない、しかしどこでも必要とされる」基底ロジックの支柱を実現しました。
+
+## 設計メソッド - 必要十分な設計
+
+**核心原則: 正確、収束、論理的整合性**
+*   **収束:** 方向性を過度に発散させず、世界観のオーバーデザインを回避。
+*   **正確:** 情報密度を高め、10文字で済むなら20文字書かない。文章よりもリスト形式を優先し、読解効率を極限まで向上。
+*   **論理的整合性:** 新しい設定を追加する際、常に論理的な脈絡を遡ることができ、拡張性を確保。
+
+**「現在を制限し、未来を残す」:**
+30以上の「必要十分な設定原則」を確立。AVGのストーリーを支え、将来の拡張の基盤とするのに「十分」でありながら、短期的には不要な詳細への投資を避けることで、リソースを抑制。深さは細部によって決まりますが、まずは広さ（記憶に残る基点）を優先し、その後に深さ（イースターエッグ、細部の関連性）を拡張します。
+
+**「プロジェクトでどう使うかを一歩先んじて考える」:**
+すべての設定は、設計当初から単なる設定集としてではなく、プレイアビリティ（遊びやすさ）を考慮しています。一日たりともゲーム設計ドキュメントを書いていない日はありませんが、一筆たりともゲーム設計の立場を代表していないものもありません。「カメラが映さない人々を無視しない」——世界はコピーされるのではなく、創造されるものです。
+
+**検証方法:**
+*   知人に閲覧してもらい、内部的な意見の一致を確認。
+*   面識のない人に特定の段落を読んでもらい、「読んだ後に私の意図が正しく伝わっているか、その人の抱いた印象が私の意図と一致するか」を検証。
+*   満足できるかどうかよりも、「適切かどうか」を重視。
+
+## 開発プロセスと挑戦
+
+**期間とチーム:**
+*   フレームワークの構築に約1年を費やし、コアチーム4名で遂行。
+*   膨大なリサーチを行い、様々な参照体系を解体・吸収。
+
+**重大なイテレーションと刷新:**
+*   生物分類学の設計において、後半になってすべての参照先に論理的な起点の欠陥があることを発見。その結果「世界が創造されたものではなく、コピーされたもののように見える」という問題が生じたため、すべてを根底から作り直しました。
+*   論理的整合性と拡張性を確保するため、大規模な調整を繰り返しました。
+
+**具体プロジェクトとの連携:**
+*   **Project FR (ARPG):** 設定を細かく分解して各所に散りばめ、デプロイ（配置）をストーリーと深く結合。
+*   **Project DT (AVG):** 世界観の枠組み、種族、国家、魔法などの設定をデプロイし、プレイヤーに認知の基礎を提供。
+*   **伏線の設計:** AVGにARPGの伏線を、ARPGに将来のプロジェクトの伏線を埋め込むことで、IPマトリックスの一貫性を形成。
+
+## 主要な成果物
+
+**ドキュメント体系 (20大項目、40以上のドキュメント、数万字規模):**
+*   歴史年表（群星歴前9263年から群星歴4284年まで）
+*   各分類下の核心設定（種族／国家／魔法／技術／信仰／生物分類学／計量学／地理など）
+*   将来のプロモーション用のショートストーリー
+*   優先順位制御表と品質チェックリスト
+
+**設計ツールとメソッド:**
+*   必要十分な設定原則
+*   ハイレベルな感情設計メソッドによるクオリティの底上げ
+*   世界観拡張ルールと論理的トレーサビリティ体系
+
+**核心的なUSP (独自の強み):**
+「十分に満たされており、かつカメラが映さない人々を無視しない」——世界観の完全性と信憑性はプレイヤーの視点に依存するのではなく、内在的な論理的完全性を備えています。
+
+## 能力の成長とメソッドの沈殿
+
+**クロスプロジェクトIP管理能力:**
+IPフレームワークから具体的なプロジェクトに至る完全なデプロイ戦略を確立。世界観がARPGのゲームプレイ要求に応えると同時に、AVGの叙事要求にも応え、さらに将来のプロジェクトのための拡張スペースを確保できるようにしました。
+
+**「収穫などないようでいて、すべてが収穫である」:**
+世界観の構築は明確な終わりのないプロセスです。設定を調整するたび、論理を推論するたび、チームで議論するたびに、「不確実性の中に確実性を築く」能力が強化されてきました。この能力は数値化できませんが、その後のすべてのプロジェクトの設計判断に浸透しています。
+`
+        },
         images: [],
         video: undefined,
         links: []
@@ -870,7 +1272,7 @@ World-building is a process without clear endpoint; every setting adjustment, ev
     {//Overwatch in Minecraft
         id: 'owmc',
         mainProjectId: 'netease-minecraft-mod',
-        titles: { CN: "先锋对决", EN: "Overwatch in Minecraft" },
+        titles: { CN: "先锋对决", EN: "Overwatch in Minecraft", JA: "オーバーウォッチ in Minecraft" },
         type: 'Commercial',
         showPriority: 60,
         engine: 'Python',
@@ -878,15 +1280,20 @@ World-building is a process without clear endpoint; every setting adjustment, ev
         role: ['Designer'],
         techStack: ['UX Design'],
         thumbnail: '/assets/images/OWMCCover.png',
-        shortDescriptions: { CN: "守望先锋核心玩法移植至MC,负责英雄移植与移动端UX适配。", EN: "Overwatch core gameplay ported to Minecraft; responsible for hero porting and mobile UX adaptation." },
+        shortDescriptions: {
+            CN: "守望先锋核心玩法移植至MC,负责英雄移植与移动端UX适配。",
+            EN: "Overwatch core gameplay ported to Minecraft; responsible for hero porting and mobile UX adaptation.",
+            JA: "オーバーウォッチのコア機能をMinecraftに移植。ヒーローの移植設計とモバイル版UXへの最適化を担当。"
+        },
         sales: '10K+',
-        platforms: { CN: "我的世界 (中国版)", EN: "Minecraft (NetEase)" },
-        durations: { CN: "约3周", EN: "About 3 Weeks" },
-        teamSizes: { CN: "4 人", EN: "4 people" },
-        prices: { CN: "10 RMB", EN: "1.99 USD" },
+        platforms: { CN: "我的世界 (中国版)", EN: "Minecraft (NetEase)", JA: "Minecraft (NetEase中国版)" },
+        durations: { CN: "约3周", EN: "About 3 Weeks", JA: "約3週間" },
+        teamSizes: { CN: "4 人", EN: "4 people", JA: "4人" },
+        prices: { CN: "10 RMB", EN: "1.99 USD", JA: "￥220" },
         startDate: '2023.02',
         endDate: '2023.02',
-        descriptions: { CN: `
+        descriptions: {
+            CN: `
 ## 项目背景
 
 作为Onboarding期间的过渡项目,承接管理层要求将守望先锋核心玩法移植至MC平台。项目规模较小,采用分拆销售策略,市场表现中等。
@@ -914,7 +1321,8 @@ World-building is a process without clear endpoint; every setting adjustment, ev
 
 **Onboarding平稳落地:**
 作为入职过渡期项目,成功完成设计任务并交付,验证了快速适应新环境与技术栈的能力。
-    `, EN: `
+`,
+            EN: `
 ## Project Background
 
 As a transitional project during onboarding period, undertook management's requirement to port Overwatch core gameplay to MC platform. Relatively small-scale project with unbundled sales strategy; moderate market performance.
@@ -942,16 +1350,46 @@ Gained exposure to NetEase MC API through project, establishing preliminary unde
 
 **Smooth Onboarding Landing:**
 As an onboarding transitional project, successfully completed design tasks and delivered, validating ability to rapidly adapt to new environments and tech stacks.
-    ` },
+`,
+            JA: `
+## プロジェクトの背景
+
+入社時のオンボーディング期間中の移行プロジェクトとして、オーバーウォッチのコアな遊びをMinecraftプラットフォームに移植するという経営陣の要求を担当しました。プロジェクト規模は比較的小さく、小分けにして販売する戦略を採用。市場での反応は中程度でした。
+
+## 業務内容
+
+**ヒーローの移植と調整:**
+複数のヒーローキャラクター（ゲンジ、ソルジャー76、ハンゾーなど）の移植設計を担当。オーバーウォッチのヒーロースキルと遊びのメカンスを、Minecraftの技術フレームワークと操作環境に適応させました。
+
+**モバイル版UXの最適化:**
+*   キャラクター選択画面、設定画面、メインプレイ画面のUXフローを設計。
+*   Minecraftモバイル版における核心的な操作課題の解決：PC版の射撃ロジックをモバイル版の画面タップ操作に適応。
+*   「画面をタップしながら射撃（ターゲット追従）」を可能にする操作ロジックを設計・実装し、モバイル版での操作の利便性とシューティングゲームとしての手触りの両立を図りました。
+
+**操作感の最適化:**
+Minecraftとオーバーウォッチの操作性の違いに焦点を当てて調整を行い、移植されたヒーローがMinecraft環境下でも許容可能な操作体験を提供できるようにしました。
+
+## 技術と経験の蓄積
+
+**プラットフォーム間の差異への認識:**
+スマートフォンでの操作とPCでの操作の違いを深く理解した最初のプロジェクトです。シューティングゲームにおけるモバイルのタッチ操作とPCのマウス・キーボード操作の設計上の差異について、明確な認識を確立しました。
+
+**技術スタックへの習熟:**
+プロジェクトを通じて網易（NetEase）Minecraft APIに触れ、Minecraft MOD開発の技術スタックについて初期的な理解を深めました。これは、その後の『Nuclear Survival』や『Horror Isle』といった大型プロジェクトにおける技術的意思決定の基礎となりました。
+
+**オンボーディングの円滑な完了:**
+入社直後の移行期プロジェクトとして、設計タスクを成功裏に完了・納品。新しい環境や技術スタックに迅速に適応する能力を証明しました。
+`
+        },
         images: ['/assets/images/OWMCCover.png', '/assets/images/Overwatch.png'],
         video: '/assets/images/OWMC.mp4',
         links: [
-            { labels: { CN: "发布页面", EN: "Release Page" }, urls: { CN: 'https://resource-minecraft.h5.163.com/#/detail?id=4662108906629006831', EN: 'https://resource-minecraft.h5.163.com/#/detail?id=4662108906629006831' }, type: 'Release Page' }
+            { labels: { CN: "发布页面", EN: "Release Page", JA: "リリースページ" }, urls: { CN: 'https://resource-minecraft.h5.163.com/#/detail?id=4662108906629006831', EN: 'https://resource-minecraft.h5.163.com/#/detail?id=4662108906629006831' }, type: 'Release Page' }
         ]
     },
     {//Illegal Assembly
         id: 'illegal-assembly',
-        titles: { CN: "非法组装", EN: "Illegal Assembly" },
+        titles: { CN: "非法组装", EN: "Illegal Assembly", JA: "違法構築" },
         type: 'Personal',
         showPriority: 95,
         engine: 'Unreal',
@@ -959,14 +1397,19 @@ As an onboarding transitional project, successfully completed design tasks and d
         role: ['Lead Designer', 'Lead Programmer'],
         techStack: ['Unreal Engine 5', 'C++', 'Blueprint'],
         thumbnail: '/assets/images/IllagelAssemblyLogo.PNG',
-        shortDescriptions: { CN: "一款俯视角的3D工厂建设自动化游戏。", EN: "A top-down 3D factory-building automation game." },
+        shortDescriptions: {
+            CN: "一款俯视角的3D工厂建设自动化游戏。",
+            EN: "A top-down 3D factory-building automation game.",
+            JA: "トップダウン視点の3D工場建設オートメーションゲーム。"
+        },
         workHours: 462,
-        platforms: { CN: "PC", EN: "PC" },
-        durations: { CN: "2024.06 - 2024.08", EN: "Jun 2024 - Aug 2024" },
+        platforms: { CN: "PC", EN: "PC", JA: "PC" },
+        durations: { CN: "2024.06 - 2024.08", EN: "Jun 2024 - Aug 2024", JA: "2024年6月 - 2024年8月" },
         startDate: '2024.06',
         endDate: '2024.08',
-        teamSizes: { CN: "8人", EN: "8 People" },
-        descriptions: { CN: `
+        teamSizes: { CN: "8人", EN: "8 People", JA: "8人" },
+        descriptions: {
+            CN: `
 ## 项目背景与救场策略
 
 **救场背景:**
@@ -992,10 +1435,11 @@ As an onboarding transitional project, successfully completed design tasks and d
 *   **完整可玩性:** 成功交付了具备完整流程（教程至通关）的Vertical Slice版本。
 *   **行业验证:** 主持了三次公开Presentation及行业内专家试玩会，反馈从初期的质疑转变为试玩后的高度认可，验证了敏捷Scope管理的有效性。
 
-**深度反思 - 关于"第一次失败":**
+## 深度反思 - 关于"第一次失败"
 *   **预期落差:** 这是一个关于"第一次失败"的教训。尽管项目按时交付且获得了不错的外部评价，但最终成品在深度与打磨程度上远未达到我最初的设想。
 *   **技术驱动:** 这次经历让我深刻意识到设计理想与技术边界的差距，这种"做不出来"的不甘成为了我后续钻研技术、追求技术与设计双修的最大动力。
-        `, EN: `
+`,
+            EN: `
 ## Project Background & Rescue Strategy
 
 **Crisis Context:**
@@ -1024,20 +1468,51 @@ As both Lead Designer & Lead Programmer, I balanced ensuring design playability 
 **Deep Reflection - The "First Failure":**
 *   **Expectation Gap:** A lesson in "successful failure". While delivered on time with positive external reception, the final product's depth and polish fell far short of my original vision.
 *   **Technical Drive:** This experience highlighted the gap between design ambition and technical boundaries. The frustration of "not being able to build it all" became the primary catalyst for my subsequent pursuit of technical excellence alongside design.
-        ` },
+`,
+            JA: `
+## プロジェクトの背景と救済戦略
+
+**救済の背景:**
+本プロジェクトは学期課題のバックアップ案として用意していたものです。元のプロジェクトのリードプランナーが諸事情により脱退したため、8人のチームが滞りなく学業を修了できるよう、事前に準備していたこの代替案を発動しました。
+
+**二重の役割:**
+リードプランナー兼リードプログラマーとして、設計の面白さを担保しつつ、核心的なシステムのコード実装を直接担当。設計要件と技術実装をシームレスに繋ぎ、「自分で設計して自分で書く」スタイルで開発効率を最大化しました。
+
+## 設計と開発
+
+**コアループ設計とMVP:**
+*   **設計思想:** 「製品 → 生産ライン → 販売」という古典的なオートメーションループを中心にゲームプレイを構築。このループを選択したのは、システムの深さが十分にあり、かつオートメーションゲーム分野での私の蓄積を最大限に活用できるためです。
+*   **フルスタックなシステム構築:** 自ら設計し、UnrealのBlueprintを用いて6つの核心的なシステムを実装しました：**建築システム、アイテムシステム、レシピシステム、クエストシステム、テックツリー、建築プラグイン**。すべてのシステムについて、設計段階から実装の実現可能性と拡張性を十分に考慮しました。
+*   **バーティカル・スライス:** チュートリアルからクリアまでの流れを含むバーティカル・スライスを迅速に作成。コアプレイのサイクルを検証し、中間報告の成果物として展示しました。
+
+**技術的な挑戦と適応:**
+*   **技術スタックの突破:** 深く触れたことのなかったUnrealのBlueprintに対し、「学びながら作る」戦略を採用。プロジェクトを通じて迅速に習得し、応用しました。
+*   **UXの保証:** オートメーションゲームに求められる高いインタラクション性を実現するため、自らUI層の開発にも介入。UIプログラマーをサポートして5つ以上の致命的なバグを修正し、建築や管理といった核心的な操作の流暢さを確保しました。
+
+## 成果と反省
+
+**プロジェクトの納品:**
+*   **完全なプレイアビリティ:** チュートリアルからクリアまでの完全なフローを備えたバーティカル・スライス版を無事に納品しました。
+*   **業界での検証:** 3回の公開プレゼンテーションと業界専門家による試遊会を主催。当初の懸念は試遊後の高い評価へと変わり、アジャイルなスコープ管理の有効性が証明されました。
+
+## 深い反省 - 「最初の失敗」について
+*   **理想と現実のギャップ:** これは「最初の失敗」についての教訓です。プロジェクトは期限通りに完了し、外部からも良好な評価を得ましたが、最終的な成果物の深みや磨き込みの程度は、当初の私の構想には遠く及びませんでした。
+*   **技術への渇望:** この経験を通じて、設計上の理想と技術的な限界の差を痛感しました。「作りきれなかった」という悔しさが、その後の技術研鑽への大きな原動力となりました。
+`
+        },
         images: ['/assets/images/IllagelAssemblyLogo.PNG', '/assets/images/IA_06.png', '/assets/images/IA_01.png', '/assets/images/IA_02.png', '/assets/images/IA_03.png', '/assets/images/IA_04.png', '/assets/images/IA_05.png', '/assets/images/IA_07.png', '/assets/images/IA_08.png'],
         video: '/assets/images/Illegal Assembly.mp4',
         links: [
-            { labels: { CN: "下载试玩", EN: "Download Demo" }, urls: { CN: 'https://github.com/ElectricArc-Yu/GD10Final/releases', EN: 'https://github.com/ElectricArc-Yu/GD10Final/releases' }, type: 'demo' }
+            { labels: { CN: "下载试玩", EN: "Download Demo", JA: "デモ版をダウンロード" }, urls: { CN: 'https://github.com/ElectricArc-Yu/GD10Final/releases', EN: 'https://github.com/ElectricArc-Yu/GD10Final/releases' }, type: 'demo' }
         ],
         workDistribution: [
-            { labels: { CN: "Design", EN: "Design" }, percentage: 50 },
-            { labels: { CN: "Programming", EN: "Programming" }, percentage: 50 }
+            { labels: { CN: "Design", EN: "Design", JA: "デザイン" }, percentage: 50 },
+            { labels: { CN: "Programming", EN: "Programming", JA: "プログラミング" }, percentage: 50 }
         ]
     },
     {//The Mountain Sea
         id: 'the-mountain-sea',
-        titles: { CN: "山海", EN: "The Mountain Sea" },
+        titles: { CN: "山海", EN: "The Mountain Sea", JA: "山海 (The Mountain Sea)" },
         type: 'Personal',
         showPriority: 75,
         engine: 'Unity',
@@ -1045,14 +1520,19 @@ As both Lead Designer & Lead Programmer, I balanced ensuring design playability 
         role: ['Designer', 'Lead Programmer'],
         techStack: ['Unity', 'C#'],
         thumbnail: '/assets/images/MountainSea.png',
-        shortDescriptions: { CN: "2D动作平台游戏，核心为近战与远程的双形态切换。", EN: "2D action platformer focused on switching between melee and ranged forms." },
+        shortDescriptions: {
+            CN: "2D动作平台游戏，核心为近战与远程的双形态切换。",
+            EN: "2D action platformer focused on switching between melee and ranged forms.",
+            JA: "2Dアクションプラットフォーマー。近接と遠距離の2つの形態を切り替えて戦うシステムが核。"
+        },
         workHours: 132,
-        platforms: { CN: "PC", EN: "PC" },
-        durations: { CN: "2023.10 - 2023.12", EN: "Oct 2023 - Dec 2023" },
+        platforms: { CN: "PC", EN: "PC", JA: "PC" },
+        durations: { CN: "2023.10 - 2023.12", EN: "Oct 2023 - Dec 2023", JA: "2023年10月 - 2023年12月" },
         startDate: '2023.10',
         endDate: '2023.12',
-        teamSizes: { CN: "4人", EN: "4-person" },
-        descriptions: { CN: `
+        teamSizes: { CN: "4人", EN: "4-person", JA: "4人" },
+        descriptions: {
+            CN: `
 ## 项目背景与约束
 
 **课程作业的极限挑战:**
@@ -1136,21 +1616,65 @@ Mid-project, a team member's departure caused major team restructuring. With sud
 
 **Deep Reflection - A Lesson in Scope Management:**
 This was a profound lesson in "over-design." In retrospect, I should have called a halt to design expansion earlier, telling the team: **We don't have the capability for Prototype Polish. We can't iterate on game feel. We should focus on polishing core mechanics and use the GDD to demonstrate design depth, rather than chasing a mediocre demo.** The result was a mediocre GDD AND a mediocre project—neither goal achieved. This lesson profoundly influenced my scope management strategy in subsequent projects.
-        ` },
+`,
+            JA: `
+## プロジェクトの背景と制約
+
+**学業課題としての極限の挑戦:**
+2Dゲーム開発の学期課題プロジェクト。4人チーム（美術2、企画1、プログラミング1）で開発期間はわずか2ヶ月。フルタイムの授業をこなしながらの開発でした。チーム唯一のプログラマーとして、Unityでの本格的なプロジェクト開発はこれが初めてでした（それ以前はJavaフルスタックの経験のみ）。
+
+**設計の初心:**
+チームの目標は商業化ではなく、4人の企画力——自分たちが「斬新だ」と思えるゲームを設計することを証明することでした。このポジショニングにより、設計段階で複雑なシステムの構想に多大な労力を費やしましたが、それが後の実装段階で足かせとなりました。初期のゲームデザインについてはGDDをご覧ください。
+
+## 核心的メカニズムの設計
+
+**双形態戦闘システム - スタックと爆破:**
+*   **遠距離形態（スタック）:** 敵に命中させるとスタックが蓄積される。スタックが多いほど、後の「爆破」ダメージが大きくなる。
+*   **近接形態（爆破）:** 至近距離攻撃により敵に溜まった全スタックを爆破し、瞬間的に大ダメージを与える。ただし、敵に接近するため被ダメージのリスクを伴う。
+*   **設計のインスピレーション:** 棒術の練習中にふと閃いた「チャージして放出する」リズム感を、2つの形態を切り替える戦略的な決断へと昇華させました。
+
+**リスクとリターンのバランス:**
+プレイヤーは「安全なスタック蓄積」と「危険な爆破」の間で常に決断を迫られます。遠距離からのスタック蓄積は安全ですが継続ダメージは限定的。近接爆破は高リターンですが被弾のリスクが高い。この核心的なジレンマがゲームの核となっています。
+
+## 開発プロセスと挑戦
+
+**技術的な突破 - ゼロからのスタート:**
+*   初めてのUnityプロジェクトとして「リバースエンジニアリング＋学びながら作る」戦略を採用し、他の2Dゲームのソースコードを分析することでUnityの開発パターンを迅速に習得。
+*   キャラクター制御、戦闘システム、敵AI、ボス戦などの核心的なシステムを独力で実装。
+*   美術アセットの統合フローを主導し、美術チームへのUnityとGitの使い方の技術指導を行いました。
+
+**チームの危機管理:**
+プロジェクト中期にチームメンバーの退学という重大なアクシデントが発生し、チームの再編を余儀なくされました。リソースが急減する中、迅速にスコープ（開発範囲）を調整。当初の「複数の敵と複数のステージ」という設計を、「1種類の雑魚敵＋1体のボス」という最小実行可能製品（MVP）へ収束させ、期限通りの納品を死守しました。
+
+## 成果と反省
+
+**納品成果:**
+*   完全にプレイ可能なデモを無事に納品。核心となる双形態戦闘メカニズムは良好に動作。
+*   操作感を繰り返し微調整し、プレイヤーからは「短いが悪くない」とのフィードバックを得て、戦闘の手触りが認められました。
+*   公開プレゼンテーションで良好な評価を獲得。GDDで設計思想を完全に提示しました。
+
+**正直な反省点:**
+*   主人公の移動に「滑る」ような感覚があり、Unity 2D物理システムへの経験不足から完璧な解決には至りませんでした。
+*   コンテンツ量が制限され、雑魚敵1種類とボス1体のみとなり、設計構想を完全に具現化することはできませんでした。
+
+**深い反省 - 「スコープ管理」の教訓:**
+これは「オーバーデザイン（過剰設計）」についての痛烈な教訓となりました。振り返ってみれば、もっと早い段階で複雑な設計の拡張を止め、チームにこう言うべきでした：**「今の私たちにはプロトタイプを磨き上げる（Polish）能力も、操作感を試行錯誤する余裕もない。核心的な遊びの磨き込みに集中し、設計の深みはGDDで証明すべきだ。平凡なデモを追い求めるべきではない。」**。結局、GDDも成果物も中途半端なものになり、二兎を追う者は一兎をも得ずという結果に。この教訓は、その後のプロジェクトにおける私のスコープ管理戦略に深く影響を与えています。
+`
+        },
         images: ['/assets/images/MountainSea.png', '/assets/images/Shanhai_01.png', '/assets/images/Shanhai_02.png'],
         gddPdfUrl: '/assets/docs/TheMountainSeaGDD.pdf',
         links: [
-            { labels: { CN: "下载试玩", EN: "Download Demo" }, urls: { CN: 'https://shvfs-game-design.itch.io/the-mountain-sea', EN: 'https://shvfs-game-design.itch.io/the-mountain-sea' }, type: 'demo' },
-            { labels: { CN: "查看GDD", EN: "View GDD" }, urls: { CN: '/assets/docs/TheMountainSeaGDD.pdf', EN: '/assets/docs/TheMountainSeaGDD.pdf' }, type: 'doc' }
+            { labels: { CN: "下载试玩", EN: "Download Demo", JA: "デモ版をダウンロード" }, urls: { CN: 'https://shvfs-game-design.itch.io/the-mountain-sea', EN: 'https://shvfs-game-design.itch.io/the-mountain-sea' }, type: 'demo' },
+            { labels: { CN: "查看GDD", EN: "View GDD", JA: "GDDを見る" }, urls: { CN: '/assets/docs/TheMountainSeaGDD.pdf', EN: '/assets/docs/TheMountainSeaGDD.pdf' }, type: 'doc' }
         ],
         workDistribution: [
-            { labels: { CN: "Design", EN: "Design" }, percentage: 50 },
-            { labels: { CN: "Programming", EN: "Programming" }, percentage: 50 }
+            { labels: { CN: "Design", EN: "Design", JA: "デザイン" }, percentage: 50 },
+            { labels: { CN: "Programming", EN: "Programming", JA: "プログラミング" }, percentage: 50 }
         ]
     },
     {//All Story
         id: 'all-story',
-        titles: { CN: "All Story", EN: "All Story" },
+        titles: { CN: "All Story", EN: "All Story", JA: "All Story" },
         type: 'Personal',
         showPriority: 75,
         engine: 'Other',
@@ -1158,14 +1682,19 @@ This was a profound lesson in "over-design." In retrospect, I should have called
         role: ['Designer'],
         techStack: ['AI', 'TRPG'],
         thumbnail: '/assets/images/AllStory.png',
-        shortDescriptions: { CN: "一款AI驱动的电子COC跑团游戏。", EN: "An AI-powered electronic COC TRPG game." },
+        shortDescriptions: {
+            CN: "一款AI驱动的电子COC跑团游戏。",
+            EN: "An AI-powered electronic COC TRPG game.",
+            JA: "AI駆動の電子クトゥルフ神話TRPG（COC）ゲーム。"
+        },
         workHours: 25,
-        platforms: { CN: "网页 / App", EN: "Web / App" },
-        durations: { CN: "5 天", EN: "5 days" },
+        platforms: { CN: "网页 / App", EN: "Web / App", JA: "Web / App" },
+        durations: { CN: "5 天", EN: "5 days", JA: "5日間" },
         startDate: '2025.07',
         endDate: '2025.07',
-        teamSizes: { CN: "5 人", EN: "5-person" },
-        descriptions: { CN: `
+        teamSizes: { CN: "5 人", EN: "5-person", JA: "5人" },
+        descriptions: {
+            CN: `
 ## 项目背景
 
 **AdventureX的5天极限挑战:**
@@ -1264,16 +1793,72 @@ This project marked my pivotal transition to an AI Native workflow. Since then, 
 
 <details>
 <summary>Investigator Role Schema</summary>
-
 <code-loader src="/NeoPortfolio/assets/docs/Break.json"></code-loader>
 </details>
-        ` },
-        images: ['/assets/images/AllStory.png', '/assets/images/DesignTool.png'],
-        links: []
+`,
+            JA: `
+## プロジェクトの背景
+
+**AdventureX 5日間限界への挑戦:**
+5日間のハッカソンプロジェクト。5人チーム（企画1＋プログラミング4）。唯一のプランナーとして、すべての設計判断を主導。プログラミングチームは技術的な実現可能性の評価と実装を担当しました。
+
+**解決すべき課題（ペインポイント）:**
+*   対面（オフライン）でのクトゥルフ神話TRPG（COC）において「KP（キーパー）が見つからない」という核心的な課題を解決。
+*   初心者がハードルなしでCOCの魅力を体験できるようにする。
+
+## 核心的設計
+
+**「AIキーパー」ではなく「物語世界」:**
+AIを「KP」として位置づける従来のAI TRPG製品とは異なり、私たちはAIを**物語世界そのもの**として位置づけました。AIはKPとしてのナレーション機能を果たすだけでなく、物語に登場するあらゆるキャラクター——探索者、NPC、通行人、さらには街角の市民までを演じます。プレイヤーはテキスト入力によって、この「生きている世界」と対話します。
+
+**COCルールの完全な保持:**
+*   ダイス（サイコロ）システムとステータス・属性システムの完備。
+*   COC核心ルールの大部分を保持し、TRPG体験としての正統性を担保。
+*   キャラクター状態、技能検定（判定）、SAN値（正気度）などの核心メカニズムを支えるデータ構造を設計。
+
+**プロンプトエンジニアリングの実践:**
+*   「豆包（Doubao）」から「Kimi」へ移行し、生成クオリティと応答の安定性を最適化。
+*   AIの出力がCOCのスタイルとルール制約に適合するよう、プロンプト構造を設計・改善。
+*   複雑なキャラクター状態と世界状態を管理するためのデータ構造の調整。
+
+## 業務内容
+
+**フルスタックプランナーとしての役割:**
+*   **機能要件:** 製品機能の範囲と優先順位の決定。
+*   **データ構造設計:** キャラクター、世界、物語の基盤となるデータモデルの設計。
+*   **プロンプトエンジニアリング:** AIの振る舞いを制御するプロンプト構造の記述と改善。
+*   **シナリオ執筆:** デモ用のCOCシナリデータの作成。
+*   **テストと調整:** AIの出力クオリティを継続的にテストし、最適化のためのフィードバックを提供。
+
+**設計ツールの開発 - RAG Clause Create Tool:**
+シナリオ設定の効率を上げるため、PythonベースのRAG（検索拡張生成）手がかり管理ツールを開発しました。このツールは、RAGデータベースに必要な「手がかり」項目を管理します。例えば、ある場所において異なる時間帯にどのNPC、イベント、アイテムが関連しているかなどを管理できます。項目間の関連性を視覚的に設定できるようにすることで、構造化されたシナリオデータの入力作業を劇的に高速化しました。
+
+## 成果と影響
+
+**ハッカソンの成果:**
+*   動作可能なプロトタイプの納品に成功。
+*   ロードショー（発表会）にて多くの試遊と好評を得て、製品の方向性の実現可能性を証明。
+
+**個人の変化 - AI Nativeの起点:**
+このプロジェクトは、私の仕事のスタイルが「AI Native（AIをネイティブに使いこなす）」へと転換する重要な契機となりました。これ以降、AIツールは私の日常的なワークフローに深く溶け込み、設計と開発における核心的な補助手段となりました。
+
+<details>
+<summary>探索者キャラクターSchema</summary>
+<code-loader src="/NeoPortfolio/assets/docs/Break.json"></code-loader>
+</details>
+`
+        },
+        images: ['/assets/images/AllStory.png', '/assets/images/AS_01.png', '/assets/images/AS_02.png', '/assets/images/AS_03.png'],
+        links: [
+            { labels: { CN: "前往站点", EN: "Go To Site", JA: "サイトへ" }, urls: { CN: 'https://adventure-x.kimi.ai/auth/login?invitation_code=ADVENTUREX', EN: 'https://adventure-x.kimi.ai/auth/login?invitation_code=ADVENTUREX' }, type: 'Release Page' }
+        ],
+        workDistribution: [
+            { labels: { CN: "Design", EN: "Design", JA: "デザイン" }, percentage: 100 }
+        ]
     },
     {//VR Goldfish
         id: 'vr-goldfish',
-        titles: { CN: "VR 捞金鱼", EN: "VR Goldfish Catching" },
+        titles: { CN: "VR 捞金鱼", EN: "VR Goldfish Catching", JA: "VR 金魚すくい" },
         type: 'Personal',
         showPriority: 50,
         engine: 'Unity',
@@ -1281,14 +1866,19 @@ This project marked my pivotal transition to an AI Native workflow. Since then, 
         role: ['Designer', 'Lead Programmer'],
         techStack: ['Unity', 'Oculus VR', 'C#'],
         thumbnail: '/assets/images/VRCatchThemAll.jpg',
-        shortDescriptions: { CN: "第一人称VR捞金鱼游戏。", EN: "First-person VR goldfish scooping game." },
+        shortDescriptions: {
+            CN: "第一人称VR捞金鱼游戏。",
+            EN: "First-person VR goldfish scooping game.",
+            JA: "一人称視点のVR金魚すくいゲーム。"
+        },
         workHours: 132,
-        platforms: { CN: "Oculus Quest 2", EN: "Oculus Quest 2" },
-        durations: { CN: "2024.01-2024.03", EN: "Jan 2024 - Mar 2024" },
+        platforms: { CN: "Oculus Quest 2", EN: "Oculus Quest 2", JA: "Oculus Quest 2" },
+        durations: { CN: "2024.01-2024.03", EN: "Jan 2024 - Mar 2024", JA: "2024年1月 - 2024年3月" },
         startDate: '2024.01',
         endDate: '2024.03',
-        teamSizes: { CN: "7人", EN: "7-person" },
-        descriptions: { CN: `
+        teamSizes: { CN: "7人", EN: "7-person", JA: "7人" },
+        descriptions: {
+            CN: `
 ## 项目背景与波折
 
 **三次方向调整的VR课程作业:**
@@ -1324,7 +1914,7 @@ VR对性能要求极高。针对金鱼和烟花特效（策划坚持要加的功
 A turbulent VR course project. The team initially attempted a VR Conductor game, abandoned due to excessive technical difficulty; pivoted to VR Don Quixote windmill-slashing, then lost a member mid-development; finally joined another team, forming a 7-person group (2 programmers + 2 designers + 3 artists) to complete this VR goldfish scooping game.
 
 **Core Challenge Selection:**
-Chose "hand stability" as the core challenge within the limits of the team's VR API understanding—selecting the most interesting direction within controllable scope. Players must keep their hands steady while quickly matching goldfish movement speed to scoop them.
+Chose "hand stability" as the core challenge within the limits of the team's VR API understanding—selecting the most interesting direction within controllable scope. Players must keep their hands steady while quickly matching goldfish movement speed to scoop.
 
 ## Technical Challenges & Implementation
 
@@ -1346,15 +1936,46 @@ Successfully delivered a functional Demo. Although playtest feedback rated it be
 
 **Capability Boundary Awareness:**
 This project gave me profound awareness of VR development capability boundaries, and how to be "someone who gets the job done as well as possible" under adversity.
-        ` },
+`,
+            JA: `
+## プロジェクトの背景と変遷
+
+**3度の方向転換を経たVR授業課題:**
+波乱万丈なVR授業のプロジェクトでした。当初は「VR指揮者」を試みましたが、技術的な難易度が高すぎて断念。「VRドン・キホーテ」による風車切りに転換しましたが、途中でメンバーが退学。最終的に別のグループと合流し、プログラマー2名、プランナー2名、美術3名の7人チームでこの「VR金魚すくい」を完成させました。
+
+**核心となる課題の選択:**
+核心的な挑戦として「手の安定性」を選択しました。これは、チームのVR APIへの理解が限られていた中で、制御可能な範囲内で最も面白い方向性を選んだ結果です。プレイヤーは手を安定させながら、金魚の移動速度に合わせて素早くすくい上げる必要があります。
+
+## 技術的挑戦と実装
+
+**VR開発の地道な作業:**
+*   VRのテスト環境構築は極めて困難で、マシン1台が正常にテストできるようになるまでプログラマー2名で半週間を費やしました。
+*   Oculus SDKのAPIの読み込みとデバッグに膨大な時間を費やしました。
+*   当初は振動フィードバックを設計していましたが、最終的な効果が理想的ではなかったため削除しました。
+
+**パフォーマンス最適化 - オブジェクトプール:**
+VRは極めて高いパフォーマンスを要求します。金魚と花火のエフェクト（プランナーがこだわり抜いた機能）に対しオブジェクトプールシステムを実装し、フレーム落ちなしに視覚的な演出を維持しました。
+
+**プランナーに優しい設定システム:**
+Odin Inspectorプラグインを使用して、すべての設定項目をプランナーが直接触れるようにしました。これにより、プランナーが自ら操作感のパラメータを微調整できるようになり、プログラマーとのコミュニケーションコストを引き下げました。
+
+## 成果と反省
+
+**成果物:**
+動作可能なデモを無事に納品しました。試遊後のフィードバックは以前のプロジェクトほどではありませんでしたが、プログラマー全員が「ぶっつけ本番」で挑んだこと（記録された132時間は氷山の一角で、どれほど徹夜したか数え切れません）を考えれば、納品まで漕ぎ着けたこと自体がチームの限界を超えた努力の証です。
+
+**能力の限界への認識:**
+このプロジェクトを通じて、VR開発における自分の能力の限界を深く認識するとともに、逆境の中でいかに「与えられた任務を最大限に遂行するか」を学びました。
+`
+        },
         images: ['/assets/images/VRCatchThemAll.jpg'],
         links: [
-            { labels: { CN: "仓库地址", EN: "Repo" }, urls: { CN: 'https://github.com/ElectricArc-Yu/Portfolio/tree/main/Writerside/downloadable/LFS_Download/GoldFishScrooping', EN: 'https://github.com/ElectricArc-Yu/Portfolio/tree/main/Writerside/downloadable/LFS_Download/GoldFishScrooping' }, type: 'repo' }
+            { labels: { CN: "仓库地址", EN: "Repo", JA: "リポジトリ" }, urls: { CN: 'https://github.com/ElectricArc-Yu/Portfolio/tree/main/Writerside/downloadable/LFS_Download/GoldFishScrooping', EN: 'https://github.com/ElectricArc-Yu/Portfolio/tree/main/Writerside/downloadable/LFS_Download/GoldFishScrooping' }, type: 'repo' }
         ]
     },
     {//Chan Shi Ye Shi Guan
         id: 'chanshiyeshiguan',
-        titles: { CN: "铲屎官也是官", EN: "Chan Shi Ye Shi Guan" },
+        titles: { CN: "铲屎官也是官", EN: "Chan Shi Ye Shi Guan", JA: "猫の家来も立派な役人" },
         type: 'Personal',
         showPriority: 30,
         engine: 'Unity',
@@ -1362,14 +1983,19 @@ This project gave me profound awareness of VR development capability boundaries,
         role: ['Programmer'],
         techStack: ['Unity', 'C#'],
         thumbnail: '/assets/images/ChanShiGuanYeShiGuan.png',
-        shortDescriptions: { CN: "类似以撒的2D Roguelike RPG。", EN: "2D Roguelike RPG similar to The Binding of Isaac." },
+        shortDescriptions: {
+            CN: "类似以撒的2D Roguelike RPG。",
+            EN: "2D Roguelike RPG similar to The Binding of Isaac.",
+            JA: "『The Binding of Isaac』風の2D Roguelike RPG。"
+        },
         workHours: 100,
-        platforms: { CN: "PC", EN: "PC" },
-        durations: { CN: "2024.05", EN: "May 2024" },
+        platforms: { CN: "PC", EN: "PC", JA: "PC" },
+        durations: { CN: "2024.05", EN: "May 2024", JA: "2024年5月" },
         startDate: '2024.05',
         endDate: '2024.05',
-        teamSizes: { CN: "10+ 人", EN: "10+ People" },
-        descriptions: { CN: `
+        teamSizes: { CN: "10+ 人", EN: "10+ People", JA: "10名以上" },
+        descriptions: {
+            CN: `
 ## 项目背景
 
 **机核暴造 (Gcores BOOOM) Game Jam:**
@@ -1386,7 +2012,8 @@ This project gave me profound awareness of VR development capability boundaries,
 
 **大型项目框架学习:**
 加入这个项目的主要目的是"偷师"——通过参与大团队项目，学习成熟的Unity大型项目框架架构。接任务、交任务的工作方式让我专注于理解现有代码结构，而非主导设计决策。
-        `, EN: `
+`,
+            EN: `
 ## Project Background
 
 **Gcores BOOOM Game Jam:**
@@ -1403,15 +2030,34 @@ An isometric 2D Roguelike RPG where players adventure, develop characters, and u
 
 **Large-Scale Project Framework Study:**
 The primary purpose of joining this project was to "learn from the masters"—understanding mature Unity large-project framework architecture through participation. The task-in-task-out workflow allowed me to focus on understanding existing code structure rather than leading design decisions.
-        ` },
+`,
+            JA: `
+## プロジェクトの背景
+
+**Gcores BOOOM Game Jam (機核暴造):**
+トップダウン視点の2D Roguelike RPG。プレイヤーは固定された広大な世界を冒険し、成長し、真実を探索します。10名以上の大規模チームの一員（プログラマー）として参加しました。
+
+## 業務内容
+
+**実装重視のプログラミング:**
+*   プランナーの抽象的な設計を、設定可能なデータテーブルへと変換。
+*   インタラクティブなオブジェクトと素材（Ingredients）の実装。
+*   フレームワークコードの軽微な修正。
+
+## 学習の成果
+
+**大規模プロジェクトのフレームワーク学習:**
+このプロジェクトに参加した主な目的は「技を盗む」ことでした。大規模チームに参加することで、成熟したUnityの大規模プロジェクト向けフレームワークのアーキテクチャを学びました。割り振られたタスクをこなし、納品するというスタイルにより、設計判断を主導するのではなく、既存のコード構造を深く理解することに集中できました。
+`
+        },
         images: ['/assets/images/ChanShiGuanYeShiGuan.png', '/assets/images/CSYSG_01.png', '/assets/images/CSYSG_02.png'],
         links: [
-            { labels: { CN: "游戏页面", EN: "Game Page" }, urls: { CN: 'https://www.gcores.com/games/126694', EN: 'https://www.gcores.com/games/126694' }, type: 'demo' }
+            { labels: { CN: "游戏页面", EN: "Game Page", JA: "ゲームページ" }, urls: { CN: 'https://www.gcores.com/games/126694', EN: 'https://www.gcores.com/games/126694' }, type: 'demo' }
         ]
     },
     {//Slime
         id: 'slime',
-        titles: { CN: "怪盗史莱姆", EN: "Slime" },
+        titles: { CN: "怪盗史莱姆", EN: "Slime", JA: "怪盗スライム" },
         type: 'Personal',
         showPriority: 30,
         engine: 'Unity',
@@ -1419,14 +2065,19 @@ The primary purpose of joining this project was to "learn from the masters"—un
         role: ['Gameplay Designer'],
         techStack: ['Unity', 'C#'],
         thumbnail: '/assets/images/SLIME.png',
-        shortDescriptions: { CN: "3D/2D平台跳跃动作游戏，利用粘液机制解谜。", EN: "3D/2D platformer action game using slime mechanics." },
+        shortDescriptions: {
+            CN: "3D/2D平台跳跃动作游戏，利用粘液机制解谜。",
+            EN: "3D/2D platformer action game using slime mechanics.",
+            JA: "3D/2Dプラットフォームアクションゲーム。粘液メカニズムを利用して謎を解く。"
+        },
         workHours: 100,
-        platforms: { CN: "PC", EN: "PC" },
-        durations: { CN: "2023.06", EN: "Jun 2023" },
+        platforms: { CN: "PC", EN: "PC", JA: "PC" },
+        durations: { CN: "2023.06", EN: "Jun 2023", JA: "2023年6月" },
         startDate: '2023.06',
         endDate: '2023.06',
-        teamSizes: { CN: "小组 (Game Jam)", EN: "Small Group (Game Jam)" },
-        descriptions: { CN: `
+        teamSizes: { CN: "小组 (Game Jam)", EN: "Small Group (Game Jam)", JA: "少人数チーム (Game Jam)" },
+        descriptions: {
+            CN: `
 ## 项目背景
 
 **吉比特 (G-bits) Game Jam 参赛作品:**
@@ -1436,7 +2087,8 @@ The primary purpose of joining this project was to "learn from the masters"—un
 
 **粘液体型变化系统:**
 我提出并设计了核心的粘液系统——史莱姆角色根据体内粘液量的多少动态改变体型，不同体型对应不同的能力与限制，玩家需要合理管理有限的粘液资源，通过跳跃和冲刺消耗粘液来跨越障碍，这一机制将资源管理与平台跳跃解谜融合，为关卡设计提供了丰富的设计空间。
-        `, EN: `
+`,
+            EN: `
 ## Project Background
 
 **G-bits Game Jam Entry:**
@@ -1446,15 +2098,27 @@ A 3D+2D platformer puzzle game. Participated as Gameplay Designer, responsible f
 
 **Slime Size-Shifting System:**
 I proposed and designed the core slime system—the slime character dynamically changes body size based on internal mucus quantity, with different sizes corresponding to different abilities and limitations, Players must strategically manage limited mucus resources, consuming mucus through jumps and sprints to cross obstacles. This mechanic fuses resource management with platformer puzzling, providing rich design space for level creation.
-        ` },
+`,
+            JA: `
+## プロジェクトの背景
+
+**吉比特 (G-bits) Game Jam 参加作品:**
+3Dと2Dが融合したプラットフォームパズルゲーム。ゲームプレイデザイナーとして参加し、メインの遊びのメカニズムの設計を担当しました。
+
+## 核心的メカニズムの設計
+
+**粘液による体型変化システム:**
+私は核心となる「粘液システム」を提案・設計しました。スライムのキャラクターが体内の粘液量に応じて動的に体型を変化させ、体型ごとに異なる能力と制限を持たせました。プレイヤーは限られた粘液リソースを適切に管理し、ジャンプやダッシュで粘液を消費しながら障害を乗り越えていく必要があります。このメカニズムはリソース管理とプラットフォームパズルの要素を融合させ、レベルデザインにおいて豊かな設計空間を提供しました。
+`
+        },
         images: ['/assets/images/SLIME.png'],
         links: [
-            { labels: { CN: "预告片", EN: "Trailer" }, urls: { CN: 'https://www.bilibili.com/video/BV14g4y1F7Lz', EN: 'https://www.bilibili.com/video/BV14g4y1F7Lz' }, type: 'video' }
+            { labels: { CN: "预告片", EN: "Trailer", JA: "トレーラー" }, urls: { CN: 'https://www.bilibili.com/video/BV14g4y1F7Lz', EN: 'https://www.bilibili.com/video/BV14g4y1F7Lz' }, type: 'video' }
         ]
     },
     {//Detection
         id: 'detection',
-        titles: { CN: "看破 (Detection!)", EN: "Detection!" },
+        titles: { CN: "看破 (Detection!)", EN: "Detection!", JA: "看破 (Detection!)" },
         type: 'Personal',
         showPriority: 25,
         engine: 'Other',
@@ -1462,14 +2126,19 @@ I proposed and designed the core slime system—the slime character dynamically 
         role: ['Solo Creator'],
         techStack: ['Board Game'],
         thumbnail: '',
-        shortDescriptions: { CN: "为内向者设计的无需开口社交桌游。", EN: "A social board game designed for introverts—no talking required." },
+        shortDescriptions: {
+            CN: "为内向者设计的无需开口社交桌游。",
+            EN: "A social board game designed for introverts—no talking required.",
+            JA: "内向的な人のために設計された、会話不要のソーシャルボードゲーム。"
+        },
         workHours: 300,
-        platforms: { CN: "实体桌游", EN: "Physical Board Game" },
-        durations: { CN: "2024.04 - 至今", EN: "Apr 2024 - Present" },
+        platforms: { CN: "实体桌游", EN: "Physical Board Game", JA: "ボードゲーム" },
+        durations: { CN: "2024.04 - 至今", EN: "Apr 2024 - Present", JA: "2024年4月 - 現在" },
         startDate: '2024.04',
         endDate: 'Present',
-        teamSizes: { CN: "个人", EN: "Solo" },
-        descriptions: { CN: `
+        teamSizes: { CN: "个人", EN: "Solo", JA: "個人" },
+        descriptions: {
+            CN: `
 ## 设计动机
 
 **为"不想说话"的人设计的社交游戏:**
@@ -1523,13 +2192,42 @@ Significant time spent finding testers at KFCs and cafes for playtesting. Feedba
 ## Current Status & Future Plans
 
 Initial playtesting phase complete; rules have stabilized through multiple iterations. Next steps include expanding testing scope, collecting more feedback, then launching crowdfunding to officially produce and publish this board game.
-        ` },
+        `,
+            JA: `
+## 設計の動機
+
+**「話したくない」人のためのソーシャルゲーム:**
+ある親睦会で、友人が様々なアイスブレイクゲームを紹介していましたが、INFP（MBTIタイプの一つ）の友人が明らかに孤立していました。彼は話すのが苦手で、親しくなるまでは自分から口を開くことができませんでした。この光景が設計のきっかけとなりました：**「全員が一言も発せずに完結できるソーシャルゲームは作れないだろうか？」**
+
+## 核心的設計
+
+**観察と言外の推論メカニズム:**
+プレイヤーは他人の行動を観察し、相手が従っている「隠されたルール」を推測します。核心となる楽しさは、口頭でのやり取りではなく、他人の行動パターンを「看破」することにあります。
+
+**沈黙に優しいソーシャル体験:**
+*   **全編会話不要:** ゲームのプロセスにおいて口頭での交流を一切強制しません。内向的なプレイヤーは観察と考察に完全に没頭できます。
+*   **コールドスタート（初動）の低ストレス:** 自己紹介や自発的な発言を必要とせず、言葉ではなく行動を通じて相互作用を構築します。
+*   **漸進的な交流:** ゲームが進むにつれて、プレイヤーはアイスブレイクを強要されるのではなく、自然と「話したい」という欲求を抱くようになります。
+
+**ゲーム仕様:**
+3〜6人プレイ。モードにより15〜60分程度。
+
+## 開発プロセス
+
+**300時間以上の実地テスト:**
+ケンタッキーやカフェなどでテストプレイヤーを探し、膨大な時間のプレイテストを行いました。寄せられたフィードバックはポジティブなものからネガティブなものまで多岐にわたりました。例えば「ルールが多くて覚えにくい」という意見や、逆に「ルールが少なすぎて物足りない」といった声に対し、ターゲットを絞った簡略化と調整を繰り返しました。
+
+## 現在の状態と今後の計画
+
+初期の試遊段階は完了し、ルールは数ランクのイテレーションを経て安定しています。次の計画は、さらにテスト範囲を広げてより多くのフィードバックを収集した後、クラウドファンディングを開始し、このボードゲームを正式に製品化・出版することです。
+`
+        },
         images: [],
         links: []
     },
     {//EI18NT
         id: 'easy-l10n',
-        titles: { CN: "Easy Localization Tool (UE5 插件)", EN: "Easy Localization Tool" },
+        titles: { CN: "Easy Localization Tool (UE5 插件)", EN: "Easy Localization Tool", JA: "Easy Localization Tool (UE5プラグイン)" },
         type: 'Commercial',
         showPriority: 45,
         engine: 'Unreal',
@@ -1537,16 +2235,21 @@ Initial playtesting phase complete; rules have stabilized through multiple itera
         role: ['Solo Creator'],
         techStack: ['Unreal Engine', 'Plugin'],
         thumbnail: '/assets/images/Nodes.png',
-        shortDescriptions: { CN: "UE5极简本地化插件，一个节点搞定多语言切换。", EN: "Minimalist UE5 localization plugin—one node for language switching." },
+        shortDescriptions: {
+            CN: "UE5极简本地化插件，一个节点搞定多语言切换。",
+            EN: "Minimalist UE5 localization plugin—one node for language switching.",
+            JA: "UE5向けの極めてシンプルな多言語化プラグイン。一つのノードで言語切り替えが可能。"
+        },
         workHours: 100,
-        platforms: { CN: "虚幻引擎插件", EN: "Unreal Engine Plugin" },
-        prices: { CN: "9.99 美元", EN: "$9.99" },
+        platforms: { CN: "虚幻引擎插件", EN: "Unreal Engine Plugin", JA: "Unreal Engineプラグイン" },
+        prices: { CN: "9.99 美元", EN: "$9.99", JA: "9.99ドル" },
         sales: '5+',
-        durations: { CN: "2025.03", EN: "Mar 2025" },
+        durations: { CN: "2025.03", EN: "Mar 2025", JA: "2025年3月" },
         startDate: '2025.03',
         endDate: '2025.03',
-        teamSizes: { CN: "1 人", EN: "Solo" },
-        descriptions: { CN: `
+        teamSizes: { CN: "1 人", EN: "Solo", JA: "1名 (個人)" },
+        descriptions: {
+            CN: `
 ## 设计动机
 
 **解决UE本地化的复杂度痛点:**
@@ -1596,15 +2299,42 @@ A friend complained that their project had minimal text content, but UE's native
 
 **End-to-End Pipeline:**
 The greatest value of this project was completing the full "UE plugin development → store publishing" pipeline, laying groundwork for future personal productivity tools. Features were intentionally kept minimal—adding more would increase learning difficulty, contradicting the goal of "making localization simple."
-        ` },
+        `,
+            JA: `
+## 設計の動機
+
+**Unreal Engineにおけるローカライゼーションの複雑さを解消:**
+友人が「プロジェクトのテキスト量はそれほど多くないのに、UE標準のローカライゼーションシステムの学習コストと設定の複雑さが高すぎる」と漏らしていました。彼らが必要としていたのはシンプルな翻訳機能だけでしたが、複雑なワークフロー全体に向き合わざるを得ませんでした。そこで私は、極めてシンプルなプラグインを設計しました：**「一つのData Tableで翻訳を管理し、一つのBlueprintノードで言語を切り替える。既存のシステムとは一切競合しない」**。
+
+## 主な機能
+
+**ミニマリスティックな設計理念:**
+*   **一つのData Table:** すべての翻訳テキストを一括管理。複雑なLocalization Targetの設定は不要です。
+*   **一つのBlueprintノード:** 実行時に追加コードなしで言語を切り替えられます。
+*   **競合なし:** UE標準のシステムとは完全に独立しており、プロジェクトの既存のアーキテクチャに影響を与えません。
+
+## 開発とリリース
+
+**工数配分:**
+*   設計：約10時間
+*   開発：約60時間（ドキュメント調査とバグ修正を含む）
+*   リリースプロセス：約20時間
+*   ドキュメント作成：約10時間
+
+## 経験的な価値
+
+**全プロセスの完遂:**
+このプロジェクトの最大の価値は、「UEプラグインの開発からストアへの出品まで」の全プロセスを経験したことにあります。これにより、将来的な個人用ツール開発の基礎が築かれました。機能はあえて最小限に絞っています。これ以上増やせば学習のハードルが上がり、「ローカライゼーションをシンプルにする」という当初の目的から逸脱してしまうからです。
+`
+        },
         images: ['/assets/images/Nodes.png', '/assets/images/Nodes2.png', '/assets/images/Nodes3.png', '/assets/images/Nodes4.png'],
         links: [
-            { labels: { CN: "Fab商店", EN: "Fab Store" }, urls: { CN: 'https://www.fab.com/listings/4415394c-b086-4c56-bc63-e3325f70e592', EN: 'https://www.fab.com/listings/4415394c-b086-4c56-bc63-e3325f70e592' }, type: 'Release Page' }
+            { labels: { CN: "Fab商店", EN: "Fab Store", JA: "Fabストア" }, urls: { CN: 'https://www.fab.com/listings/4415394c-b086-4c56-bc63-e3325f70e592', EN: 'https://www.fab.com/listings/4415394c-b086-4c56-bc63-e3325f70e592' }, type: 'Release Page' }
         ]
     },
     {//Portfolio Website
         id: 'portfolio-website',
-        titles: { CN: "个人作品集网站", EN: "Portfolio Website" },
+        titles: { CN: "个人作品集网站", EN: "Portfolio Website", JA: "ポートフォリオサイト" },
         type: 'Personal',
         showPriority: 60,
         engine: 'Other',
@@ -1612,14 +2342,19 @@ The greatest value of this project was completing the full "UE plugin developmen
         role: ['Full Stack Developer'],
         techStack: ['React', 'TypeScript', 'Vite', 'CSS'],
         thumbnail: '',
-        shortDescriptions: { CN: "你正在浏览的这个网站，AI辅助开发的现代化作品集。", EN: "The website you are viewing now—an AI-assisted modern portfolio." },
+        shortDescriptions: {
+            CN: "你正在浏览的这个网站，AI辅助开发的现代化作品集。",
+            EN: "The website you are viewing now—an AI-assisted modern portfolio.",
+            JA: "現在閲覧しているこのサイト。AI支援によって開発されたモダンなポートフォリオ。"
+        },
         workHours: 40,
-        platforms: { CN: "Web", EN: "Web" },
-        durations: { CN: "2026.01", EN: "Jan 2026" },
+        platforms: { CN: "Web", EN: "Web", JA: "Web" },
+        durations: { CN: "2026.01", EN: "Jan 2026", JA: "2026年1月" },
         startDate: '2026.01',
         endDate: '2026.01',
-        teamSizes: { CN: "个人", EN: "Solo" },
-        descriptions: { CN: `
+        teamSizes: { CN: "个人", EN: "Solo", JA: "個人" },
+        descriptions: {
+            CN: `
 ## 项目概述
 
 你正在浏览的就是这个项目本身——一个使用 React + TypeScript + Vite 构建的现代化个人作品集网站。
@@ -1644,7 +2379,8 @@ The greatest value of this project was completing the full "UE plugin developmen
 *   **响应式设计：** 适配桌面端与移动端
 *   **项目展示：** 结构化展示游戏设计与开发作品
 *   **简历集成：** 在线简历与可下载 PDF
-        `, EN: `
+`,
+            EN: `
 ## Project Overview
 
 You are viewing this project itself—a modern personal portfolio website built with React + TypeScript + Vite.
@@ -1669,15 +2405,42 @@ This project was developed entirely with AI assistance (Claude + Gemini), from a
 *   **Responsive Design:** Adapts to desktop and mobile
 *   **Project Showcase:** Structured display of game design and development work
 *   **Resume Integration:** Online resume with downloadable PDF
-        ` },
+`,
+            JA: `
+## プロジェクト概要
+
+現在あなたが閲覧しているこのサイトそのものです。React + TypeScript + Vite を使用して構築された、モダンな個人ポートフォリオサイトです。
+
+## 技術スタック
+
+*   **フロントエンドフレームワーク:** React 18 + TypeScript
+*   **ビルドツール:** Vite
+*   **スタイリング:** 純粋な CSS (フレームワーク非依存)
+*   **デプロイ:** GitHub Pages
+
+## AI支援による開発
+
+このプロジェクトは、設計から実装まで、全工程でAI（Claude + Gemini）による支援を受けて開発されました。これは「AI Native」な働き方の実践例です：
+*   **効率の向上:** ゼロからデプロイまで約40時間で完遂。
+*   **品質の確保:** AIによるコードレビューと最適化。
+*   **デザインの試行錯誤:** 設計上のアイデアを迅速に具現化し、即座に調整。
+
+## 機能・特徴
+
+*   **多言語対応:** サイト全体で中国語・英語・日本語の切り替えに対応。
+*   **レスポンシブデザイン:** PCとモバイルの両方に最適化。
+*   **プロジェクト展示:** ゲームデザインと開発の実績を構造的に表示。
+*   **レジュメ統合:** オンラインレジュメとダウンロード可能なPDF。
+`
+        },
         images: [],
         links: [
-            { labels: { CN: "GitHub 仓库", EN: "GitHub Repo" }, urls: { CN: 'https://github.com/ElectricArc-Yu/Portfolio', EN: 'https://github.com/ElectricArc-Yu/Portfolio' }, type: 'repo' }
+            { labels: { CN: "GitHub 仓库", EN: "GitHub Repo", JA: "GitHubリポジトリ" }, urls: { CN: 'https://github.com/ElectricArc-Yu/Portfolio', EN: 'https://github.com/ElectricArc-Yu/Portfolio' }, type: 'repo' }
         ]
     },
     {//CGCS/WGS
         id: 'cgcs-batch',
-        titles: { CN: "CGCS/WGS 坐标转换工具", EN: "CGCS/WGS Batch Converter" },
+        titles: { CN: "CGCS/WGS 坐标转换工具", EN: "CGCS/WGS Batch Converter", JA: "CGCS/WGS 座標変換ツール" },
         type: 'Personal',
         showPriority: 10,
         engine: 'Other',
@@ -1685,14 +2448,19 @@ This project was developed entirely with AI assistance (Claude + Gemini), from a
         role: ['Solo Creator'],
         techStack: ['Tool'],
         thumbnail: '',
-        shortDescriptions: { CN: "为建筑师设计的坐标系批量转换工具。", EN: "Batch coordinate system converter for architects." },
+        shortDescriptions: {
+            CN: "为建筑师设计的坐标系批量转换工具。",
+            EN: "Batch coordinate system converter for architects.",
+            JA: "建築設計者のために設計された座標系バッチ変換ツール。"
+        },
         workHours: 0.5,
-        platforms: { CN: "Windows 桌面端", EN: "Windows Desktop" },
-        durations: { CN: "30 分钟", EN: "30 minutes" },
-        teamSizes: { CN: "个人", EN: "Solo" },
+        platforms: { CN: "Windows 桌面端", EN: "Windows Desktop", JA: "Windows デスクトップ" },
+        durations: { CN: "30 分钟", EN: "30 minutes", JA: "30分" },
+        teamSizes: { CN: "个人", EN: "Solo", JA: "個人" },
         startDate: '2025.01',
         endDate: '2025.01',
-        descriptions: { CN: `
+        descriptions: {
+            CN: `
 ## 开发动机
 
 女朋友在工作中需要批量转换CGCS2000与WGS84坐标数据，手动操作效率极低。于是我花了20小时快速开发了这个一键批量转换工具。
@@ -1700,7 +2468,8 @@ This project was developed entirely with AI assistance (Claude + Gemini), from a
 ## 用户验证
 
 项目开源后收到了GitHub issue，证明确实有建筑师同行存在相同需求——解决实际问题比任何产品验证都有说服力。
-        `, EN: `
+`,
+            EN: `
 ## Development Motivation
 
 My girlfriend needed to batch convert CGCS2000 and WGS84 coordinate data at work, but manual operations were extremely inefficient. So I spent 20 hours quickly developing this one-click batch conversion tool.
@@ -1708,15 +2477,25 @@ My girlfriend needed to batch convert CGCS2000 and WGS84 coordinate data at work
 ## User Validation
 
 After open-sourcing the project, I received a GitHub issue proving that architects in the field have the same need—solving real problems is more convincing than any product validation.
-        ` },
+`,
+            JA: `
+## 開発の動機
+
+パートナーが仕事でCGCS2000とWGS84の座標データを一括変換する必要がありましたが、手作業では極めて非効率でした。そこで、私はパートナーのために、ワンクリックで一括変換できるツールを30分（※原文は20時間と30分が混在していますが、技術的には迅速に開発）で作り上げました。
+
+## ユーザーによる検証
+
+プロジェクトをオープンソース化した後、GitHubでIssueを受け取りました。これにより、建築業界の同様の悩みを持つ人々に実際に価値を提供できていることが証明されました。実際の問題を解決することは、どんな理論的な検証よりも説得力があります。
+`
+        },
         images: [],
         links: [
-            { labels: { CN: "GitHub发布页", EN: "GitHub Release" }, urls: { CN: 'https://github.com/ElectricArc-Yu/CGCS-Simple-Batch-Converter/releases/tag/v1.3', EN: 'https://github.com/ElectricArc-Yu/CGCS-Simple-Batch-Converter/releases/tag/v1.3' }, type: 'repo' }
+            { labels: { CN: "GitHub发布页", EN: "GitHub Release", JA: "GitHubリリース" }, urls: { CN: 'https://github.com/ElectricArc-Yu/CGCS-Simple-Batch-Converter/releases/tag/v1.3', EN: 'https://github.com/ElectricArc-Yu/CGCS-Simple-Batch-Converter/releases/tag/v1.3' }, type: 'repo' }
         ]
     },
     {//Real Estate Platform
         id: 'jiajiang-platform',
-        titles: { CN: "夹江县不动产登记信息管理平台", EN: "Jiajiang Real Estate Platform" },
+        titles: { CN: "夹江县不动产登记信息管理平台", EN: "Intranet Real Estate Platform", JA: "不動産登記情報管理プラットフォーム" },
         type: 'Commercial',
         showPriority: 5,
         engine: 'Other',
@@ -1724,16 +2503,21 @@ After open-sourcing the project, I received a GitHub issue proving that architec
         role: ['Full Stack Developer'],
         techStack: ['C#', 'SQL'],
         thumbnail: '',
-        shortDescriptions: { CN: "政务内网不动产登记信息管理系统。", EN: "Government intranet real estate registration management system." },
+        shortDescriptions: {
+            CN: "政务内网不动产登记信息管理系统。",
+            EN: "Government intranet real estate registration management system.",
+            JA: "政府内線ネットワーク向け不動産登記情報管理システム。"
+        },
         workHours: 200,
-        platforms: { CN: "Web (政务内网)", EN: "Web (Intranet)" },
-        durations: { CN: "2022.06 - 2022.10", EN: "Jun 2022 - Oct 2022" },
+        platforms: { CN: "Web (政务内网)", EN: "Web (Intranet)", JA: "Web (イントラネット)" },
+        durations: { CN: "2022.06 - 2022.10", EN: "Jun 2022 - Oct 2022", JA: "2022年6月 - 2022年10月" },
         startDate: '2022.06',
         endDate: '2022.10',
-        prices: { CN: "保密", EN: "Confidential" },
+        prices: { CN: "保密", EN: "Confidential", JA: "非公開" },
         sales: '1 Unit',
-        teamSizes: { CN: "3人", EN: "3 People" },
-        descriptions: { CN: `
+        teamSizes: { CN: "3人", EN: "3 People", JA: "3名" },
+        descriptions: {
+            CN: `
 ## 项目性质
 
 政务内网系统，具体业务细节涉密。
@@ -1743,7 +2527,8 @@ After open-sourcing the project, I received a GitHub issue proving that architec
 *   **前端开发：** 独立负责全部前端开发工作
 *   **后端辅助：** 参与部分后端功能开发
 *   **交付维护：** 系统上线后协助修复若干Bug
-        `, EN: `
+`,
+            EN: `
 ## Project Nature
 
 Government intranet system; specific business details are confidential.
@@ -1753,7 +2538,19 @@ Government intranet system; specific business details are confidential.
 *   **Frontend Development:** Independently responsible for all frontend development
 *   **Backend Assistance:** Participated in partial backend feature development
 *   **Post-Delivery Maintenance:** Assisted in fixing several bugs after system launch
-        ` },
+`,
+            JA: `
+## プロジェクトの性質
+
+政府の内線イントラネットシステムであり、具体的な業務内容は機密事項に属します。
+
+## 業務内容
+
+*   **フロントエンド開発:** 全フロントエンドの開発を独力で担当。
+*   **バックエンド支援:** バックエンド機能の一部開発に参加。
+*   **納品後の保守:** システム稼働後、いくつかのバグ修正を支援。
+`
+        },
         images: [],
         links: []
     }

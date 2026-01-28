@@ -172,7 +172,7 @@ const ProjectDetail: React.FC = () => {
                             <li>
                                 <span>{t('Project Role')}</span>
                                 <div className={styles.projectRoles}>
-                                    {project.role.map(r => <span key={r} className={styles.roleTag}>{r}</span>)}
+                                    {project.role.map(r => <span key={r} className={styles.roleTag}>{t(r)}</span>)}
                                 </div>
                             </li>
                             <li>
@@ -188,7 +188,7 @@ const ProjectDetail: React.FC = () => {
                             <li>
                                 <span>{t('Tech Stack')}</span>
                                 <div className={styles.techStack}>
-                                    {project.techStack.map(tech => <span key={tech} className={styles.roleTag}>{tech}</span>)}
+                                    {project.techStack.map(tech => <span key={tech} className={styles.roleTag}>{t(tech)}</span>)}
                                 </div>
                             </li>
                         </ul>

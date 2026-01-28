@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import React, { createContext, useContext, useState, type ReactNode } from 'react';
 import { translations } from '../data/translations';
 import { siteConfig } from '../data/siteConfig';
 
@@ -15,7 +15,6 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const supportedLanguages = siteConfig.i18n.languages;
-    const defaultLanguage = siteConfig.i18n.defaultLanguage;
 
     const getInitialLanguage = (): Language => {
         const stored = localStorage.getItem('pref-lang');
@@ -29,14 +28,10 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
             (l.code === 'CN' && browserLang.includes('zh'))
         );
 
-        return found ? found.code : defaultLanguage;
+        return found ? found.code : siteConfig.i18n.defaultLanguage;
     };
 
-    const [language, setLanguageState] = useState<Language>(defaultLanguage);
-
-    useEffect(() => {
-        setLanguageState(getInitialLanguage());
-    }, []);
+    const [language, setLanguageState] = useState<Language>(getInitialLanguage);
 
     const setLanguage = (lang: Language) => {
         if (supportedLanguages.some(l => l.code === lang)) {

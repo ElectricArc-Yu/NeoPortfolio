@@ -1,5 +1,6 @@
 
 export type SiteStatus = 'WIP' | 'Launched' | 'OutDated';
+export type TitleFormat = 'GlobalPage' | 'PageGlobal' | 'GlobalOnly' | 'PageOnly';
 
 export interface SiteConfig {
     i18n: {
@@ -24,6 +25,11 @@ export interface SiteConfig {
             subtitles: Record<string, string>;
         };
     };
+    brand: {
+        titles: Record<string, string>;
+        favicon: string;
+        titleFormat: TitleFormat;
+    };
 }
 
 export const siteConfig: SiteConfig = {
@@ -33,7 +39,7 @@ export const siteConfig: SiteConfig = {
             { code: 'EN', label: 'English' },
             { code: 'JA', label: '日本語' }
         ],
-        defaultLanguage: 'CN'
+        defaultLanguage: 'EN'
     },
     status: 'Launched',
     autoOutdatedDate: '2026-06-30',
@@ -61,7 +67,7 @@ export const siteConfig: SiteConfig = {
     },
     pages: {
         home: {
-            titles: { CN: '于陈浩然', EN: 'Yu Chenhaoran', JA: 'Yu Chenhaoran' },
+            titles: { CN: '作品集', EN: 'Portfolio', JA: 'ポートフォリオ' },
             subtitles: {
                 CN: '游戏设计师 & 游戏开发者',
                 EN: 'Game Designer & Game Developer',
@@ -69,7 +75,7 @@ export const siteConfig: SiteConfig = {
             }
         },
         media: {
-            titles: { CN: '媒体与内容', EN: 'Media & Content', JA: 'メディア & コンテンツ' },
+            titles: { CN: '媒体', EN: 'Media', JA: 'メディア' },
             subtitles: {
                 CN: '游戏设计分析、演示视频与自媒体内容展示。',
                 EN: 'Game design analysis, showcase videos, and media content.',
@@ -77,17 +83,34 @@ export const siteConfig: SiteConfig = {
             }
         },
         resume: {
-            titles: { CN: '于陈浩然', EN: 'Yu Chenhaoran', JA: 'Yu Chenhaoran' },
+            titles: { CN: '简历', EN: 'Resume', JA: 'レジュメ' },
             subtitles: { CN: '游戏设计师', EN: 'Game Designer', JA: 'ゲームデザイナー' }
         },
         contact: {
-            titles: { CN: '联系我', EN: 'Contact Me', JA: 'お問い合わせ' },
+            titles: { CN: '联系我', EN: 'Contact', JA: 'お問い合わせ' },
             subtitles: {
                 CN: '如果您有任何项目合作或咨询，欢迎通过以下方式联系。',
                 EN: 'If you have any project collaboration or inquiries, feel free to contact me.',
                 JA: 'プロジェクトのコラボレーションやお問い合わせなど、お気軽にご連絡ください。'
             }
+        },
+        documents: {
+            titles: { CN: '文档', EN: 'Documents', JA: 'ドキュメント' },
+            subtitles: {
+                CN: '包含可公开的设计文档、分析文章及学术论文。',
+                EN: 'Collection of publicable Game Design Documents, Analysis Articles & Academic Papers.',
+                JA: '公開可能なゲームデザインドキュメント、分析記事、学術論文のコレクション。'
+            }
         }
+    },
+    brand: {
+        titles: {
+            CN: "于陈浩然",
+            EN: "Yu Chenhaoran",
+            JA: "于陳浩然"
+        },
+        favicon: '/NeoPortfolio/webicon.ico',
+        titleFormat: 'GlobalPage'
     }
 };
 

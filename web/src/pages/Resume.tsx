@@ -6,7 +6,7 @@ import type { Project, MainProject } from '../data/types';
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
 import styles from './Resume.module.css';
-import { Mail, Phone, Github, Linkedin, Send, X, ExternalLink } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin, Send, X, ExternalLink, Award, FileCheck, Link as LinkIcon } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import MediaGallery from '../components/MediaGallery';
@@ -14,12 +14,14 @@ import { getAssetPath } from '../utils/assetPath';
 import { siteConfig } from '../data/siteConfig';
 import { getRoleCategory } from '../utils/projectUtils';
 import { getLocalizedValue } from '../utils/i18n';
+import CertModal from '../components/CertModal';
 
 const Resume: React.FC = () => {
     const { language, t } = useLanguage();
     const [filter, setFilter] = useState<'All' | 'Commercial' | 'Personal' | 'Consultant'>('All');
     const [activeGroup, setActiveGroup] = useState<{ main: MainProject, subProjects: Project[] } | null>(null);
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+    const [activeCert, setActiveCert] = useState<{ url: string, title: string } | null>(null);
 
     const filteredProjects = useMemo(() => {
         return projects.filter(project => {
@@ -167,6 +169,11 @@ const Resume: React.FC = () => {
                         }
                     </span>
                     <div className={styles.projectTypeBadges}>
+                        {isGroup && (
+                            <span className={styles.collectionBadge}>
+                                {language === 'CN' ? '合集' : (language === 'JA' ? 'コレクション' : 'Collection')}
+                            </span>
+                        )}
                         {project.gameType ? (
                             Array.isArray(project.gameType)
                                 ? project.gameType.map((gt: string) => (
@@ -344,6 +351,61 @@ const Resume: React.FC = () => {
                 </Link>
             </div>
 
+            {resumeData.certifications && resumeData.certifications.length > 0 && (
+                <section className={styles.section} style={{ marginTop: '2rem' }}>
+                    <h2 className={styles.sectionTitle}>{t('Certifications')}</h2>
+                    <div className={styles.certificationsListRow}>
+                        {resumeData.certifications.map((cert) => (
+                            <div key={cert.id} className={`${styles.certRowItem} ${cert.highlight ? styles.certRowHighlighted : ''}`}>
+                                <div className={styles.certLeft}>
+                                    {cert.icon ? (
+                                        (cert.icon.startsWith('http') || cert.icon.startsWith('/') || cert.icon.includes('.')) ? (
+                                            <img src={getAssetPath(cert.icon)} className={styles.certIconImg} alt="" />
+                                        ) : (
+                                            <span className={styles.certIconEmoji}>{cert.icon}</span>
+                                        )
+                                    ) : (
+                                        <Award className={styles.certIconDefault} size={20} />
+                                    )}
+                                    {cert.abbreviation && (
+                                        <span className={styles.certAbbrTag}>{cert.abbreviation}</span>
+                                    )}
+                                    <span className={styles.certFullTitle}>
+                                        {getLocalizedValue(cert.titles, language)}
+                                    </span>
+                                </div>
+                                <div className={styles.certRight}>
+                                    {cert.pdfUrl && (
+                                        <button
+                                            onClick={() => setActiveCert({ url: cert.pdfUrl as string, title: getLocalizedValue(cert.titles, language) || '' })}
+                                            className={styles.certLinkBadge}
+                                            title="View Certificate"
+                                        >
+                                            <FileCheck size={14} />
+                                            <span>{language === 'CN' ? '查看证书' : (language === 'JA' ? '証書を表示' : 'Certificate')}</span>
+                                        </button>
+                                    )}
+                                    {cert.url && (
+                                        <button
+                                            onClick={() => setActiveCert({ url: cert.url as string, title: getLocalizedValue(cert.titles, language) || '' })}
+                                            className={styles.certLinkBadge}
+                                            title="Verify Online"
+                                        >
+                                            <LinkIcon size={14} />
+                                            <span>{language === 'CN' ? '在线验证' : (language === 'JA' ? 'オンライン検証' : 'Verify Online')}</span>
+                                        </button>
+                                    )}
+                                    <span className={styles.certVerifiedOn}>
+                                        {language === 'CN' ? '认证于 ' : (language === 'JA' ? '認定日 ' : 'Verified on ')}
+                                        {cert.date}
+                                    </span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            )}
+
             <section className={styles.section} style={{ marginTop: '2rem' }}>
                 <div className={styles.timelineHeader}>
                     <h2 className={styles.sectionTitle}>{t('Project Timeline')}</h2>
@@ -429,6 +491,15 @@ const Resume: React.FC = () => {
                         </div>
                     </div>
                 </div>
+            )}
+
+            {/* Certificate Modal */}
+            {activeCert && (
+                <CertModal
+                    url={activeCert.url}
+                    title={activeCert.title}
+                    onClose={() => setActiveCert(null)}
+                />
             )}
         </div>
     );

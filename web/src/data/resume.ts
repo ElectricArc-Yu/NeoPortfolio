@@ -8,10 +8,14 @@ export const resumeData: ResumeData = {
             JA: "Yu Chenhaoran"
         },
         email: "YuChenhaoran@Preludegames.com",
-        role: "Game Designer & Game Developer",
+        roles: {
+            CN: "游戏策划 & 游戏开发",
+            EN: "Game Designer & Game Developer",
+            JA: "ゲームプランナー ＆ ゲーム開発"
+        },
         links: [
-            { labels: { CN: "GitHub", EN: "GitHub" }, urls: { CN: "https://github.com/ElectricArc-Yu", EN: "https://github.com/ElectricArc-Yu" } },
-            { labels: { CN: "LinkedIn", EN: "LinkedIn" }, urls: { CN: "https://linkedin.com/in/yuchenhaoran", EN: "https://linkedin.com/in/yuchenhaoran" } }
+            { labels: { CN: "GitHub", EN: "GitHub", JA: "GitHub" }, urls: { CN: "https://github.com/ElectricArc-Yu", EN: "https://github.com/ElectricArc-Yu" } },
+            { labels: { CN: "LinkedIn", EN: "LinkedIn", JA: "LinkedIn" }, urls: { CN: "https://linkedin.com/in/yuchenhaoran", EN: "https://linkedin.com/in/yuchenhaoran" } }
         ]
     },
     about: {
@@ -132,7 +136,7 @@ export const resumeData: ResumeData = {
                 JA: "学士（ソフトウェア工学）"
             },
             gpa: "2.59/4.0"
-    },
+        },
         {
             period: "2018 - 2021",
             schools: {
@@ -147,6 +151,45 @@ export const resumeData: ResumeData = {
             },
             gpa: "1.92/4.0"
         }
+    ],
+    certifications: [
+        /** 
+        {
+            id: 'ocjp',
+            abbreviation: 'OCJP',
+            titles: {
+                CN: 'Oracle 认证 Java 程序员',
+                EN: 'Oracle Certified Java Programmer',
+                JA: 'Oracle 認定 Java プログラマ'
+            },
+            date: '2020-12',
+            url: 'https://your-certification-link.com',
+            icon: '/assets/images/OCP.png',
+            highlight: true
+        },
+        {
+            id: 'ielts',
+            abbreviation: 'IELTS',
+            titles: {
+                CN: '雅思 5.5 (B1 语言认证)',
+                EN: 'IELTS 5.5 (CEFR B1)',
+                JA: 'IELTS 5.5 (CEFR B1)'
+            },
+            date: '2025',
+            pdfUrl: '/assets/images/IELTS.png',
+        },
+        {
+            id: 'starbucks',
+            titles: {
+                CN: '星巴克咖啡学院 300: 产地与道德采购',
+                EN: 'Starbucks Coffee Academy 300: Origin & Ethical Sourcing',
+                JA: 'スターバックスコーヒーアカデミー300: 産地と倫理的調達'
+            },
+            date: '2025-05',
+            pdfUrl: '/assets/docs/sb.pdf',
+            icon: '/assets/images/sbicon.png'
+        }
+        */
     ],
     skills: [
         {

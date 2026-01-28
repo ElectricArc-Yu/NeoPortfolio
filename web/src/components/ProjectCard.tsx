@@ -78,14 +78,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
 
                             return (
                                 <span key={role} className={`${styles.tag} ${styles.roleTag}`} data-role={roleType}>
-                                    {role}
+                                    {t(role)}
                                 </span>
                             );
                         })}
 
                         {/* 3. Tech Stack */}
                         {project.techStack.slice(0, 3).map(tech => (
-                            <span key={tech} className={styles.tag}>{tech}</span>
+                            <span key={tech} className={styles.tag}>{t(tech)}</span>
                         ))}
                     </div>
                 </div>

@@ -7,8 +7,8 @@ export interface ContactSection {
     iconName: 'Briefcase' | 'Users' | 'MonitorSmartphone' | 'Handshake';
     titles: Localized;
     descriptions: Localized;
-    subject: string;
-    body: string;
+    subjects: Localized;
+    bodies: Localized;
 }
 
 export const contactData: ContactSection[] = [
@@ -21,8 +21,16 @@ export const contactData: ContactSection[] = [
             EN: 'Targeting Game Design roles: Level Design, System Design, Combat Design.',
             JA: 'ゲームプランナー職を探しています。特にレベルデザイン、システム設計、戦闘設計を希望しています。'
         },
-        subject: 'Job Opportunity: [Company Name] - [Role]',
-        body: `Hi Yu Chenhaoran,\n\nWe are interested in your profile for a Game Design position at [Company Name]. \n\nWould you be available for a discussion?`
+        subjects: {
+            CN: '工作机会: [公司名称] - [职位]',
+            EN: 'Job Opportunity: [Company Name] - [Role]',
+            JA: '求人評価: [会社名] - [職種]'
+        },
+        bodies: {
+            CN: '你好 于陈浩然，\n\n我们对你在 [公司名称] 的游戏策划职位感兴趣。\n\n你有时间进行一次交流吗？',
+            EN: 'Hi Yu Chenhaoran,\n\nWe are interested in your profile for a Game Design position at [Company Name]. \n\nWould you be available for a discussion?',
+            JA: '于陳浩然様、\n\n[会社名]でのゲームデザイナーのポジションについて、あなたのプロフィールに興味があります。\n\n一度お話しさせていただけますでしょうか？'
+        }
     },
     {
         id: 'collaboration',
@@ -31,10 +39,18 @@ export const contactData: ContactSection[] = [
         descriptions: {
             CN: '对跨国合作、独立游戏开发或Game Jam项目感兴趣？我也很乐意参与其中。',
             EN: 'Open to international collaborations, Indie projects, and Game Jams.',
-            JA: '国際協力、インディーゲーム開発、Game Jamプロジェクトに興味がありますか？ぜひ参加させてください。'
+            JA: '国際協力、インディーゲーム、Game Jamプロジェクトに興味がありますか？ぜひ参加させてください。'
         },
-        subject: 'Collaboration: [Project Name]',
-        body: `Hi Yu Chenhaoran,\n\nI'm reaching out regarding a potential collaboration on [Project Name]. We are looking for...`
+        subjects: {
+            CN: '项目合作: [项目名称]',
+            EN: 'Collaboration: [Project Name]',
+            JA: 'プロジェクト協力: [プロジェクト名]'
+        },
+        bodies: {
+            CN: '你好 于陈浩然，\n\n我正在就 [项目名称] 的潜在合作与你联系。我们正在寻找...',
+            EN: 'Hi Yu Chenhaoran,\n\nI\'m reaching out regarding a potential collaboration on [Project Name]. We are looking for...',
+            JA: '于陳浩然様、\n\n[プロジェクト名]の協力についてご連絡いたしました。現在、...を探しています。'
+        }
     },
     {
         id: 'business',
@@ -45,8 +61,16 @@ export const contactData: ContactSection[] = [
             EN: 'For business inquiries, investment, or publishing regarding Prelude Games.',
             JA: 'Prelude Gamesのビジネス提携、投資、パブリッシングに関するお問い合わせ。'
         },
-        subject: 'Business Inquiry: [Topic]',
-        body: `Hi Prelude Games Team,\n\nWe are interested in discussing business opportunities regarding...`
+        subjects: {
+            CN: '商务咨询: [主题]',
+            EN: 'Business Inquiry: [Topic]',
+            JA: 'ビジネスに関するお問い合わせ: [件名]'
+        },
+        bodies: {
+            CN: '你好 Prelude Games 团队，\n\n我们有兴趣讨论关于...的商业机会。',
+            EN: 'Hi Prelude Games Team,\n\nWe are interested in discussing business opportunities regarding...',
+            JA: 'Prelude Gamesチーム様、\n\n...に関するビジネスチャンスについてお話ししたいと考えております。'
+        }
     },
     {
         id: 'consultancy',
@@ -57,8 +81,16 @@ export const contactData: ContactSection[] = [
             EN: 'Providing game design consultancy, Unreal/Unity technical support, or knowledge sharing.',
             JA: 'ゲームデザインのコンサルティング、Unreal/Unityの技術サポート、または経験の共有。'
         },
-        subject: 'Consultancy Request: [Topic]',
-        body: `Hi Yu Chenhaoran,\n\nWe/I would like to consult with you regarding...`
+        subjects: {
+            CN: '咨询请求: [主题]',
+            EN: 'Consultancy Request: [Topic]',
+            JA: 'コンサルティング依頼: [件名]'
+        },
+        bodies: {
+            CN: '你好 于陈浩然，\n\n我们/我希望就...向你咨询。',
+            EN: 'Hi Yu Chenhaoran,\n\nWe/I would like to consult with you regarding...',
+            JA: '于陳浩然様、\n\n...についてコンサルティングをお願いしたいと考えております。'
+        }
     }
 ];
 

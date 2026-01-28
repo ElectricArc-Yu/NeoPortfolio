@@ -21,9 +21,7 @@ const Contact: React.FC = () => {
             <header className={styles.header}>
                 <h1 className={styles.title}>{t('Contact Me')}</h1>
                 <p className={styles.subtitle}>
-                    {language === 'CN'
-                        ? '随时欢迎通过邮件与我联系。'
-                        : (language === 'JA' ? 'お気軽にメールでお問い合わせください。' : 'Feel free to reach out via email.')}
+                    {t('Contact Subtitle')}
                 </p>
             </header>
 
@@ -40,11 +38,14 @@ const Contact: React.FC = () => {
                             {getLocalizedValue(section.descriptions, language)}
                         </p>
                         <a
-                            href={getMailto(section.subject, section.body)}
+                            href={getMailto(
+                                getLocalizedValue(section.subjects, language) || '',
+                                getLocalizedValue(section.bodies, language) || ''
+                            )}
                             className={styles.contactButton}
                         >
                             <Send size={16} />
-                            {language === 'CN' ? '立即联系' : (language === 'JA' ? '今すぐ連絡' : 'Contact Immediately')}
+                            {t('Contact Immediately')}
                         </a>
                     </div>
                 ))}

@@ -4,6 +4,7 @@ import { publicDocs } from '../data/documents';
 import type { GDDType, PublicDoc } from '../data/types';
 import PdfModal from '../components/PdfModal';
 import styles from './Documents.module.css';
+import { siteConfig } from '../data/siteConfig';
 import { getLocalizedValue } from '../utils/i18n';
 import { FileText, BookOpen, ChevronDown, ChevronUp, FlaskConical, GraduationCap, ClipboardList, FileCode } from 'lucide-react';
 
@@ -277,14 +278,10 @@ const Documents: React.FC = () => {
         <div className={styles.container}>
             <header className={styles.header}>
                 <h1 className={styles.title}>
-                    {language === 'CN' ? '过往文档' : (language === 'JA' ? '過去ドキュメント' : 'Past Documents')}
+                    {getLocalizedValue(siteConfig.pages.documents.titles, language)}
                 </h1>
                 <p className={styles.subtitle}>
-                    {language === 'CN'
-                        ? '包含可公开的设计文档、分析文章及学术论文。'
-                        : (language === 'JA'
-                            ? '公開可能なゲームデザインドキュメント、分析記事、学術論文のコレクション。'
-                            : 'Collection of publicable Game Design Documents, Analysis Articles & Academic Papers.')}
+                    {getLocalizedValue(siteConfig.pages.documents.subtitles, language)}
                 </p>
             </header>
 

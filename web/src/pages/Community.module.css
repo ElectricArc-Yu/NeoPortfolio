@@ -1,0 +1,244 @@
+.communityContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    min-height: 100vh;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff 0%, #a0a0a0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+}
+
+.coreValuesRow {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+}
+
+.coreValueItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.coreValueIcon {
+    color: var(--accent-color, #007AFF);
+}
+
+.coreValueTitle {
+    font-size: 1.0rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.05em;
+}
+
+.principlesSection {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+    border-radius: 24px;
+    padding: 3rem;
+    margin-bottom: 5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sectionTitle {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #fff;
+}
+
+.principlesList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.principleItem {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    border-left: 3px solid var(--accent-color, #007AFF);
+}
+
+.covenantSection {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 4rem;
+    backdrop-filter: blur(10px);
+    margin-bottom: 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.covenantSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+.covenantTitle {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: #fff;
+}
+
+.covenantContent {
+    color: var(--text-primary);
+    line-height: 1.8;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+}
+
+.covenantContent h3 {
+    font-size: 1.15rem;
+    margin: 0 0 1rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.iconWrapper {
+    color: var(--accent-color, #007AFF);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.covenantContent p {
+    margin-bottom: 0;
+    color: var(--text-secondary);
+    white-space: pre-wrap;
+    font-size: 0.95rem;
+}
+
+.covenantContent ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.covenantContent li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.covenantContent li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color, #007AFF);
+}
+
+.applySection {
+    text-align: center;
+    padding: 4rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.applyTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.applyDescription {
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.applyButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #fff;
+    color: #000;
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.applyButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+    background: #f0f0f0;
+}
+
+.email {
+    display: block;
+    margin-top: 1.5rem;
+    font-family: monospace;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .communityContainer {
+        padding: 4rem 1.5rem;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .covenantSection {
+        padding: 2rem;
+    }
+
+    .applySection {
+        padding: 2.5rem;
+    }
+
+    .covenantContent {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}

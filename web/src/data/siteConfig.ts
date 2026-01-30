@@ -103,14 +103,10 @@ export const siteConfig: SiteConfig = {
             }
         },
         community: {
-            titles: {
-                CN: "新人创造者工会",
-                EN: "The New Creator Guild",
-                JA: "新人クリエイター・ギルド"
-            },
+            titles: { CN: '社区', EN: 'Community', JA: 'コミュニティ' },
             subtitles: {
                 CN: '新人创造者工会：纯粹的创造者集结地。',
-                EN: 'The New Creator Guild: A place for pure creators.',
+                EN: 'The Creator Guild: A place for pure creators.',
                 JA: '新人クリエイター・ギルド：純粋なクリエイターの集いの场。'
             }
         }

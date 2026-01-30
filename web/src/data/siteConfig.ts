@@ -63,7 +63,7 @@ export const siteConfig: SiteConfig = {
         }
     },
     contact: {
-        email: 'yuchenhaoran@preludegames.com'
+        email: 'yu.chr@prelude.games'
     },
     pages: {
         home: {
@@ -103,11 +103,15 @@ export const siteConfig: SiteConfig = {
             }
         },
         community: {
-            titles: { CN: '工会', EN: 'Community', JA: 'コミュニティ' },
+            titles: {
+                CN: "新人创造者工会",
+                EN: "The New Creator Guild",
+                JA: "新人クリエイター・ギルド"
+            },
             subtitles: {
                 CN: '新人创造者工会：纯粹的创造者集结地。',
-                EN: 'The Creator Guild: A place for pure creators.',
-                JA: '新人クリエイター・ギルド：純粋なクリエイターの集いの場。'
+                EN: 'The New Creator Guild: A place for pure creators.',
+                JA: '新人クリエイター・ギルド：純粋なクリエイターの集いの场。'
             }
         }
     },

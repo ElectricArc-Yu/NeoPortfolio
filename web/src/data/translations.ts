@@ -90,6 +90,7 @@ export const translations: Record<string, Record<string, string>> = {
         'Art': 'Art',
         'Blueprint': 'Blueprint',
         'Price': 'Price',
+        'Community': 'Community',
     },
     CN: {
         'Commercial Projects': '商业项目',
@@ -179,6 +180,7 @@ export const translations: Record<string, Record<string, string>> = {
         'Art': '美术',
         'Blueprint': '蓝图',
         'Price': '价格',
+        'Community': '工会',
     },
     JA: {
         'Commercial Projects': '商業プロジェクト',
@@ -268,5 +270,6 @@ export const translations: Record<string, Record<string, string>> = {
         'Art': 'アート',
         'Blueprint': 'ブループリント',
         'Price': '価格',
+        'Community': 'コミュニティ',
     }
 };

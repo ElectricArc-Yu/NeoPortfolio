@@ -15,21 +15,21 @@ export const contactData: ContactSection[] = [
     {
         id: 'consultancy',
         iconName: 'Compass',
-        titles: { CN: '预研与架构咨询', EN: 'R&D & Architecture Strategy', JA: 'R&D・アーキテクチャ戦略' },
+        titles: { CN: '预研策略与产品设计', EN: 'R&D Strategy & Product Design', JA: 'R&D戦略・プロダクトデザイン' },
         descriptions: {
-            CN: '专注于在高度不确定性中寻找确定路径。擅长将混乱的创意现实转化为有序、可执行的工程管线与系统架构。从混沌到秩序。',
-            EN: 'Specializing in identifying certain paths within uncertainty. Expert at transforming chaotic creative realities into orderly, executable engineering pipelines and system architectures. From Chaos to Order.',
-            JA: '高度な不確実性の中から確実な道筋を見つけ出すことに特化。混沌としたアイデアを、秩序ある実行可能なエンジニアリングパイプラインとシステム構造に変換します。'
+            CN: '在不确定性中定义核心体验。结合深度用户研究与产品设计方法论，将混乱的创意转化为逻辑严密、体验自洽且可落地的系统架构。',
+            EN: 'Defining core experiences amidst uncertainty. Combining Deep User Research and Product Design methodologies to transform chaotic ideas into logically rigorous, experience-consistent, and executable system architectures.',
+            JA: '不確実性の中でコア体験を定義する。詳細なユーザーリサーチとプロダクトデザイン論を組み合わせ、混沌としたアイデアを、論理的で体験の整合性が取れた実行可能なシステム構造に変換します。'
         },
         subjects: {
-            CN: '咨询请求: [预研/架构/管线难题]',
-            EN: 'Consultancy Request: [R&D/Architecture/Pipeline Challenge]',
-            JA: 'コンサルティング依頼: [R&D/アーキテクチャ/パイプライン]'
+            CN: '咨询请求: [预研/产品设计/用户体验难题]',
+            EN: 'Consultancy Request: [R&D/Product Design/UX Challenge]',
+            JA: 'コンサルティング依頼: [R&D/プロダクトデザイン/UX課題]'
         },
         bodies: {
-            CN: '你好 于陈浩然，\n\n我们目前处于 [项目阶段] 的混沌期，面临关于 [具体难题] 的高度不确定性。\n\n我们需要你协助梳理出一条可依赖、可执行的开发路径。',
-            EN: 'Hi Yu Chenhaoran,\n\nWe are currently navigating the chaos of [Project Stage] and facing high uncertainty regarding [Specific Issue].\n\nWe need your assistance to establish a reliable and executable development path.',
-            JA: '于陳浩然様、\n\n現在[プロジェクトの段階]における混沌とした状況にあり、[具体的な課題]に関する高い不確実性に直面しています。\n\n信頼できる実行可能な開発パスを確立するために、あなたの支援が必要です。'
+            CN: '你好 于陈浩然，\n\n我们目前在 [项目阶段] 遇到了挑战，特别是在 [用户体验/系统架构/设计方向] 方面存在不确定性。\n\n我们需要你协助梳理设计逻辑，并验证核心体验的可行性。',
+            EN: 'Hi Yu Chenhaoran,\n\nWe are facing challenges in the [Project Stage], specifically regarding uncertainty in [User Experience/System Architecture/Design Direction].\n\nWe need your assistance to clarify the design logic and validate the feasibility of the core experience.',
+            JA: '于陳浩然様、\n\n現在[プロジェクトの段階]において課題に直面しており、特に[ユーザー体験/システム構造/デザインの方向性]に関する不確実性があります。\n\nデザインロジックを整理し、コア体験の実現可能性を検証するために、あなたの支援が必要です。'
         }
     },
     {

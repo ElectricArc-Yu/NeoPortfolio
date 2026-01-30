@@ -132,7 +132,7 @@ const Documents: React.FC = () => {
                         {doc.journal && (
                             <span className={styles.journalBadge}>{doc.journal}</span>
                         )}
-                        {doc.impactFactor && doc.impactFactor !== 'N/A' && (
+                        {doc.impactFactor && doc.impactFactor !== 'N/A' && doc.impactFactor !== '0' && (
                             <span className={styles.impactFactorBadge}>IF: {doc.impactFactor}</span>
                         )}
                     </div>

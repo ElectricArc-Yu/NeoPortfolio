@@ -4,7 +4,7 @@ import styles from './Navbar.module.css';
 import LanguageSwitch from './LanguageSwitch';
 import { useLanguage } from '../context/LanguageContext';
 import { siteConfig, getComputedStatus } from '../data/siteConfig';
-import { LayoutGrid, FileText, Library, Play, Mail, Users, Briefcase } from 'lucide-react';
+import { LayoutGrid, FileText, Library, Play, Mail, Users } from 'lucide-react';
 
 const Navbar: React.FC = () => {
     const { language, t } = useLanguage();
@@ -30,10 +30,6 @@ const Navbar: React.FC = () => {
                 <NavLink to="/" className={({ isActive }) => isActive ? styles.active : ''}>
                     <LayoutGrid size={18} className={styles.navIcon} />
                     <span className={styles.navText}>{t('Portfolio')}</span>
-                </NavLink>
-                <NavLink to="/services" className={({ isActive }) => isActive ? styles.active : ''}>
-                    <Briefcase size={18} className={styles.navIcon} />
-                    <span className={styles.navText}>{t('Services')}</span>
                 </NavLink>
                 <NavLink to="/resume" className={({ isActive }) => isActive ? styles.active : ''}>
                     <FileText size={18} className={styles.navIcon} />

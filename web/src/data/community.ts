@@ -133,9 +133,9 @@ export const guildData: GuildData = {
             iconName: "Headphones",
             title: { CN: "11. 管理员并非客服", EN: "11. Moderation Policy", JA: "11. 運営は非カスタマーサポート" },
             text: {
-                CN: "依靠社群互助进行Peer Review，而非Professor Review，整体不依赖但兜底于管理员或主持人。",
-                EN: "Rely on community Peer Review, not Professor Review. Overall, it does not rely on but falls back to the administrator or moderator.",
-                JA: "コミュニティ内での助け合いを優先してください。Professor Reviewは禁止です。全体としては依存しないが、運営によるサポートがある。"
+                CN: "依靠社群互助进行Peer Review。深度、确定性的针对性反馈（个人项目/路径咨询）为付费预约制：500RMB/55min（需提前48h）。",
+                EN: "Rely on community Peer Review. Deep, personalized feedback or career consultancy is available via appointment: 500RMB/55min (48h notice).",
+                JA: "コミュニティ内での助け合いを優先してください。個人的な深いフィードバックが必要な場合は、予約制の有料相談(500RMB/55分)も可能です。"
             }
         },
         {
@@ -176,7 +176,7 @@ export const guildData: GuildData = {
             iconName: "Eye",
             title: { CN: "关于反馈", EN: "About Feedback", JA: "フィードバックについて" },
             text: {
-                CN: "工会只反馈“被看见”而不是“被认可”。管理员与主持人的点赞代表确认存在，而非价值判断。",
+                CN: "工会只反馈“被看见”不是“被认可”。管理员与主持人的点赞代表确认存在，而非价值判断。",
                 EN: "Feedback means 'being seen,' not 'being approved.' Moderator likes represent existence, not judgment.",
                 JA: "フィードバックは「見られた」ことのみを意味し、「承認」ではありません。管理者の評価は存在の確認です。"
             }
@@ -233,9 +233,9 @@ export const guildData: GuildData = {
         JA: "入会方法"
     },
     applyDescription: {
-        CN: "如果你读完公约，接受挑战，请将你的 Landing Phase 作业（一页纸设计案 / 核心代码 / 一份作品）发送至工会的邮箱。",
-        EN: "If you have read the convention and accept the challenge, please send your 'Landing Phase' assignment (one-page design / core code / a piece of work) to the guild's email. ",
-        JA: "公約を読み、挑战を受け入れる場合は、「Landing Phase」の課題（1ページの設計案、コアコード、作品）をギルドのメールまで送信してください。"
+        CN: "如果你读完公约，接受挑战，请将你的 Landing Phase 作业（一页纸设计案 / 核心代码）发送至我的邮箱。我们只招收那 1% 的优质开发者。",
+        EN: "If you have read the convention and accept the challenge, please send your 'Landing Phase' assignment (one-page design / core code) to my email. We only recruit the top 1% of quality creators.",
+        JA: "公約を読み、挑战を受け入れる場合は、「Landing Phase」の課題（1ページの設計案またはコアコード）を私のメールまで送信してください。1%の質の高いクリエイターのみを募集しています。"
     },
     applyButton: {
         CN: "发送申请邮件",
@@ -243,8 +243,8 @@ export const guildData: GuildData = {
         JA: "応募メールを送信"
     },
     footer: {
-        CN: "基于飞书的翻译功能，世界各地的人都可以畅通的进行沟通。",
-        EN: "Based on the translation function of Lerk, people from all over the world can communicate freely.",
-        JA: "Lerkの翻訳機能を活用して、全世界の人々が自由にコミュニケーションを取ることができます。"
+        CN: "邮件标题请注明 [Guild Application]",
+        EN: "Email subject must include [Guild Application]",
+        JA: "メールの件名には [Guild Application] と明記してください"
     }
 };

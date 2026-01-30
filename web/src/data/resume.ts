@@ -233,9 +233,9 @@ export const resumeData: ResumeData = {
     ],
     cta: {
         texts: {
-            CN: "工作机会？项目合作？商务合作？顾问咨询？立即联系我！",
-            EN: "Job Opportunities? Project Collaboration? Business? Consulting? Contact Me Now!",
-            JA: "お仕事のご依頼？プロジェクトのご相談？ビジネス？コンサルティング？今すぐお問い合わせください！"
+            CN: "顾问咨询？商务合作？项目合作？工作机会？立即联系我！",
+            EN: "Consulting? Business? Project Collaboration? Job Opportunities? Contact Me Now!",
+            JA: "コンサルティング？ビジネス？プロジェクトのご相談？お仕事のご依頼？今すぐお問い合わせください！"
         },
         link: "/contact"
     }

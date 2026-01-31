@@ -28,24 +28,24 @@ export const publicDocs: PublicDoc[] = [
     {
         id: 'participation-utility-model',
         titles: {
-            CN: "交互系统中不确定性下的参与效用概念模型",
-            EN: "A Conceptual Model of Participation Utility Under Uncertainty in Interactive Systems",
-            JA: "インタラクティブシステムにおける不確実性下の参加効用の概念モデル"
+            CN: "解构参与感：不确定性下参与倾向的设计理论框架",
+            EN: "Deconstructing Engagement: A Design-Theoretic Framework for Participation Propensity under Uncertainty",
+            JA: "エンゲージメントの解構：不確実性下における参加性向のためのデザイン理論的枠組み"
         },
-        date: '2026.01',
+        date: '2026.02',
         descriptions: {
-            CN: "本信函提出了一个在不确定性下运行的交互系统中参与效用的形式化概念模型。我将参与效用定义为短期和长期参与意愿的聚合，由七个抽象因素构成：结果收益、总成本、时间投入、外在动机、内在动机、失败成本和风险。本工作不旨在优化预测准确性或拟合经验数据，而是旨在确定一个完整、不重叠的因素空间，以解释参与者为何在不确定条件下选择参与、坚持或退出。该模型旨在作为未来实证验证、系统诊断和设计分析的理论基础。",
-            EN: "This letter proposes a formalized conceptual model of participation utility in interactive systems operating under uncertainty. I define participation utility as the aggregation of short-term and long-term participation intention, structured by seven abstract factors: outcome payoff, total cost, temporal commitment, extrinsic motivation, intrinsic motivation, failure cost, and risk. Rather than optimizing predictive accuracy or fitting empirical data, this work aims to identify a complete, nonoverlapping factor space that explains why participants choose to engage, persist, or withdraw under uncertain conditions. The model is intended as a theoretical foundation for future empirical validation, system diagnosis, and design analysis.",
-            JA: "本レターは、不確実性下で動作するインタラクティブシステムにおける参加効用の形式化された概念モデルを提案する。私は参加効用を、短期的および長期的な参加意図の集合体と定義し、結果的利得、総コスト、時間的コミットメント、外発的動機、内発的動機、失敗コスト、リスクという7つの抽象的要因によって構成した。予測精度の最適化や経験的データへの適合ではなく、本研究は、不確実な条件下で参加者がなぜ関与、継続、または離脱を選択するのかを説明する、完全かつ重複のない要因空間を特定することを目的としている。このモデルは、将来の実証的検証、システム診断、および設計分析のための理論的基盤となることを意図している。"
+            CN: "本文提出了一个设计理论审计框架，用于分析交互系统中的参与倾向。该框架不仅将参与视为一种心理状态，更将其表征为短期参与度与长期价值追求之间的张力，并受“价值范畴（Value Scope）”的调节。本研究将决策空间分解为结果收益、总成本、时间投入、动机、失败成本和风险等七个维度，旨在为诊断导致参与失效的结构性原因提供分析视角，而非单纯依赖经验性的留存调优。",
+            EN: "This paper proposes a design-theoretic auditing framework for analyzing participation propensity in interactive systems. Rather than modeling engagement as a monolithic psychological state, participation is characterized as a tension between short-term engagement and long-term value pursuit, moderated by 'Value Scope'. The framework decomposes the decision space into seven dimensions to provide designers with an analytical lens for diagnosing structural causes of engagement failure beyond empirical retention tuning.",
+            JA: "本論文は、インタラクティブシステムにおける参加性向を分析するためのデザイン理論的監査フレームワークを提案する。エンゲージメントを単一の心理状態として扱うのではなく、参加を短期的関与と長期的価値追求の間の緊張関係として特徴づけ、「価値スコープ」によって調整されるものとする。このフレームワークは決定空間を7つの次元に分解し、経験的なリテンション調整を超えて、エンゲージメント失敗の構造的原因を診断するための分析レンズを提供する。"
         },
         category: 'Paper',
-        paperType: 'Letter',
+        paperType: 'Full Paper',
         originalLangs: { CN: "英文", EN: "English", JA: "英語" },
-        lengths: { CN: "1页", EN: "1 Page", JA: "1ページ" },
+        lengths: { CN: "8页", EN: "8 Pages", JA: "8ページ" },
         isInternal: false,
-        journal: '',
+        journal: 'IEEE ToG (Under Review)',
         impactFactor: '0',
-        preprintUrl: '/assets/docs/ACMoP.pdf',
+        preprintUrl: '',
         externalUrl: ''
     },
 

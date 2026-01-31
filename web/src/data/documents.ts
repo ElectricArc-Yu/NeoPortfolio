@@ -25,6 +25,29 @@ export const publicDocs: PublicDoc[] = [
         preprintUrl: '',
         externalUrl: ''
     },
+    {
+        id: 'participation-utility-model',
+        titles: {
+            CN: "交互系统中不确定性下的参与效用概念模型",
+            EN: "A Conceptual Model of Participation Utility Under Uncertainty in Interactive Systems",
+            JA: "インタラクティブシステムにおける不確実性下の参加効用の概念モデル"
+        },
+        date: '2026.01',
+        descriptions: {
+            CN: "本信函提出了一个在不确定性下运行的交互系统中参与效用的形式化概念模型。我将参与效用定义为短期和长期参与意愿的聚合，由七个抽象因素构成：结果收益、总成本、时间投入、外在动机、内在动机、失败成本和风险。本工作不旨在优化预测准确性或拟合经验数据，而是旨在确定一个完整、不重叠的因素空间，以解释参与者为何在不确定条件下选择参与、坚持或退出。该模型旨在作为未来实证验证、系统诊断和设计分析的理论基础。",
+            EN: "This letter proposes a formalized conceptual model of participation utility in interactive systems operating under uncertainty. I define participation utility as the aggregation of short-term and long-term participation intention, structured by seven abstract factors: outcome payoff, total cost, temporal commitment, extrinsic motivation, intrinsic motivation, failure cost, and risk. Rather than optimizing predictive accuracy or fitting empirical data, this work aims to identify a complete, nonoverlapping factor space that explains why participants choose to engage, persist, or withdraw under uncertain conditions. The model is intended as a theoretical foundation for future empirical validation, system diagnosis, and design analysis.",
+            JA: "本レターは、不確実性下で動作するインタラクティブシステムにおける参加効用の形式化された概念モデルを提案する。私は参加効用を、短期的および長期的な参加意図の集合体と定義し、結果的利得、総コスト、時間的コミットメント、外発的動機、内発的動機、失敗コスト、リスクという7つの抽象的要因によって構成した。予測精度の最適化や経験的データへの適合ではなく、本研究は、不確実な条件下で参加者がなぜ関与、継続、または離脱を選択するのかを説明する、完全かつ重複のない要因空間を特定することを目的としている。このモデルは、将来の実証的検証、システム診断、および設計分析のための理論的基盤となることを意図している。"
+        },
+        category: 'Paper',
+        paperType: 'Letter',
+        originalLangs: { CN: "英文", EN: "English", JA: "英語" },
+        lengths: { CN: "1页", EN: "1 Page", JA: "1ページ" },
+        isInternal: false,
+        journal: '',
+        impactFactor: '0',
+        preprintUrl: '/assets/docs/ACMoP.pdf',
+        externalUrl: ''
+    },
 
     // --- GDDs: Test Papers (策划测试题) ---
     {

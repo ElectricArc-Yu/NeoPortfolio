@@ -2228,6 +2228,127 @@ Initial playtesting phase complete; rules have stabilized through multiple itera
         images: [],
         links: []
     },
+    {//Magic Mahjong
+        id: 'magic-mahjong',
+        titles: { CN: "魔法麻将 (Magic Mahjong)", EN: "Magic Mahjong", JA: "魔法麻雀 (Magic Mahjong)" },
+        type: 'Personal',
+        status: { CN: "已搁浅", EN: "Shelved", JA: "休止中" },
+        showPriority: 70,
+        engine: 'Unity',
+        gameType: ['Strategy', 'Analysis'],
+        role: ['Solo Creator'],
+        techStack: ['Unity', 'C#', 'Networking', 'GOAP', 'DOD'],
+        thumbnail: '',
+        workHours: 170,
+        shortDescriptions: {
+            CN: "高性能、确定性、防作弊的竞技麻将服务器/客户端架构原型。",
+            EN: "A high-performance, deterministic, cheat-proof competitive Mahjong architecture prototype.",
+            JA: "高パフォーマンス、決定性、不正防止機能を備えた競技麻雀のアーキテクチャ・プロトタイプ。"
+        },
+        durations: { CN: "8个月", EN: "8 Months", JA: "8ヶ月" },
+        startDate: '2024.02',
+        endDate: '2024.10',
+        teamSizes: { CN: "个人", EN: "Solo", JA: "個人" },
+        descriptions: {
+            CN: `
+> **声明：** 因更换设备，本项目的大部分源代码已丢失。此处展示的仅为配置 Qodana 静态分析工具之前的早期代码版本。
+
+## 架构概览 (Architectural Overview)
+
+采用严格的逻辑与表现分离（MVC/ECS-lite 混合架构），通过 Assembly Definitions (.asmdef) 实现模块化依赖管理层。旨在构建一个高性能、确定性且具备防作弊能力的竞技麻将底层架构。
+
+## 数据结构与优化 (DOD)
+
+*   **手牌管理 (HandList):** 坚持面向数据设计 (DOD) 逻辑，采用并行数组 (SoA) 存储手牌数据，利用位标志 (Bit-flags) 追踪状态以避免数组重排，实现零分配的虚拟索引映射排序。
+*   **状态序列化:** 自定义位域封包 (Bit-field Packing)，将牌面类型、所有者ID、特殊标记(如赤宝牌)压缩至 32 位混合体。相比传统 JSON 序列化，带宽消耗降低约 60%。
+*   **极致规则压缩:** 采用极致位封包技术，将包括游戏模式、局分计算、计时规则在内的 10+ 项复杂规则压缩至仅 14 字节的负载中。
+
+## 网络同步架构
+
+*   **传输层:** 基于 System.Net.Sockets 原始 TCP 套接字实现。配套自定义环形缓冲区 (Ring Buffer) 解决 TCP 数据流粘包与拆包问题。
+*   **确定性同步:** 采用共享 RNG 随机种子 (Seed + Salt) 架构，确保客户端模拟与服务器状态完全同步，杜绝作弊可能。
+*   **IO 优化:** 初始发牌采用 4-4-4-1 序列分块 (Chunking)，将 13 次网络事件减少至 4 次，大幅提升握手效率。
+
+## 人工智能 (GOAP AI)
+
+构建了一个层级式多范式 AI 服务：
+*   **GOAP (目标导向行动计划):** 实现 \`IGoalOrientedActionPlanning\` 接口。采用逆向链算法 (Reverse Chaining) 在世界状态中动态检索通往“胡牌目标”的最优行动序列。
+*   **行为树 (BT) 与决策树 (DT):** 用于处理固定序列逻辑与简单的反应式交互。
+
+## 工程质量 (QA)
+
+*   **TDD:** 使用 NUnit 框架。对核心逻辑模块（如序列化、随机分配器、格式化工具）实现了 100% 的行覆盖率。
+*   **工具链:** 开发了基于反射的自定义 Unity 编辑器扩展 (\`UnityEditorHelper\`)，用于在 Inspector 中高效解析嵌套数组与泛型对象属性。
+`,
+            EN: `
+> **Disclaimer:** Due to a hardware change, most of the source code for this project has been lost. The snippets shown here represent an early version of the codebase prior to the configuration of Qodana static analysis tools.
+
+## Architectural Overview
+
+Designed with strict separation between Gameplay Logic and Manifestation (Visuals) using an MVC/ECS-lite hybrid pattern. Modular dependency management is enforced via Unity Assembly Definitions (.asmdef) to ensure the core logic remains independent of the engine.
+
+## Data Structures & Optimization (DOD)
+
+*   **Hand Management (HandList):** Adopts Data-Oriented Design (DOD) principles. Uses Structure of Arrays (SoA) and virtual index mapping to achieve zero-allocation sorting and avoid expensive GC during high-frequency list manipulation.
+*   **Dynamic State Serialization:** Implemented custom Bit-field Packing. Each tile state (type, owner, special flags) is compressed into a 32-bit composite, reducing bandwidth consumption by ~60% compared to typical object serialization.
+*   **Protocol Efficiency:** Compresses 10+ complex match rules (timers, scoring modifiers, game modes) into a fixed 14-byte payload.
+
+## Networking Stack
+
+*   **Transport Layer:** Built on raw TCP Sockets with a custom Ring Buffer implementation to handle packet coalescing and fragmentation issues safely.
+*   **Deterministic Synchronization:** Utilizes a shared RNG Seed + Salt architecture. Client-side simulations are strictly deterministic, ensuring state parity with the server and providing a strong defense against client-side cheats.
+*   **Batching Logic:** Opimizes network IO by chunking initial hand dealing into a 4-4-4-1 sequence instead of 13 individual events.
+
+## Artificial Intelligence (GOAP AI)
+
+Features a hierarchical, multi-paradigm AI service:
+*   **GOAP (Goal-Oriented Action Planning):** Implements a symbolic world state represented as key-value pairs. Uses Reverse Chaining algorithms to dynamically plan the optimal path toward a "Win Hand."
+*   **Behavioral Models:** Hot-swappable decision engines including Behavior Trees for fixed sequences and Decision Trees for reactive logic.
+
+## Engineering Quality
+
+*   **Test-Driven Development (TDD):** Achieved 100% line coverage on critical logic modules (Serialization, Seed Generation, Format Utilities) using NUnit.
+*   **Custom Tooling:** Developed reflection-based SerializedProperty parsers for Unity Custom Inspectors to handle complex nested data structures efficiently during development.
+`,
+            JA: `
+> **免責事項：** 機器の買い替えに伴い、本プロジェクトのソースコードの大部分が紛失しました。ここに展示されているのは、Qodana（静的解析ツール）を導入する前の初期段階のコードのみとなります。
+
+## アーキテクチャ概要
+
+MVC/ECS-lite のハイブリッドパターンを採用し、ゲームプレイロジックと表現層（UnityEngine）を厳格に分離。Assembly Definitions (.asmdef) を通じたモジュール管理により、高パフォーマンスで決定論的、かつ不正防止に強い競技麻雀アーキテクチャを実現しました。
+
+## データ構造と最適化 (DOD)
+
+*   **手牌管理 (HandList):** データ指向設計 (DOD) を重視。Structure of Arrays (SoA) とビットフラグを用いることで、配列の再確保を避け、ゼロ・アロケーションでのソートと管理を実現。
+*   **状態のシリアライズ:** カスタムビットフィールドパッキングを実装。牌の種類、所有者ID、特殊フラグを32ビットに圧縮し、一般的なシリアライズと比較して帯域幅消費を約60%削減。
+*   **ルール設定の圧縮:** 10項目以上のゲームルールを14バイトのペイロードに凝縮する極限のビットパッキングを採用。
+
+## ネットワーク・スタック
+
+*   **トランスポート層:** raw TCP ソケットをベースに構築。パケットの結合（Packet Coalescing）や断片化を処理するカスタムリングバッファを実装。
+*   **決定論的同期:** 共有 RNG シード + ソルト アーキテクチャを採用。クライアント側のシミュレーションを完全に決定論的にすることで、サーバーとの状態一致を保証し、チートを防止。
+*   **通信の最適化:** 初期の配牌を4-4-4-1のシーケンスでバッチ処理し、ネットワークイベントの回数を大幅に削減。
+
+## 人工知能 (GOAP AI)
+
+階層的・多用途なAIサービスを搭載：
+*   **GOAP (ゴール指向アクションプランニング):** IGoalOrientedActionPlanning インターフェースを実装。リバースチェイニングアルゴリズムを用いて、「上がり」という目標に向けた最適な行動パスを動的に生成。
+*   **行動・決定ツリー:** 固定シーケンスや単純なリアクタンスには Behavior Tree および Decision Tree を使用。
+
+## エンジニアリング品質
+
+*   **テスト駆動開発 (TDD):** NUnit フレームワークを使用。シリアライズ、乱数生成、フォーマット変換などの重要モジュールにおいてラインカバレッジ100%を達成。
+*   **カスタムツール:** Unity エディタ拡張を開発し、リフレクションを用いた SerializedProperty パーサーを実装。階層化された配列やジェネリックオブジェクトのインスペクタ表示を効率化。
+`
+        },
+        images: [],
+        links: [],
+        workDistribution: [
+            { labels: { CN: "Architecture", EN: "Architecture", JA: "アーキテクチャ" }, percentage: 60 },
+            { labels: { CN: "AI", EN: "AI", JA: "AI" }, percentage: 20 },
+            { labels: { CN: "Network", EN: "Network", JA: "ネットワーク" }, percentage: 20 }
+        ]
+    },
     {//EI18NT
         id: 'easy-l10n',
         titles: { CN: "Easy Localization Tool (UE5 插件)", EN: "Easy Localization Tool", JA: "Easy Localization Tool (UE5プラグイン)" },

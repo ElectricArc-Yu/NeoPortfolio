@@ -251,6 +251,11 @@
     font-weight: 700;
 }
 
+.statusHighlight {
+    color: #ff453a;
+    font-weight: 700;
+}
+
 .projectRoles,
 .techStack {
     display: flex;

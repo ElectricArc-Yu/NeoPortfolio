@@ -46,6 +46,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                     <div className={styles.titleContainer}>
                         <EngineIcon engine={project.engine} className={styles.engineIcon} />
                         <h3 className={styles.title}>{getLocalizedValue(project.titles, language)}</h3>
+                        {project.status && (
+                            <span className={styles.statusLabel}>{getLocalizedValue(project.status, language)}</span>
+                        )}
                     </div>
                     {/* Sales/Time metric in the corner */}
                     <span className={styles.topMetric}>

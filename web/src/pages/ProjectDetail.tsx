@@ -146,6 +146,12 @@ const ProjectDetail: React.FC = () => {
                                         : t(project.gameType || project.type)}
                                 </span>
                             </li>
+                            {project.status && (
+                                <li>
+                                    <span>{t('Status') || 'Status'}</span>
+                                    <span className={styles.statusHighlight}>{getLocalizedValue(project.status, language)}</span>
+                                </li>
+                            )}
                             {getPlatform() && (
                                 <li>
                                     <span>{t('Platform')}</span>

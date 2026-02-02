@@ -1743,11 +1743,6 @@ This was a profound lesson in "over-design." In retrospect, I should have called
 
 **个人转变 - AI Native的起点:**
 这个项目成为我转向AI Native工作方式的关键节点。此后，AI工具深度融入我的日常工作流，成为设计与开发的核心辅助手段。
-
-<details>
-<summary>调查员角色Schema</summary>
-<code-loader src="/NeoPortfolio/assets/docs/Break.json"></code-loader>
-</details>
         `, EN: `
 ## Project Background
 
@@ -1793,11 +1788,6 @@ To improve scenario configuration efficiency, developed a Python-based RAG clue 
 
 **Personal Transformation - The Starting Point of AI Native:**
 This project marked my pivotal transition to an AI Native workflow. Since then, AI tools have been deeply integrated into my daily work, becoming a core assistant for both design and development.
-
-<details>
-<summary>Investigator Role Schema</summary>
-<code-loader src="/NeoPortfolio/assets/docs/Break.json"></code-loader>
-</details>
 `,
             JA: `
 ## プロジェクトの背景
@@ -1844,16 +1834,11 @@ AIを「KP」として位置づける従来のAI TRPG製品とは異なり、私
 
 **個人の変化 - AI Nativeの起点:**
 このプロジェクトは、私の仕事のスタイルが「AI Native（AIをネイティブに使いこなす）」へと転換する重要な契機となりました。これ以降、AIツールは私の日常的なワークフローに深く溶け込み、設計と開発における核心的な補助手段となりました。
-
-<details>
-<summary>探索者キャラクターSchema</summary>
-<code-loader src="/NeoPortfolio/assets/docs/Break.json"></code-loader>
-</details>
 `
         },
         images: ['/assets/images/AllStory.png', '/assets/images/AS_01.png', '/assets/images/AS_02.png', '/assets/images/AS_03.png'],
         links: [
-            { labels: { CN: "前往站点", EN: "Go To Site", JA: "サイトへ" }, urls: { CN: 'https://adventure-x.kimi.ai/auth/login?invitation_code=ADVENTUREX', EN: 'https://adventure-x.kimi.ai/auth/login?invitation_code=ADVENTUREX' }, type: 'Release Page' }
+            { labels: { CN: "探索者キャラクターSchema", EN: "Explorer Character Schema", JA: "探索者キャラクターSchema" }, url: "/NeoPortfolio/assets/docs/Break.json", icon: "fa fa-file-code", type: "code" }
         ],
         workDistribution: [
             { labels: { CN: "Design", EN: "Design", JA: "デザイン" }, percentage: 100 }
@@ -2235,7 +2220,7 @@ Initial playtesting phase complete; rules have stabilized through multiple itera
         status: { CN: "已搁浅", EN: "Shelved", JA: "休止中" },
         showPriority: 70,
         engine: 'Unity',
-        gameType: ['Strategy', 'Analysis'],
+        gameType: ['Strategy'],
         role: ['Solo Creator'],
         techStack: ['Unity', 'C#', 'Networking', 'GOAP', 'DOD'],
         thumbnail: '',
@@ -2342,7 +2327,19 @@ MVC/ECS-lite のハイブリッドパターンを採用し、ゲームプレイ�
 `
         },
         images: [],
-        links: [],
+        links: [
+            { labels: { CN: "手牌管理 (HandList.cs)", EN: "Hand Management (HandList.cs)", JA: "手牌管理 (HandList.cs)" }, urls: { CN: "/assets/info/HandList.cs", EN: "/assets/info/HandList.cs" }, type: 'code' },
+            { labels: { CN: "事件派发器 (EventDispatcher.cs)", EN: "Event Dispatcher (EventDispatcher.cs)", JA: "イベントディスパッチャ (EventDispatcher.cs)" }, urls: { CN: "/assets/info/EventDispatcher.cs", EN: "/assets/info/EventDispatcher.cs" }, type: 'code' },
+            { labels: { CN: "GOAP 行动类 (GOAPAction.cs)", EN: "GOAP Action (GOAPAction.cs)", JA: "GOAP アクション (GOAPAction.cs)" }, urls: { CN: "/assets/info/GoalOrientedActionPlanningAction.cs", EN: "/assets/info/GoalOrientedActionPlanningAction.cs" }, type: 'code' },
+            { labels: { CN: "GOAP 接口 (IGOAP.cs)", EN: "GOAP Interface (IGOAP.cs)", JA: "GOAP インターフェース (IGOAP.cs)" }, urls: { CN: "/assets/info/IGoalOrientedActionPlanning.cs", EN: "/assets/info/IGoalOrientedActionPlanning.cs" }, type: 'code' },
+            { labels: { CN: "牌面压缩 (PaiCompressor.cs)", EN: "Tile Compressor (PaiCompressor.cs)", JA: "牌圧縮 (PaiCompressor.cs)" }, urls: { CN: "/assets/info/SimplePaiCompressorAndDecompressor.cs", EN: "/assets/info/SimplePaiCompressorAndDecompressor.cs" }, type: 'code' },
+            { labels: { CN: "规则 DTO (MatchRuleDTO.cs)", EN: "Match Rule DTO (MatchRuleDTO.cs)", JA: "ルール DTO (MatchRuleDTO.cs)" }, urls: { CN: "/assets/info/MatchRuleDTO.cs", EN: "/assets/info/MatchRuleDTO.cs" }, type: 'code' },
+            { labels: { CN: "主机匹配管理 (HostManager.cs)", EN: "Host Match Manager (HostManager.cs)", JA: "ホストマッチ管理 (HostManager.cs)" }, urls: { CN: "/assets/info/HostMatchManager.cs", EN: "/assets/info/HostMatchManager.cs" }, type: 'code' },
+            { labels: { CN: "单张牌定义 (SPai.cs)", EN: "Single Tile Info (SPai.cs)", JA: "牌定義 (SPai.cs)" }, urls: { CN: "/assets/info/SPai.cs", EN: "/assets/info/SPai.cs" }, type: 'code' },
+            { labels: { CN: "数据单元测试 (SerializationTests.cs)", EN: "Serialization Unit Tests (SerializationTests.cs)", JA: "シリアライズ単体テスト (SerializationTests.cs)" }, urls: { CN: "/assets/info/DrawAndDiscardDtoTests.cs", EN: "/assets/info/DrawAndDiscardDtoTests.cs" }, type: 'code' },
+            { labels: { CN: "日志生成器 (LogGenerator.cs)", EN: "Log Generator (LogGenerator.cs)", JA: "ログ生成器 (LogGenerator.cs)" }, urls: { CN: "/assets/info/LogGenerator.cs", EN: "/assets/info/LogGenerator.cs" }, type: 'code' },
+            { labels: { CN: "摸牌信息 DTO (MultiDrawInfoDto.cs)", EN: "Draw Info DTO (MultiDrawInfoDto.cs)", JA: "ツモ情報 DTO (MultiDrawInfoDto.cs)" }, urls: { CN: "/assets/info/MultiDrawInfoDto.cs", EN: "/assets/info/MultiDrawInfoDto.cs" }, type: 'code' }
+        ],
         workDistribution: [
             { labels: { CN: "Architecture", EN: "Architecture", JA: "アーキテクチャ" }, percentage: 60 },
             { labels: { CN: "AI", EN: "AI", JA: "AI" }, percentage: 20 },

@@ -3,78 +3,83 @@
 namespace Services.BehaviorControlService.GoalOrientedActionPlanning
 {
     /// <summary>
-    ///     The GoalOrientedActionPlanningAction abstract class represents an action that a GOAP agent can perform.
+    /// GoalOrientedActionPlanningAction abstract class.
+    /// Represents an "action" within the GOAP (Goal-Oriented Action Planning) system.
+    /// Each action includes preconditions and effects.
+    /// The AI planner uses these conditions to chain together an optimal sequence of actions, much like solving a puzzle.
     /// </summary>
     public abstract class GoalOrientedActionPlanningAction
     {
         /// <summary>
-        ///     The name of the action.
+        /// The name of the action, used for debugging and editor display.
         /// </summary>
         public string ActionName = "Action";
 
         /// <summary>
-        ///     The cost of performing the action.
+        /// The cost of the action. The planner will seek the path with the lowest (optimal) total cost.
         /// </summary>
         public float Cost = 1.0f;
 
         /// <summary>
-        ///     The duration of the action.
+        /// The estimated duration of the action execution.
         /// </summary>
         public float Duration = 0;
 
         /// <summary>
-        ///     The effects of the action on the world state.
+        /// The changes produced in the "world state" after executing this action.
+        /// For example: if the action is "Pick up Mahjong tile," the Effect might be "HasTile: true."
         /// </summary>
         public SWorldState[] Effects;
 
         /// <summary>
-        ///     A flag indicating whether the agent must be in range to perform the action.
+        /// Indicates whether the action requires the AI to move within a specific range to execute.
         /// </summary>
         public bool InRange = false;
 
         /// <summary>
-        ///     The preconditions that must be met for the action to be performed.
+        /// The world state conditions that must be met before this action can be activated.
+        /// For example: if the action is "Discard Tile," the Precondition must include "IsMyTurn: true."
         /// </summary>
         public SWorldState[] Preconditions;
 
         /// <summary>
-        ///     The target GameObject of the action.
+        /// The target object for the action (optional).
         /// </summary>
         public GameObject Target;
 
         /// <summary>
-        ///     The tag of the target GameObject.
+        /// The tag of the target object, used for dynamically searching for targets.
         /// </summary>
         public string TargetTag;
 
         /// <summary>
-        ///     Checks if the action is done.
+        /// Determines if the action has been completed.
         /// </summary>
-        /// <returns>A boolean indicating whether the action is done.</returns>
+        /// <returns>Returns true to indicate the task has ended.</returns>
         public abstract bool IsDone();
 
         /// <summary>
-        ///     Checks the procedural precondition for the action.
+        /// Procedural precondition check.
+        /// Beyond static world states, complex logic checks (e.g., distance calculations) can be written here.
         /// </summary>
-        /// <param name="agent">The agent that will perform the action.</param>
-        /// <returns>A boolean indicating whether the procedural precondition is met.</returns>
+        /// <param name="agent">The AI agent performing the action.</param>
         public abstract bool CheckProceduralPrecondition(GameObject agent);
 
         /// <summary>
-        ///     Performs the action.
+        /// Core method: Executes the specific logic.
+        /// Write specific AI behaviors here (e.g., control animations, calculate scores).
         /// </summary>
-        /// <param name="agent">The agent that will perform the action.</param>
-        /// <returns>A boolean indicating whether the action was performed successfully.</returns>
+        /// <param name="agent">The AI agent performing the action.</param>
+        /// <returns>Returns true if execution was successful.</returns>
         public abstract bool Perform(GameObject agent);
 
         /// <summary>
-        ///     Checks if the agent needs to be in range to perform the action.
+        /// Queries if this action must require being within range of the target.
         /// </summary>
-        /// <returns>A boolean indicating whether the agent needs to be in range.</returns>
         public abstract bool RequiresInRange();
 
         /// <summary>
-        ///     Resets the action.
+        /// Resets the action state to allow for reuse.
         /// </summary>
         public abstract void Reset();
     }

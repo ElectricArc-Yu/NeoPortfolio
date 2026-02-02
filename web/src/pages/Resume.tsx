@@ -157,10 +157,21 @@ const ResumeContent: React.FC = () => {
         });
 
         return items.sort((a, b) => {
-            const d1 = 'id' in a ? a.startDate : a.startDate;
-            const d2 = 'id' in b ? b.startDate : b.startDate;
+            // Priority 1: "Present" (ongoing) projects go to the top
+            const isPresentA = (a.endDate === 'Present');
+            const isPresentB = (b.endDate === 'Present');
+
+            if (isPresentA && !isPresentB) return -1;
+            if (!isPresentA && isPresentB) return 1;
+
+            // Priority 2: Sort by startDate (newest first)
+            const d1 = a.startDate || '';
+            const d2 = b.startDate || '';
+
+            if (!d1 && !d2) return 0;
             if (!d1) return 1;
             if (!d2) return -1;
+
             return d2.localeCompare(d1);
         });
     }, [filteredProjects, mainProjects]);

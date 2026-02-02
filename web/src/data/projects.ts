@@ -358,7 +358,7 @@ Concentrated 90% of design effort on combat systems and their dependencies, deli
         sales: 'Pre-production',
         platforms: { CN: "PC", EN: "PC", JA: "PC" },
         durations: { CN: "约1年半", EN: "About 1.5 years", JA: "約1.5年" },
-        startDate: '2023.01',
+        startDate: '2024.08',
         endDate: 'Present',
         teamSizes: { CN: "3人 + 其他可用人员", EN: "3 People + Other people", JA: "3人 + その他サポート" },
         descriptions: {
@@ -611,7 +611,7 @@ UEブループリントを使用して、極めてシンプルかつ効果的な
         sales: 'Pre-production',
         platforms: { CN: "PC", EN: "PC", JA: "PC" },
         durations: { CN: "约2个月", EN: "About 2 months", JA: "約2ヶ月" },
-        startDate: '2024.04',
+        startDate: '2025.12',
         endDate: 'Present',
         teamSizes: { CN: "10+人 (3全职)", EN: "10+ People (3 full-time)", JA: "10人以上 (フルタイム3名)" },
         descriptions: {
@@ -1030,7 +1030,7 @@ This project's success is non-replicable—it depends on specific market windows
         sales: 'IP Foundation',
         platforms: { CN: "IP 基础设施", EN: "IP Infrastructure", JA: "IPインフラ" },
         durations: { CN: "约1年 (持续完善)", EN: "About 1 year (implementing)", JA: "約1年 (継続的に改善中)" },
-        startDate: '2023.06',
+        startDate: '2024.06',
         endDate: 'Present',
         teamSizes: { CN: "4人核心团队", EN: "4-person Core Team", JA: "コアチーム4名" },
         descriptions: {
@@ -2122,7 +2122,7 @@ I proposed and designed the core slime system—the slime character dynamically 
         workHours: 300,
         platforms: { CN: "实体桌游", EN: "Physical Board Game", JA: "ボードゲーム" },
         durations: { CN: "2024.04 - 至今", EN: "Apr 2024 - Present", JA: "2024年4月 - 現在" },
-        startDate: '2024.04',
+        startDate: '2024.11',
         endDate: 'Present',
         teamSizes: { CN: "个人", EN: "Solo", JA: "個人" },
         descriptions: {

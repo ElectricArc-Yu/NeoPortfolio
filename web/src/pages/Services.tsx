@@ -26,7 +26,7 @@ const Services: React.FC = () => {
     return (
         <PageTransition className={styles.container}>
             {/* Header */}
-            <motion.header 
+            <motion.header
                 className={styles.header}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -41,7 +41,7 @@ const Services: React.FC = () => {
             </motion.header>
 
             {/* Intro + About Section */}
-            <motion.section 
+            <motion.section
                 className={styles.introSection}
                 variants={fadeInUp}
                 initial="hidden"
@@ -61,11 +61,10 @@ const Services: React.FC = () => {
             </motion.section>
 
             {/* About Me Section */}
-            <motion.section 
+            <motion.section
                 className={styles.aboutSection}
                 initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
             >
                 <h2 className={styles.sectionTitle}>
@@ -81,21 +80,19 @@ const Services: React.FC = () => {
 
             {/* Services Grid Section */}
             <section className={styles.servicesSection}>
-                <motion.h2 
+                <motion.h2
                     className={styles.sectionTitle}
                     initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    animate={{ opacity: 1, y: 0 }}
                 >
                     {getLocalizedValue(servicesData.sectionTitle, language)}
                 </motion.h2>
 
-                <motion.div 
+                <motion.div
                     className={styles.serviceGrid}
                     variants={staggerContainer}
                     initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
+                    animate="visible"
                 >
                     {[...servicesData.items]
                         .sort((a, b) => b.showPriority - a.showPriority)
@@ -116,11 +113,10 @@ const Services: React.FC = () => {
             </section>
 
             {/* CTA Section */}
-            <motion.section 
+            <motion.section
                 className={styles.ctaSection}
                 initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
             >
                 <p

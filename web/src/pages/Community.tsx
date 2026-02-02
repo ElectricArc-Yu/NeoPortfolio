@@ -51,7 +51,7 @@ const Community: React.FC = () => {
 
     return (
         <PageTransition className={styles.communityContainer}>
-            <motion.header 
+            <motion.header
                 className={styles.header}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ const Community: React.FC = () => {
             </motion.header>
 
             {/* Part 1: Core Content Tags */}
-            <motion.section 
+            <motion.section
                 className={styles.coreValuesRow}
                 variants={staggerContainer}
                 initial="hidden"
@@ -77,11 +77,10 @@ const Community: React.FC = () => {
             </motion.section>
 
             {/* Part 2: Detailed Convention */}
-            <motion.section 
+            <motion.section
                 className={styles.covenantSection}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
             >
                 <h2 className={styles.covenantTitle}>{getL(guildData.covenantTitle)}</h2>
@@ -101,11 +100,10 @@ const Community: React.FC = () => {
             </motion.section>
 
             {/* Part 3: Guild Principles / Values */}
-            <motion.section 
+            <motion.section
                 className={styles.principlesSection}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
             >
                 <h2 className={styles.sectionTitle}>{getL(guildData.principlesTitle)}</h2>
@@ -124,11 +122,10 @@ const Community: React.FC = () => {
                 </div>
             </motion.section>
 
-            <motion.section 
+            <motion.section
                 className={styles.applySection}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
             >
                 <h2 className={styles.applyTitle}>{getL(guildData.applyTitle)}</h2>

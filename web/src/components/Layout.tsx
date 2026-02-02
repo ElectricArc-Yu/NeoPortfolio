@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './Navbar';
 import styles from './Layout.module.css';
 
@@ -78,7 +79,11 @@ const Layout: React.FC = () => {
             <PageMetadata />
             <Navbar />
             <main className={styles.main}>
-                <Outlet />
+                <AnimatePresence mode="wait">
+                    <div key={location.pathname}>
+                        <Outlet />
+                    </div>
+                </AnimatePresence>
             </main>
             <footer className={styles.footer}>
                 <div className={styles.footerContent}>

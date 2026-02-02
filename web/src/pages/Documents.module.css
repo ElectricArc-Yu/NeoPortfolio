@@ -56,22 +56,20 @@
     color: var(--accent-color);
 }
 
-/* Grid Layout - Enhanced Spacing */
 .grid {
     display: flex;
     flex-direction: column;
-    gap: 2rem; /* Increased from 1.5rem to create more breathing room */
+    gap: var(--spacing-lg);
     align-items: center;
-    margin-top: 1.5rem; /* Increased top margin */
 }
 
 .card {
     background: var(--bg-secondary);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: var(--border-radius-md);
-    padding: 2rem; /* Increased from var(--spacing-lg) for better visual breathing room */
+    padding: var(--spacing-lg);
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing curve */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     width: 100%;
     max-width: 1150px;
@@ -80,39 +78,35 @@
     flex-direction: column;
     justify-content: center;
     text-decoration: none;
-    will-change: transform, box-shadow; /* Performance optimization */
 }
 
 .card:hover {
-    transform: translateY(-3px) scale(1.005); /* More subtle hover effect */
+    transform: translateY(-2px);
     border-color: var(--accent-color);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow with less intensity */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Paper Card - New Layout */
-/* Paper Card - Enhanced Animation */
 .paperCard {
     background: var(--bg-secondary);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-left: 3px solid #f7931e;
     border-radius: var(--border-radius-md);
-    padding: 2rem; /* Increased padding for better visual breathing room */
+    padding: var(--spacing-lg);
     position: relative;
     width: 100%;
     max-width: 1150px;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Increased gap between elements */
+    gap: var(--spacing-md);
     background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(247, 147, 30, 0.03) 100%);
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Even smoother easing */
-    will-change: transform, box-shadow; /* Performance optimization */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .paperCard:hover {
-    transform: translateY(-4px) scale(1.01); /* More pronounced hover effect */
+    transform: translateY(-2px);
     border-color: #f7931e;
-    box-shadow: 0 12px 35px rgba(247, 147, 30, 0.15); /* Enhanced shadow with reduced intensity */
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Faster on hover */
+    box-shadow: 0 5px 25px rgba(247, 147, 30, 0.15);
 }
 
 .paperCard {
@@ -382,10 +376,9 @@
     }
 }
 
-/* GDD Type Group - Enhanced Spacing and Animation */
+/* ========== GDD Type Grouping Styles ========== */
 .gddTypeGroup {
-    margin-bottom: 1.5rem; /* Increased spacing between groups */
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother animation */
+    margin-bottom: var(--spacing-md);
 }
 
 .gddTypeGroup:last-child {
@@ -396,21 +389,19 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
-    padding: 1.25rem var(--spacing-lg); /* Increased padding */
+    padding: var(--spacing-md) var(--spacing-lg);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: var(--border-radius-md);
     margin-bottom: 0;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother transition */
+    transition: all 0.3s ease;
     cursor: pointer;
     user-select: none;
-    will-change: transform, background-color, border-color; /* Performance optimization */
 }
 
 .gddTypeHeader:hover {
     border-color: rgba(255, 255, 255, 0.15);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%);
-    transform: translateY(-1px); /* Subtle lift effect */
 }
 
 .gddTypeHeader:focus {
@@ -453,18 +444,17 @@
     color: var(--accent-color);
 }
 
-/* Collapsible cards container - Enhanced Animation */
+/* Collapsible cards container */
 .gddTypeCards {
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Increased gap between cards */
+    gap: var(--spacing-md);
     padding-left: 0;
-    padding-top: 1rem; /* Increased top padding */
-    padding-right: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 10px;
+    padding-right: 5px;
+    padding-bottom: 5px;
     overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing */
-    will-change: max-height, opacity; /* Performance optimization */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cardsCollapsed {
@@ -472,13 +462,12 @@
     opacity: 0;
     margin-top: 0;
     pointer-events: none;
-    overflow: hidden;
 }
 
 .cardsExpanded {
-    max-height: 3000px; /* Increased max-height for smoother expansion */
+    max-height: 2000px;
     opacity: 1;
-    margin-top: 1.5rem; /* Increased margin for better spacing */
+    margin-top: var(--spacing-lg);
     pointer-events: auto;
 }
 

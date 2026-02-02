@@ -1,0 +1,82 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0f1014;
+    /* Match var(--bg-color) */
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.content {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    letter-spacing: 4px;
+    color: #e0e0e0;
+    text-transform: uppercase;
+}
+
+.progressContainer {
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.progressBar {
+    height: 100%;
+    background: #4db6ac;
+    /* Match var(--accent-color) */
+    box-shadow: 0 0 15px rgba(77, 182, 172, 0.5);
+    transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.statusRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #9aa0a6;
+    margin-top: 0.5rem;
+}
+
+.percentage {
+    font-weight: 600;
+    color: #4db6ac;
+}
+
+.logArea {
+    margin-top: 4rem;
+    height: 80px;
+    width: 100%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: #9aa0a6;
+    opacity: 0.4;
+    text-align: left;
+    overflow: hidden;
+    mask-image: linear-gradient(to top, transparent, black 20%);
+}
+
+.logLine {
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

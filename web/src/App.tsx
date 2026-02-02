@@ -1,38 +1,38 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
+import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { LanguageProvider } from './context/LanguageContext';
 import { LoadingProvider } from './context/LoadingContext';
 import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
-import LoadingSpinner from './components/LoadingSpinner';
+import GlobalLoader from './components/GlobalLoader';
 
-// Lazy load pages for performance optimization
-const Home = lazy(() => import('./pages/Home'));
-const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
-const Services = lazy(() => import('./pages/Services'));
-const Resume = lazy(() => import('./pages/Resume'));
-const Media = lazy(() => import('./pages/Media'));
-const Contact = lazy(() => import('./pages/Contact'));
-const Community = lazy(() => import('./pages/Community'));
-const Documents = lazy(() => import('./pages/Documents'));
-const NotFound = lazy(() => import('./pages/NotFound'));
-
-// Loading fallback with spinner
-const PageLoader = () => (
-  <LoadingSpinner 
-    fullScreen 
-    size="large" 
-    text="Loading page..." 
-  />
-);
+// Direct imports for once-off loading experience
+import Home from './pages/Home';
+import ProjectDetail from './pages/ProjectDetail';
+import Services from './pages/Services';
+import Resume from './pages/Resume';
+import Media from './pages/Media';
+import Contact from './pages/Contact';
+import Community from './pages/Community';
+import Documents from './pages/Documents';
+import NotFound from './pages/NotFound';
 
 function App() {
+  const [isSiteReady, setIsSiteReady] = useState(false);
+
   return (
     <LanguageProvider>
       <LoadingProvider>
-        <HashRouter>
-          <ScrollToTop />
-          <Suspense fallback={<PageLoader />}>
+        <AnimatePresence mode="wait">
+          {!isSiteReady && (
+            <GlobalLoader key="preloader" onDone={() => setIsSiteReady(true)} />
+          )}
+        </AnimatePresence>
+
+        {isSiteReady && (
+          <HashRouter>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
@@ -46,8 +46,8 @@ function App() {
                 <Route path="*" element={<NotFound />} />
               </Route>
             </Routes>
-          </Suspense>
-        </HashRouter>
+          </HashRouter>
+        )}
       </LoadingProvider>
     </LanguageProvider>
   );

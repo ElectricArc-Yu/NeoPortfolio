@@ -31,6 +31,10 @@ export interface SiteConfig {
         favicon: string;
         titleFormat: TitleFormat;
     };
+    loader: {
+        displayName: string;
+        welcomeMessage: string;
+    };
 }
 
 export const siteConfig: SiteConfig = {
@@ -129,6 +133,10 @@ export const siteConfig: SiteConfig = {
         },
         favicon: '/NeoPortfolio/webicon.ico',
         titleFormat: 'GlobalPage'
+    },
+    loader: {
+        displayName: 'Yu Chenhaoran',
+        welcomeMessage: 'Welcome to Electric Arc\'s World'
     }
 };
 

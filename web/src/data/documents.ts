@@ -28,7 +28,7 @@ export const publicDocs: PublicDoc[] = [
     {
         id: 'ffxiv-exploration-value-collapse',
         titles: {
-            CN: "The Illusion of Choice: Value Collapse in MMORPG Exploratory Content Post-Reward Decoupling",
+            CN: "选择的错觉：MMORPG探索内容在奖励解耦后的价值崩塌",
             EN: "The Illusion of Choice: Value Collapse in MMORPG Exploratory Content Post-Reward Decoupling",
             JA: "選択の錯覚：報酬の切り離し後におけるMMORPG探索コンテンツの価値崩壊"
         },

@@ -1,0 +1,558 @@
+/* Resume Skeleton Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header Skeleton */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.nameSkeleton {
+    width: 300px;
+    height: 48px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 8px;
+    margin: 0 auto 1rem;
+}
+
+.subtitleSkeleton {
+    width: 200px;
+    height: 24px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+    margin: 0 auto 1.5rem;
+}
+
+.aboutSkeleton {
+    width: 600px;
+    height: 20px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+    margin: 0 auto 2rem;
+}
+
+.contactInfo {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.iconSkeleton {
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 2px;
+}
+
+.textSkeleton {
+    width: 80px;
+    height: 16px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 2px;
+}
+
+/* Main Grid Skeleton */
+.mainGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.primaryColumn,
+.secondaryColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sectionTitleSkeleton {
+    width: 120px;
+    height: 24px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+/* Timeline Skeleton */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.timelineItem {
+    display: flex;
+    gap: 1rem;
+    position: relative;
+}
+
+.timelineDotSkeleton {
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+}
+
+.timelineContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.roleHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.roleSkeleton {
+    width: 150px;
+    height: 20px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.periodSkeleton {
+    width: 80px;
+    height: 16px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.companyRow {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.companySkeleton {
+    width: 120px;
+    height: 16px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.sizeSkeleton {
+    width: 60px;
+    height: 16px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detailSkeleton {
+    width: 100%;
+    height: 16px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+/* Skills Skeleton */
+.skillsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.skillCategory {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.categoryTitleSkeleton {
+    width: 100px;
+    height: 18px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.skillList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skillItemSkeleton {
+    width: 80px;
+    height: 24px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 12px;
+}
+
+/* Education Skeleton */
+.educationList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.educationItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.schoolSkeleton {
+    width: 150px;
+    height: 20px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.degreeSkeleton {
+    width: 120px;
+    height: 16px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.periodSkeletonShort {
+    width: 80px;
+    height: 14px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+/* Actions Skeleton */
+.actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+
+.buttonSkeleton {
+    width: 120px;
+    height: 40px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 20px;
+}
+
+/* Certifications Skeleton */
+.certificationsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.certItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.certIconSkeleton {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.certContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.certTitleSkeleton {
+    width: 200px;
+    height: 16px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.certDateSkeleton {
+    width: 100px;
+    height: 14px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+/* Project Timeline Skeleton */
+.timelineHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.filterGroup {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filterButtonSkeleton {
+    width: 60px;
+    height: 28px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 14px;
+}
+
+.projectTimeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.projectRow {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.projectDateSkeleton {
+    width: 100px;
+    height: 14px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.projectTitleSkeleton {
+    width: 250px;
+    height: 18px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+.projectBadges {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.badgeSkeleton {
+    width: 80px;
+    height: 20px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 10px;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mainGrid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .contactInfo {
+        gap: 1rem;
+    }
+    
+    .nameSkeleton {
+        width: 250px;
+    }
+    
+    .aboutSkeleton {
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .timelineHeader {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .filterGroup {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .nameSkeleton {
+        width: 200px;
+        height: 36px;
+    }
+    
+    .subtitleSkeleton {
+        width: 150px;
+    }
+    
+    .aboutSkeleton {
+        max-width: 300px;
+    }
+    
+    .contactInfo {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    
+    .section {
+        padding: 1rem;
+    }
+    
+    .projectRow {
+        padding: 0.75rem;
+    }
+    
+    .projectTitleSkeleton {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .nameSkeleton,
+    .subtitleSkeleton,
+    .aboutSkeleton,
+    .iconSkeleton,
+    .textSkeleton,
+    .sectionTitleSkeleton,
+    .timelineDotSkeleton,
+    .roleSkeleton,
+    .periodSkeleton,
+    .companySkeleton,
+    .sizeSkeleton,
+    .detailSkeleton,
+    .categoryTitleSkeleton,
+    .skillItemSkeleton,
+    .schoolSkeleton,
+    .degreeSkeleton,
+    .periodSkeletonShort,
+    .buttonSkeleton,
+    .certIconSkeleton,
+    .certTitleSkeleton,
+    .certDateSkeleton,
+    .filterButtonSkeleton,
+    .projectDateSkeleton,
+    .projectTitleSkeleton,
+    .badgeSkeleton {
+        background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+        background-size: 200% 100%;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .nameSkeleton,
+    .subtitleSkeleton,
+    .aboutSkeleton,
+    .iconSkeleton,
+    .textSkeleton,
+    .sectionTitleSkeleton,
+    .timelineDotSkeleton,
+    .roleSkeleton,
+    .periodSkeleton,
+    .companySkeleton,
+    .sizeSkeleton,
+    .detailSkeleton,
+    .categoryTitleSkeleton,
+    .skillItemSkeleton,
+    .schoolSkeleton,
+    .degreeSkeleton,
+    .periodSkeletonShort,
+    .buttonSkeleton,
+    .certIconSkeleton,
+    .certTitleSkeleton,
+    .certDateSkeleton,
+    .filterButtonSkeleton,
+    .projectDateSkeleton,
+    .projectTitleSkeleton,
+    .badgeSkeleton {
+        animation: none;
+        background: #f0f0f0;
+    }
+}

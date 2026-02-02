@@ -9,13 +9,12 @@ interface PageTransitionProps {
 const PageTransition: React.FC<PageTransitionProps> = ({ children, className }) => {
     return (
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ 
-                duration: 0.2, 
-                ease: "easeOut",
-                delay: 0.1 // 轻微延迟，避免闪烁
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -10 }}
+            transition={{
+                duration: 0.4,
+                ease: [0.25, 1, 0.5, 1] // Premium cubic-bezier
             }}
             className={className}
         >

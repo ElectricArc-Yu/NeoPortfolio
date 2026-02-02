@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { mediaSeries, mediaItems } from '../data/media';
 import styles from './Media.module.css';
@@ -8,10 +8,9 @@ import { getLocalizedValue } from '../utils/i18n';
 import type { MediaSeries, MediaEpisode, PodcastEpisode, PlatformLink } from '../data/types';
 import { siteConfig } from '../data/siteConfig';
 import { formatDate, formatUnit } from '../utils/formatters';
-
-import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
-import { fadeInUp, staggerContainer, viewportConfig } from '../utils/variants';
+import { motion } from 'framer-motion';
+// Animation utilities removed - using unified Community-style animations
 
 // Platform icon/color mapping
 const platformConfig: Record<string, { color: string; label: string }> = {
@@ -38,24 +37,22 @@ const Media: React.FC = () => {
     const [expandedSeries, setExpandedSeries] = useState<string[]>([]);
     const [showMiscellaneous, setShowMiscellaneous] = useState(false);
 
-    // Memoize toggle function to prevent unnecessary re-renders
-    const toggleSeries = useCallback((seriesId: string) => {
+    const toggleSeries = (seriesId: string) => {
         setExpandedSeries(prev =>
             prev.includes(seriesId)
                 ? prev.filter(id => id !== seriesId)
                 : [...prev, seriesId]
         );
-    }, []);
+    };
 
-    // Memoize domain extraction function
-    const getDomain = useCallback((url: string) => {
+    const getDomain = (url: string) => {
         try {
             const hostname = new URL(url).hostname;
             return hostname.replace('www.', '');
         } catch {
             return 'Link';
         }
-    }, []);
+    };
 
     const renderBadge = (badge: string, key: string | number, isTypeBadge = false) => {
         let displayBadge = badge;
@@ -276,16 +273,10 @@ const Media: React.FC = () => {
             : series.podcastEpisodes?.length || series.episodesCount || 0;
 
         return (
-            <motion.div 
-                key={series.id} 
-                className={`${styles.seriesCard} ${styles.goldSeries} ${isExpanded ? styles.expanded : ''}`}
-                variants={fadeInUp}
-                layout
-            >
-                <motion.div
+            <div key={series.id} className={`${styles.seriesCard} ${styles.goldSeries} ${isExpanded ? styles.expanded : ''}`}>
+                <div
                     className={`${styles.seriesHeader} ${isExpanded ? styles.sticky : ''}`}
                     onClick={() => toggleSeries(series.id)}
-                    layout="position"
                 >
                     <div className={styles.seriesInfo}>
                         <div className={`${styles.seriesIcon} ${isVideoSeries ? styles.videoIcon : styles.podcastIcon}`}>
@@ -296,32 +287,22 @@ const Media: React.FC = () => {
                                 {getLocalizedValue(series.seriesNames, language)}
                             </h2>
                             {!isExpanded && (
-                                <motion.p 
-                                    className={styles.seriesDescription}
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                >
+                                <p className={styles.seriesDescription}>
                                     {getLocalizedValue(series.descriptions, language)}
-                                </motion.p>
+                                </p>
                             )}
                         </div>
                     </div>
                     <div className={styles.seriesMetaHeader}>
                         <div className={styles.seriesBadges}>
                             {!isExpanded && (
-                                <motion.div 
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}
-                                >
+                                <>
                                     {series.seriesBadges ? (
                                         series.seriesBadges.map((badge, idx) => renderBadge(badge, `type-${idx}`, true))
                                     ) : (
                                         renderBadge(isVideoSeries ? 'Video' : 'Podcast', 'type-default', true)
                                     )}
-                                </motion.div>
+                                </>
                             )}
                             {series.languages.map((lang, idx) => renderBadge(lang, `lang-${idx}`))}
                             <span className={styles.badge}>
@@ -332,54 +313,42 @@ const Media: React.FC = () => {
                             {isExpanded ? <X size={18} /> : <ChevronDown size={18} />}
                         </div>
                     </div>
-                </motion.div>
+                </div>
 
-                <AnimatePresence>
-                    {isExpanded && (
-                        <motion.div 
-                            className={styles.seriesContent}
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ 
-                                duration: 0.4, 
-                                ease: "easeOut", 
-                                delay: 0.05 
-                            }} // Smoother expansion
-                        >
-                            <p className={styles.expandedDescription}>
-                                {getLocalizedValue(series.descriptions, language)}
-                            </p>
-                            <div className={styles.contentSeparator} />
+                {isExpanded && (
+                    <div className={styles.seriesContent}>
+                        <p className={styles.expandedDescription}>
+                            {getLocalizedValue(series.descriptions, language)}
+                        </p>
+                        <div className={styles.contentSeparator} />
 
-                            {!isVideoSeries && series.mainLinks && series.mainLinks.length > 0 && (
-                                <div className={styles.mainLinksSection}>
-                                    <span className={styles.mainLinksLabel}>
-                                        {t('Listen on')}:
-                                    </span>
-                                    {renderPlatformLinks(series.mainLinks)}
+                        {!isVideoSeries && series.mainLinks && series.mainLinks.length > 0 && (
+                            <div className={styles.mainLinksSection}>
+                                <span className={styles.mainLinksLabel}>
+                                    {t('Listen on')}:
+                                </span>
+                                {renderPlatformLinks(series.mainLinks)}
+                            </div>
+                        )}
+
+                        <div className={styles.episodesList}>
+                            {isVideoSeries ? (
+                                series.episodes?.map(ep => renderVideoEpisode(ep))
+                            ) : (
+                                <div className={styles.podcastEpisodesList}>
+                                    {series.podcastEpisodes?.map(ep => renderPodcastEpisode(ep))}
                                 </div>
                             )}
-
-                            <div className={styles.episodesList}>
-                                {isVideoSeries ? (
-                                    series.episodes?.map(ep => renderVideoEpisode(ep))
-                                ) : (
-                                    <div className={styles.podcastEpisodesList}>
-                                        {series.podcastEpisodes?.map(ep => renderPodcastEpisode(ep))}
-                                    </div>
-                                )}
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </motion.div>
+                        </div>
+                    </div>
+                )}
+            </div>
         );
     };
 
     return (
         <PageTransition className={styles.container}>
-            <motion.header 
+            <motion.header
                 className={styles.header}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -393,25 +362,16 @@ const Media: React.FC = () => {
                 </p>
             </motion.header>
 
-            <motion.div 
-                className={styles.seriesList}
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportConfig}
-            >
+            <div className={styles.seriesList}>
                 {mediaSeries.map(series => renderSeries(series))}
 
                 {mediaItems && mediaItems.length > 0 && (
-                    <motion.div 
+                    <div
                         className={`${styles.seriesCard} ${styles.cyanSeries} ${showMiscellaneous ? styles.expanded : ''}`}
-                        variants={fadeInUp}
-                        layout
                     >
-                        <motion.div
+                        <div
                             className={`${styles.seriesHeader} ${showMiscellaneous ? styles.sticky : ''}`}
                             onClick={() => setShowMiscellaneous(!showMiscellaneous)}
-                            layout="position"
                         >
                             <div className={styles.seriesInfo}>
                                 <div className={`${styles.seriesIcon} ${styles.videoIcon}`} style={{ background: 'linear-gradient(135deg, var(--accent-color), #008085)' }}>
@@ -422,14 +382,9 @@ const Media: React.FC = () => {
                                         {t('Miscellaneous')}
                                     </h2>
                                     {!showMiscellaneous && (
-                                        <motion.p 
-                                            className={styles.seriesDescription}
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            exit={{ opacity: 0 }}
-                                        >
+                                        <p className={styles.seriesDescription}>
                                             {t('Miscellaneous Description')}
-                                        </motion.p>
+                                        </p>
                                     )}
                                 </div>
                             </div>
@@ -443,90 +398,82 @@ const Media: React.FC = () => {
                                     {showMiscellaneous ? <X size={18} /> : <ChevronDown size={18} />}
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
 
-                        <AnimatePresence>
-                            {showMiscellaneous && (
-                                <motion.div 
-                                    className={styles.seriesContent}
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: 'auto' }}
-                                    exit={{ opacity: 0, height: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <p className={styles.expandedDescription}>
-                                        {t('Miscellaneous Content')}
-                                    </p>
-                                    <div className={styles.contentSeparator} />
-                                    <div className={styles.mediaList}>
-                                        {mediaItems.map((item) => (
-                                            <a
-                                                key={item.id}
-                                                href={item.url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className={`${styles.mediaCard} ${styles.publishedGlow}`}
-                                            >
-                                                <div className={styles.thumbnailWrapper}>
-                                                    {item.thumbnail && (
-                                                        <img
-                                                            src={getAssetPath(item.thumbnail)}
-                                                            alt={getLocalizedValue(item.titles, language)}
-                                                            className={styles.thumbnail}
-                                                        />
-                                                    )}
-                                                    <div className={styles.playOverlay}>
-                                                        <PlayCircle size={40} />
+                        {showMiscellaneous && (
+                            <div className={styles.seriesContent}>
+                                <p className={styles.expandedDescription}>
+                                    {t('Miscellaneous Content')}
+                                </p>
+                                <div className={styles.contentSeparator} />
+                                <div className={styles.mediaList}>
+                                    {mediaItems.map((item) => (
+                                        <a
+                                            key={item.id}
+                                            href={item.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={`${styles.mediaCard} ${styles.publishedGlow}`}
+                                        >
+                                            <div className={styles.thumbnailWrapper}>
+                                                {item.thumbnail && (
+                                                    <img
+                                                        src={getAssetPath(item.thumbnail)}
+                                                        alt={getLocalizedValue(item.titles, language)}
+                                                        className={styles.thumbnail}
+                                                    />
+                                                )}
+                                                <div className={styles.playOverlay}>
+                                                    <PlayCircle size={40} />
+                                                </div>
+                                            </div>
+
+                                            <div className={styles.content}>
+                                                <div className={styles.cardHeader}>
+                                                    <h3 className={styles.mediaTitle}>{getLocalizedValue(item.titles, language)}</h3>
+                                                    <div className={styles.badges}>
+                                                        <span className={`${styles.badge} ${styles.carrierBadge}`}>{item.carrier}</span>
+                                                        {item.languages.map((lang, idx) => renderBadge(lang, `misc-lang-${idx}`))}
                                                     </div>
                                                 </div>
 
-                                                <div className={styles.content}>
-                                                    <div className={styles.cardHeader}>
-                                                        <h3 className={styles.mediaTitle}>{getLocalizedValue(item.titles, language)}</h3>
-                                                        <div className={styles.badges}>
-                                                            <span className={`${styles.badge} ${styles.carrierBadge}`}>{item.carrier}</span>
-                                                            {item.languages.map((lang, idx) => renderBadge(lang, `misc-lang-${idx}`))}
-                                                        </div>
-                                                    </div>
+                                                <p className={styles.description}>
+                                                    {getLocalizedValue(item.descriptions, language)}
+                                                </p>
 
-                                                    <p className={styles.description}>
-                                                        {getLocalizedValue(item.descriptions, language)}
-                                                    </p>
-
-                                                    <div className={styles.footer}>
-                                                        <div className={styles.metaInfo}>
-                                                            <div className={styles.metaItem}>
-                                                                <Globe size={14} />
-                                                                <span>{item.date}</span>
-                                                            </div>
-                                                            <div className={styles.metaItem}>
-                                                                {item.isCollection ? <List size={14} /> : <Clock size={14} />}
-                                                                <span>
-                                                                    {item.isCollection
-                                                                        ? formatUnit(item.episodesCount || 0, 'Episodes', language, t)
-                                                                        : item.duration
-                                                                    }
-                                                                </span>
-                                                            </div>
+                                                <div className={styles.footer}>
+                                                    <div className={styles.metaInfo}>
+                                                        <div className={styles.metaItem}>
+                                                            <Globe size={14} />
+                                                            <span>{item.date}</span>
                                                         </div>
-                                                        <div className={styles.viewAction}>
+                                                        <div className={styles.metaItem}>
+                                                            {item.isCollection ? <List size={14} /> : <Clock size={14} />}
                                                             <span>
-                                                                {t('View Now')}
-                                                                {` (${getDomain(item.url)})`}
+                                                                {item.isCollection
+                                                                    ? formatUnit(item.episodesCount || 0, 'Episodes', language, t)
+                                                                    : item.duration
+                                                                }
                                                             </span>
-                                                            <ExternalLink size={14} />
                                                         </div>
                                                     </div>
+                                                    <div className={styles.viewAction}>
+                                                        <span>
+                                                            {t('View Now')}
+                                                            {` (${getDomain(item.url)})`}
+                                                        </span>
+                                                        <ExternalLink size={14} />
+                                                    </div>
                                                 </div>
-                                            </a>
-                                        ))}
-                                    </div>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </motion.div>
+                                            </div>
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 )}
-            </motion.div>
+            </div>
         </PageTransition>
     );
 };

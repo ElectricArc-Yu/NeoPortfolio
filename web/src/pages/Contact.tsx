@@ -7,7 +7,6 @@ import { siteConfig } from '../data/siteConfig';
 import { contactData, getContactIcon } from '../data/contact';
 import { getLocalizedValue } from '../utils/i18n';
 import PageTransition from '../components/PageTransition';
-import { fadeInUp, staggerContainer } from '../utils/variants';
 
 const Contact: React.FC = () => {
     const { language, t } = useLanguage();
@@ -21,7 +20,7 @@ const Contact: React.FC = () => {
 
     return (
         <PageTransition className={styles.container}>
-            <motion.header 
+            <motion.header
                 className={styles.header}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -33,14 +32,9 @@ const Contact: React.FC = () => {
                 </p>
             </motion.header>
 
-            <motion.div 
-                className={styles.sectionsGrid}
-                variants={staggerContainer}
-                initial="hidden"
-                animate="visible"
-            >
+            <div className={styles.sectionsGrid}>
                 {sections.map((section) => (
-                    <motion.div variants={fadeInUp} key={section.id} className={styles.sectionCard}>
+                    <div key={section.id} className={styles.sectionCard}>
                         <div className={styles.iconWrapper}>
                             {getContactIcon(section.iconName)}
                         </div>
@@ -60,9 +54,9 @@ const Contact: React.FC = () => {
                             <Send size={16} />
                             {t('Contact Immediately')}
                         </a>
-                    </motion.div>
+                    </div>
                 ))}
-            </motion.div>
+            </div>
         </PageTransition>
     );
 };

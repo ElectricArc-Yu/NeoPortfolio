@@ -1,0 +1,523 @@
+\documentclass[lettersize,journal]{IEEEtran}
+\usepackage{amsmath,amsfonts}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+% updated with editorial comments 8/9/2021
+
+\begin{document}
+
+\title{Deconstructing Engagement: A Design-Theoretic Framework for Participation Propensity under Uncertainty}
+
+\author{Chenhaoran Yu}
+        % <-this % stops a space
+%\thanks{This paper was produced by the IEEE Publication Technology Group. They are in Piscataway, NJ.}% <-this % stops a space
+%\thanks{Manuscript received April 19, 2021; revised August 16, 2021.}}
+
+% The paper headers
+%\markboth{Submitted to IEEE Transactions on Games}%
+%
+% \IEEEpubid{0000--0000/00\$00.00~\copyright~2021 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+\maketitle
+
+\begin{abstract}
+Game analytics has established powerful methods for understanding \textit{what} happens in player behavior through behavioral metrics and data-driven optimization\cite{elnasr2013}. However, to fully interpret \textit{why} certain structural configurations produce observed behavioral patterns, analytics requires a complementary qualitative layer---a structural context that explains the causal mechanisms behind the data.
+
+This paper proposes a \textit{design-theoretic auditing framework} for analyzing participation propensity in interactive systems. Rather than modeling engagement as a monolithic psychological state, participation is characterized as a tension between short-term engagement propensity and long-term value pursuit, moderated by the system's \textit{Value Scope} ($S_V$), which reflects the transferability of outcomes beyond the system boundary.
+
+The framework decomposes the participation decision space into seven analytically separable dimensions, including Outcome Payoff, Total Cost, Temporal Commitment, Motivation, Failure Cost, and Risk. This decomposition is not claimed to be formally minimal or predictive, but is constructed to support structured design auditing by distinguishing often-conflated mechanisms such as sunk cost versus failure cost, and by introducing \textit{risk entanglement} as a systemic amplification factor in multi-agent settings.
+
+By framing participation as a rational auditing process rather than a purely experiential response, this work aims to provide designers and researchers with an analytical lens for diagnosing structural causes of engagement failure beyond empirical retention tuning.
+\end{abstract}
+
+
+\begin{IEEEkeywords}
+Design Theory, Game Analytics, Failure Cost, Participation Propensity, Design Space, Value Scope, Bounded Horizon Rationality.
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+In the rigorous landscape of interactive system design and game analytics, a persistent paradox challenges our understanding of user behavior: Why do rational users frequently abandon systems designed to maximize immediate pleasure, yet show resilient persistence in systems that impose severe frustration, high failure rates, and delayed gratification?
+
+Traditional approaches to answering this question span two complementary streams. On one hand, game analytics and data-driven methods\cite{elnasr2013, elnasr2024, drachen2009, canossa2009, bauckhage2012, drachen2016} have proven highly effective at identifying \textit{what} behavioral patterns emerge---optimizing retention through A/B testing of reward schedules and difficulty curves. On the other hand, psychological frameworks such as Self-Determination Theory (SDT)\cite{ryan2000, ryan2006, tyack2020} or Flow Theory\cite{csik1990, nacke2011, sweetser2005} provide vocabularies for \textit{why} users feel engaged. However, neither stream fully addresses the \textit{structural trade-offs} users face when making participation decisions under uncertainty---such as the specific cost of failure or the ``entanglement'' of risk in multiplayer environments.
+
+I propose that to more fully understand sustained engagement, particularly in complex or high-stakes environments, participation should be analyzed not merely as a psychological reaction, but as a \textbf{rational calculation process under uncertainty}. Under this view, users are not simply "feeling" the game; they are continuously auditing the system's value proposition against its structural costs.
+
+This paper introduces a \textit{design-theoretic auditing framework}---not a decision-theoretic model---that structures this diagnostic process. Unlike predictive models that aim to fit historical data, this framework maps the \textbf{structural design space} that shapes user decisions. Central to this framework is the proposition that \textbf{Participation Propensity} ($\Pi$) emerges from a weighted tension between immediate gratification and prospective value:
+
+\begin{equation}
+\Pi = \mathcal{T}\!\left(
+\frac{P_{short} \cdot V + P_{long} \cdot (S_V \cdot V)}{C_{barrier}}
+\right), \quad \Pi \in [0,1]
+\end{equation}
+
+Where:
+\begin{itemize}
+    \item $P_{short}$: Normalized salience of immediate engagement (perceived ``fun now'').
+    \item $P_{long}$: Normalized salience of future value projection (perceived ``worth later'').
+    \item $V$: Baseline perceived value.
+    \item $S_V$: \textbf{Value Scope}, measuring value transferability beyond the system.
+    \item $C_{barrier}$: Activation threshold formed by cost and risk.
+    \item $\mathcal{T}(\cdot)$: Non-linear decision threshold (collapse/saturation).
+\end{itemize}
+
+Here, $S_V$ represents the \textbf{Value Scope}---the extent to which the value derived from the system translates to external or long-term value (e.g., skill acquisition, social capital). This formulation helps explain why ``fun'' is insufficient for long-term retention in low-scope systems, and why ``suffering'' is acceptable in high-scope environments.
+
+The remainder of this paper deconstructs the components of this propensity function into seven analytically separable dimensions. The subsequent sections aim to demonstrate how this set is constructed to reduce overlap for design auditing, distinguishing between often-conflated concepts such as \textit{sunk cost} versus \textit{failure cost}, and introducing the concept of \textit{risk entanglement} as a potentially critical systemic constraint.
+
+
+\subsection{Scope and Intent}
+This work proposes a \textit{model for inferring decisions}, not a \textit{decision model}. The distinction is critical: a decision model predicts what choice will be made given inputs; a model for inferring decisions provides a diagnostic vocabulary for reasoning about \textit{why} certain structural configurations lead to certain behavioral tendencies. The formulas presented herein express \textbf{variable relationships}---amplification, attenuation, tension, dominance---rather than computable predictions. This is the work of the system designer: using finite variables to reason about the infinite possibility space of user behavior.
+
+\subsubsection{Notion of Rationality: Present-Moment Decision with Finite Horizon}
+Rationality in this framework refers to \textit{decision-making anchored in the present moment, informed by a finite projection of the future}. I propose the concept of a \textbf{Present-Moment Rational Agent}: a user who makes locally optimal decisions \textit{now}, referencing not the eventual outcome (which is unknowable), but a \textit{bounded future projection}---an imagined point ahead, not the endpoint. This explains why users withdraw when they perceive failure as likely: they cannot see the final result, only a finite horizon suggesting non-success. The decision is instantaneous; the inputs to that decision include projected future states, but the act of deciding occurs in the present. This is neither global optimization (which would require seeing the endpoint) nor myopic satisficing (which would ignore future projections entirely).
+
+\subsubsection{Value Scope as Central Construct}
+I introduce \textbf{Value Scope} ($S_V$) as a central theoretical construct, distinct from both intrinsic and extrinsic motivation:
+
+\begin{itemize}
+    \item $S_V$ is not a motivational state but a \textit{projected externalizability}---the user's anticipation that outcomes will transform their capacity or identity beyond the system boundary.
+    \item $S_V$ is not located in user psychology but in the \textit{system--context coupling}: identical activities may have different $S_V$ depending on external recognition structures.
+    \item Crucially, $S_V$ represents an \textit{imagined future self}---a projection that may never materialize even upon success. Unlike extrinsic rewards (which are redeemed) or intrinsic satisfaction (which is experienced), $S_V$ operates as an anticipatory valuation that motivates present sacrifice for speculative transformation.
+\end{itemize}
+
+The key diagnostic implication: when $S_V$ dominates, users invert their utility calculus---tolerating negative short-term experience in exchange for anticipated identity change. This explains the ``suffering is acceptable'' phenomenon in high-stakes systems.
+
+\subsection{Dimensional Derivation Rationale}
+
+The seven-dimensional decomposition is constructed to satisfy diagnostic irreducibility: merging any two dimensions would collapse distinctions that produce qualitatively different design implications. I demonstrate this systematically.
+
+\subsubsection{Primary Dimension Non-Mergeability}
+
+\begin{enumerate}
+    \item \textbf{Outcome ($O$) $\neq$ Motivation ($M$)}: Payoff is realized post-hoc upon success; motivation exists ex-ante regardless of outcome. Merging erases the tension between ``enjoyable but unrewarding'' and ``rewarding but aversive.''
+    
+    \item \textbf{Total Cost ($C$) $\neq$ Failure Cost ($F$)}: $C$ is sunk expenditure incurred deterministically; $F$ is contingent penalty upon failure. One is committed capital, the other is risk exposure. Merging collapses ``expensive but safe'' vs. ``cheap but punishing.''
+    
+    \item \textbf{Temporal Commitment ($T$) $\neq$ Total Cost ($C$)}: Identical total time yields different burdens: 10 hours $\times$ 1 session $\neq$ 1 hour $\times$ 10 sessions. Hyperbolic discounting is a function of temporal shape, not aggregate quantity.
+    
+    \item \textbf{Failure Cost ($F$) $\neq$ Risk ($R$)}: $F$ measures magnitude of loss upon failure; $R$ measures probability structure and contagion. A system can have high $F$ but low $R$ (rare but catastrophic) or low $F$ but high $R$ (frequent but trivial).
+    
+    \item \textbf{Risk ($R$) $\neq$ Total Cost ($C$)}: $C$ is deterministic; $R$ is stochastic. A high-cost, low-risk system (expensive but predictable) differs fundamentally from a low-cost, high-risk system (cheap but volatile).
+    
+    \item \textbf{Extrinsic ($M_{ext}$) $\neq$ Intrinsic Motivation ($M_{int}$)}: Foundational to Self-Determination Theory\cite{ryan2000}; requires no elaboration.
+    
+    \item \textbf{Extrinsic Motivation ($M_{ext}$) $\neq$ Outcome ($O$)}: $M_{ext}$ includes peer pressure, shame, and role obligation---drivers that do not redeem as tangible rewards.
+\end{enumerate}
+
+\subsubsection{Sub-Dimension Non-Mergeability (Commonly Confused Pairs)}
+
+\begin{enumerate}
+    \item \textbf{$C_{cog}$ $\neq$ $C_{prac}$}: Cognitive cost is the entry barrier (``knowing how to operate''); practice cost is mastery investment (``learning the specific fight''). One gates access, the other gates excellence.
+    
+    \item \textbf{$C_{time}$ $\neq$ $C_{wait}$}: Active time is productive engagement; waiting time is unproductive availability. Identical durations with different active/wait ratios produce different frustration profiles.
+    
+    \item \textbf{$C_{lock}$ $\neq$ $C_{time}$}: Lock-in measures mutual exclusion (cannot do B while committed to A); time measures duration. A 1-hour activity with full lock-in differs fundamentally from a 1-hour activity allowing parallel processing. \textit{Design implication}: Systems can mitigate lock-in cost by enabling simultaneous progress toward multiple reward vectors---if the locked activity advances several goals at once, its exclusivity is partially offset by multi-objective efficiency.
+    
+    \item \textbf{$F_{soc}$ $\neq$ $O_s$}: Social failure cost is reputation damage upon defeat; social payoff is recognition upon success. They are not symmetric: losing $O_s$ through failure often exceeds the $O_s$ gained through success (loss aversion).
+    
+    \item \textbf{$F_{opp}$ $\neq$ $C_{lock}$}: $C_{lock}$ is opportunity cost during participation; $F_{opp}$ is foreclosure of future access after failure (``group refuses to invite you again''). One is temporary; the other is potentially permanent.
+    
+    \item \textbf{$R_{ent}$ $\neq$ $F_{soc}$}: Entanglement measures how one agent's failure propagates to others; social cost measures reputation damage to self. High $R_{ent}$ amplifies $F_{soc}$, but they remain structurally distinct.
+    
+    \item \textbf{$M_{e,st}$ $\neq$ $R$}: Stability motivation is the user's preference for low variance; Risk is the system's actual variance structure. A risk-tolerant user ($M_{e,st} \to 0$) in a high-$R$ system differs from a risk-averse user in the same system.
+\end{enumerate}
+
+I do not claim that these dimensions are orthogonal or statistically independent---they interact in practice (e.g., high $R_{ent}$ amplifies $F_{soc}$). The claim is \textit{diagnostic separability}: each dimension captures a structurally distinct failure mode, and collapsing any pair obscures design-relevant distinctions. Alternative partitions remain possible; this decomposition is offered as a working instrument, subject to refinement.
+
+\subsection{Relation to Existing Frameworks}
+
+This framework is intended to complement, not replace, established psychological theories of motivation and engagement:
+
+\begin{itemize}
+    \item \textbf{Self-Determination Theory (SDT)}\cite{ryan2000}: SDT provides a robust account of intrinsic motivation through autonomy, competence, and relatedness. The present framework incorporates these as components of $M_{int}$, but extends the analysis by modeling the \textit{structural costs} and \textit{failure consequences} that SDT does not explicitly address.
+    \item \textbf{Flow Theory}\cite{csik1990}: Flow describes the optimal experience state arising from skill-challenge balance. This framework situates flow as a special case where $C_{cog}$ is calibrated to $M_{i,com}$ and $R_{pred}$ is high, but further analyzes what happens when these conditions break down.
+    \item \textbf{Prospect Theory}\cite{kahneman1979}: Prospect Theory's insights on loss aversion and reference-dependent evaluation inform the treatment of $F$ (Failure Cost) and $M_{e,st}$ (Stability Motivation). The present framework extends these concepts to multi-agent settings through $R_{ent}$ (Entanglement).
+    \item \textbf{Player Typologies}\cite{bartle1996, yee2006, hamari2014, tuunanen2011, tondello2016, deterding2015}: Bartle's, Yee's, and subsequent taxonomies classify players by motivational orientation. This framework shifts the lens from ``what players want'' to ``what structural trade-offs they face,'' enabling diagnosis of why a given player type may disengage from a system ostensibly designed for them.
+\end{itemize}
+
+
+
+\section{The Design-Theoretic Auditing Framework}
+
+I posit that user participation is not a unified psychological state, but may be understood as a result of a heuristic auditing process where the user evaluates structural constraints against potential payoffs. This section presents the propensity framework and deconstructs the decision space into analytically separable dimensions.
+
+\subsection{Propensity Structure}
+
+To illustrate the structural relationship between short-term engagement, long-term value pursuit, and participation barriers, I introduce the following propensity sketch:
+
+\begin{equation}
+\Pi = \mathcal{T}\!\left( \frac{P_{short} \cdot V + P_{long} \cdot (S_V \cdot V)}{C_{barrier}} \right), \quad \Pi \in [0,1]
+\end{equation}
+
+Here, $\Pi \to 0$ indicates low participation propensity (likely withdrawal); $\Pi \to 1$ indicates high propensity (likely persistence). $\mathcal{T}(\cdot)$ is a normalizing threshold function that captures saturation and collapse dynamics.
+
+Where:
+\begin{itemize}
+    \item $P_{short}$: \textbf{Normalized salience factor} for immediate engagement ($P_{short} \in [0,1]$). When $P_{short} \to 1$, the user strongly perceives immediate value; when $P_{short} \to 0$, immediate value is imperceptible or absent.
+    \item $P_{long}$: \textbf{Normalized salience factor} for future value projection ($P_{long} \in [0,1]$). When $P_{long} \to 1$, the user strongly perceives future payoff; when $P_{long} \to 0$, future value is imperceptible or absent.
+    \item $V$: The baseline perceived value of the activity.
+    \item $S_V$: \textbf{Value Scope}. A multiplier representing the transferability of the value beyond the immediate system (e.g., skill acquisition, social capital).
+    \item $C_{barrier}$: The activation threshold formed by costs and risks.
+    \item $\mathcal{T}(\cdot)$: Non-linear decision threshold function representing the user's psychological threshold (saturation or collapse points).
+\end{itemize}
+
+\textit{Note on $P$ notation}: $P_{short}$ and $P_{long}$ are not probabilities in the measure-theoretic sense; they are normalized salience factors indicating the perceptual weight of immediate versus projected value. No sample space or event structure is assumed.
+
+Crucially, this framework posits that distinct system types rely on different terms of the equation. Entertainment-focused systems typically operate where $S_V \to 0$, necessitating high $P_{short}$. Conversely, transformative systems (e.g., education, professional training, high-stakes organizations, In-game organizations) often exhibit $P_{short} \to 0$ due to high difficulty, relying entirely on the term $P_{long} \cdot S_V$ to maintain $\Pi > 0$.
+
+
+
+\subsection{Dimension 1: Outcome Payoff ($O$)}
+
+Outcome Payoff represents the "assets" side of the audit. The framework deconstructs $O$ into three functionally distinct components:
+\begin{equation}
+O = \{ O_d, O_e, O_s \}
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{Direct Payoff ($O_d$)}: Functional rewards immediately dispensed by the system (e.g., currency, items, progression points).
+    \item \textbf{Exclusive Payoff ($O_e$)}: Value derived from scarcity or the system-defined monopoly of a resource. This is a \textit{system property}.
+    \item \textbf{Social Payoff ($O_s$)}: Value derived from the reaction of other agents, including recognition, influence, and credibility (public trust). This is a \textit{feedback property}.
+\end{itemize}
+
+\subsection{Dimension 2: Total Cost ($C$)}
+
+Total Cost represents the deterministic expenditure required to participate. I explicitly model "skill" as forms of cognitive debt imposed by the system.
+\begin{equation}
+C = \{ C_{cog}, C_{prac}, C_{time}, C_{wait}, C_{lock}, C_{res} \}
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{Cognitive Cost ($C_{cog}$)}: The \textit{potential cognitive debt} representing the technical baseline required to enter the system. It is the barrier to entry ("knowing how to operate").
+    \item \textbf{Practice Cost ($C_{prac}$)}: The \textit{inevitable cognitive debt} derived from the specific learning content required to complete the task. It is the cost of mastery ("learning the specific mechanics").
+    \item \textbf{Active Time Cost ($C_{time}$)}: The accumulated duration of all single sessions required to achieve the outcome and prepare time to gain entry.
+    \item \textbf{Waiting Cost ($C_{wait}$)}: The duration the user must spend in a "ready state" without progressing. This includes both \textit{system wait time} (queues) and \textit{organization time} (assembling a team), representing the cost of being available but unproductive.
+    \item \textbf{Lock-in Cost ($C_{lock}$)}: The opportunity cost caused by the system's demand for exclusive attention. Due to uncertainty or intensity, the user cannot parallel process other game activities (e.g., queuing for Activity A blocks Activity B) or social activities. It measures the degree of mutual exclusion.
+    \item \textbf{Resource Cost ($C_{res}$)}: The immediate depletion of accumulated assets required to initiate participation. This includes \textit{Real Currency} (pay-to-play), \textit{Virtual Currency} (entry fees, repair bills), and \textit{Consumables} (stamina, potions). Unlike $C_{time}$, this cost is subtractive from the user's inventory.
+\end{itemize}
+
+\subsection{Dimension 3: Temporal Commitment ($T$)}
+
+While $C$ measures the "price" paid, $T$ measures the \textbf{shape of pressure} over time. $T$ acts as a structural stressor.
+\begin{equation}
+T = \{ T_{single}, T_{ratio}, T_{freq}, T_{span} \}
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{Single-Session Duration ($T_{single}$)}: The required duration of sustained, high-concentration focus for a single attempt. This dictates the minimum contiguous block of attention the user must provide.
+    \item \textbf{Waiting Ratio ($T_{ratio}$)}: The proportion of $C_{wait}$ relative to total engagement time, effectively measuring the density of "garbage time."
+    \item \textbf{Cycle Frequency ($T_{freq}$)}: The rhythm of engagement, composed of \textit{system-imposed rhythms} (e.g., daily/weekly resets) and \textit{player-imposed rhythms} (e.g., practice schedules required to maintain proficiency).
+    \item \textbf{Achievement Span ($T_{span}$)}: The total calendar time horizon required to realize $O$. This dictates the discount rate applied to the value $V$.
+\end{itemize}
+
+\section{Motivation, Failure, and Risk Structure}
+
+Before detailing the remaining dimensions, I must characterize the psychological context in which they operate. I propose that the variables $F$ (Failure Cost) and $R$ (Risk) are active primarily when the user is in a \textbf{High-Pressure State}.
+
+\subsection{Definition of High-Pressure State}
+
+I characterize a "High-Pressure State" not merely as difficulty, but as a psychological compound resulting from the convergence of four specific factors:
+\begin{enumerate}
+    \item \textbf{Goal Expectation}: The user has a concrete, formulated intention to succeed.
+    \item \textbf{Post-Goal Valuation}: The user actively imagines the utility or status gain upon success.
+    \item \textbf{Failure Avoidance}: The user actively fears the non-realization of the goal.
+    \item \textbf{Loss Aversion}: The user perceives the potential loss of sunk investment ($C$) or status ($O_s$) as significantly more painful than the pleasure of equivalent gain.
+\end{enumerate}
+Under this definition, aimless play (no goal) or sandbox exploration (no failure avoidance) does not trigger the costs modeled below.
+
+\subsection{Dimension 4 \& 5: Motivation ($M$)}
+
+I model motivation as a \textbf{structural amplifier} that modulates the perceived value ($V$). I distinguish between extrinsic drivers, intrinsic needs, and the specific drive for stability.
+\begin{equation}
+M = \{ M_{ext}, M_{int} \}
+\end{equation}
+
+\subsubsection{Extrinsic Motivation ($M_{ext}$)}
+Driven by external structural pressures or rewards:
+\begin{itemize}
+    \item \textbf{Social Motivation ($M_{e,soc}$)}: The drive derived from peer pressure, fear of missing out (FOMO), or role obligation.
+    \item \textbf{Value Motivation ($M_{e,val}$)}: The rational drive derived from the functional utility of the reward (e.g., "I need this gear to compete").
+    \item \textbf{Pressure Motivation ($M_{e,prs}$)}: The drive generated by the threat of loss (e.g., rank decay, expiring timers).
+    \item \textbf{Stability Motivation ($M_{e,st}$)}: The drive to \textbf{minimize variance}. It represents the user's preference for predictable returns over high-variance gambles. In system design, this manifests as a demand for deterministic progress ("bad luck protection") to counteract system stochasticity.
+\end{itemize}
+
+\subsubsection{Intrinsic Motivation ($M_{int}$)}
+Driven by the inherent satisfaction of the activity. I adopt the three core needs from \textit{Self-Determination Theory (SDT)} \cite{ryan2000} and append a fourth dimension relevant to high-commitment systems:
+\begin{itemize}
+    \item \textbf{Autonomy ($M_{i,aut}$)}: The need to feel that behavior is self-endorsed and voluntary ("I chose to do this").
+    \item \textbf{Competence ($M_{i,com}$)}: The need to feel effective and capable of mastery ("I am getting better").
+    \item \textbf{Relatedness ($M_{i,rel}$)}: The need to feel connected, accepted, and understood by a group ("I belong here").
+    \item \textbf{Meaning ($M_{i,mea}$)}: The desire to contribute to a cause greater than oneself or to construct a coherent narrative of effort, distinct from simple functional utility.
+\end{itemize}
+
+\subsection{Dimension 6: Failure Cost ($F$)}
+
+Failure Cost is defined as the \textbf{negative utility incurred exclusively upon an unsuccessful attempt}. It is distinct from sunk cost.
+\begin{equation}
+F = \{ F_{soc}, F_{opp}, F_{attr}, F_{rec} \}
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{Social Cost ($F_{soc}$)}: The damage to reputation or credibility following failure.
+    \item \textbf{Opportunity Cost ($F_{opp}$)}: The loss of future access or possibilities. Unlike standard opportunity cost (time spent), this refers to \textit{foreclosure}: failing now means being denied entry next time (e.g., a group refusing to invite a player who failed previously).
+    \item \textbf{Attribution Cost ($F_{attr}$)}: The cognitive dissonance caused by failure. This includes \textit{Internal Attribution Pain} (accepting one's incompetence) and \textbf{External Attribution Difficulty} (the difficulty of externalizing blame). If the system makes it impossible to blame "bad luck" or "lag," the ego-threat ($F_{attr}$) is maximized. Moreover, \textit{attribution opacity} measures the difficulty of identifying "why I failed." High attribution cost implies the failure cannot be easily diagnosed or solved, leading to learned helplessness.
+    \item \textbf{Recovery Cost ($F_{rec}$)}: The tangible resources required to reset the system to a ready state (e.g., repair bills, cooldowns, emotional cool-off time).
+\end{itemize}
+
+\subsection{Dimension 7: Risk ($R$)}
+
+Risk is modeled not just as probability, but as the \textbf{distribution structure of failure consequences}. I propose that high-difficulty content may be sustainable only when Risk is decoupled from Entanglement.
+\begin{equation}
+R = \{ R_{pred}, R_{acc}, R_{ent} \}
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{Predictability ($R_{pred}$)}: The degree to which risk factors can be anticipated. High predictability allows for strategic preparation, whereas low predictability (pure randomness) increases stress.
+    \item \textbf{Acceptability ($R_{acc}$)}: The threshold test determining whether the worst-case scenario (total failure) falls within the user's loss tolerance.
+    \item \textbf{Entanglement ($R_{ent}$)}: A measure of \textit{risk contagion}. It quantifies the extent to which a single user's failure propagates loss to other participants. In systems with high entanglement (Single Point of Failure), one user's mistake constitutes a collective failure, exponentially increasing $M_{e,prs}$ (Social Pressure) and $F_{soc}$ (Social Cost).
+\end{itemize}
+
+\section{Dynamic Constraints: Short-term vs. Long-term Rationality}
+
+Having defined the static dimensions of the decision space, I now turn to the dynamic mechanism that governs the user's decision to persist. The core conflict in participation utility is not between "cost" and "reward," but between the \textit{immediacy of cost} and the \textit{latency of value}.
+
+\subsection{The Tension: High Ambiguity and Hyperbolic Discounting}
+
+In the proposed utility function, the temporal availability of terms is asymmetrical.
+\begin{itemize}
+    \item \textbf{Ambiguity Aversion in $P_{short}$}: $P_{short}$ is evaluated continuously. High costs ($C_{cog}$) and, crucially, high \textit{Ambiguity} (Low $R_{pred}$) act as immediate inhibitors. Users inherently dislike undefined probabilities; if the immediate outcome is unclear, $P_{short}$ degrades rapidly regardless of the theoretical reward.
+    \item \textbf{Hyperbolic Discounting of $P_{long}$}: Value ($V$) projected into the future is subject to \textit{hyperbolic discounting}, where distant rewards are undervalued relative to immediate costs. As $T_{span}$ increases, the perceived utility of $P_{long}$ drops non-linearly.
+\end{itemize}
+
+A structural paradox arises: Design elements that increase long-term meaning often inherently suppress short-term engagement. For example, requiring deep mastery increases $C_{cog}$, creating a "barrier to entry" that filters out users prone to high discounting (short-termists).
+
+\subsection{The Value Scope ($S_V$): Introducing Transformative Value}
+
+To resolve this tension, I introduce a critical modulator: \textbf{Value Scope} ($S_V$). This variable quantifies the transferability of the system's outcome ($O$) to contexts outside the system boundary.
+\begin{itemize}
+    \item \textbf{Closed Scope ($S_V \to 0$)}: The value is intrinsic to the system (e.g., cosmetic items). Here, $\Pi \approx P_{short} \cdot V$. The user tolerates minimal suffering.
+    \item \textbf{Open Scope ($S_V \gg 1$)}: The value transforms the user's identity or capacity (e.g., skill acquisition, social capital).
+\end{itemize}
+
+When $S_V$ is significant, the propensity function undergoes a structural inversion. The user no longer asks "Is this fun?", but "Will this change me?"
+
+\subsection{The Inversion Point: Emergence via Filtration}
+
+This framework explains the existence of \textbf{High-Stakes Communities} (e.g., E-sports teams, hardcore raiding guilds, Serious Games). These groups are not standalone demographics but are \textbf{emergent structures} distilled from a larger user base.
+
+They operate on a long-term dominance inequality:
+\begin{equation}
+P_{long} \cdot (S_V \cdot V) \gg C_{barrier} + \text{Opportunity Cost}
+\end{equation}
+
+In this domain, high structural barriers ($C$, $F$) serve as \textbf{Systemic Filters}. By suppressing $P_{short}$, the system filters out agents with high time-preference, ensuring that the remaining community consists entirely of high-commitment agents. These groups rely on the broader "base" ecosystem for recruitment but operate on a fundamentally different propensity logic.
+
+\subsection{Targeted Propensity Calibration}
+
+Crucially, the propensity function $\Pi$ is not static; its variables are weighted differently depending on the user's phase of engagement. Systemic failure often occurs when a design applies the variable weights of one phase to users in another. I distinguish three critical calibration states:
+
+\subsubsection{The Novice State (Ambiguity Management)}
+For the newcomer, $C_{cog}$ is maximized and $R_{pred}$ is minimal (high ambiguity).
+\begin{itemize}
+    \item \textbf{Dominant Constraint}: $R_{pred} \to 0$. The user does not know "how to play" or "what comes next."
+    \item \textbf{Required Calibration}: The system typically needs to subsidize $\Pi$ via high $O_d$ (short-term rewards) and artificial $P_{short}$ boosts (tutorials).
+    \item \textbf{Failure Mode}: Introducing $R_{ent}$ or $F_{soc}$ at this stage is structurally counterproductive. A novice is poorly equipped to process social punishment when they barely understand the mechanics.
+\end{itemize}
+
+\subsubsection{The Proficient State (Variance Management)}
+For the established user ("farmer"), $C_{cog}$ is paid off. The user seeks efficiency.
+\begin{itemize}
+    \item \textbf{Dominant Constraint}: $M_{e,st}$ (Stability). The user expects deterministic returns for time invested ($C_{time}$).
+    \item \textbf{Required Calibration}: The system must minimize $R$ (Risk). High $O_d$ is less important than low variance.
+    \item \textbf{Failure Mode}: The "Mid-Core Trap." Introducing high $R_{ent}$ (e.g., forcing random team-wipes) to a proficiency-oriented activity violates the stability contract, causing rapid withdrawal.
+\end{itemize}
+
+\subsubsection{The Aspirant State (Value Transformation)}
+For the user seeking ascension (e.g., raiding, ranking), the logic inverts.
+\begin{itemize}
+    \item \textbf{Dominant Constraint}: $S_V$ (Value Scope). The user accepts negative short-term utility ($P_{short} < 0$) in exchange for identity transformation.
+    \item \textbf{Required Calibration}: The system must maintain High $F$ (Failure Cost) and High $C_{barrier}$ to validate the scarcity of the achievement ($O_e$). However, it must strictly maximize $F_{attr}$ clarity (Attribution)---the user must know \textit{why} they failed.
+    \item \textbf{Failure Mode}: From a structural utility perspective, reducing difficulty here \textbf{risks} \textit{value destruction}. Since $O_e$ (Exclusivity) is functionally dependent on $C_{barrier}$, lowering costs unintentionally degrades the specific payoff sought by Aspirant users.
+\end{itemize}
+
+Therefore, structural auditing does not ask "Is the cost too high?" but "Is the cost calibrated to the target layer?" A raid dungeon designed for Aspirants \textit{must} have high costs to function as a filter; lowering these costs would not "improve" the system, but destroy its capacity to generate the specific social and exclusive value ($O_s, O_e$) required by that group.
+
+\section{Structural Audit and Design Implications}
+
+The utility of this heuristic model lies not in prediction, but in \textit{auditing}. Table \ref{tab:comparison} demonstrates how the model diagnoses two distinct high-retention paradigms.
+
+\begin{table*}[t]
+\caption{Structural Audit: High-Stakes Raid vs. Gacha Model}
+\label{tab:comparison}
+\centering
+\begin{tabularx}{\textwidth}{l X X}
+\toprule
+\textbf{Variable} & \textbf{Paradigm A: Hardcore Raid} & \textbf{Paradigm B: Gacha Model} \\
+\midrule
+\textbf{Strategy} & \textit{Filter for $P_{long}$} & \textit{Maximize $P_{short}$} \\
+\textbf{$R_{ent}$} & \textbf{High} (SPOF Mechanics) & \textbf{Zero} (Single Player) \\
+\textbf{$F_{soc}$} & \textbf{High} (Reputation Damage) & \textbf{Zero} (Private Failure) \\
+\textbf{$C_{barrier}$} & Dominated by \textbf{Cognitive Debt} ($C_{cog} + C_{prac}$) & Dominated by \textbf{Resource Cost} ($C_{res}$ - Stamina/Money) \\
+\textbf{$M_{e,st}$} & Low (High Variance) & High (Pity Systems) \\
+\textbf{$T_{span}$} & Long (Weekly Lockouts) & Instant ($O_d$ Frequency) \\
+\textbf{Risk} & \textbf{Entanglement Trap}: High $R_{ent}$ without High $S_V$ leads to social toxicity. & \textbf{Breadcrumb Paradox}: Relies on $O_d$ to mask high $C_{res}$; vulnerable to diminishing utility. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+\subsection{The Risk-Entanglement Trap}
+
+A common design failure in cooperative high-stakes systems is the conflation of \textit{Challenge} with \textit{Entanglement} ($R_{ent}$).
+
+Designers often increase difficulty by introducing Single Point of Failure (SPOF) mechanics. While intended to enforce cooperation, this structure amplifies Failure Cost non-linearly due to \textit{Social Network Effects}. I offer the following schematic scaling relation (not a fitted model):
+
+\textit{Schematic}: As group size $N$ increases, total psychological burden scales super-linearly---loosely proportional to communication density. In tight-knit groups where internal communication acts as an echo chamber, failure pressure may scale closer to $N^2$ (akin to Metcalfe's Law) rather than linearly.
+
+Consequently, a slight increase in group size $N$ can cause a disproportionate spike in psychological burden. Rational agents, particularly those with high social capital, will withdraw not because the content is too hard ($C$), but because the \textit{Entanglement Cost} exceeds any possible Satisfaction ($V$).
+
+\textit{Illustrative Application:} 
+To demonstrate how this framework is applied, I examine three large-scale raids from FFXIV using community census data\cite{lb2025} (non-peer-reviewed, presented for illustration only). Comparing \textit{Baldesion Arsenal} (BA, 56-player, high $C_{cog}$), \textit{Delubrum Reginae Savage} (DRS, 48-player, high $R_{ent}$), and \textit{Cloud of Darkness Chaotic} (CoD:C, 24-player, moderate $R_{ent}$):
+
+BA achieved $\sim$12.8\% completion despite high entry barriers; DRS achieved only $\sim$7.9\% despite lower barriers. The framework interprets this as follows: DRS reduced $C_{barrier}$ but sharply increased $R_{ent}$---the difficulty was not in practice cost, but in entanglement-induced social pressure. Mid-core agents withdrew not because the content was hard, but because failure cascaded socially. The subsequent CoD:C design (reduced group size, softened SPOF) appears to acknowledge this structural trap.
+
+\subsection{The Breadcrumb Paradox: Why Incentives Fail}
+
+To counteract high costs ($C$) or low retention, designers frequently employ ``breadcrumbs''---short-term, high-frequency rewards ($O_d$) designed to satisfy $P_{short}$.
+
+However, this strategy faces a fundamental limitation: the marginal contribution of repeated $O_d$ becomes negligible as frequency increases (Weber--Fechner Law). While structural costs ($C_{time}, C_{cog}$) and risks ($R$) remain constant or scale linearly with difficulty, the perceived utility of repetitive direct rewards decays logarithmically.
+
+When $O_d$ loses its potency, the user is left confronting the raw, unmitigated cost structure. If the system has relied solely on breadcrumbs rather than fixing the underlying cost/risk ratio, participation collapses abruptly. This audit reveals that \textbf{numerical compensation cannot indefinitely mask structural friction}.
+
+\subsection{The Designer's Dilemma}
+
+The framework reveals a structural trade-off that resists simultaneous optimization. A designer faces difficulty maximizing:
+\begin{enumerate}
+    \item \textbf{Accessibility}: High $P_{short}$ (requiring Low $C$, Low $R$).
+    \item \textbf{Transformative Value}: High $S_V$ (requiring High $C$, High $T_{span}$).
+    \item \textbf{Social Density}: High $R_{ent}$ (requiring Interdependence).
+\end{enumerate}
+
+Attempting to satisfy all three results in the "Middle Ground Trap": systems that are too frustrating for casual users (due to $R_{ent}$), yet too shallow for hardcore users (due to compromised $C_{barrier}$), and too grindy for everyone (due to reliance on breadcrumbs). Effective design requires a conscious sacrifice of one dimension to stabilize the others.
+
+\section{Conclusion}
+
+This paper contributes a \textbf{design-theoretic auditing framework}---not a decision-theoretic model---for diagnosing participation failures in interactive systems. By decomposing participation propensity into seven structurally separable dimensions, the framework provides a vocabulary for identifying \textit{where} engagement fails and \textit{why} superficially similar interventions may produce divergent outcomes across user populations.
+
+\subsection{Core Design Claims}
+
+This framework advances three actionable design claims:
+
+\begin{enumerate}
+    \item \textbf{Holistic Audit Requirement}: When designing an intervention targeting a single dimension (e.g., reducing $C_{time}$), designers must simultaneously audit all other dimensions to estimate whether the net effect aligns with the target user cohort. Single-variable optimization without cross-dimensional audit produces unintended side effects.
+    
+    \item \textbf{Entanglement--Scope Coupling}: High-entanglement systems ($R_{ent} \gg 0$) are structurally unsustainable unless accompanied by high Value Scope ($S_V$). Breadcrumb rewards ($O_d$) cannot compensate for entanglement-induced failure costs ($F_{soc}$, $F_{opp}$).
+    
+    \item \textbf{Accessibility--Transformation Trade-off}: Accessibility (high $P_{short}$, low $C$) and transformative value (high $S_V$, high $C$) are structurally incompatible. Attempts to maximize both produce the ``Middle Ground Trap''---systems rejected by both casual and hardcore user cohorts.
+\end{enumerate}
+
+\subsection{Limitations}
+
+Several limitations warrant acknowledgment:
+
+\begin{itemize}
+    \item \textbf{Lack of Empirical Validation}: The framework has not been validated through controlled experiments. The illustrative cases presented are drawn from community data and are subject to sampling and interpretation biases.
+    \item \textbf{Dimensional Boundaries}: The seven-dimensional partition is constructed for diagnostic purpose, not axiomatic minimality. Alternative decompositions may prove more useful for specific domains.
+    \item \textbf{Individual Variation}: The framework treats $\mathcal{T}(\cdot)$ as an individual-varying threshold but does not model how individual differences (e.g., risk tolerance, time preference) interact with structural parameters.
+\end{itemize}
+
+\subsection{Future Work}
+
+Potential extensions include: (1) operationalizing selected dimensions (e.g., $R_{ent}$, $F_{attr}$) for quantitative measurement in controlled settings; (2) applying the audit framework to comparative case studies across genres; and (3) exploring how $S_V$ (Value Scope) varies across user cohorts and how this variation predicts long-term retention.
+
+Importantly, this framework is designed to serve as a \textbf{qualitative prior for quantitative game analytics}. While data-driven methods excel at identifying behavioral patterns\cite{elnasr2013}, interpreting \textit{why} those patterns emerge requires structural context. The seven-dimensional decomposition proposed here may provide such context---enabling analysts to formulate hypotheses about which structural factors drive observed churn or retention before fitting models to data.
+
+Sustainable engagement, this framework suggests, emerges not from maximizing retention metrics, but from aligning structural costs, risks, and failure consequences with the value scope promised to the participant.
+
+
+
+
+\begin{thebibliography}{1}
+\bibliographystyle{IEEEtran}
+
+\small
+
+\bibitem{lb2025}
+Lucky Bancho. (2025). \textit{Lodestone Census: Patch 7.25 Analysis} [Online]. Available: \url{https://luckybancho.ldblog.jp/archives/59432707.html}.
+
+\bibitem{ryan2000} 
+Ryan, Richard M., and Edward L. Deci. "Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being." American psychologist 55.1 (2000): 68.
+
+\bibitem{csik1990}
+Csikszentmihalyi, Mihaly, and Mihaly Csikzentmihaly. Flow: The psychology of optimal experience. Vol. 1990. New York: Harper \& Row, 1990.
+
+\bibitem{kahneman1979}
+Kahneman, Daniel, and Amos Tversky. "Prospect theory: An analysis of decision under risk." Handbook of the fundamentals of financial decision making: Part I. 2013. 99-127.
+
+\bibitem{bartle1996}
+Bartle, Richard. "Hearts, clubs, diamonds, spades: Players who suit MUDs." Journal of MUD research 1.1 (1996): 19.
+
+\bibitem{yee2006}
+Yee, Nick. "Motivations for play in online games." CyberPsychology & behavior 9.6 (2006): 772-775.
+
+\bibitem{elnasr2013}
+Seif El-Nasr, Magy, Anders Drachen, and Alessandro Canossa, eds. Game Analytics: Maximizing the Value of Player Data. Springer, 2013.
+
+\bibitem{elnasr2024}
+Pfau, Johannes, and Magy Seif El-Nasr. "On video game balancing: Joining player-and data-driven analytics." ACM Games: Research and Practice 2.3 (2024): 1-30.
+
+\bibitem{drachen2009}
+Drachen, Anders, Alessandro Canossa, and Georgios N. Yannakakis. "Player modeling using self-organization in Tomb Raider: Underworld." 2009 IEEE symposium on computational intelligence and games. IEEE, 2009.
+
+\bibitem{canossa2009}
+Canossa, Alessandro, and Anders Drachen. "Patterns of play: Play-personas in user-centred game development." Proceedings of DiGRA 2009 Conference: Breaking New Ground: Innovation in Games, Play, Practice and Theory. 2009.
+
+\bibitem{bauckhage2012}
+Bauckhage C, Kersting K, Sifa R, Thurau C, Drachen A, Canossa A. How Players Lose Interest in Playing a Game: An Empirical Study Based on Distributions of Total Playing Times. In Proceedings of the 2012 IEEE Conference on Computational Intelligence and Games (CIG). IEEE. 2012. p. 139-146 doi: 10.1109/CIG.2012.6374148
+
+\bibitem{ryan2006}
+Ryan, Richard M., C. Scott Rigby, and Andrew Przybylski. "The motivational pull of video games: A self-determination theory approach." Motivation and emotion 30.4 (2006): 344-360.
+
+\bibitem{tyack2020}
+Tyack, April, and Elisa D. Mekler. "Self-determination theory in HCI games research: Current uses and open questions." Proceedings of the 2020 CHI conference on human factors in computing systems. 2020.
+
+\bibitem{nacke2011}
+Nacke, Lennart, and Anders Drachen. "Towards a framework of player experience research." Proceedings of the second international workshop on evaluating player experience in games at FDG. Vol. 11. Bordeaux, France: ACM, 2011.
+
+\bibitem{hamari2014}
+Hamari, Juho, and Janne Tuunanen. "Player types: A meta-synthesis." Transactions of the Digital Games Research Association 1.2 (2014).
+
+\bibitem{tuunanen2011}
+Tuunanen, Janne, and Juho Hamari. "Meta-synthesis of player typologies." Proceedings of Nordic DiGRA 2012 Conference. 2012.
+
+
+\bibitem{drachen2016}
+Drachen, Anders, et al. "Guns, swords and data: Clustering of player behavior in computer games in the wild." 2012 IEEE conference on Computational Intelligence and Games (CIG). IEEE, 2012.
+
+\bibitem{sweetser2005}
+Sweetser, Penelope, and Peta Wyeth. "GameFlow: a model for evaluating player enjoyment in games." Computers in Entertainment (CIE) 3.3 (2005): 3-3.
+
+\bibitem{tondello2016}
+Tondello, Gustavo F., et al. "The gamification user types hexad scale." Proceedings of the 2016 annual symposium on computer-human interaction in play. 2016.
+
+\bibitem{deterding2015}
+Deterding, Sebastian. "The lens of intrinsic skill atoms: A method for gameful design." Human–Computer Interaction 30.3-4 (2015): 294-335.
+
+\end{thebibliography}
+\end{document}
+
+

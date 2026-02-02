@@ -87,8 +87,42 @@ const Documents: React.FC = () => {
         }
     };
 
-    // Group by category
-    const papers = publicDocs.filter(d => d.category === 'Paper');
+    // Helper to parse date string (YYYY.MM.DD or YYYY.MM)
+    const parseDate = (dateStr: string) => {
+        const parts = dateStr.split('.');
+        const year = parseInt(parts[0]);
+        const month = parseInt(parts[1] || '1') - 1;
+        const day = parseInt(parts[2] || '1');
+        return new Date(year, month, day);
+    };
+
+    // Group by category and apply custom sorting
+    const papers = publicDocs
+        .filter(d => d.category === 'Paper')
+        .sort((a, b) => {
+            // 1. Sort by Impact Factor (IF) - Descending
+            const ifA = parseFloat(a.impactFactor || '0') || 0;
+            const ifB = parseFloat(b.impactFactor || '0') || 0;
+            if (ifB !== ifA) return ifB - ifA;
+
+            // 2. Sort by Date - Descending
+            const dateA = parseDate(a.date).getTime();
+            const dateB = parseDate(b.date).getTime();
+            if (dateB !== dateA) return dateB - dateA;
+
+            // 3. Sort by Paper Type (Paper/Full Paper > Letter > Others)
+            const typePriority = (type?: string) => {
+                if (type === 'Full Paper' || type === 'Paper') return 3;
+                if (type === 'Letter') return 2;
+                return 1;
+            };
+            return typePriority(b.paperType) - typePriority(a.paperType);
+        });
+
+    const lectures = publicDocs
+        .filter(d => d.category === 'Lecture')
+        .sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime());
+
     const gdds = publicDocs.filter(d => d.category === 'GDD');
 
     // Group GDDs by type and sort by date (newest first)
@@ -102,10 +136,6 @@ const Documents: React.FC = () => {
     // Sort each group by date
     Object.keys(gddsByType).forEach(type => {
         gddsByType[type as GDDType].sort((a, b) => {
-            const parseDate = (dateStr: string) => {
-                const parts = dateStr.split('.');
-                return new Date(parseInt(parts[0]), parseInt(parts[1] || '1') - 1);
-            };
             return parseDate(b.date).getTime() - parseDate(a.date).getTime();
         });
     });
@@ -294,6 +324,19 @@ const Documents: React.FC = () => {
                     </h2>
                     <div className={styles.grid}>
                         {papers.map(renderPaperCard)}
+                    </div>
+                </section>
+            )}
+
+            {/* Lectures Section */}
+            {lectures.length > 0 && (
+                <section className={`${styles.section} ${styles.paperSection} ${styles.lectureSection}`}>
+                    <h2 className={styles.sectionTitle}>
+                        <GraduationCap size={20} />
+                        {language === 'CN' ? '讲座与写作' : (language === 'JA' ? '講演・執筆' : 'Lectures & Writing')}
+                    </h2>
+                    <div className={styles.grid}>
+                        {lectures.map(renderPaperCard)}
                     </div>
                 </section>
             )}

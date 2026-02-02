@@ -162,7 +162,7 @@ export interface ResumeData {
     };
 }
 
-export type DocCategory = 'GDD' | 'Paper';
+export type DocCategory = 'GDD' | 'Paper' | 'Lecture';
 export type PaperType = 'Letter' | 'Paper' | 'Full Paper' | 'Preprint' | 'Technical Report';
 export type GDDType = 'Test' | 'Analysis' | 'Methodology' | 'GDD';
 

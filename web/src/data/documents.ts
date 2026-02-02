@@ -48,6 +48,24 @@ export const publicDocs: PublicDoc[] = [
         preprintUrl: '',
         externalUrl: ''
     },
+    {
+        id: 'game-level-design-book',
+        titles: {
+            CN: "Game Level Design (Charles River Media, 2006)",
+            EN: "Game Level Design (Charles River Media, 2006)",
+            JA: "Game Level Design (Charles River Media, 2006)"
+        },
+        date: '2006.01',
+        descriptions: {
+            CN: "I wrote Game Level Design when books dedicated to level design specifically were few and far between. CRM contacted me to see if I'd be interested in writing a book for beginners and I thought... sure. Six months of frantic writing later and it was done.",
+            EN: "I wrote Game Level Design when books dedicated to level design specifically were few and far between. CRM contacted me to see if I'd be interested in writing a book for beginners and I thought... sure. Six months of frantic writing later and it was done.",
+            JA: "I wrote Game Level Design when books dedicated to level design specifically were few and far between. CRM contacted me to see if I'd be interested in writing a book for beginners and I thought... sure. Six months of frantic writing later and it was done."
+        },
+        category: 'Lecture',
+        originalLangs: { CN: "英文", EN: "English", JA: "英語" },
+        lengths: { CN: "Book", EN: "Book", JA: "書籍" },
+        isInternal: false
+    },
 
     // --- GDDs: Test Papers (策划测试题) ---
     {
@@ -97,7 +115,7 @@ export const publicDocs: PublicDoc[] = [
         category: 'GDD',
         gddType: 'Test',
         originalLangs: { CN: "中文", EN: "Chinese", JA: "中国語" },
-        lengths: { CN: "6页", EN: "6 Pages", JA: "6ページ" },
+        lengths: { CN: "6页", EN: "6 Pages", JA: "6页" },
         isInternal: false,
         targetPositions: { CN: "任务策划", EN: "Quest Designer", JA: "クエストプランナー" }
     },
@@ -154,7 +172,7 @@ export const publicDocs: PublicDoc[] = [
         url: '/assets/docs/Method1.pdf',
         category: 'GDD',
         gddType: 'Methodology',
-        originalLangs: { CN: "中文", EN: "Chinese", JA: "中国語" },
+        originalLangs: { CN: "中文", EN: "Chinese", JA: "中国语" },
         lengths: { CN: "47页", EN: "47 Pages", JA: "47ページ" },
         isInternal: true
     },
@@ -188,7 +206,7 @@ export const publicDocs: PublicDoc[] = [
         url: '/assets/docs/TheMountainSeaGDD.pdf',
         category: 'GDD',
         gddType: 'GDD',
-        originalLangs: { CN: "中文", EN: "Chinese", JA: "中国語" },
+        originalLangs: { CN: "中文", EN: "Chinese", JA: "中国语" },
         lengths: { CN: "17页", EN: "17 Pages", JA: "17ページ" },
         isInternal: false
     }

@@ -7,6 +7,11 @@ export type GameType = 'Action' | 'RPG' | 'Strategy' | 'Puzzle' | 'Web Site' | '
  */
 export type Localized<T = string> = Record<string, T>;
 
+/**
+ * Translation dictionary structure
+ */
+export type Translations = Localized<Localized<string>>;
+
 export interface MainProject {
     id: string;
     titles: Localized;
@@ -17,7 +22,7 @@ export interface MainProject {
 export interface ProjectLink {
     labels: Localized;
     urls: Localized; // Usually same URL, but can vary by language
-    type: 'repo' | 'demo' | 'doc' | 'video' | 'Release Page';
+    type: 'repo' | 'demo' | 'doc' | 'video' | 'Release Page' | 'waitlist';
 }
 
 export interface Project {

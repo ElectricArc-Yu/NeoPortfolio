@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../context/LanguageContext';
 import styles from './Community.module.css';
 import { siteConfig } from '../data/siteConfig';
@@ -39,7 +38,7 @@ const getIcon = (iconName: string, size: number = 24) => {
 };
 
 const Community: React.FC = () => {
-    const { language, t } = useLanguage();
+    const { language } = useLanguage();
     const email = 'waitlist@prelude.games';
 
     // Helper to get localized string with fallback
@@ -49,10 +48,6 @@ const Community: React.FC = () => {
 
     return (
         <div className={styles.communityContainer}>
-            <Helmet>
-                <title>{pageTitle} | {t('Personal Site')}</title>
-            </Helmet>
-
             <header className={styles.header}>
                 <h1 className={styles.title}>{pageTitle}</h1>
                 <p className={styles.subtitle}>{getL(siteConfig.pages.community.subtitles)}</p>

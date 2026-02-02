@@ -2,7 +2,6 @@ import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import styles from './Layout.module.css';
-import { Helmet } from 'react-helmet-async';
 
 import { siteConfig } from '../data/siteConfig';
 import { useLanguage } from '../context/LanguageContext';
@@ -12,7 +11,7 @@ import { projects } from '../data/projects';
 
 /**
  * PageMetadata component handles SEO, Browser Title, and Favicons dynamically.
- * This is the "Base Template" for page-level meta information.
+ * Uses React 19's native support for document metadata via useEffect.
  */
 const PageMetadata: React.FC = () => {
     const { language } = useLanguage();
@@ -56,7 +55,7 @@ const PageMetadata: React.FC = () => {
     const pageConfig = pageKey ? siteConfig.pages[pageKey] : undefined;
     const currentFavicon = pageConfig?.favicon || siteConfig.brand.favicon;
 
-    // Direct DOM manipulation as a backup to react-helmet-async (fixes transition lag)
+    // Direct DOM manipulation for title and favicon (React 19 native approach)
     React.useEffect(() => {
         document.title = title;
 
@@ -67,14 +66,7 @@ const PageMetadata: React.FC = () => {
         }
     }, [title, currentFavicon]);
 
-    return (
-        <Helmet key={location.key + language}>
-            <title>{title}</title>
-            <link rel="icon" type="image/x-icon" href={currentFavicon} />
-            <link rel="shortcut icon" href={currentFavicon} />
-            <link rel="apple-touch-icon" href={currentFavicon} />
-        </Helmet>
-    );
+    return null; // No render needed, metadata is set via useEffect
 };
 
 const Layout: React.FC = () => {

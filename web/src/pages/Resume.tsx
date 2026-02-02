@@ -157,9 +157,9 @@ const Resume: React.FC = () => {
                 <div className={styles.projectMainInfo}>
                     <span className={styles.projectDate}>
                         {startDate ? (
-                            `${startDate} ${endDate && endDate !== startDate ? `- ${endDate === 'Present' ? (language === 'CN' ? '至今' : 'Present') : endDate}` : ''}`
+                            `${startDate} ${endDate && endDate !== startDate ? `- ${endDate === 'Present' ? t('Present') : endDate}` : ''}`
                         ) : (
-                            language === 'CN' ? '时间未知' : 'Date Unknown'
+                            t('Date Unknown')
                         )}
                     </span>
                     <span className={styles.projectTitleTimeline}>
@@ -171,7 +171,7 @@ const Resume: React.FC = () => {
                     <div className={styles.projectTypeBadges}>
                         {isGroup && (
                             <span className={styles.collectionBadge}>
-                                {language === 'CN' ? '合集' : (language === 'JA' ? 'コレクション' : 'Collection')}
+                                {t('Collection')}
                             </span>
                         )}
                         {project.gameType ? (
@@ -182,7 +182,7 @@ const Resume: React.FC = () => {
                                 : <span className={styles.projectTypeTimeline}>{t(project.gameType)}</span>
                         ) : (
                             <span className={styles.projectTypeTimeline}>
-                                {(isGroup ? 'Commercial' : project.type) === 'Commercial' ? (getLocalizedValue({ CN: '商业', EN: 'Commercial', JA: '商業' }, language)) : (getLocalizedValue({ CN: '个人', EN: 'Personal', JA: '個人' }, language))}
+                                {t(isGroup ? 'Commercial' : project.type)}
                             </span>
                         )}
                     </div>
@@ -379,25 +379,24 @@ const Resume: React.FC = () => {
                                         <button
                                             onClick={() => setActiveCert({ url: cert.pdfUrl as string, title: getLocalizedValue(cert.titles, language) || '' })}
                                             className={styles.certLinkBadge}
-                                            title="View Certificate"
+                                            title={t('View Certificate')}
                                         >
                                             <FileCheck size={14} />
-                                            <span>{language === 'CN' ? '查看证书' : (language === 'JA' ? '証書を表示' : 'Certificate')}</span>
+                                            <span>{t('View Certificate')}</span>
                                         </button>
                                     )}
                                     {cert.url && (
                                         <button
                                             onClick={() => setActiveCert({ url: cert.url as string, title: getLocalizedValue(cert.titles, language) || '' })}
                                             className={styles.certLinkBadge}
-                                            title="Verify Online"
+                                            title={t('Verify Online')}
                                         >
                                             <LinkIcon size={14} />
-                                            <span>{language === 'CN' ? '在线验证' : (language === 'JA' ? 'オンライン検証' : 'Verify Online')}</span>
+                                            <span>{t('Verify Online')}</span>
                                         </button>
                                     )}
                                     <span className={styles.certVerifiedOn}>
-                                        {language === 'CN' ? '认证于 ' : (language === 'JA' ? '認定日 ' : 'Verified on ')}
-                                        {cert.date}
+                                        {t('Verified on')}{cert.date}
                                     </span>
                                 </div>
                             </div>

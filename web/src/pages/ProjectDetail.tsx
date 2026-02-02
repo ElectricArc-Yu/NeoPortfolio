@@ -13,6 +13,7 @@ import BackToTop from '../components/BackToTop';
 import CodeLoader from '../components/CodeLoader';
 import ImageModal from '../components/ImageModal';
 import { getLocalizedValue } from '../utils/i18n';
+import { formatDuration } from '../utils/formatters';
 import styles from './ProjectDetail.module.css';
 
 const ProjectDetail: React.FC = () => {
@@ -50,11 +51,6 @@ const ProjectDetail: React.FC = () => {
     };
 
     const handleBack = () => {
-        // Check if there is history state to go back to, basically blindly trust -1 works for most users coming from Home
-        // If user opened link directly, -1 might take them out of site, but hash router usually keeps history stack safe?
-        // Actually safe way: if window.history.state.idx > 0 navigate(-1) else navigate('/')
-        // But for simplicity navigate(-1) is usually requested behavior. fallback handled by browser.
-        // Let's stick to navigate(-1).
         navigate(-1);
     };
 
@@ -65,7 +61,6 @@ const ProjectDetail: React.FC = () => {
                     ← {t('Back to List')}
                 </button>
                 <div className={styles.titleContainer}>
-                    {/* Header icon removed as per req #5 */}
                     <h1 className={styles.title}>{getLocalizedValue(project.titles, language)}</h1>
                 </div>
             </header>
@@ -177,7 +172,12 @@ const ProjectDetail: React.FC = () => {
                             </li>
                             <li>
                                 <span>{isCommercial ? t('Sales') : t('Work Hours')}</span>
-                                <span className={styles.highlight}>{isCommercial ? project.sales : (project.workHours ? `${project.workHours}h` : 'N/A')}</span>
+                                <span className={styles.highlight}>
+                                    {isCommercial
+                                        ? project.sales
+                                        : (project.workHours ? formatDuration(project.workHours, language, t) : 'N/A')
+                                    }
+                                </span>
                             </li>
                             {(isCommercial && getLocalizedValue(project.prices, language)) && (
                                 <li>

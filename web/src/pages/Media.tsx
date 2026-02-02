@@ -7,6 +7,7 @@ import { getAssetPath } from '../utils/assetPath';
 import { getLocalizedValue } from '../utils/i18n';
 import type { MediaSeries, MediaEpisode, PodcastEpisode, PlatformLink } from '../data/types';
 import { siteConfig } from '../data/siteConfig';
+import { formatDate, formatUnit } from '../utils/formatters';
 
 // Platform icon/color mapping
 const platformConfig: Record<string, { color: string; label: string }> = {
@@ -28,27 +29,8 @@ const isFutureDate = (dateStr?: string): boolean => {
     return targetDate > now;
 };
 
-// Format scheduled date for display
-const formatScheduledDate = (dateStr: string, language: string): string => {
-    const normalizedDate = dateStr.replace(/\./g, '-');
-    const date = new Date(normalizedDate);
-    if (language === 'CN') {
-        const month = date.getMonth() + 1;
-        const day = date.getDate();
-        if (dateStr.split(/[-.]/).length === 3) {
-            return `${date.getFullYear()}年${month}月${day}日`;
-        }
-        return `${date.getFullYear()}年${month}月`;
-    }
-    return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: dateStr.split(/[-.]/).length === 3 ? 'numeric' : undefined
-    });
-};
-
 const Media: React.FC = () => {
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
     const [expandedSeries, setExpandedSeries] = useState<string[]>([]);
     const [showMiscellaneous, setShowMiscellaneous] = useState(false);
 
@@ -99,12 +81,11 @@ const Media: React.FC = () => {
             badgeClass = `${styles.badge} ${styles.typeBadge}`;
         }
 
-        // Default translations
-        if (displayBadge === 'Video') displayBadge = (language === 'CN' ? '视频' : 'Video');
-        else if (displayBadge === 'Article') displayBadge = (language === 'CN' ? '文章' : 'Article');
-        else if (displayBadge === 'Podcast') displayBadge = (language === 'CN' ? '播客' : 'Podcast');
-        else if (displayBadge === 'Chinese') displayBadge = (language === 'CN' ? '中文' : 'Chinese');
-        else if (displayBadge === 'English') displayBadge = (language === 'CN' ? '英文' : 'English');
+        // Use translation for common labels
+        const translationKeys = ['Video', 'Article', 'Podcast', 'Chinese', 'English'];
+        if (translationKeys.includes(displayBadge)) {
+            displayBadge = t(displayBadge);
+        }
 
         return (
             <span key={key} className={badgeClass}>
@@ -182,8 +163,7 @@ const Media: React.FC = () => {
                 return (
                     <span className={styles.scheduledDate}>
                         <Calendar size={12} />
-                        {language === 'CN' ? '预计 ' : 'Expected '}
-                        {formatScheduledDate(episode.scheduledDate, language)}
+                        {t('Scheduled')} {formatDate(episode.scheduledDate, language)}
                     </span>
                 );
             }
@@ -206,7 +186,7 @@ const Media: React.FC = () => {
             return (
                 <span className={styles.scheduledDate}>
                     <Lock size={12} />
-                    {language === 'CN' ? '即将发布' : 'Soon'}
+                    {t('Soon')}
                 </span>
             );
         };
@@ -245,7 +225,7 @@ const Media: React.FC = () => {
                 <div className={styles.episodeActions}>
                     {isUnreleased ? (
                         <span className={styles.comingSoon}>
-                            {language === 'CN' ? '关注频道' : 'Stay Tuned'}
+                            {t('Stay Tuned')}
                         </span>
                     ) : (
                         renderPlatformLinks(episode.links)
@@ -275,8 +255,7 @@ const Media: React.FC = () => {
                 {isScheduled && episode.scheduledDate && (
                     <span className={styles.podcastScheduled}>
                         <Calendar size={10} />
-                        {language === 'CN' ? '预计 ' : ''}
-                        {formatScheduledDate(episode.scheduledDate, language)}
+                        {t('Scheduled')} {formatDate(episode.scheduledDate, language)}
                     </span>
                 )}
             </div>
@@ -324,7 +303,7 @@ const Media: React.FC = () => {
                             )}
                             {series.languages.map((lang, idx) => renderBadge(lang, `lang-${idx}`))}
                             <span className={styles.badge}>
-                                {episodeCount} {language === 'CN' ? '集' : 'Eps'}
+                                {formatUnit(episodeCount, 'Episodes', language, t)}
                             </span>
                         </div>
                         <div className={styles.expandIcon}>
@@ -343,7 +322,7 @@ const Media: React.FC = () => {
                         {!isVideoSeries && series.mainLinks && series.mainLinks.length > 0 && (
                             <div className={styles.mainLinksSection}>
                                 <span className={styles.mainLinksLabel}>
-                                    {language === 'CN' ? '收听平台：' : 'Listen on:'}
+                                    {t('Listen on')}:
                                 </span>
                                 {renderPlatformLinks(series.mainLinks)}
                             </div>
@@ -390,11 +369,11 @@ const Media: React.FC = () => {
                                 </div>
                                 <div className={styles.seriesTitles}>
                                     <h2 className={styles.seriesName}>
-                                        {language === 'CN' ? '杂项' : 'Miscellaneous'}
+                                        {t('Miscellaneous')}
                                     </h2>
                                     {!showMiscellaneous && (
                                         <p className={styles.seriesDescription}>
-                                            {language === 'CN' ? '过往项目原型、代码演示以及非系列内容。' : 'Past project prototypes, code demos, and non-series content.'}
+                                            {t('Miscellaneous Description')}
                                         </p>
                                     )}
                                 </div>
@@ -402,7 +381,7 @@ const Media: React.FC = () => {
                             <div className={styles.seriesMetaHeader}>
                                 <div className={styles.seriesBadges}>
                                     <span className={styles.badge}>
-                                        {mediaItems.length} {language === 'CN' ? '项' : 'Items'}
+                                        {formatUnit(mediaItems.length, 'Items', language, t)}
                                     </span>
                                 </div>
                                 <div className={styles.expandIcon}>
@@ -414,7 +393,7 @@ const Media: React.FC = () => {
                         {showMiscellaneous && (
                             <div className={styles.seriesContent}>
                                 <p className={styles.expandedDescription}>
-                                    {language === 'CN' ? '项目演示视频、早期原型记录以及独立的分析内容。' : 'Project showcases, prototype recordings, and independent analysis content.'}
+                                    {t('Miscellaneous Content')}
                                 </p>
                                 <div className={styles.contentSeparator} />
                                 <div className={styles.mediaList}>
@@ -462,7 +441,7 @@ const Media: React.FC = () => {
                                                             {item.isCollection ? <List size={14} /> : <Clock size={14} />}
                                                             <span>
                                                                 {item.isCollection
-                                                                    ? (language === 'CN' ? `${item.episodesCount} 集` : `${item.episodesCount} Episodes`)
+                                                                    ? formatUnit(item.episodesCount || 0, 'Episodes', language, t)
                                                                     : item.duration
                                                                 }
                                                             </span>
@@ -470,7 +449,7 @@ const Media: React.FC = () => {
                                                     </div>
                                                     <div className={styles.viewAction}>
                                                         <span>
-                                                            {language === 'CN' ? '点击查看' : 'View Now'}
+                                                            {t('View Now')}
                                                             {` (${getDomain(item.url)})`}
                                                         </span>
                                                         <ExternalLink size={14} />

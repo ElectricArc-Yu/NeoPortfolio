@@ -61,20 +61,26 @@
 
 .links {
     display: flex;
-    gap: var(--spacing-xl);
+    gap: clamp(1rem, 2vw, var(--spacing-xl)); /* Dynamic gap based on viewport */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    max-width: 60vw; /* Limit maximum width to prevent overflow */
+    flex-wrap: nowrap; /* Prevent wrapping */
 }
 
+/* Enhanced Navigation Links with Dynamic Font Sizing */
 .links a {
     color: var(--text-secondary);
     transition: all 0.3s ease;
-    font-size: 0.9rem;
+    font-size: clamp(0.75rem, 1vw, 0.9rem); /* Dynamic font sizing based on viewport */
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px; /* Reduced from 1px for better spacing */
     position: relative;
+    white-space: nowrap; /* Prevent text wrapping */
+    min-width: fit-content; /* Ensure proper sizing */
+    padding: 0.25rem 0; /* Add vertical padding for better touch targets */
 }
 
 .links a::after {
@@ -119,11 +125,12 @@
     .links {
         position: static;
         transform: none;
-        gap: 1.25rem;
+        gap: clamp(0.8rem, 1.8vw, 1.25rem); /* Dynamic gap for medium screens */
         display: flex;
         flex: 0 1 auto;
         justify-content: center;
         margin: 0 1.5rem;
+        max-width: 70vw; /* Increased max-width for better space utilization */
     }
 
     .links a {
@@ -131,15 +138,17 @@
         flex-direction: column;
         align-items: center;
         gap: 4px;
-        padding: 4px 8px;
+        padding: 4px 6px; /* Reduced horizontal padding */
+        font-size: clamp(0.65rem, 1.2vw, 0.8rem); /* Smaller font size range */
+        letter-spacing: 0.3px; /* Tighter letter spacing */
     }
 
     .navIcon {
         display: block;
         color: var(--text-secondary);
         transition: color 0.3s;
-        width: 20px;
-        height: 20px;
+        width: 18px; /* Slightly smaller icons */
+        height: 18px;
     }
 
     .active .navIcon {
@@ -156,5 +165,27 @@
 
     .controls {
         flex-shrink: 0;
+    }
+}
+
+@media (max-width: 1200px) {
+    .links a {
+        font-size: clamp(0.7rem, 0.9vw, 0.8rem); /* Smaller font for medium screens */
+        letter-spacing: 0.3px; /* Further reduce letter spacing */
+    }
+    
+    .links {
+        gap: clamp(0.8rem, 1.5vw, 1.2rem); /* Tighter spacing */
+    }
+}
+
+@media (max-width: 1000px) {
+    .links a {
+        font-size: clamp(0.65rem, 0.8vw, 0.75rem); /* Even smaller for smaller screens */
+        letter-spacing: 0.2px;
+    }
+    
+    .links {
+        gap: clamp(0.6rem, 1.2vw, 1rem); /* Minimal spacing */
     }
 }

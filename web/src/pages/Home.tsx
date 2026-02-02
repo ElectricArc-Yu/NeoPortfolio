@@ -5,7 +5,7 @@ import ProjectCard from '../components/ProjectCard';
 import styles from './Home.module.css';
 import PageTransition from '../components/PageTransition';
 import { motion } from 'framer-motion';
-import { staggerContainer, fadeInUp } from '../utils/variants';
+import { staggerContainer, fadeInUp, viewportConfig } from '../utils/variants';
 
 import { siteConfig } from '../data/siteConfig';
 import { getLocalizedValue } from '../utils/i18n';
@@ -40,7 +40,8 @@ const Home: React.FC = () => {
                     <motion.h2 
                         className={styles.sectionTitle}
                         initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={viewportConfig}
                         transition={{ delay: 0.2 }}
                     >
                         <span className={styles.icon}>💼</span>
@@ -50,7 +51,8 @@ const Home: React.FC = () => {
                         className={styles.grid}
                         variants={staggerContainer}
                         initial="hidden"
-                        animate="visible"
+                        whileInView="visible"
+                        viewport={viewportConfig}
                     >
                         {commercialProjects.map(project => (
                             <ProjectCard key={project.id} project={project} />
@@ -62,7 +64,8 @@ const Home: React.FC = () => {
                     <motion.h2 
                         className={styles.sectionTitle}
                         initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={viewportConfig}
                         transition={{ delay: 0.3 }}
                     >
                         <span className={styles.icon}>🚀</span>
@@ -72,7 +75,8 @@ const Home: React.FC = () => {
                         className={styles.grid}
                         variants={staggerContainer}
                         initial="hidden"
-                        animate="visible"
+                        whileInView="visible"
+                        viewport={viewportConfig}
                     >
                         {personalProjects.map(project => (
                             <ProjectCard key={project.id} project={project} />

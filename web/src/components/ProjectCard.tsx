@@ -9,7 +9,7 @@ import DocumentIcon from './DocumentIcon';
 import { getAssetPath } from '../utils/assetPath';
 import { getRoleCategory } from '../utils/projectUtils';
 import { getLocalizedValue } from '../utils/i18n';
-import { fadeInUp } from '../utils/variants';
+import { fadeInUp, viewportConfig } from '../utils/variants';
 
 interface ProjectCardProps {
     project: Project;
@@ -28,6 +28,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             variants={fadeInUp} 
             className={styles.cardWrapper}
             whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportConfig}
+            layout="position"
         >
             <NavLink to={`/project/${project.id}`} className={styles.card}>
                 {project.thumbnail && (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { mediaSeries, mediaItems } from '../data/media';
 import styles from './Media.module.css';
@@ -11,7 +11,7 @@ import { formatDate, formatUnit } from '../utils/formatters';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/PageTransition';
-import { fadeInUp, staggerContainer } from '../utils/variants';
+import { fadeInUp, staggerContainer, viewportConfig } from '../utils/variants';
 
 // Platform icon/color mapping
 const platformConfig: Record<string, { color: string; label: string }> = {
@@ -38,22 +38,24 @@ const Media: React.FC = () => {
     const [expandedSeries, setExpandedSeries] = useState<string[]>([]);
     const [showMiscellaneous, setShowMiscellaneous] = useState(false);
 
-    const toggleSeries = (seriesId: string) => {
+    // Memoize toggle function to prevent unnecessary re-renders
+    const toggleSeries = useCallback((seriesId: string) => {
         setExpandedSeries(prev =>
             prev.includes(seriesId)
                 ? prev.filter(id => id !== seriesId)
                 : [...prev, seriesId]
         );
-    };
+    }, []);
 
-    const getDomain = (url: string) => {
+    // Memoize domain extraction function
+    const getDomain = useCallback((url: string) => {
         try {
             const hostname = new URL(url).hostname;
             return hostname.replace('www.', '');
         } catch {
             return 'Link';
         }
-    };
+    }, []);
 
     const renderBadge = (badge: string, key: string | number, isTypeBadge = false) => {
         let displayBadge = badge;
@@ -339,7 +341,11 @@ const Media: React.FC = () => {
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ 
+                                duration: 0.4, 
+                                ease: "easeOut", 
+                                delay: 0.05 
+                            }} // Smoother expansion
                         >
                             <p className={styles.expandedDescription}>
                                 {getLocalizedValue(series.descriptions, language)}
@@ -391,7 +397,8 @@ const Media: React.FC = () => {
                 className={styles.seriesList}
                 variants={staggerContainer}
                 initial="hidden"
-                animate="visible"
+                whileInView="visible"
+                viewport={viewportConfig}
             >
                 {mediaSeries.map(series => renderSeries(series))}
 

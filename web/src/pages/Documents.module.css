@@ -56,11 +56,13 @@
     color: var(--accent-color);
 }
 
+/* Grid Layout - Enhanced Spacing */
 .grid {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-lg);
+    gap: 1.5rem; /* Increased from var(--spacing-lg) to create more space between cards */
     align-items: center;
+    margin-top: 1rem; /* Add top margin for better spacing */
 }
 
 .card {
@@ -87,26 +89,29 @@
 }
 
 /* Paper Card - New Layout */
+/* Paper Card - Enhanced Animation */
 .paperCard {
     background: var(--bg-secondary);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-left: 3px solid #f7931e;
     border-radius: var(--border-radius-md);
-    padding: var(--spacing-lg);
+    padding: 1.75rem; /* Increased padding for better visual breathing room */
     position: relative;
     width: 100%;
     max-width: 1150px;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: 1.25rem; /* Add consistent gap between elements */
     background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(247, 147, 30, 0.03) 100%);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing */
+    will-change: transform, box-shadow; /* Performance optimization */
 }
 
 .paperCard:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.01); /* More pronounced hover effect */
     border-color: #f7931e;
-    box-shadow: 0 5px 25px rgba(247, 147, 30, 0.15);
+    box-shadow: 0 8px 30px rgba(247, 147, 30, 0.2); /* Enhanced shadow */
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Faster on hover */
 }
 
 .paperCard {
@@ -376,9 +381,10 @@
     }
 }
 
-/* ========== GDD Type Grouping Styles ========== */
+/* GDD Type Group - Enhanced Spacing and Animation */
 .gddTypeGroup {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 1.5rem; /* Increased spacing between groups */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother animation */
 }
 
 .gddTypeGroup:last-child {
@@ -389,19 +395,21 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
-    padding: var(--spacing-md) var(--spacing-lg);
+    padding: 1.25rem var(--spacing-lg); /* Increased padding */
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: var(--border-radius-md);
     margin-bottom: 0;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother transition */
     cursor: pointer;
     user-select: none;
+    will-change: transform, background-color, border-color; /* Performance optimization */
 }
 
 .gddTypeHeader:hover {
     border-color: rgba(255, 255, 255, 0.15);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%);
+    transform: translateY(-1px); /* Subtle lift effect */
 }
 
 .gddTypeHeader:focus {
@@ -444,17 +452,18 @@
     color: var(--accent-color);
 }
 
-/* Collapsible cards container */
+/* Collapsible cards container - Enhanced Animation */
 .gddTypeCards {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: 1rem; /* Increased gap between cards */
     padding-left: 0;
-    padding-top: 10px;
-    padding-right: 5px;
-    padding-bottom: 5px;
+    padding-top: 1rem; /* Increased top padding */
+    padding-right: 0.5rem;
+    padding-bottom: 0.5rem;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing */
+    will-change: max-height, opacity; /* Performance optimization */
 }
 
 .cardsCollapsed {
@@ -462,12 +471,13 @@
     opacity: 0;
     margin-top: 0;
     pointer-events: none;
+    overflow: hidden;
 }
 
 .cardsExpanded {
-    max-height: 2000px;
+    max-height: 3000px; /* Increased max-height for smoother expansion */
     opacity: 1;
-    margin-top: var(--spacing-lg);
+    margin-top: 1.5rem; /* Increased margin for better spacing */
     pointer-events: auto;
 }
 

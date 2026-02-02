@@ -1836,7 +1836,7 @@ AIを「KP」として位置づける従来のAI TRPG製品とは異なり、私
 このプロジェクトは、私の仕事のスタイルが「AI Native（AIをネイティブに使いこなす）」へと転換する重要な契機となりました。これ以降、AIツールは私の日常的なワークフローに深く溶け込み、設計と開発における核心的な補助手段となりました。
 `
         },
-        images: ['/assets/images/AllStory.png', '/assets/images/AS_01.png', '/assets/images/AS_02.png', '/assets/images/AS_03.png'],
+        images: ['/assets/images/AllStory.png'],
         links: [
             { labels: { CN: "探索者キャラクターSchema", EN: "Explorer Character Schema", JA: "探索者キャラクターSchema" }, urls: { CN: "/NeoPortfolio/assets/docs/Break.json", EN: "/NeoPortfolio/assets/docs/Break.json", JA: "/NeoPortfolio/assets/docs/Break.json" }, type: "code" }
         ],

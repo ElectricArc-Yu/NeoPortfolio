@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '../utils/variants';
+import { fadeInUp, staggerContainer, viewportConfig } from '../utils/variants';
 import PageTransition from '../components/PageTransition';
 import { resumeData } from '../data/resume';
 import { projects } from '../data/projects';
@@ -280,7 +280,7 @@ const Resume: React.FC = () => {
                         className={styles.section}
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        viewport={viewportConfig}
                         transition={{ duration: 0.5 }}
                     >
                         <h2 className={styles.sectionTitle}>{t('Experience')}</h2>
@@ -322,7 +322,7 @@ const Resume: React.FC = () => {
                         className={styles.section}
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        viewport={viewportConfig}
                         transition={{ duration: 0.5, delay: 0.1 }}
                     >
                         <h2 className={styles.sectionTitle}>{t('Skills')}</h2>
@@ -351,7 +351,7 @@ const Resume: React.FC = () => {
                         className={styles.section}
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        viewport={viewportConfig}
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
                         <h2 className={styles.sectionTitle}>{t('Education')}</h2>
@@ -398,7 +398,7 @@ const Resume: React.FC = () => {
                     style={{ marginTop: '2rem' }}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={viewportConfig}
                     transition={{ duration: 0.5 }}
                 >
                     <h2 className={styles.sectionTitle}>{t('Certifications')}</h2>
@@ -458,7 +458,7 @@ const Resume: React.FC = () => {
                 style={{ marginTop: '2rem' }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={viewportConfig}
                 transition={{ duration: 0.5 }}
             >
                 <div className={styles.timelineHeader}>

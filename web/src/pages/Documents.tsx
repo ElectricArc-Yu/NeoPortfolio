@@ -9,7 +9,7 @@ import { siteConfig } from '../data/siteConfig';
 import { getLocalizedValue } from '../utils/i18n';
 import { FileText, BookOpen, ChevronDown, ChevronUp, FlaskConical, GraduationCap, ClipboardList, FileCode, Mic } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
-import { fadeInUp, staggerContainer } from '../utils/variants';
+import { fadeInUp, staggerContainer, viewportConfig } from '../utils/variants';
 
 // Icon mapping for GDD types
 const gddTypeIcons: Record<GDDType, React.ReactNode> = {
@@ -226,6 +226,8 @@ const Documents: React.FC = () => {
                 key={doc.id}
                 className={styles.card}
                 onClick={() => handleCardClick(doc)}
+                layout="position"
+                transition={{ duration: 0.3, ease: "easeOut" }} // Smoother card animation
             >
                 <div className={styles.categoryBadge} data-category={doc.gddType || 'GDD'}>
                     {gddTypeIcons[doc.gddType || 'GDD']}
@@ -315,7 +317,8 @@ const Documents: React.FC = () => {
                         variants={staggerContainer}
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true }}
+                        viewport={viewportConfig}
+                        transition={{ staggerChildren: 0.08 }} // Faster stagger for better feel
                     >
                         {papers.map(renderPaperCard)}
                     </motion.div>
@@ -340,7 +343,8 @@ const Documents: React.FC = () => {
                         variants={staggerContainer}
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true }}
+                        viewport={viewportConfig}
+                        transition={{ staggerChildren: 0.08 }} // Faster stagger for better feel
                     >
                         {lectures.map(renderPaperCard)}
                     </motion.div>
@@ -368,10 +372,12 @@ const Documents: React.FC = () => {
 
                     return (
                         <motion.div 
-                            key={type} 
-                            className={`${styles.gddTypeGroup} ${isExpanded ? styles.expanded : ''}`}
-                            layout
-                        >
+                                key={type} 
+                                className={`${styles.gddTypeGroup} ${isExpanded ? styles.expanded : ''}`}
+                                layout="position"
+                                layoutRoot // Enable layout animations for this container
+                                transition={{ duration: 0.4, ease: "easeOut" }} // Smoother layout transitions
+                            >
                             <motion.div
                                 className={styles.gddTypeHeader}
                                 onClick={() => toggleCategory(type)}
@@ -425,6 +431,7 @@ const Documents: React.FC = () => {
                                             variants={staggerContainer}
                                             initial="hidden"
                                             animate="visible"
+                                            transition={{ staggerChildren: 0.06 }} // Faster stagger for smoother feel
                                         >
                                             {docs.map(renderGDDCard)}
                                         </motion.div>

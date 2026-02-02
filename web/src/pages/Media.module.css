@@ -20,23 +20,23 @@
     font-size: 1rem;
 }
 
-/* ============================================
-   Series List Layout
-   ============================================ */
+/* Series List Layout - Enhanced Spacing */
 .seriesList {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem; /* Increased from 0.75rem for better spacing */
 }
 
+/* Series Card - Enhanced Animation */
 .seriesCard {
     background: var(--bg-secondary);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: var(--border-radius-md);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing */
     position: relative;
     overflow: visible;
     z-index: 1;
+    will-change: transform, box-shadow, border-color; /* Performance optimization */
 }
 
 /* Gold Glow for Content Series */
@@ -194,12 +194,15 @@
 /* ============================================
    Series Content
    ============================================ */
+/* Series Content - Enhanced Animation */
 .seriesContent {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding: 0 2rem 1.5rem 2rem;
     background: rgba(0, 0, 0, 0.15);
     border-bottom-left-radius: var(--border-radius-md);
     border-bottom-right-radius: var(--border-radius-md);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing */
+    will-change: max-height, opacity; /* Performance optimization */
 }
 
 .expandedDescription {
@@ -401,7 +404,13 @@
     background: rgba(255, 255, 255, 0.02);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.03);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother easing */
+    will-change: transform, border-color, box-shadow; /* Performance optimization */
+}
+
+.episodeCard:hover {
+    transform: translateY(-1px); /* Subtle lift effect */
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Faster on hover */
 }
 
 /* Left Area: Sequence + Enlarged Icon */
@@ -515,12 +524,14 @@
     font-weight: 600;
 }
 
-/* Glow Effects */
+/* Glow Effects - Enhanced Animation */
 .publishedGlow:hover {
     border-color: rgba(76, 175, 80, 0.6);
     box-shadow: 0 0 35px rgba(76, 175, 80, 0.25), 0 0 15px rgba(76, 175, 80, 0.15);
     background: rgba(76, 175, 80, 0.04);
     z-index: 10;
+    transform: translateY(-1px); /* Subtle lift effect */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother transition */
 }
 
 .unreleasedGlow:hover {
@@ -528,6 +539,8 @@
     box-shadow: 0 0 35px rgba(245, 158, 11, 0.25), 0 0 15px rgba(245, 158, 11, 0.15);
     background: rgba(245, 158, 11, 0.04);
     z-index: 10;
+    transform: translateY(-1px); /* Subtle lift effect */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother transition */
 }
 
 .lockIcon {

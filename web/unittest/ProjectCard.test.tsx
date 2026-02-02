@@ -5,6 +5,30 @@ import { LanguageProvider } from '../src/context/LanguageContext';
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 
+// Mock siteConfig
+vi.mock('../src/data/siteConfig', () => ({
+    siteConfig: {
+        i18n: {
+            defaultLanguage: 'EN',
+            languages: [
+                { code: 'EN', label: 'English' },
+                { code: 'CN', label: '简体中文' }
+            ]
+        }
+    }
+}));
+
+// Mock translations
+vi.mock('../src/data/translations', () => ({
+    translations: {
+        EN: {
+            'Sales': 'Sales',
+            'Work Hours': 'Work Hours'
+        },
+        CN: {}
+    }
+}));
+
 // Mock Framer Motion to avoid animation issues in tests
 vi.mock('framer-motion', () => ({
     motion: {
@@ -26,7 +50,7 @@ const mockProject: any = {
     sales: '1M+',
     role: ['Designer', 'Programmer'],
     techStack: ['C#', 'Unity'],
-    links: [{ type: 'demo', urls: { EN: 'demo.com' } }]
+    links: [{ type: 'demo', urls: { EN: 'demo.com' }, labels: { EN: 'Demo' } }]
 };
 
 describe('ProjectCard Component', () => {
@@ -46,7 +70,7 @@ describe('ProjectCard Component', () => {
     });
 
     it('shows GDD badge if document links exist', () => {
-        const projectWithGDD = { ...mockProject, links: [{ type: 'doc', urls: { EN: 'gdd.com' } }] };
+        const projectWithGDD = { ...mockProject, links: [{ type: 'doc', urls: { EN: 'gdd.com' }, labels: { EN: 'GDD' } }] };
         render(
             <BrowserRouter>
                 <LanguageProvider>

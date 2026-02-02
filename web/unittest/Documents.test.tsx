@@ -15,7 +15,7 @@ vi.mock('framer-motion', () => ({
 }));
 
 // Mock Data
-vi.mock('../web/src/data/documents', () => ({
+vi.mock('../src/data/documents', () => ({
     publicDocs: [
         {
             id: 'doc-1',
@@ -44,6 +44,42 @@ vi.mock('../web/src/data/documents', () => ({
     ]
 }));
 
+// Mock siteConfig
+vi.mock('../src/data/siteConfig', () => ({
+    siteConfig: {
+        i18n: {
+            defaultLanguage: 'EN',
+            languages: [
+                { code: 'EN', label: 'English' },
+                { code: 'CN', label: '简体中文' }
+            ]
+        },
+        pages: {
+            documents: {
+                titles: { EN: 'Writing & Lectures' },
+                subtitles: { EN: 'Collection of documents' }
+            }
+        },
+        brand: {
+            titles: { EN: 'Portfolio' },
+            titleFormat: 'GlobalPage'
+        }
+    }
+}));
+
+// Mock translations
+vi.mock('../src/data/translations', () => ({
+    translations: {
+        EN: {
+            'Academic Papers': 'Academic Papers',
+            'Lectures & Writing': 'Lectures & Writing',
+            'Past Paper Work Examples': 'Past Paper Work Examples',
+            'Full Game Design Documents': 'Full Game Design Documents',
+            'Published': 'Published'
+        }
+    }
+}));
+
 describe('Documents Page', () => {
     it('renders sections correctly', () => {
         render(
@@ -65,9 +101,6 @@ describe('Documents Page', () => {
         );
 
         // Initially GDD Title might not be visible if category is collapsed 
-        // Logic check: Documents.tsx uses isExpanded = expandedCategories.has(type)
-        // By default expandedCategories is empty.
-
         expect(screen.queryByText('GDD Title')).not.toBeInTheDocument();
 
         const gddHeader = screen.getByText('Full Game Design Documents');

@@ -5,7 +5,7 @@ import { getDisplayUrl } from '../src/utils/links';
 import { getRoleCategory } from '../src/utils/projectUtils';
 
 // Mock siteConfig for i18n tests
-vi.mock('../web/src/data/siteConfig', () => ({
+vi.mock('../src/data/siteConfig', () => ({
     siteConfig: {
         brand: {
             titles: { EN: 'My Portfolio', CN: '我的作品集' },
@@ -97,24 +97,24 @@ describe('I18n Utilities', () => {
 
 describe('Link Utilities', () => {
     it('getDisplayUrl should return correct language URL', () => {
-        const link = { urls: { EN: 'en.com', CN: 'cn.com' } };
+        const link = { urls: { EN: 'en.com', CN: 'cn.com' }, labels: { EN: 'Link' }, type: 'demo' as const };
         expect(getDisplayUrl(link, 'CN')).toBe('cn.com');
     });
 
     it('getDisplayUrl should fall back to CN then EN then first key', () => {
-        const link = { urls: { JA: 'ja.com', CN: 'cn.com' } };
+        const link = { urls: { JA: 'ja.com', CN: 'cn.com' }, labels: { EN: 'Link' }, type: 'demo' as const };
         expect(getDisplayUrl(link, 'EN')).toBe('cn.com');
 
-        const link2 = { urls: { JA: 'ja.com', EN: 'en.com' } };
+        const link2 = { urls: { JA: 'ja.com', EN: 'en.com' }, labels: { EN: 'Link' }, type: 'demo' as const };
         expect(getDisplayUrl(link2, 'FR')).toBe('en.com');
 
-        const link3 = { urls: { JA: 'ja.com' } };
+        const link3 = { urls: { JA: 'ja.com' }, labels: { EN: 'Link' }, type: 'demo' as const };
         expect(getDisplayUrl(link3, 'FR')).toBe('ja.com');
     });
 
     it('getDisplayUrl should handle undefined urls', () => {
-        expect(getDisplayUrl({ urls: undefined }, 'EN')).toBeUndefined();
-        expect(getDisplayUrl({}, 'EN')).toBeUndefined();
+        expect(getDisplayUrl({ urls: undefined as any, labels: { EN: 'Link' }, type: 'demo' as const }, 'EN')).toBeUndefined();
+        expect(getDisplayUrl({ labels: { EN: 'Link' }, type: 'demo' as const } as any, 'EN')).toBeUndefined();
     });
 });
 

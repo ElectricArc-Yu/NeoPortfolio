@@ -5,6 +5,35 @@ import { LanguageProvider } from '../src/context/LanguageContext';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import React from 'react';
 
+// Mock siteConfig
+vi.mock('../src/data/siteConfig', () => ({
+    siteConfig: {
+        i18n: {
+            defaultLanguage: 'EN',
+            languages: [
+                { code: 'EN', label: 'English' },
+                { code: 'CN', label: '简体中文' }
+            ]
+        },
+        pages: {},
+        brand: {
+            titles: { EN: 'Portfolio' },
+            titleFormat: 'GlobalPage'
+        }
+    }
+}));
+
+// Mock translations
+vi.mock('../src/data/translations', () => ({
+    translations: {
+        EN: {
+            'Project Role': 'Project Role',
+            'Tech Stack': 'Tech Stack'
+        },
+        CN: {}
+    }
+}));
+
 // Mock Framer Motion
 vi.mock('framer-motion', () => ({
     motion: {
@@ -19,7 +48,7 @@ vi.mock('framer-motion', () => ({
 }));
 
 // Mock Data
-vi.mock('../web/src/data/projects', () => ({
+vi.mock('../src/data/projects', () => ({
     projects: [
         {
             id: 'test-project',
@@ -72,8 +101,6 @@ describe('ProjectDetail Page', () => {
     });
 
     it('opens PDF modal when clicking doc link', () => {
-        // Need to Mock PdfModal or just check if it appears
-        // Usually, checking for the modal's existence is enough
         render(
             <MemoryRouter initialEntries={['/project/test-project']}>
                 <LanguageProvider>
@@ -87,9 +114,7 @@ describe('ProjectDetail Page', () => {
         const gddLink = screen.getByText('GDD');
         fireEvent.click(gddLink);
 
-        // PdfModal should render
-        // Since we didn't mock PdfModal, it should render its real content
-        // Let's check if the link label appears in the modal title or similar
-        // (Assuming PdfModal renders the title)
+        // PdfModal should render - check if modal appears
+        // The modal title or content should be visible after click
     });
 });

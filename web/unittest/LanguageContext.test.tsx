@@ -4,7 +4,7 @@ import { LanguageProvider, useLanguage } from '../src/context/LanguageContext';
 import React from 'react';
 
 // Mock siteConfig
-vi.mock('../web/src/data/siteConfig', () => ({
+vi.mock('../src/data/siteConfig', () => ({
     siteConfig: {
         i18n: {
             defaultLanguage: 'EN',
@@ -18,7 +18,7 @@ vi.mock('../web/src/data/siteConfig', () => ({
 }));
 
 // Mock translations
-vi.mock('../web/src/data/translations', () => ({
+vi.mock('../src/data/translations', () => ({
     translations: {
         EN: { 'hello': 'Hello' },
         CN: { 'hello': '你好' },

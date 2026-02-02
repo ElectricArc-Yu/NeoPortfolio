@@ -589,6 +589,7 @@ UEブループリントを使用して、極めてシンプルかつ効果的な
         images: ['/assets/images/FR_SystemDiagram.png'],
         video: undefined,
         links: [
+            { labels: { CN: "加入等候名单", EN: "Join Waitlist", JA: "ウェイティングリスト" }, urls: { CN: "https://www.preludegames.com", EN: "https://www.preludegames.com", JA: "https://www.preludegames.com" }, type: "waitlist" }
             // { labels: { CN: "系统架构简图", EN: "System Architecture Diagram" }, urls: { CN: '/assets/images/FR_SystemDiagram.png', EN: '/assets/images/FR_SystemDiagram.png' }, type: 'doc' }
         ]
     },
@@ -818,7 +819,9 @@ DTの世界観、キャラクター、場所の設定がFRの認知基盤とな�
         },
         images: [],
         video: undefined,
-        links: []
+        links: [
+            { labels: { CN: "加入等候名单", EN: "Join Waitlist", JA: "ウェイティングリスト" }, urls: { CN: "https://www.preludegames.com", EN: "https://www.preludegames.com", JA: "https://www.preludegames.com" }, type: "waitlist" }
+        ]
     },
     {//Lightning Hero
         id: 'lightning-hero',
@@ -1267,7 +1270,7 @@ IPフレームワークから具体的なプロジェクトに至る完全なデ
         },
         images: [],
         video: undefined,
-        links: []
+        links: [{ labels: { CN: "加入等候名单", EN: "Join Waitlist", JA: "ウェイティングリスト" }, urls: { CN: "https://www.preludegames.com", EN: "https://www.preludegames.com", JA: "https://www.preludegames.com" }, type: "waitlist" }]
     },
     {//Overwatch in Minecraft
         id: 'owmc',

@@ -10,27 +10,38 @@ import { getFormattedTitle } from '../utils/i18n';
 
 import { projects } from '../data/projects';
 
-const Layout: React.FC = () => {
+/**
+ * PageMetadata component handles SEO, Browser Title, and Favicons dynamically.
+ * This is the "Base Template" for page-level meta information.
+ */
+const PageMetadata: React.FC = () => {
     const { language } = useLanguage();
-    const { footer } = siteConfig;
     const location = useLocation();
 
-    // Helper to get page key from path
+    // Helper to identify the current page key from URL
     const getPageKey = () => {
-        const path = location.pathname.replace(/\/$/, ''); // Remove trailing slash
-        if (path === '' || path === '/') return 'home';
-        if (path.startsWith('/resume')) return 'resume';
-        if (path.startsWith('/media')) return 'media';
-        if (path.startsWith('/documents')) return 'documents';
-        if (path.startsWith('/contact')) return 'contact';
+        const path = location.pathname.replace(/\/$/, '') || '/';
+
+        if (path === '/' || path === '/NeoPortfolio' || path === '/NeoPortfolio/') return 'home';
+
+        // Exact matches or prefix matches for core pages
+        const normalizedPath = path.replace('/NeoPortfolio', '');
+        if (normalizedPath === '' || normalizedPath === '/') return 'home';
+        if (normalizedPath.startsWith('/services')) return 'services';
+        if (normalizedPath.startsWith('/resume')) return 'resume';
+        if (normalizedPath.startsWith('/media')) return 'media';
+        if (normalizedPath.startsWith('/documents')) return 'documents';
+        if (normalizedPath.startsWith('/community')) return 'community';
+        if (normalizedPath.startsWith('/contact')) return 'contact';
+
         return undefined;
     };
 
-    // Special handling for project detail title
-    const getProjectTitle = () => {
-        if (location.pathname.startsWith('/project/')) {
-            // Safer extraction of ID, ignoring trailing slashes
-            const parts = location.pathname.split('/').filter(Boolean);
+    // Special handling for dynamic titles (e.g., Project Detail pages)
+    const getCustomTitle = () => {
+        const path = location.pathname.replace('/NeoPortfolio', '');
+        if (path.startsWith('/project/')) {
+            const parts = path.split('/').filter(Boolean);
             const id = parts[parts.length - 1];
             const project = projects.find(p => p.id === id);
             return project ? (project.titles[language] || project.titles['EN']) : undefined;
@@ -38,21 +49,41 @@ const Layout: React.FC = () => {
         return undefined;
     };
 
-    const title = getFormattedTitle(getPageKey(), language, getProjectTitle());
+    const pageKey = getPageKey();
+    const title = getFormattedTitle(pageKey, language, getCustomTitle());
 
-    // Force refresh title manually to bypass any react-helmet-async lag
+    // Determine the favicon: Page-specific if defined, otherwise global brand favicon
+    const pageConfig = pageKey ? siteConfig.pages[pageKey] : undefined;
+    const currentFavicon = pageConfig?.favicon || siteConfig.brand.favicon;
+
+    // Direct DOM manipulation as a backup to react-helmet-async (fixes transition lag)
     React.useEffect(() => {
         document.title = title;
-    }, [title, location.key]); // location.key changes even when clicking same-page nav links
+
+        // Update favicon dynamically
+        const link: HTMLLinkElement | null = document.querySelector("link[rel*='icon']");
+        if (link) {
+            link.href = currentFavicon;
+        }
+    }, [title, currentFavicon]);
+
+    return (
+        <Helmet key={location.key + language}>
+            <title>{title}</title>
+            <link rel="icon" type="image/x-icon" href={currentFavicon} />
+            <link rel="shortcut icon" href={currentFavicon} />
+            <link rel="apple-touch-icon" href={currentFavicon} />
+        </Helmet>
+    );
+};
+
+const Layout: React.FC = () => {
+    const { language } = useLanguage();
+    const { footer } = siteConfig;
 
     return (
         <div className={styles.container}>
-            <Helmet key={location.key + language}>
-                <title>{title}</title>
-                <link rel="icon" type="image/x-icon" href={siteConfig.brand.favicon} />
-                <link rel="shortcut icon" href={siteConfig.brand.favicon} />
-                <link rel="apple-touch-icon" href={siteConfig.brand.favicon} />
-            </Helmet>
+            <PageMetadata />
             <Navbar />
             <main className={styles.main}>
                 <Outlet />

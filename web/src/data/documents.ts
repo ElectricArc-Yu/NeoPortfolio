@@ -13,7 +13,7 @@ export const publicDocs: PublicDoc[] = [
         descriptions: {
             CN: "过去十年间，《最终幻想14》的大型探索内容经历了从\"强制垄断\"到\"完全解耦\"的范式转变。本文运用理性选择理论，分析了四个不同时期的玩家留存情况：云冠群岛、禁地优雷卡、博兹雅，以及近期的奥秘暗域。通过建立探索效用方程，我分离出三个关键变量：排他性溢价(α)、环境摩擦(F)和认知负荷(C)。研究发现，在存在高收益外部替代选项的情况下，排他性溢价似乎是主导性解释因素。我将云冠群岛定性为系统性失败，禁地优雷卡定性为由\"垄断红利\"驱动的成功案例，而博兹雅/奥秘暗域则因奖励解耦而沦为\"价值崩塌\"的受害者。社区普查数据表明，奥秘暗域呈现出约90%的极端脱离倾向，这表明在高认知负荷与零奖励排他性叠加条件下的理性市场反应。我的结论是，观察到的资源错配源于效用变量的结构性失调——具体表现为排他性(α)降低后，未能相应降低认知负荷(C)及其他系统参数。",
             EN: "Over the past decade, Final Fantasy XIV\'s large-scale exploratory content has undergone a paradigm shift from \"Coercive Monopoly\" to \"Complete Decoupling.\" This paper applies Rational Choice Theory to analyze player retention across four distinct eras: The Diadem, Eureka, Bozja, and the recent Occult Crescent. By establishing an Exploration Utility Equation, I isolate three critical variables: Exclusivity Premium (α), Environmental Friction (F), and Cognitive Load (C). My findings indicate that the Exclusivity Premium appears to be the dominant explanatory factor in the presence of high-yield external alternatives. I identify The Diadem as a systemic failure, Eureka as a success driven by \"Monopoly Dividend,\" and Bozja/Occult Crescent as victims of \"Value Collapse\" due to Reward Decoupling. Community census data suggests that Occult Crescent exhibits an extreme disengagement tendency of estimated 90%, indicating a rational market response to high Cognitive Load combined with zero reward exclusivity. I conclude that the observed resource misallocation stems from a structural misalignment of utility variables—specifically, the reduction of Exclusivity (α) without a compensatory reduction in Cognitive Load (C) and other systemic parameters.",
-            JA: "過去10年間、『ファイナルファンタジーXIV』の大規模探索コンテンツは、「強制的独占」から「完全な切り離し」へとパラダイムシフトを遂げた。本稿では合理的選択理論を用い、4つの異なる時期（ディアデム諸島、禁断の地 エウレカ、ボズヤ、そして最近のオルト・エウレカ）におけるプレイヤーの継続率を分析する。探索効用方程式を構築することで、独占プレミアム(α)、環境の摩擦(F)、認知負荷(C)という3つの重要な変数を分離した。その結果、高利回りの外部代替選択肢が存在する場合、独占プレミアムが支配的な説明要因であることが示唆された。ディアデム諸島をシステム的な失敗、エウレカを「独占の配当」による成功例、そしてボズヤ/オルト・エウレカを報酬の切り離しによる「価値崩壊」の犠牲者として定義する。コミュニティの調査データによると、オルト・エウレカは約90%という極端な離脱傾向を示しており、これは高い認知負荷とゼロの報酬独占性が重なった条件下の合理的な市場反応である。結論として、観察された資源のミスマッチは効用変数の構造的な不適合、具体的には独占性(α)の低下に対応した認知負荷(C)や他システムパラメータの低減が行われなかったことに起因すると考える。"
+            JA: "過去10年間、『ファイナルファンタジーXIV』の大規模探索コンテンツは、「強制的独占」から「完全な切り离し」へとパラダイムシフトを遂げた。本稿では合理的選択理論を用い、4つの異なる時期（ディアデム諸島、禁断の地 エウレカ、ボズヤ、そして最近のオルト・エウレカ）におけるプレイヤーの継続率を分析する。探索効用方程式を構築することで、独占プレミアム(α)、環境の摩擦(F)、認知負荷(C)という3つの重要な変数を分離した。その結果、高利回りの外部代替選択肢が存在する場合、独占プレミアムが支配的な説明要因であることが示唆された。ディアデム諸島をシステム的な失敗、エウレカを「独占の配当」による成功例、そしてボズヤ/オルト・エウレカを報酬の切り离しによる「価値崩壊」の犠牲者として定義する。コミュニティの調査データによると、オルト・エウレカは約90%という極端な離脱傾向を示しており、これは高い認知負荷とゼロの報酬独占性が重なった条件下の合理的な市場反応である。結論として、観察された資源のミスマッチは効用変数の構造的な不適合、具体的には独占性(α)の低下に対応した認知負荷(C)や他システムパラメータの低減が行われなかったことに起因すると考える。"
         },
         category: 'Paper',
         paperType: 'Letter',
@@ -32,11 +32,11 @@ export const publicDocs: PublicDoc[] = [
             EN: "Deconstructing Engagement: A Design-Theoretic Framework for Participation Propensity under Uncertainty",
             JA: "エンゲージメントの解構：不確実性下における参加性向のためのデザイン理論的枠組み"
         },
-        date: '2026.02',
+        date: '2026.02.01',
         descriptions: {
-            CN: "本文提出了一个设计理论审计框架，用于分析交互系统中的参与倾向。该框架不仅将参与视为一种心理状态，更将其表征为短期参与度与长期价值追求之间的张力，并受“价值范畴（Value Scope）”的调节。本研究将决策空间分解为结果收益、总成本、时间投入、动机、失败成本和风险等七个维度，旨在为诊断导致参与失效的结构性原因提供分析视角，而非单纯依赖经验性的留存调优。",
-            EN: "This paper proposes a design-theoretic auditing framework for analyzing participation propensity in interactive systems. Rather than modeling engagement as a monolithic psychological state, participation is characterized as a tension between short-term engagement and long-term value pursuit, moderated by 'Value Scope'. The framework decomposes the decision space into seven dimensions to provide designers with an analytical lens for diagnosing structural causes of engagement failure beyond empirical retention tuning.",
-            JA: "本論文は、インタラクティブシステムにおける参加性向を分析するためのデザイン理論的監査フレームワークを提案する。エンゲージメントを単一の心理状態として扱うのではなく、参加を短期的関与と長期的価値追求の間の緊張関係として特徴づけ、「価値スコープ」によって調整されるものとする。このフレームワークは決定空間を7つの次元に分解し、経験的なリテンション調整を超えて、エンゲージメント失敗の構造的原因を診断するための分析レンズを提供する。"
+            CN: "游戏分析通过行为指标和数据驱动的优化，在理解玩家行为方面建立了强大的方法。然而，要全面解释为什么某些结构配置会产生观察到的行为模式，分析需要一个补充性的定性层面——解释数据背后因果机制的结构性背景。本文提出了一个设计理论审计框架，用于分析交互系统中的参与倾向。该框架将参与视为一种心理状态，更将其表征为短期参与度与长期价值追求之间的张力，并受“价值范畴（Value Scope）”的调节。本研究将决策空间分解为结果收益、总成本、时间投入、动机、失败成本和风险等七个维度，旨在为诊断导致参与失效的结构性原因提供分析视角，而非单纯依赖经验性的留存调优。",
+            EN: "Game analytics has established powerful methods for understanding what happens in player behavior through behavioral metrics and data-driven optimization [7]. However, to fully interpret why certain structural configurations produce observed behavioral patterns, analytics requires a complementary qualitative layer—a structural context that explains the causal mechanisms behind the data. This paper proposes a design-theoretic auditing framework for analyzing participation propensity in interactive systems. Rather than modeling engagement as a monolithic psychological state, participation is characterized as a tension between short-term engagement propensity and long-term value pursuit, moderated by the system’s Value Scope (SV), which reflects the transferability of outcomes beyond the system boundary. The framework decomposes the participation decision space into seven analytically separable dimensions, including Outcome Payoff, Total Cost, Temporal Commitment, Motivation, Failure Cost, and Risk. This decomposition is not claimed to be formally minimal or predictive, but is constructed to support structured design auditing by distinguishing often-conflated mechanisms such as sunk cost versus failure cost, and by introducing risk entanglement as a systemic amplification factor in multi-agent settings. By framing participation as a rational auditing process rather than a purely experiential response, this work aims to provide designers and researchers with an analytical lens for diagnosing structural causes of engagement failure beyond empirical retention tuning. ",
+            JA: "ゲーム分析は、行動指標とデータ駆動の最適化を通じて、プレイヤーの行動に何が起こるかを理解するための強力な手法を確立している[7]。しかし、特定の構造構成が観察された行動パターンを生成する理由を完全に解釈するためには、分析には補完的な定性層、すなわちデータの背后にある因果メカニズムを説明する構造的文脈が必要である。本稿では、インタラクティブシステムにおける参加性向を分析するためのデザイン理論的監査フレームワークを提案する。エンゲージメントを单一の心理状態としてモデル化するのではなく、参加を短期的関与と長期的価値追求の間の緊張関係として特徴づけ、システムの価値スコープ（SV）によって調整されるものとする。このフレームワークは、決定空間を7つの分析的に分離可能な次元に分解し、結果のペイオフ、総コスト、時間的コミットメント、動機、失敗コスト、リスクなどを含む。この分解は形式的に最小または予測的であると主張するものではないが、埋没コストと失敗コストなど、しばしば混同されるメカニズムを区別し、マルチエージェント設定における体系的な増幅因子としてリスクの絡み合いを導入することによって、構造化されたデザイン監査をサポートするように構成されている。参加を純粋に経験的な応答としてではなく、合理的な監査プロセスとして捉えることにより、本研究は、経験的なリテンションチューニングを超えて、エンゲージメント失敗の構造的原因を診断するための分析的レンズをデザイナーや研究者に提供することを目指している。"
         },
         category: 'Paper',
         paperType: 'Full Paper',
@@ -70,7 +70,7 @@ export const publicDocs: PublicDoc[] = [
     // --- GDDs: Test Papers (策划测试题) ---
     {
         id: 'ff14-frontline',
-        titles: { CN: "FFXIV战场系统设计提案", EN: "FFXIV Frontline System Design Proposal", JA: "FFXIVフロントライン システム設計提案書" },
+        titles: { CN: "FFXIV战场系统设计提案", EN: "FFXIV Frontline System Design Proposal", JA: "FFXIVフロントライン システム設計提案书" },
         date: '2024.03',
         descriptions: {
             CN: "申请SE第三工作室系统策划岗位（PVP方向）时撰写的测试题。针对《最终幻想14》现有战场（Frontline）玩法进行深度分析，并提出新规则与系统优化方案。",
@@ -121,7 +121,7 @@ export const publicDocs: PublicDoc[] = [
     },
     {
         id: 'pre-research-test',
-        titles: { CN: "预研项目笔试题", EN: "Pre-Research Project Test", JA: "先行研究プロジェクト 筆記入試課題" },
+        titles: { CN: "预研项目笔试题", EN: "Pre-Research Project Test", JA: "先行研究プロジェクト 笔記入试課題" },
         date: '2025.11',
         descriptions: {
             CN: "针对创意型预研项目岗位撰写的攻坚型笔试题，展示从零到一的创意设计能力、系统架构思维以及创新性玩法探索。内容涵盖项目定位、核心玩法设计、系统拆解与技术预研等多个维度。",
@@ -154,7 +154,7 @@ export const publicDocs: PublicDoc[] = [
         url: '/assets/docs/SpecialExplorationDesign.pdf',
         category: 'GDD',
         gddType: 'Analysis',
-        originalLangs: { CN: "中文", EN: "Chinese", JA: "中国語" },
+        originalLangs: { CN: "中文", EN: "Chinese", JA: "中国语" },
         lengths: { CN: "28页", EN: "28 Pages", JA: "28ページ" },
         isInternal: false
     },
@@ -188,7 +188,7 @@ export const publicDocs: PublicDoc[] = [
         url: '/assets/docs/Method2.pdf',
         category: 'GDD',
         gddType: 'Methodology',
-        originalLangs: { CN: "中文", EN: "Chinese", JA: "中国語" },
+        originalLangs: { CN: "中文", EN: "Chinese", JA: "中国语" },
         lengths: { CN: "8页", EN: "8 Pages", JA: "8ページ" },
         isInternal: true
     },

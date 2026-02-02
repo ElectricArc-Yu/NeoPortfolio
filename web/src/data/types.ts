@@ -186,3 +186,25 @@ export interface PublicDoc {
     impactFactor?: string;
     preprintUrl?: string;
 }
+
+/**
+ * Service item for the Services page
+ */
+export interface ServiceItem {
+    id: string;
+    titles: Localized;
+    descriptions: Localized;
+    icon?: string;
+}
+
+/**
+ * Services page data structure
+ */
+export interface ServicesData {
+    intro: Localized;
+    aboutTitle: Localized;
+    aboutContent: Localized;
+    sectionTitle: Localized;
+    ctaText: Localized;
+    items: ServiceItem[];
+}

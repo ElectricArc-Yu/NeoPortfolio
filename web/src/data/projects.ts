@@ -1838,7 +1838,7 @@ AIを「KP」として位置づける従来のAI TRPG製品とは異なり、私
         },
         images: ['/assets/images/AllStory.png', '/assets/images/AS_01.png', '/assets/images/AS_02.png', '/assets/images/AS_03.png'],
         links: [
-            { labels: { CN: "探索者キャラクターSchema", EN: "Explorer Character Schema", JA: "探索者キャラクターSchema" }, url: "/NeoPortfolio/assets/docs/Break.json", icon: "fa fa-file-code", type: "code" }
+            { labels: { CN: "探索者キャラクターSchema", EN: "Explorer Character Schema", JA: "探索者キャラクターSchema" }, urls: { CN: "/NeoPortfolio/assets/docs/Break.json", EN: "/NeoPortfolio/assets/docs/Break.json", JA: "/NeoPortfolio/assets/docs/Break.json" }, type: "code" }
         ],
         workDistribution: [
             { labels: { CN: "Design", EN: "Design", JA: "デザイン" }, percentage: 100 }
@@ -2218,7 +2218,7 @@ Initial playtesting phase complete; rules have stabilized through multiple itera
         titles: { CN: "魔法麻将 (Magic Mahjong)", EN: "Magic Mahjong", JA: "魔法麻雀 (Magic Mahjong)" },
         type: 'Personal',
         status: { CN: "已搁浅", EN: "Shelved", JA: "休止中" },
-        showPriority: 70,
+        showPriority: 80,
         engine: 'Unity',
         gameType: ['Strategy'],
         role: ['Solo Creator'],

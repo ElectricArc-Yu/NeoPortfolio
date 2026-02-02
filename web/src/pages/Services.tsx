@@ -3,7 +3,10 @@ import { useLanguage } from '../context/LanguageContext';
 import styles from './Services.module.css';
 import { siteConfig } from '../data/siteConfig';
 import { servicesData } from '../data/services';
+import { motion } from 'framer-motion';
 import { getLocalizedValue } from '../utils/i18n';
+import PageTransition from '../components/PageTransition';
+import { fadeInUp, staggerContainer } from '../utils/variants';
 
 const Services: React.FC = () => {
     const { language, t } = useLanguage();
@@ -21,19 +24,29 @@ const Services: React.FC = () => {
     };
 
     return (
-        <div className={styles.container}>
+        <PageTransition className={styles.container}>
             {/* Header */}
-            <header className={styles.header}>
+            <motion.header 
+                className={styles.header}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
                 <h1 className={styles.title}>
                     {getLocalizedValue(siteConfig.pages.services.titles, language)}
                 </h1>
                 <p className={styles.subtitle}>
                     {getLocalizedValue(siteConfig.pages.services.subtitles, language)}
                 </p>
-            </header>
+            </motion.header>
 
             {/* Intro + About Section */}
-            <section className={styles.introSection}>
+            <motion.section 
+                className={styles.introSection}
+                variants={fadeInUp}
+                initial="hidden"
+                animate="visible"
+            >
                 <div className={styles.introText}>
                     <p
                         className={styles.introParagraph}
@@ -45,10 +58,16 @@ const Services: React.FC = () => {
                         {t('Contact for Services')}
                     </a>
                 </div>
-            </section>
+            </motion.section>
 
             {/* About Me Section */}
-            <section className={styles.aboutSection}>
+            <motion.section 
+                className={styles.aboutSection}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+            >
                 <h2 className={styles.sectionTitle}>
                     {getLocalizedValue(servicesData.aboutTitle, language)}
                 </h2>
@@ -58,19 +77,30 @@ const Services: React.FC = () => {
                         __html: formatMarkdown(getLocalizedValue(servicesData.aboutContent, language) ?? '')
                     }}
                 />
-            </section>
+            </motion.section>
 
             {/* Services Grid Section */}
             <section className={styles.servicesSection}>
-                <h2 className={styles.sectionTitle}>
+                <motion.h2 
+                    className={styles.sectionTitle}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
                     {getLocalizedValue(servicesData.sectionTitle, language)}
-                </h2>
+                </motion.h2>
 
-                <div className={styles.serviceGrid}>
+                <motion.div 
+                    className={styles.serviceGrid}
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                >
                     {[...servicesData.items]
                         .sort((a, b) => b.showPriority - a.showPriority)
                         .map((service) => (
-                            <div key={service.id} className={styles.serviceCard}>
+                            <motion.div variants={fadeInUp} key={service.id} className={styles.serviceCard}>
                                 {service.icon && (
                                     <span className={styles.serviceIcon}>{service.icon}</span>
                                 )}
@@ -80,21 +110,27 @@ const Services: React.FC = () => {
                                 <p className={styles.serviceDesc}>
                                     {getLocalizedValue(service.descriptions, language)}
                                 </p>
-                            </div>
+                            </motion.div>
                         ))}
-                </div>
+                </motion.div>
             </section>
 
             {/* CTA Section */}
-            <section className={styles.ctaSection}>
+            <motion.section 
+                className={styles.ctaSection}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+            >
                 <p
                     className={styles.ctaText}
                     dangerouslySetInnerHTML={{
                         __html: formatCtaText(getLocalizedValue(servicesData.ctaText, language) ?? '')
                     }}
                 />
-            </section>
-        </div>
+            </motion.section>
+        </PageTransition>
     );
 };
 

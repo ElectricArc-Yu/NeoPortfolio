@@ -19,9 +19,9 @@ export const resumeData: ResumeData = {
         ]
     },
     about: {
-        CN: "策划+技术双修的游戏设计师，专注于战斗体验与系统架构。擅长在资源受限环境下快速验证核心玩法，将设计构想转化为可执行方案。",
-        EN: "A Game Designer with dual expertise in design and programming. Focused on combat experience and system architecture. Excels at rapidly validating core gameplay under resource constraints, transforming design concepts into executable solutions.",
-        JA: "デザインとプログラミングの両方に精通したゲームデザイナー。戦闘体験とシステムアーキテクチャに焦点を当てる。リソースの制約下でコアなゲームプレイを迅速に検証し、デザインコンセプトを実行可能なソリューションに変換することに長けている。"
+        CN: "具备策划与技术双重背景的游戏设计师，专注于核心体验与系统架构搭建。擅长在资源受限环境下快速验证核心玩法，将抽象的设计构想转化为高品质的可执行方案。",
+        EN: "Hybrid Game Designer & Developer specializing in core mechanics and system architecture. Expert in rapidly validating core gameplay loops under strict resource constraints and translating high-level concepts into production-ready solutions.",
+        JA: "デザインとプログラミングの双方に精通したゲームデザイナー。体験とシステム構築を専門とする。限られたリソースの中でコアゲームプレイを迅速に検証し、抽象的なコンセプトを実行可能なソリューションへ具現化することに長けている。"
     },
     experience: [
         {
@@ -32,36 +32,36 @@ export const resumeData: ResumeData = {
             },
             roles: {
                 CN: "创意总监",
-                EN: "Founder / Creative Director",
-                JA: "創業者 / クリエイティブディレクター"
+                EN: "Founder",
+                JA: "創業者"
             },
             period: "2024.05 - Present",
             sizes: {
                 CN: "0-20人",
-                EN: "0-20 people",
+                EN: "0-20 employees",
                 JA: "0-20人"
             },
             details: {
                 CN: [
-                    "项目统筹：在种子轮融资前的极限资源约束下(3人核心团队+数十万债权),独立完成从立项到投资人沟通的全流程",
-                    "玩法预研 Owner：主导 ARPG 项目核心战斗体验(乐器战斗+主副机协同)的设计验证与收敛,使用 UE 蓝图搭建 POC 原型",
-                    "IP 与体验框架：构建原创 IP 世界观底座(40+ 文档数万字)、系统架构图、角色/区域设定,支撑规模化扩展",
-                    "标准与流程：输出 10+ 设计模板与 6 份 Review 规范(SDD/LDD/角色设定等),将设计迭代从 4-5 次降至 1-2 次",
-                    "跨职能管理：承担设计 Owner 拆解 Scope,协调极度有限的程序与美术资源,培养 2 名成员至可独立决策程度"
+                    "工作室统筹：在极度受限的种子轮环境下（3人核心团队），全权负责从立项、研发到投资人对接的全生命周期管理",
+                    "核心玩法攻坚：主导 ARPG 核心战斗系统（乐器战斗+双角色协同）的研发，利用 UE 蓝图快速构建并验证 POC 原型",
+                    "IP 与世界观构建：搭建原创 IP 世界观底层架构（40+ 份文档，数万字设定），确立角色与区域设计的标准化规范，为后续内容量产奠定基础",
+                    "流程标准化：制定 10+ 项设计模板与评审规范（SDD/LDD/角色设定等），将设计迭代次数从 4-5 次大幅降低至 1-2 次，显著提升研发效能",
+                    "跨职能协作与人才培养：作为设计负责人拆解项目 Scope，高效协调程序与美术资源，并成功培养 2 名初级成员具备独立决策能力"
                 ],
                 EN: [
-                    "Project Leadership: Under extreme seed-round constraints (3-person core + minimal funding), independently completed full cycle from concept to investor communication",
-                    "Gameplay R&D Owner: Led ARPG core combat validation (instrument combat + dual-character system), built POC prototypes using UE Blueprints",
-                    "IP & Framework: Constructed original IP worldview foundation (40+ docs, tens of thousands of words), system architecture, character/region settings for scaling",
-                    "Standards & Process: Developed 10+ design templates and 6 review methodologies (SDD/LDD/character settings, etc.), reducing design iterations from 4-5 to 1-2",
-                    "Cross-functional Management: Scoped work as Design Owner, coordinated limited resources, mentored 2 members to independent decision-making level"
+                    "Studio Leadership: Orchestrated full studio operations from concept to investor readiness under strict seed-stage constraints (3-person core team).",
+                    "Gameplay Innovation: Spearheaded R&D for core ARPG combat mechanics (Instrument Combat + Dual-Character System); built functional POC prototypes using UE Blueprints.",
+                    "IP Architecture: Constructed a comprehensive original IP foundation (40+ design docs), establishing scalable standards for character and world building.",
+                    "Pipeline Optimization: Established standardized design workflows and review protocols, reducing design iteration cycles by 60% (from 4-5 to 1-2 passes).",
+                    "Technical Direction: Managed project scope and cross-functional resources; mentored junior members to reach independent decision-making proficiency."
                 ],
                 JA: [
-                    "プロジェクトリーダーシップ：シードラウンドの極端な制約下（3人のコアチーム + 最小限の資金）で、コンセプトから投資家とのコミュニケーションまでの全サイクルを独立して完了",
-                    "ゲームプレイR&Dオーナー：ARPGのコア戦闘検証（楽器戦闘 + デュアルキャラクターシステム）を主導し、UEブループリントを使用してPOCプロトタイプを構築",
-                    "IPとフレームワーク：オリジナルのIP世界観の基礎（40以上のドキュメント、数万語）、システムアーキテクチャ、スケーリングのためのキャラクター/地域設定を構築",
-                    "標準とプロセス：10以上のデザインテンプレートと6つのレビュー手法（SDD/LDD/キャラクター設定など）を開発し、デザインの反復を4〜5回から1〜2回に削減",
-                    "部門間管理：デザインオーナーとしてスコープを定義し、限られたリソースを調整。2名のメンバーを独立した意思決定レベルまで育成"
+                    "スタジオ運営：シード期の厳しい制約下（3名のコアチーム）で、コンセプト立案から投資家対応に至るまでの全プロセスを統括",
+                    "ゲームプレイ開発：ARPGのコア戦闘システム（楽器戦闘＋デュアルキャラクター）の研究開発を主導し、UEブループリントを用いてPOCプロトタイプを構築・検証",
+                    "IP構築：オリジナルIPの世界観基盤（40以上のドキュメント）を構築し、キャラクターやエリア設定の標準化を確立してスケールアップに対応",
+                    "プロセス最適化：10以上のデザインテンプレートとレビュー基準を策定し、設計の反復回数を4〜5回から1〜2回へと大幅に削減",
+                    "チームマネジメント：デザイン責任者としてスコープ管理を行い、限られたリソースを最適配分。ジュニアメンバー2名を独り立ちできるレベルまで育成"
                 ]
             }
         },
@@ -73,36 +73,36 @@ export const resumeData: ResumeData = {
             },
             roles: {
                 CN: "主策划",
-                EN: "Lead Designer",
-                JA: "リードデザイナー"
+                EN: "Lead Game Designer",
+                JA: "リードゲームデザイナー"
             },
             period: "2023.02 - 2023.07",
             sizes: {
                 CN: "0-20人",
-                EN: "0-20 people",
+                EN: "0-20 employees",
                 JA: "0-20人"
             },
             details: {
                 CN: [
-                    "商业成果：主导 3 款 MC 模组设计,累计销量 100 万+,首周上榜、发售月进入平台排行榜前五,评分 4.5",
-                    "核心循环设计：《辐射生存》自动化+机甲战斗;《恐怖岛》双消耗(SAN+饱食度)节奏控制",
-                    "系统与内容落地：完成 8 大核心系统设计,落地 80+ 武器、50+ 敌人/BOSS、100+ 建筑方块、15+ 生物群系",
-                    "数据驱动迭代：通过词云分析 2K+ 玩家反馈,将痛点转化为可执行改动,使销售额提升 10%、评分提升 0.2",
-                    "团队效能：作为唯一策划协调 12 人团队,引入 Git 版本管理与规范命名,将开发周期从 4 个月缩短至 2 个月"
+                    "商业化成果：主导 3 款 MC 商业模组设计，累计销量突破 100 万份，首周即跻身畅销榜，发售月维持平台前五，保持 4.5/5.0 高评分",
+                    "核心循环设计：设计《辐射生存》的自动化建造+机甲战斗循环，以及《恐怖岛》的 SAN 值+饱食度双资源生存压力模型",
+                    "内容量产落地：完成 8 大核心系统架构，统筹落地 80+ 种武器、50+ 种怪物/BOSS、100+ 种建筑方块及 15+ 个特色生物群系",
+                    "数据驱动调优：基于 2000+ 条玩家反馈进行词云分析，精准定位体验痛点，迭代后实现销售额提升 10%、评分提升 0.2",
+                    "项目管理：作为唯一策划协调 12 人研发团队，引入 Git 工作流与命名规范，成功将开发周期从 4 个月压缩至 2 个月"
                 ],
                 EN: [
-                    "Commercial Results: Led design of 3 MC mods with 1M+ total sales, charted in first week, top 5 on platform in launch month, 4.5 rating",
-                    "Core Loop Design: Nuclear Survival (base building + automation + mech); Horror Isle (dual-consumption pacing)",
-                    "Systems & Content Delivery: Designed 8 core systems; delivered 80+ weapons, 50+ enemies/bosses, 100+ building blocks, 15+ biomes",
-                    "Data-Driven Iteration: Word-cloud analysis of 2K+ player feedback; transformed pain points into actionable changes, boosting sales 10% and ratings 0.2",
-                    "Team Efficiency: As sole designer, coordinated 12-person team; introduced Git + naming standards, reducing dev cycles from 4 to 2 months"
+                    "Market Performance: Led design for 3 Minecraft commercial mods achieving 1M+ total sales; consistently charted in Top 5 post-launch with a 4.5/5.0 rating.",
+                    "Systems Design: Engineered complex core loops including automation/mech combat for 'Nuclear Survival' and dual-resource management for 'Horror Isle'.",
+                    "Content Delivery: Architected 8 core systems and supervised production of 80+ weapons, 50+ enemies, and 15+ biomes.",
+                    "Data-Driven Iteration: Analyzed 2,000+ user feedback points to identify pain points, resulting in a 10% revenue uplift and 0.2 rating increase after updates.",
+                    "Production Efficiency: Coordinated a 12-person team as the sole designer; introduced Git workflows and naming standards, cutting development cycles by 50%."
                 ],
                 JA: [
-                    "商業的成果：合計100万回以上の売り上げ、リリース初週のチャートイン、リリース月のプラットフォームランキングトップ5、評価4.5を記録した3つのMC Modのデザインを主導",
-                    "コアループデザイン：Nuclear Survival（基地建設 + 自動化 + メカ）、Horror Isle（二重消費ペーシング）",
-                    "システムとコンテンツの提供：8つのコアシステムを設計。80以上の武器、50以上の敵/ボス、100以上のビルディングブロック、15以上のバイオームを提供",
-                    "データ駆動の反復：2000件以上のプレイヤーフィードバックのワードクラウド分析。問題点を実行可能な変更に変換し、売り上げを10%、評価を0.2向上",
-                    "チーム効率：唯一のデザイナーとして12人のチームを調整。Gitと命名標準を導入し、開発サイクルを4ヶ月から2ヶ月に短縮"
+                    "市場成果：Minecraft商用MOD 3作品のデザインを主導し、累計販売数100万本以上を達成。発売初月からランキングトップ5入りし、評価4.5/5.0を維持",
+                    "システムデザイン：「Nuclear Survival」の自動化＋メカ戦闘や、「Horror Isle」のSAN値＋満腹度管理など、コアとなるゲームループを設計",
+                    "コンテンツ実装：8つの主要システムを構築し、80種以上の武器、50種以上の敵キャラクター、15以上のバイオームの実装を指揮",
+                    "データ主導の改善：2,000件以上のユーザーフィードバックを分析して課題を特定。改善アップデートにより売上10%増、評価スコア0.2ポイント向上を実現",
+                    "生産性向上：唯一のプランナーとして12名のチームを調整。Gitワークフローと命名規則を導入し、開発期間を4ヶ月から2ヶ月に半減"
                 ]
             }
         }

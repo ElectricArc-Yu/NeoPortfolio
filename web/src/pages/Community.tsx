@@ -1,8 +1,11 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import styles from './Community.module.css';
 import { siteConfig } from '../data/siteConfig';
 import { guildData } from '../data/community';
+import PageTransition from '../components/PageTransition';
+import { fadeInUp, staggerContainer } from '../utils/variants';
 import {
     Shield, Target, Zap, Mail, Users, Contact,
     XCircle, Lock, MessageCircle, HeartHandshake,
@@ -47,24 +50,40 @@ const Community: React.FC = () => {
     const pageTitle = getL(siteConfig.pages.community.titles);
 
     return (
-        <div className={styles.communityContainer}>
-            <header className={styles.header}>
+        <PageTransition className={styles.communityContainer}>
+            <motion.header 
+                className={styles.header}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
                 <h1 className={styles.title}>{pageTitle}</h1>
                 <p className={styles.subtitle}>{getL(siteConfig.pages.community.subtitles)}</p>
-            </header>
+            </motion.header>
 
             {/* Part 1: Core Content Tags */}
-            <section className={styles.coreValuesRow}>
+            <motion.section 
+                className={styles.coreValuesRow}
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+            >
                 {guildData.coreValues.map((item, index) => (
-                    <div key={index} className={styles.coreValueItem}>
+                    <motion.div variants={fadeInUp} key={index} className={styles.coreValueItem}>
                         <span className={styles.coreValueIcon}>{getIcon(item.iconName, 20)}</span>
                         <span className={styles.coreValueTitle}>{getL(item.title)}</span>
-                    </div>
+                    </motion.div>
                 ))}
-            </section>
+            </motion.section>
 
             {/* Part 2: Detailed Convention */}
-            <section className={styles.covenantSection}>
+            <motion.section 
+                className={styles.covenantSection}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+            >
                 <h2 className={styles.covenantTitle}>{getL(guildData.covenantTitle)}</h2>
                 <div className={styles.covenantContent}>
                     {guildData.covenantItems.map((item, index) => (
@@ -79,10 +98,16 @@ const Community: React.FC = () => {
                         </div>
                     ))}
                 </div>
-            </section>
+            </motion.section>
 
             {/* Part 3: Guild Principles / Values */}
-            <section className={styles.principlesSection}>
+            <motion.section 
+                className={styles.principlesSection}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+            >
                 <h2 className={styles.sectionTitle}>{getL(guildData.principlesTitle)}</h2>
                 <div className={styles.covenantContent}>
                     {guildData.principles.map((item, index) => (
@@ -97,9 +122,15 @@ const Community: React.FC = () => {
                         </div>
                     ))}
                 </div>
-            </section>
+            </motion.section>
 
-            <section className={styles.applySection}>
+            <motion.section 
+                className={styles.applySection}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+            >
                 <h2 className={styles.applyTitle}>{getL(guildData.applyTitle)}</h2>
                 <p className={styles.applyDescription}>
                     {getL(guildData.applyDescription)}
@@ -122,8 +153,8 @@ const Community: React.FC = () => {
                         {getL(guildData.footer)}
                     </p>
                 </div>
-            </section>
-        </div>
+            </motion.section>
+        </PageTransition>
     );
 };
 

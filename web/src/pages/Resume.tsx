@@ -1,4 +1,7 @@
 import React, { useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
+import { fadeInUp, staggerContainer } from '../utils/variants';
+import PageTransition from '../components/PageTransition';
 import { resumeData } from '../data/resume';
 import { projects } from '../data/projects';
 import { mainProjects } from '../data/mainProjects';
@@ -215,45 +218,71 @@ const Resume: React.FC = () => {
     };
 
     return (
-        <div className={styles.container}>
+        <PageTransition className={styles.container}>
             <header className={styles.header}>
-                <h1 className={styles.name}>
+                <motion.h1 
+                    className={styles.name}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
                     {getLocalizedValue(siteConfig.pages.resume.titles, language)}
-                </h1>
-                <p className={styles.subtitle}>
+                </motion.h1>
+                <motion.p 
+                    className={styles.subtitle}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
+                >
                     {getLocalizedValue(siteConfig.pages.resume.subtitles, language)}
-                </p>
+                </motion.p>
 
                 {/* About Me Section in Header */}
-                <p className={styles.about}>
+                <motion.p 
+                    className={styles.about}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3, duration: 0.5 }}
+                >
                     {getLocalizedValue(resumeData.about, language)}
-                </p>
+                </motion.p>
 
-                <div className={styles.contactInfo}>
-                    <div className={styles.contactItem}>
+                <motion.div 
+                    className={styles.contactInfo}
+                    variants={staggerContainer}
+                    initial="hidden"
+                    animate="visible"
+                >
+                    <motion.div variants={fadeInUp} className={styles.contactItem}>
                         <Mail size={16} />
                         <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>
-                    </div>
+                    </motion.div>
                     {resumeData.header.phone && (
-                        <div className={styles.contactItem}>
+                        <motion.div variants={fadeInUp} className={styles.contactItem}>
                             <Phone size={16} />
                             <a href={`tel:${resumeData.header.phone.replace(/\s+/g, '')}`}>{resumeData.header.phone}</a>
-                        </div>
+                        </motion.div>
                     )}
-                    <div className={styles.contactItem}>
+                    <motion.div variants={fadeInUp} className={styles.contactItem}>
                         <Github size={16} />
                         <a href={getLocalizedValue(resumeData.header.links.find(l => l.labels.EN === 'GitHub')?.urls, language)} target="_blank" rel="noopener noreferrer">GitHub</a>
-                    </div>
-                    <div className={styles.contactItem}>
+                    </motion.div>
+                    <motion.div variants={fadeInUp} className={styles.contactItem}>
                         <Linkedin size={16} />
                         <a href={getLocalizedValue(resumeData.header.links.find(l => l.labels.EN === 'LinkedIn')?.urls, language)} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </header>
 
             <div className={styles.mainGrid}>
                 <div className={styles.primaryColumn}>
-                    <section className={styles.section}>
+                    <motion.section 
+                        className={styles.section}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                    >
                         <h2 className={styles.sectionTitle}>{t('Experience')}</h2>
                         <div className={styles.timeline}>
                             {resumeData.experience.map((job, index) => (
@@ -285,11 +314,17 @@ const Resume: React.FC = () => {
                                 </div>
                             ))}
                         </div>
-                    </section>
+                    </motion.section>
                 </div>
 
                 <div className={styles.secondaryColumn}>
-                    <section className={styles.section}>
+                    <motion.section 
+                        className={styles.section}
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                    >
                         <h2 className={styles.sectionTitle}>{t('Skills')}</h2>
                         <div className={styles.skillsList}>
                             {resumeData.skills.map((category, index) => (
@@ -310,9 +345,15 @@ const Resume: React.FC = () => {
                                 </div>
                             ))}
                         </div>
-                    </section>
+                    </motion.section>
 
-                    <section className={styles.section}>
+                    <motion.section 
+                        className={styles.section}
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                    >
                         <h2 className={styles.sectionTitle}>{t('Education')}</h2>
                         <div className={styles.educationList}>
                             {resumeData.education.map((edu, index) => (
@@ -337,7 +378,7 @@ const Resume: React.FC = () => {
                                 </div>
                             ))}
                         </div>
-                    </section>
+                    </motion.section>
                 </div>
             </div>
 
@@ -352,7 +393,14 @@ const Resume: React.FC = () => {
             </div>
 
             {resumeData.certifications && resumeData.certifications.length > 0 && (
-                <section className={styles.section} style={{ marginTop: '2rem' }}>
+                <motion.section 
+                    className={styles.section} 
+                    style={{ marginTop: '2rem' }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                >
                     <h2 className={styles.sectionTitle}>{t('Certifications')}</h2>
                     <div className={styles.certificationsListRow}>
                         {resumeData.certifications.map((cert) => (
@@ -402,10 +450,17 @@ const Resume: React.FC = () => {
                             </div>
                         ))}
                     </div>
-                </section>
+                </motion.section>
             )}
 
-            <section className={styles.section} style={{ marginTop: '2rem' }}>
+            <motion.section 
+                className={styles.section} 
+                style={{ marginTop: '2rem' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+            >
                 <div className={styles.timelineHeader}>
                     <h2 className={styles.sectionTitle}>{t('Project Timeline')}</h2>
                     <div className={styles.filterGroup}>
@@ -422,12 +477,18 @@ const Resume: React.FC = () => {
                 </div>
                 <div className={styles.projectTimeline}>
                     {timelineItems.map((item, idx) => (
-                        <div key={'id' in item ? item.id : item.mainProject.id + idx}>
+                        <motion.div 
+                            key={'id' in item ? item.id : item.mainProject.id + idx}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.4, delay: idx * 0.05 }}
+                        >
                             {renderProjectRow(item)}
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
-            </section>
+            </motion.section>
 
             {/* Modal for Group Sub-projects */}
             {activeGroup && (
@@ -500,7 +561,7 @@ const Resume: React.FC = () => {
                     onClose={() => setActiveCert(null)}
                 />
             )}
-        </div>
+        </PageTransition>
     );
 };
 

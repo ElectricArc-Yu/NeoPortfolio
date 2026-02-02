@@ -1,10 +1,13 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import styles from './Contact.module.css';
 import { Send } from 'lucide-react';
 import { siteConfig } from '../data/siteConfig';
 import { contactData, getContactIcon } from '../data/contact';
 import { getLocalizedValue } from '../utils/i18n';
+import PageTransition from '../components/PageTransition';
+import { fadeInUp, staggerContainer } from '../utils/variants';
 
 const Contact: React.FC = () => {
     const { language, t } = useLanguage();
@@ -17,17 +20,27 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <div className={styles.container}>
-            <header className={styles.header}>
+        <PageTransition className={styles.container}>
+            <motion.header 
+                className={styles.header}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
                 <h1 className={styles.title}>{t('Contact Me')}</h1>
                 <p className={styles.subtitle}>
                     {t('Contact Subtitle')}
                 </p>
-            </header>
+            </motion.header>
 
-            <div className={styles.sectionsGrid}>
+            <motion.div 
+                className={styles.sectionsGrid}
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+            >
                 {sections.map((section) => (
-                    <div key={section.id} className={styles.sectionCard}>
+                    <motion.div variants={fadeInUp} key={section.id} className={styles.sectionCard}>
                         <div className={styles.iconWrapper}>
                             {getContactIcon(section.iconName)}
                         </div>
@@ -47,10 +60,10 @@ const Contact: React.FC = () => {
                             <Send size={16} />
                             {t('Contact Immediately')}
                         </a>
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
-        </div>
+            </motion.div>
+        </PageTransition>
     );
 };
 

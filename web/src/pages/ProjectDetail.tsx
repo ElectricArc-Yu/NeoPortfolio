@@ -16,6 +16,9 @@ import ImageModal from '../components/ImageModal';
 import { getLocalizedValue } from '../utils/i18n';
 import { formatDuration } from '../utils/formatters';
 import styles from './ProjectDetail.module.css';
+import { motion } from 'framer-motion';
+import PageTransition from '../components/PageTransition';
+import { fadeInUp, staggerContainer } from '../utils/variants';
 
 const ProjectDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -60,19 +63,29 @@ const ProjectDetail: React.FC = () => {
     };
 
     return (
-        <div className={styles.container}>
-            <header className={styles.header}>
+        <PageTransition className={styles.container}>
+            <motion.header 
+                className={styles.header}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
                 <button onClick={handleBack} className={styles.backButton}>
                     ← {t('Back to List')}
                 </button>
                 <div className={styles.titleContainer}>
                     <h1 className={styles.title}>{getLocalizedValue(project.titles, language)}</h1>
                 </div>
-            </header>
+            </motion.header>
 
-            <div className={styles.grid}>
+            <motion.div 
+                className={styles.grid}
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+            >
                 {/* Main Content - Left Side */}
-                <div className={styles.mainContent}>
+                <motion.div className={styles.mainContent} variants={fadeInUp}>
                     <MediaGallery
                         images={project.images}
                         video={project.video}
@@ -135,12 +148,17 @@ const ProjectDetail: React.FC = () => {
                             {description}
                         </ReactMarkdown>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Sidebar - Right Side */}
-                <aside className={styles.sidebar}>
+                <motion.aside 
+                    className={styles.sidebar} 
+                    variants={staggerContainer}
+                    initial="hidden"
+                    animate="visible"
+                >
                     {/* Project Info Card */}
-                    <div className={styles.card}>
+                    <motion.div className={styles.card} variants={fadeInUp}>
                         <h3>{t('Project Info')}</h3>
                         <ul className={styles.infoList}>
                             <li>
@@ -211,23 +229,23 @@ const ProjectDetail: React.FC = () => {
                                 <WorkChart data={project.workDistribution} />
                             </div>
                         )}
-                    </div>
+                    </motion.div>
 
                     {/* Project Introduce Card */}
                     {getLocalizedValue(project.introduces, language) && (
-                        <div className={styles.card}>
+                        <motion.div className={styles.card} variants={fadeInUp}>
                             <h3>{t('Project Introduce')}</h3>
                             <div className={styles.introduceText}>
                                 {getLocalizedValue(project.introduces, language)?.split('\n').map((line, i) => (
                                     <p key={i} style={{ marginBottom: line.trim() ? '0.5rem' : '1rem' }}>{line}</p>
                                 ))}
                             </div>
-                        </div>
+                        </motion.div>
                     )}
 
                     {/* Quick Links Card - Array of Links */}
                     {project.links && project.links.length > 0 && (
-                        <div className={styles.card}>
+                        <motion.div className={styles.card} variants={fadeInUp}>
                             <h3>{t('Quick Links')}</h3>
                             <div className={styles.quickLinks}>
                                 {project.links.map((link, index) => {
@@ -249,11 +267,13 @@ const ProjectDetail: React.FC = () => {
                                     );
                                 })}
                             </div>
-                        </div>
+                        </motion.div>
                     )}
-                    <BackToTop />
-                </aside>
-            </div>
+                    <motion.div variants={fadeInUp}>
+                        <BackToTop />
+                    </motion.div>
+                </motion.aside>
+            </motion.div>
 
             {/* Modal Previews */}
             {previewPdf && (
@@ -277,7 +297,7 @@ const ProjectDetail: React.FC = () => {
                     onClose={() => setZoomedImage(null)}
                 />
             )}
-        </div>
+        </PageTransition>
     );
 };
 

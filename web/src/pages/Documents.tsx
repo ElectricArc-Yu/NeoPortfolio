@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { publicDocs } from '../data/documents';
 import type { GDDType, PublicDoc } from '../data/types';
@@ -7,6 +8,8 @@ import styles from './Documents.module.css';
 import { siteConfig } from '../data/siteConfig';
 import { getLocalizedValue } from '../utils/i18n';
 import { FileText, BookOpen, ChevronDown, ChevronUp, FlaskConical, GraduationCap, ClipboardList, FileCode, Mic } from 'lucide-react';
+import PageTransition from '../components/PageTransition';
+import { fadeInUp, staggerContainer } from '../utils/variants';
 
 // Icon mapping for GDD types
 const gddTypeIcons: Record<GDDType, React.ReactNode> = {
@@ -126,7 +129,7 @@ const Documents: React.FC = () => {
             : description;
 
         return (
-            <div key={doc.id} className={styles.paperCard}>
+            <motion.div variants={fadeInUp} key={doc.id} className={styles.paperCard}>
                 <div className={styles.paperTopRow}>
                     <div className={styles.paperInfoBadges}>
                         {doc.paperType && (
@@ -203,7 +206,7 @@ const Documents: React.FC = () => {
                         </button>
                     )}
                 </div>
-            </div>
+            </motion.div>
         );
     };
 
@@ -218,7 +221,8 @@ const Documents: React.FC = () => {
         const targetPosition = getLocalizedValue(doc.targetPositions, language);
 
         return (
-            <div
+            <motion.div
+                variants={fadeInUp}
                 key={doc.id}
                 className={styles.card}
                 onClick={() => handleCardClick(doc)}
@@ -273,49 +277,84 @@ const Documents: React.FC = () => {
                         </button>
                     )}
                 </div>
-            </div>
+            </motion.div>
         );
     };
 
     return (
-        <div className={styles.container}>
-            <header className={styles.header}>
+        <PageTransition className={styles.container}>
+            <motion.header 
+                className={styles.header}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
                 <h1 className={styles.title}>
                     {getLocalizedValue(siteConfig.pages.documents.titles, language)}
                 </h1>
                 <p className={styles.subtitle}>
                     {getLocalizedValue(siteConfig.pages.documents.subtitles, language)}
                 </p>
-            </header>
+            </motion.header>
 
             {/* Papers Section */}
             {papers.length > 0 && (
-                <section className={`${styles.section} ${styles.paperSection}`}>
+                <motion.section 
+                    className={`${styles.section} ${styles.paperSection}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                >
                     <h2 className={styles.sectionTitle}>
                         <BookOpen size={20} />
                         {t('Academic Papers')}
                     </h2>
-                    <div className={styles.grid}>
+                    <motion.div 
+                        className={styles.grid}
+                        variants={staggerContainer}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
                         {papers.map(renderPaperCard)}
-                    </div>
-                </section>
+                    </motion.div>
+                </motion.section>
             )}
 
             {/* Lectures Section */}
             {lectures.length > 0 && (
-                <section className={`${styles.section} ${styles.paperSection} ${styles.lectureSection}`}>
+                <motion.section 
+                    className={`${styles.section} ${styles.paperSection} ${styles.lectureSection}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                >
                     <h2 className={styles.sectionTitle}>
                         <Mic size={20} />
                         {t('Lectures & Writing')}
                     </h2>
-                    <div className={styles.grid}>
+                    <motion.div 
+                        className={styles.grid}
+                        variants={staggerContainer}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
                         {lectures.map(renderPaperCard)}
-                    </div>
-                </section>
+                    </motion.div>
+                </motion.section>
             )}
 
             {/* GDDs Section - Grouped by Type */}
-            <section className={`${styles.section} ${styles.gddSection}`}>
+            <motion.section 
+                className={`${styles.section} ${styles.gddSection}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+            >
                 <h2 className={styles.sectionTitle}>
                     <FileText size={20} />
                     {t('Past Paper Work Examples')}
@@ -328,13 +367,18 @@ const Documents: React.FC = () => {
                     const isExpanded = expandedCategories.has(type);
 
                     return (
-                        <div key={type} className={`${styles.gddTypeGroup} ${isExpanded ? styles.expanded : ''}`}>
-                            <div
+                        <motion.div 
+                            key={type} 
+                            className={`${styles.gddTypeGroup} ${isExpanded ? styles.expanded : ''}`}
+                            layout
+                        >
+                            <motion.div
                                 className={styles.gddTypeHeader}
                                 onClick={() => toggleCategory(type)}
                                 role="button"
                                 tabIndex={0}
                                 onKeyDown={(e) => e.key === 'Enter' && toggleCategory(type)}
+                                layout="position"
                             >
                                 <div className={styles.gddTypeIcon}>
                                     {gddTypeIcons[type]}
@@ -366,14 +410,31 @@ const Documents: React.FC = () => {
                                 <div className={styles.expandIndicator}>
                                     {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                                 </div>
-                            </div>
-                            <div className={`${styles.gddTypeCards} ${isExpanded ? styles.cardsExpanded : styles.cardsCollapsed}`}>
-                                {docs.map(renderGDDCard)}
-                            </div>
-                        </div>
+                            </motion.div>
+                            
+                            <AnimatePresence>
+                                {isExpanded && (
+                                    <motion.div 
+                                        className={`${styles.gddTypeCards} ${isExpanded ? styles.cardsExpanded : styles.cardsCollapsed}`}
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: 'auto' }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        transition={{ duration: 0.3 }}
+                                    >
+                                        <motion.div
+                                            variants={staggerContainer}
+                                            initial="hidden"
+                                            animate="visible"
+                                        >
+                                            {docs.map(renderGDDCard)}
+                                        </motion.div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </motion.div>
                     );
                 })}
-            </section>
+            </motion.section>
 
             {selectedDoc && (
                 <PdfModal
@@ -382,7 +443,7 @@ const Documents: React.FC = () => {
                     onClose={() => setSelectedDoc(null)}
                 />
             )}
-        </div>
+        </PageTransition>
     );
 };
 

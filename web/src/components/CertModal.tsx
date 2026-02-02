@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { X } from 'lucide-react';
 import styles from './CertModal.module.css';
 import { getAssetPath } from '../utils/assetPath';
@@ -24,21 +24,39 @@ const CertModal: React.FC<CertModalProps> = ({ url, title, onClose, type }) => {
 
     const detectedType = getDetectedType();
 
-    // Close on ESC key
-    useEffect(() => {
-        const handleEsc = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') onClose();
-        };
-        window.addEventListener('keydown', handleEsc);
-        return () => window.removeEventListener('keydown', handleEsc);
+    // Handle keyboard events
+    const handleKeyDown = useCallback((e: KeyboardEvent) => {
+        if (e.key === 'Escape') onClose();
     }, [onClose]);
 
+    // Close on ESC key
+    useEffect(() => {
+        globalThis.addEventListener('keydown', handleKeyDown);
+        return () => globalThis.removeEventListener('keydown', handleKeyDown);
+    }, [handleKeyDown]);
+
+    // Handle overlay keyboard interaction
+    const handleOverlayKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onClose();
+        }
+    };
+
     return (
-        <div className={styles.overlay} onClick={onClose}>
-            <button className={styles.floatingClose} onClick={onClose} title="Close">
+        <div
+            className={styles.overlay}
+            onClick={onClose}
+            onKeyDown={handleOverlayKeyDown}
+            role="dialog"
+            aria-modal="true"
+            aria-label={title}
+            tabIndex={0}
+        >
+            <button className={styles.floatingClose} onClick={onClose} title="Close" aria-label="Close modal">
                 <X size={32} />
             </button>
-            <div className={styles.modal} onClick={e => e.stopPropagation()}>
+            <div className={styles.modal} onClick={e => e.stopPropagation()} role="document">
                 <div className={styles.content}>
                     {detectedType === 'image' ? (
                         <div className={styles.imageContainer}>

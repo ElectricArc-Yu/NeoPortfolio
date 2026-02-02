@@ -5,28 +5,101 @@
     width: 100vw;
     height: 100vh;
     background: #0f1014;
-    /* Match var(--bg-color) */
     z-index: 9999;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 2rem;
+    overflow: hidden;
+}
+
+/* Dissolve particles container */
+.particlesContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+.particle {
+    position: absolute;
+    background: #4db6ac;
+    border-radius: 2px;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+/* Glowing orbs effect */
+.glowOrb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.3;
+    animation: float 8s ease-in-out infinite;
+}
+
+.glowOrb1 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(77, 182, 172, 0.4), transparent 70%);
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.glowOrb2 {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0, 150, 136, 0.3), transparent 70%);
+    bottom: 30%;
+    right: 15%;
+    animation-delay: -3s;
+}
+
+.glowOrb3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(100, 200, 190, 0.25), transparent 70%);
+    top: 60%;
+    left: 50%;
+    animation-delay: -5s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
 }
 
 .content {
     width: 100%;
     max-width: 500px;
     text-align: center;
+    z-index: 1;
 }
 
 .title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 2.5rem;
-    letter-spacing: 4px;
+    letter-spacing: 6px;
     color: #e0e0e0;
     text-transform: uppercase;
+    text-shadow: 0 0 30px rgba(77, 182, 172, 0.5);
 }
 
 .progressContainer {
@@ -36,14 +109,26 @@
     border-radius: 1px;
     margin-bottom: 1rem;
     overflow: hidden;
+    position: relative;
 }
 
 .progressBar {
     height: 100%;
-    background: #4db6ac;
-    /* Match var(--accent-color) */
-    box-shadow: 0 0 15px rgba(77, 182, 172, 0.5);
+    background: linear-gradient(90deg, #4db6ac, #00bcd4, #4db6ac);
+    background-size: 200% 100%;
+    box-shadow: 0 0 20px rgba(77, 182, 172, 0.6), 0 0 40px rgba(77, 182, 172, 0.3);
     transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 .statusRow {
@@ -59,6 +144,7 @@
 .percentage {
     font-weight: 600;
     color: #4db6ac;
+    text-shadow: 0 0 10px rgba(77, 182, 172, 0.5);
 }
 
 .logArea {
@@ -79,4 +165,75 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* Dissolve effect overlay */
+.dissolveOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+    pointer-events: none;
+}
+
+/* Final flash effect */
+.flashOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(77, 182, 172, 0.8), transparent 70%);
+    z-index: 10002;
+    pointer-events: none;
+}
+
+/* Scan line effect */
+.scanLine {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(77, 182, 172, 0.3) 20%,
+            rgba(77, 182, 172, 0.8) 50%,
+            rgba(77, 182, 172, 0.3) 80%,
+            transparent 100%);
+    box-shadow: 0 0 20px rgba(77, 182, 172, 0.8), 0 0 40px rgba(77, 182, 172, 0.4);
+    z-index: 10003;
+    pointer-events: none;
+}
+
+/* Grid pattern for tech feel */
+.gridPattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(77, 182, 172, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(77, 182, 172, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 0;
+}
+
+/* Ready state glow */
+.readyGlow {
+    animation: pulseGlow 1s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 30px rgba(77, 182, 172, 0.5);
+    }
+
+    50% {
+        text-shadow: 0 0 50px rgba(77, 182, 172, 0.8), 0 0 80px rgba(77, 182, 172, 0.4);
+    }
 }

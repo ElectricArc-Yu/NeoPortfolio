@@ -332,7 +332,7 @@ Concentrated 90% of design effort on combat systems and their dependencies, deli
 *   離職後に属性の数値勾配が変更され、評価が期待値から4.3へ下落（サバイバル体験の損なわれ）。
 `
         },
-        images: ['/assets/images/KBDCover.png', '/assets/images/Horror_01.png', '/assets/images/Horror_02.png', '/assets/images/Horror_03.png'],
+        images: ['/assets/images/KBDCover.png', '/assets/images/HorrorIsland_01.png', '/assets/images/HorrorIsland_02.png', '/assets/images/HorrorIsland_03.png'],
         links: [
             { labels: { CN: "发布页面", EN: "Release Page", JA: "リリースページ" }, urls: { CN: 'https://resource-minecraft.h5.163.com/#/detail?id=4842525790400877148', EN: 'https://resource-minecraft.h5.163.com/#/detail?id=4842525790400877148' }, type: 'Release Page' }
         ],

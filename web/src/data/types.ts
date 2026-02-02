@@ -201,6 +201,7 @@ export interface ServiceItem {
     titles: Localized;
     descriptions: Localized;
     icon?: string;
+    showPriority: number;
 }
 
 /**

@@ -63,7 +63,8 @@ export const servicesData: ServicesData = {
                 CN: '设计核心玩法循环、经济系统、成长机制与战斗框架，结合数学建模与模拟验证。',
                 JA: 'コアゲームプレイループ、経済システム、進行メカニクス、戦闘フレームワークを数学的モデリングとシミュレーション検証で設計。'
             },
-            icon: '⚙️'
+            icon: '⚙️',
+            showPriority: 100
         },
         {
             id: 'technical-production',
@@ -77,7 +78,8 @@ export const servicesData: ServicesData = {
                 CN: '流水线架构、自定义工具链、构建自动化，以及面向Unity与Unreal引擎项目的数据驱动设计模式。',
                 JA: 'UnityおよびUnreal Engineプロジェクト向けのパイプラインアーキテクチャ、カスタムツール、ビルド自動化、データ指向設計パターン。'
             },
-            icon: '🔧'
+            icon: '🔧',
+            showPriority: 10
         },
         {
             id: 'gamification',
@@ -89,9 +91,10 @@ export const servicesData: ServicesData = {
             descriptions: {
                 EN: 'Developing gameplay mechanics, interactions and UX for products in sectors such as health care, education, and research projects.',
                 CN: '为医疗健康、教育培训及学术研究等领域的产品开发游戏机制、交互设计与用户体验。',
-                JA: 'ヘルスケア、教育、研究プロジェクトなど、様々な分野の製品向けにゲームプレイメカニクス、インタラクション、UXを開発。'
+                JA: 'ヘルスケア、教育、研究プロジェクトなど、様々な分野の製品向けに游戏プレイメカニクス、インタラクション、UXを開発。'
             },
-            icon: '🎮'
+            icon: '🎮',
+            showPriority: 70
         },
         {
             id: 'ideation',
@@ -105,7 +108,8 @@ export const servicesData: ServicesData = {
                 CN: '提炼核心概念、理解目标受众动机，从原型阶段到生产环境持续打磨与深化创意。',
                 JA: 'コアコンセプトの考案、オーディエンスのモチベーション理解、プロトタイプから本番までのアイデア精緻化・発展。'
             },
-            icon: '💭'
+            icon: '💭',
+            showPriority: 80
         },
         {
             id: 'consultancy',
@@ -119,7 +123,8 @@ export const servicesData: ServicesData = {
                 CN: '对现有游戏系统进行专业分析，包括经济审计、GDD评审，以及基于学术严谨性的可执行改进建议。',
                 JA: '既存ゲームシステムの専門分析、経済監査、GDDレビュー、学術的厳密性に基づく実行可能な改善提案。'
             },
-            icon: '💡'
+            icon: '💡',
+            showPriority: 90
         },
         {
             id: 'ai-native',
@@ -133,7 +138,8 @@ export const servicesData: ServicesData = {
                 CN: 'AI辅助开发工作流、大语言模型游戏系统集成、程序化内容生成，以及AI增强的生产流水线。',
                 JA: 'AI支援開発ワークフロー、ゲームシステムへのLLM統合、プロシージャルコンテンツ生成、AI強化プロダクションパイプライン。'
             },
-            icon: '🤖'
+            icon: '🤖',
+            showPriority: 85
         },
         {
             id: 'academic-research',
@@ -147,35 +153,38 @@ export const servicesData: ServicesData = {
                 CN: '游戏设计理论、玩家参与建模、基于效用的决策框架，以及出版级学术研究合作。',
                 JA: 'ゲームデザイン理論、プレイヤーエンゲージメントモデリング、効用ベースの意思決定フレームワーク、出版品質の研究協力。'
             },
-            icon: '📚'
+            icon: '📚',
+            showPriority: 75
         },
         {
             id: 'mentorship',
             titles: {
-                EN: 'Mentorship & Coaching',
-                CN: '导师指导',
-                JA: 'メンターシップ'
+                EN: 'Strategy & Directional Guidance',
+                CN: '策略引导与设计咨询',
+                JA: '戦略的ガイダンス & デザイン相談'
             },
             descriptions: {
-                EN: 'Career guidance, portfolio reviews, and design skill development for aspiring and mid-career game designers through The Creator Guild.',
-                CN: '通过新创造者工会，为志向成为游戏设计师的新人及中期职业者提供职业指导、作品集评审与设计技能培养。',
-                JA: 'クリエイターギルドを通じて、志望者および中堅ゲームデザイナー向けのキャリアガイダンス、ポートフォリオレビュー、デザインスキル開発。'
+                EN: 'Strategic steering for game projects, career path orientation, and expert Q&A sessions to resolve complex conceptual or architectural roadblocks.',
+                CN: '提供项目层面的策略引导、职业路径的定点导航，以及针对特定设计瓶颈或架构难题的专家级咨询与答疑。',
+                JA: 'ゲームプロジェクトの戦略的な方向付け、キャリアパスのオリエンテーション、および複雑なコンセプトやアーキテクチャの課題を解決するための専門的な相談・質疑応答。'
             },
-            icon: '🎓'
+            icon: '🧭',
+            showPriority: 10
         },
         {
             id: 'documentation',
             titles: {
                 EN: 'Documentation & Methodology',
                 CN: '文档与方法论',
-                JA: 'ドキュメントと方法論'
+                JA: 'ドキュメントと方法论'
             },
             descriptions: {
                 EN: 'GDD architecture, design documentation standards, LOD-based specification systems, and SSOT workflow implementation.',
                 CN: 'GDD架构、设计文档标准、基于LOD的规格系统，以及SSOT工作流实施。',
                 JA: 'GDDアーキテクチャ、設計ドキュメント標準、LODベースの仕様システム、SSOTワークフローの実装。'
             },
-            icon: '📋'
+            icon: '📋',
+            showPriority: 65
         }
     ]
 };

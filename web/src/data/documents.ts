@@ -3,29 +3,6 @@ import type { PublicDoc } from './types';
 export const publicDocs: PublicDoc[] = [
     // --- Papers ---
     {
-        id: 'ffxiv-exploration-value-collapse',
-        titles: {
-            CN: "The Illusion of Choice: Value Collapse in MMORPG Exploratory Content Post-Reward Decoupling",
-            EN: "The Illusion of Choice: Value Collapse in MMORPG Exploratory Content Post-Reward Decoupling",
-            JA: "選択の錯覚：報酬の切り離し後におけるMMORPG探索コンテンツの価値崩壊"
-        },
-        date: '2026.01.25',
-        descriptions: {
-            CN: "过去十年间，《最终幻想14》的大型探索内容经历了从\"强制垄断\"到\"完全解耦\"的范式转变。本文运用理性选择理论，分析了四个不同时期的玩家留存情况：云冠群岛、禁地优雷卡、博兹雅，以及近期的奥秘暗域。通过建立探索效用方程，我分离出三个关键变量：排他性溢价(α)、环境摩擦(F)和认知负荷(C)。研究发现，在存在高收益外部替代选项的情况下，排他性溢价似乎是主导性解释因素。我将云冠群岛定性为系统性失败，禁地优雷卡定性为由\"垄断红利\"驱动的成功案例，而博兹雅/奥秘暗域则因奖励解耦而沦为\"价值崩塌\"的受害者。社区普查数据表明，奥秘暗域呈现出约90%的极端脱离倾向，这表明在高认知负荷与零奖励排他性叠加条件下的理性市场反应。我的结论是，观察到的资源错配源于效用变量的结构性失调——具体表现为排他性(α)降低后，未能相应降低认知负荷(C)及其他系统参数。",
-            EN: "Over the past decade, Final Fantasy XIV\'s large-scale exploratory content has undergone a paradigm shift from \"Coercive Monopoly\" to \"Complete Decoupling.\" This paper applies Rational Choice Theory to analyze player retention across four distinct eras: The Diadem, Eureka, Bozja, and the recent Occult Crescent. By establishing an Exploration Utility Equation, I isolate three critical variables: Exclusivity Premium (α), Environmental Friction (F), and Cognitive Load (C). My findings indicate that the Exclusivity Premium appears to be the dominant explanatory factor in the presence of high-yield external alternatives. I identify The Diadem as a systemic failure, Eureka as a success driven by \"Monopoly Dividend,\" and Bozja/Occult Crescent as victims of \"Value Collapse\" due to Reward Decoupling. Community census data suggests that Occult Crescent exhibits an extreme disengagement tendency of estimated 90%, indicating a rational market response to high Cognitive Load combined with zero reward exclusivity. I conclude that the observed resource misallocation stems from a structural misalignment of utility variables—specifically, the reduction of Exclusivity (α) without a compensatory reduction in Cognitive Load (C) and other systemic parameters.",
-            JA: "過去10年間、『ファイナルファンタジーXIV』の大規模探索コンテンツは、「強制的独占」から「完全な切り離し」へとパラダイムシフトを遂げた。本稿では合理的選択理論を用い、4つの異なる時期（ディアデム諸島、禁断の地 エウレカ、ボズヤ、そして最近のオルト・エウレカ）におけるプレイヤーの継続率を分析する。探索効用方程式を構築することで、独占プレミアム(α)、環境の摩擦(F)、認知負荷(C)という3つの重要な変数を分離した。その結果、高利回りの外部代替選択肢が存在する場合、独占プレミアムが支配的な説明要因であることが示唆された。ディアデム諸島をシステム的な失敗、エウレカを「独占の配当」による成功例、そしてボズヤ/オルト・エウレカを報酬の切り離しによる「価値崩壊」の犠牲者として定義する。コミュニティの調査データによると、オルト・エウレカは約90%という極端な離脱傾向を示しており、これは高い認知負荷とゼロの報酬独占性が重なった条件下の合理的な市場反応である。結論として、観察された資源のミスマッチは効用変数の構造的な不適合、具体的には独占性(α)の低下に対応した認知負荷(C)や他システムパラメータの低減が行われなかったことに起因すると考える。"
-        },
-        category: 'Paper',
-        paperType: 'Letter',
-        originalLangs: { CN: "英文", EN: "English", JA: "英語" },
-        lengths: { CN: "4页", EN: "4 Pages", JA: "4ページ" },
-        isInternal: false,
-        journal: 'IEEE ToG (Under Review)',
-        impactFactor: '0',
-        preprintUrl: '',
-        externalUrl: ''
-    },
-    {
         id: 'participation-utility-model',
         titles: {
             CN: "解构参与感：不确定性下参与倾向的设计理论框架",
@@ -48,6 +25,30 @@ export const publicDocs: PublicDoc[] = [
         preprintUrl: '',
         externalUrl: ''
     },
+    {
+        id: 'ffxiv-exploration-value-collapse',
+        titles: {
+            CN: "The Illusion of Choice: Value Collapse in MMORPG Exploratory Content Post-Reward Decoupling",
+            EN: "The Illusion of Choice: Value Collapse in MMORPG Exploratory Content Post-Reward Decoupling",
+            JA: "選択の錯覚：報酬の切り離し後におけるMMORPG探索コンテンツの価値崩壊"
+        },
+        date: '2026.01.25',
+        descriptions: {
+            CN: "过去十年间，《最终幻想14》的大型探索内容经历了从\"强制垄断\"到\"完全解耦\"的范式转变。本文运用理性选择理论，分析了四个不同时期的玩家留存情况：云冠群岛、禁地优雷卡、博兹雅，以及近期的奥秘暗域。通过建立探索效用方程，我分离出三个关键变量：排他性溢价(α)、环境摩擦(F)和认知负荷(C)。研究发现，在存在高收益外部替代选项的情况下，排他性溢价似乎是主导性解释因素。我将云冠群岛定性为系统性失败，禁地优雷卡定性为由\"垄断红利\"驱动的成功案例，而博兹雅/奥秘暗域则因奖励解耦而沦为\"价值崩塌\"的受害者。社区普查数据表明，奥秘暗域呈现出约90%的极端脱离倾向，这表明在高认知负荷与零奖励排他性叠加条件下的理性市场反应。我的结论是，观察到的资源错配源于效用变量的结构性失调——具体表现为排他性(α)降低后，未能相应降低认知负荷(C)及其他系统参数。",
+            EN: "Over the past decade, Final Fantasy XIV\'s large-scale exploratory content has undergone a paradigm shift from \"Coercive Monopoly\" to \"Complete Decoupling.\" This paper applies Rational Choice Theory to analyze player retention across four distinct eras: The Diadem, Eureka, Bozja, and the recent Occult Crescent. By establishing an Exploration Utility Equation, I isolate three critical variables: Exclusivity Premium (α), Environmental Friction (F), and Cognitive Load (C). My findings indicate that the Exclusivity Premium appears to be the dominant explanatory factor in the presence of high-yield external alternatives. I identify The Diadem as a systemic failure, Eureka as a success driven by \"Monopoly Dividend,\" and Bozja/Occult Crescent as victims of \"Value Collapse\" due to Reward Decoupling. Community census data suggests that Occult Crescent exhibits an extreme disengagement tendency of estimated 90%, indicating a rational market response to high Cognitive Load combined with zero reward exclusivity. I conclude that the observed resource misallocation stems from a structural misalignment of utility variables—specifically, the reduction of Exclusivity (α) without a compensatory reduction in Cognitive Load (C) and other systemic parameters.",
+            JA: "過去10年間、『ファイナルファンタジーXIV』の大規模探索コンテンツは、「強制的独占」から「完全な切り離し」へとパラダイムシフトを遂げた。本稿では合理的選択理論を用い、4つの異なる時期（ディアデム諸島、禁断の地 エウレカ、ボズヤ、そして最近のオルト・エウレカ）におけるプレイヤーの継続率を分析する。探索効用方程式を構築することで、独占プレミアム(α)、環境の摩擦(F)、認知負荷(C)という3つの重要な変数を分離した。その結果、高利回りの外部代替選択肢が存在する場合、独占プレミアムが支配的な説明要因であることが示唆された。ディアデム諸島をシステム的な失敗、エウレカを「独占の配当」による成功例、そしてボズヤ/オルト・エウレカを報酬の切り離しによる「価値崩壊」の犠牲者として定義する。コミュニティの調査データによると、オルト・エウレカは約90%という極端な離脱傾向を示しており、これは高い認知負荷とゼロの報酬独占性が重なった条件下の合理的な市場反応である。結論として、観察された資源のミスマッチは効用変数の構造的な不適合、具体的には独占性(α)の低下に対応した認知負荷(C)や他システムパラメータの低減が行われなかったことに起因すると考える。"
+        },
+        category: 'Paper',
+        paperType: 'Letter',
+        originalLangs: { CN: "英文", EN: "English", JA: "英語" },
+        lengths: { CN: "4页", EN: "4 Pages", JA: "4ページ" },
+        isInternal: false,
+        journal: 'IEEE ToG (Under Review)',
+        impactFactor: '0',
+        preprintUrl: '',
+        externalUrl: ''
+    },
+
     /** example 
         // --- Lecture & Writing ---
         {

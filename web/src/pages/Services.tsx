@@ -67,19 +67,21 @@ const Services: React.FC = () => {
                 </h2>
 
                 <div className={styles.serviceGrid}>
-                    {servicesData.items.map((service) => (
-                        <div key={service.id} className={styles.serviceCard}>
-                            {service.icon && (
-                                <span className={styles.serviceIcon}>{service.icon}</span>
-                            )}
-                            <h3 className={styles.serviceTitle}>
-                                {getLocalizedValue(service.titles, language)}
-                            </h3>
-                            <p className={styles.serviceDesc}>
-                                {getLocalizedValue(service.descriptions, language)}
-                            </p>
-                        </div>
-                    ))}
+                    {[...servicesData.items]
+                        .sort((a, b) => b.showPriority - a.showPriority)
+                        .map((service) => (
+                            <div key={service.id} className={styles.serviceCard}>
+                                {service.icon && (
+                                    <span className={styles.serviceIcon}>{service.icon}</span>
+                                )}
+                                <h3 className={styles.serviceTitle}>
+                                    {getLocalizedValue(service.titles, language)}
+                                </h3>
+                                <p className={styles.serviceDesc}>
+                                    {getLocalizedValue(service.descriptions, language)}
+                                </p>
+                            </div>
+                        ))}
                 </div>
             </section>
 

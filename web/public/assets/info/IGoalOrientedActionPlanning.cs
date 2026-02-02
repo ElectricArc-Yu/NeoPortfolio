@@ -3,56 +3,51 @@
 namespace Services.BehaviorControlService.GoalOrientedActionPlanning
 {
     /// <summary>
-    /// IGoalOrientedActionPlanning interface.
-    /// Defines the standard process for interaction between an AI agent and the GOAP planner.
-    /// Objects implementing this interface can use the planner to automatically derive a path to reach a "goal state" based on the current "world state."
+    ///     The IGoalOrientedActionPlanning interface represents an agent that can plan and execute actions.
     /// </summary>
     public interface IGoalOrientedActionPlanning
     {
         /// <summary>
-        /// Retrieves the current world state as perceived by the AI agent.
-        /// The planner uses this as the starting point for decision-making.
+        ///     Gets the current state of the world as perceived by the agent.
         /// </summary>
-        /// <returns>A collection of key-value pairs representing the world state (e.g., "HasTile": true).</returns>
+        /// <returns>A HashSet of key-value pairs representing the world state.</returns>
         HashSet<KeyValuePair<string, object>> GetWorldState();
 
         /// <summary>
-        /// Creates the goal state that the AI currently wants to achieve.
-        /// For example: if the goal is to "Win the round," the state might be "GoalAchieved": true.
+        ///     Creates the goal state that the agent will aim to achieve.
         /// </summary>
-        /// <returns>A collection of key-value pairs representing the goal state.</returns>
+        /// <returns>A HashSet of key-value pairs representing the goal state.</returns>
         HashSet<KeyValuePair<string, object>> CreateGoalState();
 
         /// <summary>
-        /// Called when the planner cannot find a sequence of actions to reach the goal.
-        /// Logic for finding alternative goals or re-scanning the environment can be executed here.
+        ///     Called when the plan fails to find a sequence of actions that leads to the goal.
         /// </summary>
-        /// <param name="failedGoal">The goal state that could not be reached.</param>
+        /// <param name="failedGoal">The goal that could not be achieved.</param>
         void PlanFailed(HashSet<KeyValuePair<string, object>> failedGoal);
 
         /// <summary>
-        /// Called when the planner successfully finds an action path.
+        ///     Called when the plan finds a sequence of actions that leads to the goal.
         /// </summary>
-        /// <param name="goal">The goal to be achieved.</param>
-        /// <param name="actions">The planned action queue, which the AI will execute in order.</param>
+        /// <param name="goal">The goal that has been achieved.</param>
+        /// <param name="actions">The queue of actions that will achieve the goal.</param>
         void PlanFound(HashSet<KeyValuePair<string, object>> goal, Queue<GoalOrientedActionPlanningAction> actions);
 
         /// <summary>
-        /// Called when all actions in the plan have been successfully executed.
+        ///     Called when all actions have been performed.
         /// </summary>
         void ActionsFinished();
 
         /// <summary>
-        /// Called when an ongoing plan is aborted due to certain reasons (e.g., environmental changes, mid-execution failure).
+        ///     Called when the plan is aborted.
         /// </summary>
-        /// <param name="aborter">The specific action that caused the plan to be interrupted.</param>
+        /// <param name="aborter">The action that caused the plan to be aborted.</param>
         void PlanAborted(GoalOrientedActionPlanningAction aborter);
 
         /// <summary>
-        /// Core method for controlling the AI agent's movement toward an action's target point.
+        ///     Moves the agent towards the target of the next action.
         /// </summary>
-        /// <param name="nextActionPlanningAction">The current next action, containing target location information.</param>
-        /// <returns>Returns true if the agent has reached the target range via movement.</returns>
+        /// <param name="nextActionPlanningAction">The next action that the agent will perform.</param>
+        /// <returns>A boolean indicating whether the agent successfully moved towards the target.</returns>
         bool MoveAgent(GoalOrientedActionPlanningAction nextActionPlanningAction);
     }
 }

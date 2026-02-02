@@ -53,6 +53,7 @@ export interface Project {
     prices?: Localized;
 
     // Detail Page Data
+    status?: Localized;
     descriptions: Localized; // Markdown supported
     images: string[];
     video?: string;

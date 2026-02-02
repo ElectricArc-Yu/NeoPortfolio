@@ -16,40 +16,16 @@ const gddTypeIcons: Record<GDDType, React.ReactNode> = {
     GDD: <FileCode size={18} />
 };
 
-// Labels for GDD types (using Localized format internally or just mapping)
-const gddTypeLabels: Record<GDDType, { CN: string, EN: string, JA?: string }> = {
-    Test: { CN: '策划测试题', EN: 'Design Tests', JA: '企画テスト' },
-    Analysis: { CN: '分析研究', EN: 'Analysis & Research', JA: '分析・研究' },
-    Methodology: { CN: '方法论与教程', EN: 'Methodology & Tutorials', JA: 'メソッド・チュートリアル' },
-    GDD: { CN: '完整设计文档', EN: 'Full Game Design Documents', JA: 'ゲーム企画書' }
-};
-
-// Descriptions for each category
-const gddTypeDescriptions: Record<GDDType, { CN: string, EN: string, JA?: string }> = {
-    Test: {
-        CN: '求职过程中完成的策划岗位测试题，展示系统设计与问题解决能力。',
-        EN: 'Design tests completed during job applications, demonstrating system design and problem-solving skills.',
-        JA: '採用選考中に作成された企画職用テスト。システム設計と問題解決能力を示しています。'
-    },
-    Analysis: {
-        CN: '对已发布游戏内容的深度分析，探索设计理念与系统架构。',
-        EN: 'In-depth analysis of published game content, exploring design philosophy and system architecture.',
-        JA: 'リリース済みゲームタイトルの詳細な分析。デザイン哲学とシステム構成を掘り下げます。'
-    },
-    Methodology: {
-        CN: '设计方法论与职业发展教程，帮助提升专业能力。',
-        EN: 'Design methodologies and professional development tutorials to enhance professional skills.',
-        JA: 'デザイン手法とキャリア開発のチュートリアル。専門能力の向上を目的としています。'
-    },
-    GDD: {
-        CN: '完整的游戏设计文档，涵盖系统设计与关卡规划。',
-        EN: 'Complete game design documents covering system design and level planning.',
-        JA: 'システム設計からレベルプランニングまで網羅した完全なゲーム企画書。'
-    }
+// Map GDD types to translation keys
+const gddTypeTranslationKeys: Record<GDDType, string> = {
+    Test: 'Design Tests',
+    Analysis: 'Analysis & Research',
+    Methodology: 'Methodology & Tutorials',
+    GDD: 'Full Game Design Documents'
 };
 
 const Documents: React.FC = () => {
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
     const [selectedDoc, setSelectedDoc] = useState<{ url: string; title: string } | null>(null);
     const [expandedAbstracts, setExpandedAbstracts] = useState<Set<string>>(new Set());
     const [expandedCategories, setExpandedCategories] = useState<Set<GDDType>>(new Set());
@@ -128,7 +104,7 @@ const Documents: React.FC = () => {
                 <div className={styles.paperTopRow}>
                     <div className={styles.paperInfoBadges}>
                         {doc.paperType && (
-                            <span className={styles.paperTypeBadge}>{doc.paperType}</span>
+                            <span className={styles.paperTypeBadge}>{t(doc.paperType)}</span>
                         )}
                         {doc.journal && (
                             <span className={styles.journalBadge}>{doc.journal}</span>
@@ -149,7 +125,7 @@ const Documents: React.FC = () => {
                                     e.stopPropagation();
                                 }}
                             >
-                                {language === 'CN' ? '预印本' : (language === 'JA' ? 'プレプリント' : 'Preprint')}
+                                {t('Preprint')}
                             </a>
                         )}
                         {doc.externalUrl !== undefined && (
@@ -163,7 +139,7 @@ const Documents: React.FC = () => {
                                     e.stopPropagation();
                                 }}
                             >
-                                {language === 'CN' ? '发布页' : (language === 'JA' ? '掲載ページ' : 'Published')}
+                                {t('Published')}
                             </a>
                         )}
                     </div>
@@ -184,7 +160,7 @@ const Documents: React.FC = () => {
                 <div className={styles.description}>
                     <span className={styles.abstractText}>
                         <span className={styles.abstractLabel}>
-                            {language === 'CN' ? '摘要: ' : (language === 'JA' ? '要約: ' : 'Abstract: ')}
+                            {t('Abstract')}:{' '}
                         </span>
                         {displayDescription}
                     </span>
@@ -194,9 +170,9 @@ const Documents: React.FC = () => {
                             onClick={(e) => toggleAbstract(doc.id, e)}
                         >
                             {isExpanded ? (
-                                <>{language === 'CN' ? '收起' : (language === 'JA' ? '閉じる' : 'Collapse')} <ChevronUp size={14} /></>
+                                <>{t('Collapse')} <ChevronUp size={14} /></>
                             ) : (
-                                <>{language === 'CN' ? '展开' : (language === 'JA' ? '展開' : 'Expand')} <ChevronDown size={14} /></>
+                                <>{t('Expand')} <ChevronDown size={14} /></>
                             )}
                         </button>
                     )}
@@ -245,7 +221,7 @@ const Documents: React.FC = () => {
                         <>
                             <span className={styles.separator}>|</span>
                             <span className={`${styles.metaItem} ${styles.targetPosition}`}>
-                                {language === 'CN' ? '目标岗位: ' : (language === 'JA' ? '志望職種: ' : 'Target: ')}{targetPosition}
+                                {t('Target')}: {targetPosition}
                             </span>
                         </>
                     )}
@@ -254,7 +230,7 @@ const Documents: React.FC = () => {
                 <div className={styles.description}>
                     <span className={styles.abstractText}>
                         <span className={styles.abstractLabel}>
-                            {language === 'CN' ? '摘要: ' : (language === 'JA' ? '要約: ' : 'Abstract: ')}
+                            {t('Abstract')}:{' '}
                         </span>
                         {displayDescription}
                     </span>
@@ -264,9 +240,9 @@ const Documents: React.FC = () => {
                             onClick={(e) => toggleAbstract(doc.id, e)}
                         >
                             {isExpanded ? (
-                                <>{language === 'CN' ? '收起' : (language === 'JA' ? '閉じる' : 'Collapse')} <ChevronUp size={14} /></>
+                                <>{t('Collapse')} <ChevronUp size={14} /></>
                             ) : (
-                                <>{language === 'CN' ? '展开' : (language === 'JA' ? '展開' : 'Expand')} <ChevronDown size={14} /></>
+                                <>{t('Expand')} <ChevronDown size={14} /></>
                             )}
                         </button>
                     )}
@@ -291,7 +267,7 @@ const Documents: React.FC = () => {
                 <section className={`${styles.section} ${styles.paperSection}`}>
                     <h2 className={styles.sectionTitle}>
                         <BookOpen size={20} />
-                        {language === 'CN' ? '学术论文' : (language === 'JA' ? '学術論文' : 'Academic Papers')}
+                        {t('Academic Papers')}
                     </h2>
                     <div className={styles.grid}>
                         {papers.map(renderPaperCard)}
@@ -304,7 +280,7 @@ const Documents: React.FC = () => {
                 <section className={`${styles.section} ${styles.paperSection} ${styles.lectureSection}`}>
                     <h2 className={styles.sectionTitle}>
                         <Mic size={20} />
-                        {language === 'CN' ? '演讲与著作' : (language === 'JA' ? '講演と著書' : 'Lectures & Writing')}
+                        {t('Lectures & Writing')}
                     </h2>
                     <div className={styles.grid}>
                         {lectures.map(renderPaperCard)}
@@ -316,7 +292,7 @@ const Documents: React.FC = () => {
             <section className={`${styles.section} ${styles.gddSection}`}>
                 <h2 className={styles.sectionTitle}>
                     <FileText size={20} />
-                    {language === 'CN' ? '过往文书案例' : (language === 'JA' ? '過去の書類作成事例' : 'Past Paper Work Examples')}
+                    {t('Past Paper Work Examples')}
                 </h2>
 
                 {gddTypeOrder.map(type => {
@@ -339,10 +315,25 @@ const Documents: React.FC = () => {
                                 </div>
                                 <div className={styles.gddTypeInfo}>
                                     <h3 className={styles.gddTypeTitle}>
-                                        {getLocalizedValue(gddTypeLabels[type], language)}
+                                        {t(gddTypeTranslationKeys[type])}
                                     </h3>
                                     <p className={styles.gddTypeDesc}>
-                                        {getLocalizedValue(gddTypeDescriptions[type], language)}
+                                        {language === 'EN' ? (
+                                            type === 'Test' ? 'Design tests completed during job applications, demonstrating system design and problem-solving skills.' :
+                                                type === 'Analysis' ? 'In-depth analysis of published game content, exploring design philosophy and system architecture.' :
+                                                    type === 'Methodology' ? 'Design methodologies and professional development tutorials to enhance professional skills.' :
+                                                        'Complete game design documents covering system design and level planning.'
+                                        ) : (language === 'CN' ? (
+                                            type === 'Test' ? '求职过程中完成的策划岗位测试题，展示系统设计与问题解决能力。' :
+                                                type === 'Analysis' ? '对已发布游戏内容的深度分析，探索设计理念与系统架构。' :
+                                                    type === 'Methodology' ? '设计方法论与职业发展教程，帮助提升专业能力。' :
+                                                        '完整的游戏设计文档，涵盖系统设计与关卡规划。'
+                                        ) : (
+                                            type === 'Test' ? '採用選考中に作成された企画職用テスト。システム設計と問題解決能力を示しています。' :
+                                                type === 'Analysis' ? 'リリース済みゲームタイトルの詳細な分析。デザイン哲学とシステム構成を掘り下げます。' :
+                                                    type === 'Methodology' ? 'デザイン手法とキャリア開発のチュートリアル。専門能力の向上を目的としています。' :
+                                                        'システム設計からレベルプランニングまで網羅した完全なゲーム企画書。'
+                                        ))}
                                     </p>
                                 </div>
                                 <span className={styles.gddTypeCount}>{docs.length}</span>

@@ -1,4 +1,4 @@
-import type { Translations } from './types';
+import { Translations } from './types';
 
 export const translations: Translations = {
     EN: {
@@ -12,7 +12,6 @@ export const translations: Translations = {
         'Type': 'Type',
         'Sales': 'Sales / Hit',
         'Work Hours': 'Work Hours',
-        'Status': 'Status',
         'View Details': 'View Details',
         'Experience': 'Experience',
         'Education': 'Education',
@@ -143,7 +142,6 @@ export const translations: Translations = {
         'Type': '项目类型',
         'Sales': '销量 / 热度',
         'Work Hours': '工作时长',
-        'Status': '项目状态',
         'View Details': '查看详情',
         'Experience': '工作经历',
         'Education': '教育背景',
@@ -274,7 +272,6 @@ export const translations: Translations = {
         'Type': 'ゲームタイプ',
         'Sales': '売上 / ヒット',
         'Work Hours': '制作時間',
-        'Status': 'ステータス',
         'View Details': '詳細を見る',
         'Experience': '職歴',
         'Education': '学歴',

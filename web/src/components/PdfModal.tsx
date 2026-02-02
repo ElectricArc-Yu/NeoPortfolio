@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect } from 'react';
-import { X } from 'lucide-react';
+import React from 'react';
+import BaseModal from './BaseModal';
 import styles from './PdfModal.module.css';
 import { getAssetPath } from '../utils/assetPath';
 
@@ -12,48 +12,17 @@ interface PdfModalProps {
 const PdfModal: React.FC<PdfModalProps> = ({ url, title, onClose }) => {
     const resolvedUrl = getAssetPath(url);
 
-    // Handle keyboard events
-    const handleKeyDown = useCallback((e: KeyboardEvent) => {
-        if (e.key === 'Escape') onClose();
-    }, [onClose]);
-
-    useEffect(() => {
-        globalThis.addEventListener('keydown', handleKeyDown);
-        return () => globalThis.removeEventListener('keydown', handleKeyDown);
-    }, [handleKeyDown]);
-
-    // Handle overlay keyboard interaction
-    const handleOverlayKeyDown = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            onClose();
-        }
-    };
-
     return (
-        <div
-            className={styles.overlay}
-            onClick={onClose}
-            onKeyDown={handleOverlayKeyDown}
-            role="dialog"
-            aria-modal="true"
-            aria-label={title}
-            tabIndex={0}
+        <BaseModal 
+            title={title} 
+            onClose={onClose}
+            className={styles.modal}
+            contentClassName={styles.content}
         >
-            <div className={styles.modal} onClick={e => e.stopPropagation()} role="document">
-                <div className={styles.header}>
-                    <h3 className={styles.title}>{title}</h3>
-                    <button className={styles.closeButton} onClick={onClose} aria-label="Close modal">
-                        <X size={24} />
-                    </button>
-                </div>
-                <div className={styles.content}>
-                    <iframe src={resolvedUrl} className={styles.iframe} title={title}>
-                        <p>Your browser does not support iframes. <a href={resolvedUrl}>Download PDF</a></p>
-                    </iframe>
-                </div>
-            </div>
-        </div>
+            <iframe src={resolvedUrl} className={styles.iframe} title={title}>
+                <p>Your browser does not support iframes. <a href={resolvedUrl}>Download PDF</a></p>
+            </iframe>
+        </BaseModal>
     );
 };
 

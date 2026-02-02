@@ -26,7 +26,6 @@
 
 .modal {
     background: #1e1e1e;
-    /* Match VS Code Dark Plus background */
     width: 100%;
     max-width: 1200px;
     height: 90vh;
@@ -92,6 +91,32 @@
     background: #1e1e1e;
 }
 
+.floatingClose {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3100;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+}
+
+.floatingClose:hover {
+    background: var(--accent-color);
+    color: black;
+    transform: rotate(90deg);
+    border-color: var(--accent-color);
+}
+
 @media (max-width: 768px) {
     .overlay {
         padding: 0.5rem;
@@ -99,5 +124,12 @@
 
     .modal {
         height: 95vh;
+    }
+
+    .floatingClose {
+        top: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
     }
 }

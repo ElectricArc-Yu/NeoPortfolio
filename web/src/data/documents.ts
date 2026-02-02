@@ -48,6 +48,7 @@ export const publicDocs: PublicDoc[] = [
         preprintUrl: '',
         externalUrl: ''
     },
+    /** example
     {
         id: 'game-level-design-book',
         titles: {
@@ -66,7 +67,7 @@ export const publicDocs: PublicDoc[] = [
         lengths: { CN: "Book", EN: "Book", JA: "書籍" },
         isInternal: false
     },
-
+    */
     // --- GDDs: Test Papers (策划测试题) ---
     {
         id: 'ff14-frontline',

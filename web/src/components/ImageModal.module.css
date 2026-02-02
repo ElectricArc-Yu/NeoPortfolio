@@ -1,25 +1,27 @@
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
     background-color: rgba(0, 0, 0, 0.9);
-    z-index: 2000;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    /* Start from top to allow scrolling */
-    overflow-y: auto;
-    /* Enable scrolling for long images */
-    backdrop-filter: blur(8px);
     cursor: zoom-out;
+    align-items: flex-start; /* Start from top to allow scrolling */
+    overflow-y: auto; /* Enable scrolling for long images */
+}
+
+.modal {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    max-width: none;
+    height: auto;
+    width: auto;
+    overflow: visible;
 }
 
 .content {
-    max-width: 90%;
+    max-width: 90vw;
     margin: 2rem 0;
     cursor: default;
+    background: transparent;
+    display: flex;
+    justify-content: center;
 }
 
 .fullImage {
@@ -30,36 +32,9 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.closeButton {
-    position: fixed;
-    top: 2rem;
-    right: 2rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: white;
-    cursor: pointer;
-    z-index: 2010;
-    padding: 0.5rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.closeButton:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
-}
-
 @media (max-width: 768px) {
-    .closeButton {
-        top: 1rem;
-        right: 1rem;
-    }
-
     .content {
-        max-width: 95%;
+        max-width: 95vw;
         margin: 1rem 0;
     }
 }

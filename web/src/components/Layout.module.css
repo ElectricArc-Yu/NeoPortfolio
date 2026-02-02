@@ -7,6 +7,7 @@
 .main {
     flex: 1;
     padding: var(--spacing-lg);
+    padding-top: calc(var(--spacing-lg) + 80px);
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;

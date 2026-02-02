@@ -30,7 +30,7 @@ const BaseModal: React.FC<BaseModalProps> = ({
     contentClassName,
     lockBodyScroll = true,
 }) => {
-    // Handle keyboard events
+    // Handle keyboard events (Global)
     const handleKeyDown = useCallback((e: KeyboardEvent) => {
         if (e.key === 'Escape') onClose();
     }, [onClose]);
@@ -50,24 +50,20 @@ const BaseModal: React.FC<BaseModalProps> = ({
         };
     }, [handleKeyDown, lockBodyScroll]);
 
-    // Handle overlay keyboard interaction
-    const handleOverlayKeyDown = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            onClose();
-        }
-    };
-
     return (
-        <div
-            className={classNames(styles.overlay, overlayClassName)}
-            onClick={onClose}
-            onKeyDown={handleOverlayKeyDown}
-            role="dialog"
-            aria-modal="true"
-            aria-label={title}
-            tabIndex={0}
+        <div 
+            className={classNames(styles.container, overlayClassName)}
+            role="presentation" // Container is purely for layout
         >
+            {/* Backdrop as a button for semantic correctness */}
+            <button
+                type="button"
+                className={styles.backdrop}
+                onClick={onClose}
+                aria-label="Close modal overlay"
+                tabIndex={-1} // Remove from tab order, users should use ESC or the close button
+            />
+
             {floatingCloseButton && (
                 <button 
                     className={styles.floatingClose} 
@@ -81,8 +77,9 @@ const BaseModal: React.FC<BaseModalProps> = ({
 
             <div 
                 className={classNames(styles.modal, className)} 
-                onClick={e => e.stopPropagation()} 
-                role="document"
+                role="dialog"
+                aria-modal="true"
+                aria-label={title}
             >
                 {!noHeader && (
                     <div className={styles.header}>

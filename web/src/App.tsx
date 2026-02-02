@@ -1,5 +1,5 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { LanguageProvider } from './context/LanguageContext';
 import { LoadingProvider } from './context/LoadingContext';
@@ -18,19 +18,57 @@ import Community from './pages/Community';
 import Documents from './pages/Documents';
 import NotFound from './pages/NotFound';
 
+// Hide the instant HTML loader when React takes over
+const hideInstantLoader = () => {
+  const instantLoader = document.getElementById('instant-loader');
+  if (instantLoader) {
+    instantLoader.classList.add('fade-out');
+    setTimeout(() => {
+      instantLoader.remove();
+      // Also remove the inline styles
+      const styles = document.getElementById('instant-loader-styles');
+      if (styles) styles.remove();
+    }, 300);
+  }
+};
+
 function App() {
   const [isSiteReady, setIsSiteReady] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
+
+  // Hide instant loader when GlobalLoader mounts
+  useEffect(() => {
+    // Small delay to ensure React has rendered the GlobalLoader
+    const timer = setTimeout(() => {
+      hideInstantLoader();
+    }, 50);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleLoaderDone = () => {
+    setShowLoader(false);
+    // Small delay to allow exit animation
+    setTimeout(() => {
+      setIsSiteReady(true);
+    }, 100);
+  };
 
   return (
     <LanguageProvider>
       <LoadingProvider>
+        {/* GlobalLoader - takes over from instant loader */}
         <AnimatePresence mode="wait">
-          {!isSiteReady && (
-            <GlobalLoader key="preloader" onDone={() => setIsSiteReady(true)} />
+          {showLoader && (
+            <GlobalLoader key="preloader" onDone={handleLoaderDone} />
           )}
         </AnimatePresence>
 
-        {isSiteReady && (
+        {/* Main app - render hidden for preloading, show when ready */}
+        <div style={{
+          visibility: isSiteReady ? 'visible' : 'hidden',
+          opacity: isSiteReady ? 1 : 0,
+          transition: 'opacity 0.3s ease-out'
+        }}>
           <HashRouter>
             <ScrollToTop />
             <Routes>
@@ -47,7 +85,7 @@ function App() {
               </Route>
             </Routes>
           </HashRouter>
-        )}
+        </div>
       </LoadingProvider>
     </LanguageProvider>
   );

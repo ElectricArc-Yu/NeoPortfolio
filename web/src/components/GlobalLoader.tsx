@@ -20,11 +20,13 @@ interface Particle {
     distance: number;
 }
 
+type LoaderPhase = 'loading' | 'welcome' | 'dissolving';
+
 const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
     const [progress, setProgress] = useState(0);
     const [status, setStatus] = useState('Initializing...');
     const [logs, setLogs] = useState<string[]>([]);
-    const [isDissolving, setIsDissolving] = useState(false);
+    const [phase, setPhase] = useState<LoaderPhase>('loading');
     const [scanLineY, setScanLineY] = useState(-10);
     const [particles, setParticles] = useState<Particle[]>([]);
     const [showFlash, setShowFlash] = useState(false);
@@ -56,16 +58,16 @@ const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
     // Trigger dissolve animation
     const triggerDissolve = useCallback(() => {
         generateParticles();
-        setIsDissolving(true);
+        setPhase('dissolving');
 
         // Scan line animation
         const scanDuration = 800;
         const startTime = Date.now();
         const animateScan = () => {
             const elapsed = Date.now() - startTime;
-            const progress = elapsed / scanDuration;
-            if (progress < 1) {
-                setScanLineY(progress * 110 - 5);
+            const scanProgress = elapsed / scanDuration;
+            if (scanProgress < 1) {
+                setScanLineY(scanProgress * 110 - 5);
                 requestAnimationFrame(animateScan);
             }
         };
@@ -78,6 +80,16 @@ const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
         // Complete and call onDone
         setTimeout(onDone, 1200);
     }, [generateParticles, onDone]);
+
+    // Show welcome message phase
+    const showWelcome = useCallback(() => {
+        setPhase('welcome');
+
+        // After welcome animation, trigger dissolve
+        setTimeout(() => {
+            triggerDissolve();
+        }, 2000); // Show welcome for 2 seconds
+    }, [triggerDissolve]);
 
     const allImages = useMemo(() => {
         const urls = new Set<string>();
@@ -109,19 +121,48 @@ const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
     }, []);
 
     useEffect(() => {
+        const startTime = Date.now();
+        const MIN_LOADING_TIME = 2000; // Minimum time to show loading (ms)
+        const MAX_LOADING_TIME = 8000; // Maximum time before force complete (ms)
+
         let loadedCount = 0;
         const total = allImages.length;
+        let isComplete = false;
+
+        const completeLoading = () => {
+            if (isComplete) return;
+            isComplete = true;
+
+            const elapsed = Date.now() - startTime;
+            const remainingTime = Math.max(0, MIN_LOADING_TIME - elapsed);
+
+            // Wait for minimum time before showing welcome
+            setTimeout(() => {
+                setProgress(100);
+                setStatus('Ready');
+                addLog('System ready');
+                // Show welcome message
+                setTimeout(() => showWelcome(), 300);
+            }, remainingTime);
+        };
+
+        // Safety timeout - force complete after max time
+        const safetyTimer = setTimeout(() => {
+            if (!isComplete) {
+                addLog('Loading timeout - completing...');
+                completeLoading();
+            }
+        }, MAX_LOADING_TIME);
 
         if (total === 0) {
-            setProgress(100);
-            const timer = setTimeout(() => triggerDissolve(), 800);
-            return () => clearTimeout(timer);
+            completeLoading();
+            return () => clearTimeout(safetyTimer);
         }
 
-        addLog(`System identifying ${total} assets...`);
+        addLog(`Identifying ${total} assets...`);
 
         const preload = async () => {
-            await new Promise(r => setTimeout(r, 600));
+            // Start immediately - no artificial delay
             setStatus('Fetching Assets...');
 
             const promises = allImages.map(url => {
@@ -135,7 +176,7 @@ const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
                         setProgress(p);
                         const fileName = url.split('/').pop() || 'asset';
                         setStatus(`Loading: ${fileName}`);
-                        addLog(`Success: ${fileName}`);
+                        addLog(`✓ ${fileName}`);
                         resolve(null);
                     };
 
@@ -144,31 +185,32 @@ const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
                         const p = Math.floor((loadedCount / total) * 100);
                         setProgress(p);
                         const fileName = url.split('/').pop() || 'asset';
-                        addLog(`Skipped: ${fileName}`);
+                        addLog(`○ ${fileName}`);
                         resolve(null);
                     };
 
                     img.onload = handleLoad;
                     img.onerror = handleError;
+
+                    // Individual image timeout
+                    setTimeout(() => {
+                        if (loadedCount < total) {
+                            handleError();
+                        }
+                    }, 5000);
                 });
             });
 
             await Promise.all(promises);
 
-            setStatus('Syncing Data...');
+            setStatus('Syncing...');
             addLog('Pre-render stabilization...');
-            await new Promise(r => setTimeout(r, 600));
 
-            setProgress(100);
-            setStatus('Complete');
-            addLog(siteConfig.loader.welcomeMessage);
-
-            // Trigger dissolve effect after loading complete
-            setTimeout(() => triggerDissolve(), 800);
+            completeLoading();
         };
 
         preload();
-    }, [allImages, triggerDissolve]);
+    }, [allImages, showWelcome]);
 
     return (
         <AnimatePresence>
@@ -186,54 +228,101 @@ const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
                 <div className={`${styles.glowOrb} ${styles.glowOrb2}`} />
                 <div className={`${styles.glowOrb} ${styles.glowOrb3}`} />
 
-                {/* Main content */}
-                <motion.div
-                    className={styles.content}
-                    animate={isDissolving ? {
-                        opacity: 0,
-                        scale: 1.1,
-                        filter: 'blur(10px)'
-                    } : {}}
-                    transition={{ duration: 0.8, ease: 'easeOut' }}
-                >
-                    <motion.h1
-                        className={`${styles.title} ${progress === 100 ? styles.readyGlow : ''}`}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                    >
-                        {siteConfig.loader.displayName}
-                    </motion.h1>
-
-                    <div className={styles.progressContainer}>
+                {/* Main loading content - hide when welcome shows */}
+                <AnimatePresence>
+                    {phase === 'loading' && (
                         <motion.div
-                            className={styles.progressBar}
-                            initial={{ width: 0 }}
-                            animate={{ width: `${progress}%` }}
-                        />
-                    </div>
-
-                    <div className={styles.statusRow}>
-                        <span>{status}</span>
-                        <span className={styles.percentage}>{progress}%</span>
-                    </div>
-
-                    <div className={styles.logArea}>
-                        {logs.map((log, i) => (
-                            <motion.div
-                                key={`${log}-${i}`}
-                                className={styles.logLine}
-                                initial={{ opacity: 0, x: -5 }}
-                                animate={{ opacity: 1, x: 0 }}
+                            className={styles.content}
+                            initial={{ opacity: 1 }}
+                            exit={{ opacity: 0, y: -30 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <motion.h1
+                                className={`${styles.title} ${progress === 100 ? styles.readyGlow : ''}`}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 1, delay: 0.2 }}
                             >
-                                {`> ${log}`}
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
+                                {siteConfig.loader.displayName}
+                            </motion.h1>
+
+                            <div className={styles.progressContainer}>
+                                <motion.div
+                                    className={styles.progressBar}
+                                    initial={{ width: 0 }}
+                                    animate={{ width: `${progress}%` }}
+                                />
+                            </div>
+
+                            <div className={styles.statusRow}>
+                                <span>{status}</span>
+                                <span className={styles.percentage}>{progress}%</span>
+                            </div>
+
+                            <div className={styles.logArea}>
+                                {logs.map((log, i) => (
+                                    <motion.div
+                                        key={`${log}-${i}`}
+                                        className={styles.logLine}
+                                        initial={{ opacity: 0, x: -5 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                    >
+                                        {`> ${log}`}
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                {/* Welcome message phase */}
+                <AnimatePresence>
+                    {(phase === 'welcome' || phase === 'dissolving') && (
+                        <motion.div
+                            className={styles.welcomeContainer}
+                            initial={{ opacity: 0 }}
+                            animate={phase === 'dissolving' ? {
+                                opacity: 0,
+                                scale: 1.2,
+                                filter: 'blur(20px)'
+                            } : { opacity: 1 }}
+                            transition={{ duration: phase === 'dissolving' ? 0.8 : 0.5 }}
+                        >
+                            <motion.h1
+                                className={styles.welcomeText}
+                                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                transition={{
+                                    duration: 0.8,
+                                    ease: [0.16, 1, 0.3, 1]
+                                }}
+                            >
+                                {siteConfig.loader.welcomeMessage}
+                            </motion.h1>
+
+                            {/* Decorative lines */}
+                            <motion.div
+                                className={styles.welcomeLine}
+                                initial={{ scaleX: 0 }}
+                                animate={{ scaleX: 1 }}
+                                transition={{ duration: 0.6, delay: 0.3 }}
+                            />
+
+                            {/* Subtitle hint */}
+                            <motion.p
+                                className={styles.welcomeSubtext}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.5, delay: 0.6 }}
+                            >
+                                Press any key or wait...
+                            </motion.p>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 {/* Dissolve particles */}
-                {isDissolving && (
+                {phase === 'dissolving' && (
                     <div className={styles.particlesContainer}>
                         {particles.map(p => (
                             <motion.div
@@ -263,7 +352,7 @@ const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
                 )}
 
                 {/* Scan line effect */}
-                {isDissolving && scanLineY >= 0 && scanLineY <= 100 && (
+                {phase === 'dissolving' && scanLineY >= 0 && scanLineY <= 100 && (
                     <motion.div
                         className={styles.scanLine}
                         style={{ top: `${scanLineY}%` }}

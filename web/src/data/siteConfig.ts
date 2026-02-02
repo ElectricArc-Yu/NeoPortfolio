@@ -23,6 +23,7 @@ export interface SiteConfig {
         [key: string]: {
             titles: Record<string, string>;
             subtitles: Record<string, string>;
+            favicon?: string;
         };
     };
     brand: {
@@ -66,6 +67,15 @@ export const siteConfig: SiteConfig = {
         email: 'yu.chr@prelude.games'
     },
     pages: {
+        services: {
+            titles: { CN: '服务', EN: 'Services', JA: 'サービス' },
+            subtitles: {
+                CN: '提供专业的游戏设计与咨询服务',
+                EN: 'Providing professional game design & consultancy services',
+                JA: 'プロフェッショナルなゲームデザインとコンサルティングサービスを提供'
+            },
+            favicon: '/NeoPortfolio/services.ico'
+        },
         home: {
             titles: { CN: '作品集', EN: 'Portfolio', JA: 'ポートフォリオ' },
             subtitles: {
@@ -95,11 +105,11 @@ export const siteConfig: SiteConfig = {
             }
         },
         documents: {
-            titles: { CN: '文档', EN: 'Documents', JA: 'ドキュメント' },
+            titles: { CN: '写作与演讲', EN: 'Writing & Lectures', JA: '執筆と講演' },
             subtitles: {
-                CN: '包含可公开的设计文档、分析文章及学术论文。',
-                EN: 'Collection of publicable Game Design Documents, Analysis Articles & Academic Papers.',
-                JA: '公開可能なゲームデザインドキュメント、分析記事、学術論文のコレクション。'
+                CN: '包含可公开的设计文档、分析文章、学术论文及演讲记录。',
+                EN: 'Collection of publicable Game Design Documents, Analysis Articles, Academic Papers & Lectures.',
+                JA: '公開可能なゲームデザインドキュメント、分析記事、学術論文、講演記録のコレクション。'
             }
         },
         community: {

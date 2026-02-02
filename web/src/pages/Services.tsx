@@ -6,7 +6,7 @@ import { servicesData } from '../data/services';
 import { getLocalizedValue } from '../utils/i18n';
 
 const Services: React.FC = () => {
-    const { language, t } = useLanguage();
+    const { language } = useLanguage();
 
     // Convert markdown-style links in CTA text to HTML
     const formatCtaText = (text: string): string => {
@@ -42,7 +42,7 @@ const Services: React.FC = () => {
                         }}
                     />
                     <a href="/contact" className={styles.ctaButton}>
-                        {t('Contact for Services')}
+                        {language === 'EN' ? 'Contact for Services' : (language === 'CN' ? '咨询服务' : 'サービスのお問い合わせ')}
                     </a>
                 </div>
             </section>

@@ -40,6 +40,8 @@ const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
         const particleCount = 150;
         const newParticles: Particle[] = [];
 
+        // NOSONAR: Math.random() is used here purely for visual animation effects (particle positions/timing).
+        // This is not security-sensitive - no cryptographic or authentication purposes.
         for (let i = 0; i < particleCount; i++) {
             newParticles.push({
                 id: i,
@@ -124,6 +126,7 @@ const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
         const startTime = Date.now();
         const MIN_LOADING_TIME = 2000; // Minimum time to show loading (ms)
         const MAX_LOADING_TIME = 8000; // Maximum time before force complete (ms)
+        const IMAGE_TIMEOUT = 5000; // Individual image timeout
 
         let loadedCount = 0;
         const total = allImages.length;
@@ -160,56 +163,39 @@ const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
         }
 
         addLog(`Identifying ${total} assets...`);
+        setStatus('Fetching Assets...');
 
-        const preload = async () => {
-            // Start immediately - no artificial delay
-            setStatus('Fetching Assets...');
+        // Load a single image and update progress
+        const loadImage = (url: string): Promise<void> => {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.src = url;
+                const fileName = url.split('/').pop() || 'asset';
 
-            const promises = allImages.map(url => {
-                return new Promise((resolve) => {
-                    const img = new Image();
-                    img.src = url;
+                const onComplete = (success: boolean) => {
+                    loadedCount++;
+                    setProgress(Math.floor((loadedCount / total) * 100));
+                    setStatus(`Loading: ${fileName}`);
+                    addLog(success ? `✓ ${fileName}` : `○ ${fileName}`);
+                    resolve();
+                };
 
-                    const handleLoad = () => {
-                        loadedCount++;
-                        const p = Math.floor((loadedCount / total) * 100);
-                        setProgress(p);
-                        const fileName = url.split('/').pop() || 'asset';
-                        setStatus(`Loading: ${fileName}`);
-                        addLog(`✓ ${fileName}`);
-                        resolve(null);
-                    };
+                img.onload = () => onComplete(true);
+                img.onerror = () => onComplete(false);
 
-                    const handleError = () => {
-                        loadedCount++;
-                        const p = Math.floor((loadedCount / total) * 100);
-                        setProgress(p);
-                        const fileName = url.split('/').pop() || 'asset';
-                        addLog(`○ ${fileName}`);
-                        resolve(null);
-                    };
-
-                    img.onload = handleLoad;
-                    img.onerror = handleError;
-
-                    // Individual image timeout
-                    setTimeout(() => {
-                        if (loadedCount < total) {
-                            handleError();
-                        }
-                    }, 5000);
-                });
+                // Timeout for slow images
+                setTimeout(() => onComplete(false), IMAGE_TIMEOUT);
             });
-
-            await Promise.all(promises);
-
-            setStatus('Syncing...');
-            addLog('Pre-render stabilization...');
-
-            completeLoading();
         };
 
-        preload();
+        // Preload all images
+        Promise.all(allImages.map(loadImage)).then(() => {
+            setStatus('Syncing...');
+            addLog('Pre-render stabilization...');
+            completeLoading();
+        });
+
+        return () => clearTimeout(safetyTimer);
     }, [allImages, showWelcome]);
 
     return (

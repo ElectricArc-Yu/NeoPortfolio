@@ -28,6 +28,7 @@ export interface SiteConfig {
         [key: string]: {
             titles: Record<string, string>;
             subtitles: Record<string, string>;
+            gddTypeDescriptions?: Record<string, Record<string, string>>;
             favicon?: string;
         };
     };
@@ -119,7 +120,8 @@ export const siteConfig: SiteConfig = {
                 CN: '包含可公开的设计文档、分析文章、学术论文及演讲记录。',
                 EN: 'Collection of publicable Game Design Documents, Analysis Articles, Academic Papers & Lectures.',
                 JA: '公開可能なゲームデザインドキュメント、分析記事、学術論文、講演記録のコレクション。'
-            }
+            },
+            gddTypeDescriptions: {}
         },
         community: {
             titles: { CN: '新创造者工会', EN: 'The New Creator Guild', JA: '新人クリエイター・ギルド' },

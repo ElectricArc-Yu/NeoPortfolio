@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react';
+import React, { Component, type ReactNode } from 'react';
 import { AlertCircle, RefreshCw } from 'lucide-react';
 import styles from './ResumeErrorBoundary.module.css';
 
@@ -34,15 +34,16 @@ export default class ResumeErrorBoundary extends Component<Props, State> {
     componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
         console.error('Resume Error Boundary caught an error:', error);
         console.error('Error Info:', errorInfo);
-        
+
         this.setState({
             error,
             errorInfo
         });
 
         // Log to external service if available
-        if (window.gtag) {
-            window.gtag('event', 'exception', {
+        const globalWindow = globalThis as typeof globalThis & { gtag?: (...args: unknown[]) => void };
+        if (globalWindow.gtag) {
+            globalWindow.gtag('event', 'exception', {
                 description: error.toString(),
                 fatal: false
             });
@@ -80,7 +81,7 @@ export default class ResumeErrorBoundary extends Component<Props, State> {
                                 </pre>
                             </details>
                         )}
-                        <button 
+                        <button
                             className={styles.retryButton}
                             onClick={this.handleRetry}
                         >

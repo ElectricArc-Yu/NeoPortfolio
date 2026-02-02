@@ -35,6 +35,12 @@
 }
 
 .modal {
+    /* Reset dialog defaults */
+    padding: 0;
+    border: none;
+    max-width: none;
+    max-height: none;
+    /* Custom styling */
     position: relative;
     background: #1e1e1e;
     width: 100%;
@@ -47,7 +53,8 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     animation: slideUp 0.3s ease;
-    z-index: 2001; /* Ensure modal is above backdrop */
+    z-index: 2001;
+    /* Ensure modal is above backdrop */
 }
 
 @keyframes slideUp {

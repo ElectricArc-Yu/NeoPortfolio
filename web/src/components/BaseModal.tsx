@@ -41,7 +41,7 @@ const BaseModal: React.FC<BaseModalProps> = ({
             document.body.style.overflow = 'hidden';
         }
         globalThis.addEventListener('keydown', handleKeyDown);
-        
+
         return () => {
             if (lockBodyScroll) {
                 document.body.style.overflow = 'unset';
@@ -51,9 +51,8 @@ const BaseModal: React.FC<BaseModalProps> = ({
     }, [handleKeyDown, lockBodyScroll]);
 
     return (
-        <div 
+        <div
             className={classNames(styles.container, overlayClassName)}
-            role="presentation" // Container is purely for layout
         >
             {/* Backdrop as a button for semantic correctness */}
             <button
@@ -65,20 +64,19 @@ const BaseModal: React.FC<BaseModalProps> = ({
             />
 
             {floatingCloseButton && (
-                <button 
-                    className={styles.floatingClose} 
-                    onClick={onClose} 
-                    title="Close" 
+                <button
+                    className={styles.floatingClose}
+                    onClick={onClose}
+                    title="Close"
                     aria-label="Close modal"
                 >
                     <X size={32} />
                 </button>
             )}
 
-            <div 
-                className={classNames(styles.modal, className)} 
-                role="dialog"
-                aria-modal="true"
+            <dialog
+                className={classNames(styles.modal, className)}
+                open
                 aria-label={title}
             >
                 {!noHeader && (
@@ -92,11 +90,11 @@ const BaseModal: React.FC<BaseModalProps> = ({
                         )}
                     </div>
                 )}
-                
+
                 <div className={classNames(styles.content, contentClassName)}>
                     {children}
                 </div>
-            </div>
+            </dialog>
         </div>
     );
 };

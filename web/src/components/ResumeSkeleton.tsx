@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './ResumeSkeleton.module.css';
-import { motion } from 'framer-motion';
 
 const ResumeSkeleton: React.FC = () => {
     return (

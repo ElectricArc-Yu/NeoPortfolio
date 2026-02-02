@@ -211,14 +211,14 @@
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
-/* Colorful light ring effect */
+/* Enhanced colorful light ring effect */
 .applyButton::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
     background: conic-gradient(
         from 0deg,
         #ff6b6b 0deg,
@@ -229,16 +229,23 @@
         #dda0dd 300deg,
         #ff6b6b 360deg
     );
-    border-radius: 100px;
+    border-radius: 104px;
     z-index: -1;
     opacity: 0;
     transition: opacity 0.4s ease, transform 0.4s ease;
     transform: scale(1.02);
+    filter: blur(8px); /* Soft glow effect */
 }
 
 .applyButton:hover::before {
     opacity: 0.8;
     transform: scale(1.05);
+    animation: rainbowRotate 3s linear infinite; /* Rotating rainbow effect */
+}
+
+@keyframes rainbowRotate {
+    0% { transform: scale(1.05) rotate(0deg); }
+    100% { transform: scale(1.05) rotate(360deg); }
 }
 
 .applyButton:hover {

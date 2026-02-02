@@ -4,9 +4,7 @@
     align-items: center;
     padding: 0.8rem 2rem;
     background-color: rgba(15, 16, 20, 0.7);
-    /* Match mesh gradient darkness */
     backdrop-filter: blur(16px);
-    /* Stronger blur */
     -webkit-backdrop-filter: blur(16px);
     position: fixed;
     top: 0;
@@ -14,7 +12,6 @@
     width: 100%;
     z-index: 100;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    /* Softer border */
     transition: all 0.3s ease;
 }
 
@@ -44,43 +41,35 @@
     letter-spacing: 1px;
     color: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    /* Base styles, color is injected via inline style */
 }
 
 @keyframes gradientShift {
-
-    0%,
-    100% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 .links {
     display: flex;
-    gap: clamp(1rem, 2vw, var(--spacing-xl)); /* Dynamic gap based on viewport */
+    gap: clamp(1rem, 2vw, var(--spacing-xl));
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 60vw; /* Limit maximum width to prevent overflow */
-    flex-wrap: nowrap; /* Prevent wrapping */
+    max-width: 60vw;
+    flex-wrap: nowrap;
 }
 
 /* Enhanced Navigation Links with Dynamic Font Sizing */
 .links a {
     color: var(--text-secondary);
     transition: all 0.3s ease;
-    font-size: clamp(0.75rem, 1vw, 0.9rem); /* Dynamic font sizing based on viewport */
+    font-size: clamp(0.75rem, 1vw, 0.9rem);
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.5px; /* Reduced from 1px for better spacing */
+    letter-spacing: 0.5px;
     position: relative;
-    white-space: nowrap; /* Prevent text wrapping */
-    min-width: fit-content; /* Ensure proper sizing */
-    padding: 0.25rem 0; /* Add vertical padding for better touch targets */
+    white-space: nowrap;
+    min-width: fit-content;
+    padding: 0.25rem 0;
 }
 
 .links a::after {
@@ -112,6 +101,7 @@
     display: none;
 }
 
+/* Responsive Design - Tablet and Desktop */
 @media (max-width: 1500px) {
     .navbar {
         padding: 0.8rem 1.5rem;
@@ -125,12 +115,12 @@
     .links {
         position: static;
         transform: none;
-        gap: clamp(0.8rem, 1.8vw, 1.25rem); /* Dynamic gap for medium screens */
+        gap: clamp(0.8rem, 1.8vw, 1.25rem);
         display: flex;
         flex: 0 1 auto;
         justify-content: center;
         margin: 0 1.5rem;
-        max-width: 70vw; /* Increased max-width for better space utilization */
+        max-width: 70vw;
     }
 
     .links a {
@@ -138,16 +128,16 @@
         flex-direction: column;
         align-items: center;
         gap: 4px;
-        padding: 4px 6px; /* Reduced horizontal padding */
-        font-size: clamp(0.65rem, 1.2vw, 0.8rem); /* Smaller font size range */
-        letter-spacing: 0.3px; /* Tighter letter spacing */
+        padding: 4px 6px;
+        font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+        letter-spacing: 0.3px;
     }
 
     .navIcon {
         display: block;
         color: var(--text-secondary);
         transition: color 0.3s;
-        width: 18px; /* Slightly smaller icons */
+        width: 18px;
         height: 18px;
     }
 
@@ -168,24 +158,75 @@
     }
 }
 
+/* Medium screens - optimize spacing */
 @media (max-width: 1200px) {
     .links a {
-        font-size: clamp(0.7rem, 0.9vw, 0.8rem); /* Smaller font for medium screens */
-        letter-spacing: 0.3px; /* Further reduce letter spacing */
+        font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+        letter-spacing: 0.3px;
     }
     
     .links {
-        gap: clamp(0.8rem, 1.5vw, 1.2rem); /* Tighter spacing */
+        gap: clamp(0.8rem, 1.5vw, 1.2rem);
     }
 }
 
+/* Smaller screens - compact layout */
 @media (max-width: 1000px) {
     .links a {
-        font-size: clamp(0.65rem, 0.8vw, 0.75rem); /* Even smaller for smaller screens */
+        font-size: clamp(0.65rem, 0.8vw, 0.75rem);
         letter-spacing: 0.2px;
     }
     
     .links {
-        gap: clamp(0.6rem, 1.2vw, 1rem); /* Minimal spacing */
+        gap: clamp(0.6rem, 1.2vw, 1rem);
+    }
+}
+
+/* Mobile screens - icon only */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.6rem 1rem;
+    }
+    
+    .links {
+        gap: 0.5rem;
+        margin: 0 0.5rem;
+        max-width: 80vw;
+    }
+    
+    .links a {
+        padding: 6px 4px;
+        min-width: 44px; /* Touch target size */
+        height: 44px;
+        justify-content: center;
+    }
+    
+    .navIcon {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Very small screens - minimal spacing */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .links {
+        gap: 0.25rem;
+        margin: 0 0.25rem;
+        max-width: 85vw;
+    }
+    
+    .links a {
+        min-width: 40px;
+        height: 40px;
+        padding: 4px 2px;
+    }
+    
+    .navIcon {
+        width: 18px;
+        height: 18px;
     }
 }

@@ -8,20 +8,34 @@ using UnityEngine;
 
 namespace Logic.Class
 {
+    /// <summary>
+    /// HandList class: core logic for managing a player's hand.
+    /// Handles adding, replacing, sorting, and complex operations like Chi, Pon, and Kan.
+    /// </summary>
     public class HandList
     {
         private readonly string _steamID;
         private int _currentIndex;
 
         /// <summary>
-        ///     0 : The new drawed pai , 1 ~ 13 : The hand pai
+        /// Hand array:
+        /// Index 0: New Draw
+        /// Index 1 ~ 13: Existing hand tiles
         /// </summary>
         private SPai[] _handList;
 
+        /// <summary>
+        /// Indicates whether the tile at the corresponding index is valid (exists).
+        /// </summary>
         private bool[] _isAvailable;
 
         /// <summary>
-        ///     0 : Not in Paired , 1 : In Paired , 2 : Tapped in Paired , 3 : Reverse in Paired , 4 : Tapped and stack in Paired
+        /// Melded/Paired status bits:
+        /// 0: Not melded (Static)
+        /// 1: Melded (Exposed)
+        /// 2: Tapped tile in meld (Identifies source)
+        /// 3: An Kan (Concealed Kong) identifier
+        /// 4: Ka Kan (Added Kong) identifier
         /// </summary>
         private byte[] _isPaired;
 
@@ -120,12 +134,21 @@ namespace Logic.Class
         ///     length of the hand list).
         /// </exception>
         /// <exception cref="MultipleDrawException">Thrown when a tile is already available at the provided index.</exception>
+        /// <summary>
+        /// Core method: Discards a tile.
+        /// Logic: Moves the newly drawn tile (Index 0) to the position of the discarded tile and returns the original tile from that position.
+        /// </summary>
+        /// <param name="index">The index of the tile in the hand to be discarded. If index is 0, it represents a "Tsumogiri" (discarding the drawn tile).</param>
         public SPai ReplaceOnePai(int index)
         {
             if (index < 0 || index >= _handList.Length) throw new ParameterNumberNotCorrectException();
             if (_isAvailable[index]) throw new MultipleDrawException();
+            
+            // 1. Temporarily store the tile to be discarded
             var result = _handList[index];
+            // 2. Fill the vacancy with the newly drawn tile (Index 0)
             _handList[index] = _handList[0];
+            // 3. Mark Index 0 as empty
             DiscardCard(0);
             return result;
         }

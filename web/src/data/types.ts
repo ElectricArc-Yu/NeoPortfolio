@@ -22,7 +22,7 @@ export interface MainProject {
 export interface ProjectLink {
     labels: Localized;
     urls: Localized; // Usually same URL, but can vary by language
-    type: 'repo' | 'demo' | 'doc' | 'video' | 'Release Page' | 'waitlist';
+    type: 'repo' | 'demo' | 'doc' | 'video' | 'Release Page' | 'waitlist' | 'code';
 }
 
 export interface Project {

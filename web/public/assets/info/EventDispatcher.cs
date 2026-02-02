@@ -174,27 +174,42 @@ namespace Services.EventDispatcherService
 
         #region Handler
 
+        /// <summary>
+        /// Core method: Adds a handler to a specified event type and name.
+        /// </summary>
+        /// <param name="eventType">The category of the event (e.g., "UI", "Network").</param>
+        /// <param name="eventName">The specific event name (e.g., "OnScoreChanged").</param>
+        /// <param name="handler">The callback delegate.</param>
         private void AddHandler(string eventType, string eventName, Delegate handler)
         {
+            // 1. If the event category doesn't exist in the dictionary, create a new sub-dictionary.
             if (!_eventTypeDictionary.ContainsKey(eventType))
                 _eventTypeDictionary.Add(eventType, new Dictionary<string, Delegate>());
 
             var eventDictionary = _eventTypeDictionary[eventType];
+            // 2. If the specific event name doesn't exist in the sub-dictionary, initialize the key.
             if (!eventDictionary.ContainsKey(eventName)) eventDictionary.Add(eventName, null);
+            // 3. Use Delegate.Combine to merge the new handler into the multicast delegate.
             eventDictionary[eventName] = Delegate.Combine(eventDictionary[eventName], handler);
         }
 
+        /// <summary>
+        /// Core method: Removes a handler from a specified event type and name.
+        /// </summary>
         private void RemoveHandler(string eventType, string eventName, Delegate handler)
         {
+            // 1. Check if the category and specific event exist.
             if (_eventTypeDictionary.ContainsKey(eventType) && _eventTypeDictionary[eventType].ContainsKey(eventName))
             {
                 var eventDictionary = _eventTypeDictionary[eventType];
+                // 2. Use Delegate.Remove to remove the specified handler from the multicast delegate.
                 eventDictionary[eventName] = Delegate.Remove(eventDictionary[eventName], handler);
 
-                // If there are no more events of this type, remove the event type
+                // 3. Memory management: If no handlers remain for this event, clear the key in the sub-dictionary.
                 if (eventDictionary[eventName] == null)
                 {
                     eventDictionary.Remove(eventName);
+                    // 4. If the category dictionary is also empty, remove the entire category.
                     if (eventDictionary.Count == 0) _eventTypeDictionary.Remove(eventType);
                 }
             }

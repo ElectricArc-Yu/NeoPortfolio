@@ -91,52 +91,66 @@ namespace Logic.Manager
         private DiceManager _diceManager;
         private EPlayerPosition _selfPosition;
 
+        /// <summary>
+        /// Initialization method: Sets the initial match state and generates the random seed and salt.
+        /// Ensures match randomness and replayability.
+        /// </summary>
         public override void OnInit()
         {
+            // 1. Set state to "BeforeCreateTable"
             _matchState = EMatchState.BeforeCreateTable;
+            // 2. Generate unique Match UUID and random seeds
             MatchUUID = SeedGenerator.GenerateUUID();
             var temp = SeedGenerator.GenerateRandomString(64, MatchUUID);
             _matchSeed = temp.Substring(0, 32);
             _matchSalt = temp.Substring(32, 32).ToCharArray();
+            // 3. Initial banker is set to East
             _currentBanker = EPlayerPosition.East;
             _currentRoundWind = EPlayerPosition.East;
             _currentDrawer = _currentBanker;
             _currentRoundProgress = 0;
+            // 4. Subscribe to dice stop events
             EventDispatcher.Instance.Subscribe<int>(EventTypeAndNameLib.DiceEvents,
                 EventTypeAndNameLib.OnAllDiceStoppedRolling, HandleAllDiceStoppedRolling);
+            // 5. Get all player IDs and initialize hand/discard containers
             var steamIDs = EventDispatcher.Instance.Dispatch<string[]>(EventTypeAndNameLib.GameFlowEvents,
                 EventTypeAndNameLib.GetAllPlayerID);
             _matchHandListContainer = new HandListContainer(steamIDs);
             _matchDiscardedListContainer = new DiscardedListContainer(steamIDs);
             _matchPlayerPositionAndID = new SPlayerPositionAndID(steamIDs);
             _matchPlayerPositionAndID.MoveToNextRound();
+            // 6. Request and apply match rules
             _matchRule = EventDispatcher.Instance.Dispatch<string, MatchRule>(EventTypeAndNameLib.MatchRuleEvents,
                 EventTypeAndNameLib.RequestMatchRule, "");
             _roundTime = new RoundTime(_matchRule.BackUpTimeGetter(), steamIDs);
             _roundThinkingTime = _matchRule.ThinkingTimeGetter();
         }
 
+        /// <summary>
+        /// Per-frame update: Executes corresponding driver logic based on current match state (EMatchState).
+        /// This is a typical state machine architecture ensuring game logic runs in a single-threaded/deterministic environment.
+        /// </summary>
         public override void OnUpdate(float deltaTime)
         {
             switch (_matchState)
             {
                 case EMatchState.BeforeCreateTable: break;
                 case EMatchState.Prepare:
-                    PreparationProgress();
+                    PreparationProgress(); // Preparation phase (loading deck models, etc.)
                     break;
                 case EMatchState.NeedShuffle:
-                    ShuffleProgress();
+                    ShuffleProgress();     // Shuffling phase (shuffling based on random seed)
                     break;
                 case EMatchState.AfterShuffle:
-                    RollingTheDiceProgress();
+                    RollingTheDiceProgress(); // Roll the dice
                     break;
                 case EMatchState.GenerateRoundDeck:
-                    GenerateRoundDeckProgress();
+                    GenerateRoundDeckProgress(); // Generate the wall for the current round (set Dora positions, etc.)
                     break;
                 case EMatchState.StartOfInit:
-                    InitHandProgress();
+                    InitHandProgress();    // 初始配牌阶段
                     break;
-                //TODO
+                // ... 更多状态 TODO: 摸打循环逻辑
             }
         }
 

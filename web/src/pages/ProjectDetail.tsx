@@ -9,6 +9,7 @@ import { projects } from '../data/projects';
 import MediaGallery from '../components/MediaGallery';
 import WorkChart from '../components/WorkChart';
 import PdfModal from '../components/PdfModal';
+import CodeModal from '../components/CodeModal';
 import BackToTop from '../components/BackToTop';
 import CodeLoader from '../components/CodeLoader';
 import ImageModal from '../components/ImageModal';
@@ -21,6 +22,7 @@ const ProjectDetail: React.FC = () => {
     const navigate = useNavigate();
     const { language, t } = useLanguage();
     const [previewPdf, setPreviewPdf] = useState<{ url: string, title: string } | null>(null);
+    const [previewCode, setPreviewCode] = useState<{ url: string, title: string } | null>(null);
     const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
     const project = projects.find(p => p.id === id);
@@ -47,6 +49,9 @@ const ProjectDetail: React.FC = () => {
         if (type === 'doc' || url.toLowerCase().endsWith('.pdf')) {
             e.preventDefault();
             setPreviewPdf({ url, title: label });
+        } else if (type === 'code') {
+            e.preventDefault();
+            setPreviewCode({ url, title: label });
         }
     };
 
@@ -256,6 +261,13 @@ const ProjectDetail: React.FC = () => {
                     url={previewPdf.url}
                     title={previewPdf.title}
                     onClose={() => setPreviewPdf(null)}
+                />
+            )}
+            {previewCode && (
+                <CodeModal
+                    url={previewCode.url}
+                    title={previewCode.title}
+                    onClose={() => setPreviewCode(null)}
                 />
             )}
 

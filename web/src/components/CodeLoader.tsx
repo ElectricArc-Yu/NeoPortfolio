@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { getAssetPath } from '../utils/assetPath';
 
 interface CodeLoaderProps {
     src: string;
     language?: string;
+    customStyle?: React.CSSProperties;
+    className?: string;
 }
 
-const CodeLoader: React.FC<CodeLoaderProps> = ({ src, language }) => {
+const CodeLoader: React.FC<CodeLoaderProps> = ({ src, language, customStyle, className }) => {
     const [code, setCode] = useState<string>('Loading code...');
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchCode = async () => {
             try {
-                const response = await fetch(src);
+                const resolvedPath = getAssetPath(src);
+                const response = await fetch(resolvedPath);
                 if (!response.ok) {
-                    throw new Error(`Failed to load code from ${src}: ${response.statusText}`);
+                    throw new Error(`Failed to load code from ${resolvedPath}: ${response.statusText}`);
                 }
                 const text = await response.text();
                 setCode(text);
@@ -41,11 +45,13 @@ const CodeLoader: React.FC<CodeLoaderProps> = ({ src, language }) => {
             style={vscDarkPlus}
             language={detectedLanguage}
             PreTag="div"
+            className={className}
             customStyle={{
                 margin: '1.5rem 0',
                 borderRadius: '8px',
                 fontSize: '0.9rem',
-                border: '1px solid rgba(255, 255, 255, 0.1)'
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                ...customStyle
             }}
             codeTagProps={{
                 style: {

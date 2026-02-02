@@ -109,6 +109,25 @@
     margin-bottom: 1em;
 }
 
+.markdown blockquote {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid var(--accent-color);
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #ff453a;
+    background: linear-gradient(to right, rgba(255, 69, 58, 0.05), transparent);
+}
+
+.markdown blockquote p {
+    margin: 0;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
 .markdown ul {
     list-style: disc;
     margin-left: 1.5em;

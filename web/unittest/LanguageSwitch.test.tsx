@@ -40,9 +40,8 @@ describe('LanguageSwitch Component', () => {
             </LanguageProvider>
         );
 
-        // Default language is usually 'EN'
-        // Let's check if the globe icon is present
-        expect(screen.getByTestId('globe-icon')).toBeInTheDocument();
+        // Component renders two globe icons (one for desktop, one for mobile)
+        expect(screen.getAllByTestId('globe-icon')[0]).toBeInTheDocument();
     });
 
     it('opens the dropdown when clicked (on desktop)', () => {
@@ -52,12 +51,14 @@ describe('LanguageSwitch Component', () => {
             </LanguageProvider>
         );
 
-        const trigger = screen.getByRole('button', { name: /English|简体中文/i });
-        fireEvent.click(trigger);
+        // Click the first matching trigger (usually desktop)
+        const triggers = screen.getAllByRole('button', { name: /English|简体中文/i });
+        fireEvent.click(triggers[0]);
 
         // After click, we expect to see other language options
-        expect(screen.getByText('EN')).toBeInTheDocument();
-        expect(screen.getByText('CN')).toBeInTheDocument();
-        expect(screen.getByText('JA')).toBeInTheDocument();
+        // Use getAllByText because "EN" appears in multiple places (trigger vs menu item)
+        expect(screen.getAllByText('EN')[0]).toBeInTheDocument();
+        expect(screen.getAllByText('CN')[0]).toBeInTheDocument();
+        expect(screen.getAllByText('JA')[0]).toBeInTheDocument();
     });
 });

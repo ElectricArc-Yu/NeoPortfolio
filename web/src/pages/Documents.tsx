@@ -8,7 +8,7 @@ import { siteConfig } from '../data/siteConfig';
 import { getLocalizedValue } from '../utils/i18n';
 import { FileText, BookOpen, ChevronDown, ChevronUp, FlaskConical, GraduationCap, ClipboardList, FileCode, Mic } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Icon mapping for GDD types
 const gddTypeIcons: Record<GDDType, React.ReactNode> = {
@@ -18,12 +18,20 @@ const gddTypeIcons: Record<GDDType, React.ReactNode> = {
     GDD: <FileCode size={18} />
 };
 
-// Map GDD types to translation keys
+// Map GDD types to translation keys for titles
 const gddTypeTranslationKeys: Record<GDDType, string> = {
     Test: 'Design Tests',
     Analysis: 'Analysis & Research',
     Methodology: 'Methodology & Tutorials',
     GDD: 'Full Game Design Documents'
+};
+
+// Map GDD types to translation keys for descriptions
+const gddTypeDescTranslationKeys: Record<GDDType, string> = {
+    Test: 'Design Tests Description',
+    Analysis: 'Analysis & Research Description',
+    Methodology: 'Methodology & Tutorials Description',
+    GDD: 'Full Game Design Documents Description'
 };
 
 const Documents: React.FC = () => {
@@ -68,7 +76,10 @@ const Documents: React.FC = () => {
     // Helper to parse date string (YYYY.MM.DD or YYYY.MM)
     const parseDate = (dateStr: string) => {
         const parts = dateStr.split('.');
-        return new Date(parseInt(parts[0]), parseInt(parts[1] || '1') - 1, parseInt(parts[2] || '1'));
+        const year = parseInt(parts[0]);
+        const month = parseInt(parts[1] || '1') - 1;
+        const day = parseInt(parts[2] || '1');
+        return new Date(year, month, day);
     };
 
     // Group by category
@@ -138,32 +149,26 @@ const Documents: React.FC = () => {
                     </div>
                     <div className={styles.paperLinks}>
                         {doc.preprintUrl !== undefined && (
-                            <a
-                                href={doc.preprintUrl || undefined}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                            <button
                                 className={`${styles.paperLinkBtn} ${!doc.preprintUrl ? styles.disabled : ''}`}
                                 onClick={(e) => {
-                                    if (!doc.preprintUrl) e.preventDefault();
                                     e.stopPropagation();
+                                    if (doc.preprintUrl) window.open(doc.preprintUrl, '_blank', 'noopener,noreferrer');
                                 }}
                             >
                                 {t('Preprint')}
-                            </a>
+                            </button>
                         )}
                         {doc.externalUrl !== undefined && (
-                            <a
-                                href={doc.externalUrl || undefined}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                            <button
                                 className={`${styles.paperLinkBtn} ${styles.primaryLink} ${!doc.externalUrl ? styles.disabled : ''}`}
                                 onClick={(e) => {
-                                    if (!doc.externalUrl) e.preventDefault();
                                     e.stopPropagation();
+                                    handleCardClick(doc);
                                 }}
                             >
                                 {t('Published')}
-                            </a>
+                            </button>
                         )}
                     </div>
                 </div>
@@ -204,14 +209,8 @@ const Documents: React.FC = () => {
         );
     };
 
-    // Render GDD Card - No animation (inside expandable)
+    // Render GDD Card
     const renderGDDCard = (doc: PublicDoc) => {
-        const description = getLocalizedValue(doc.descriptions, language) || '';
-        const isLongAbstract = description.length > 150;
-        const isExpanded = expandedAbstracts.has(doc.id);
-        const displayDescription = isLongAbstract && !isExpanded
-            ? description.slice(0, 150) + '...'
-            : description;
         const targetPosition = getLocalizedValue(doc.targetPositions, language);
 
         return (
@@ -249,34 +248,12 @@ const Documents: React.FC = () => {
                         </>
                     )}
                 </div>
-
-                <div className={styles.description}>
-                    <span className={styles.abstractText}>
-                        <span className={styles.abstractLabel}>
-                            {t('Abstract')}:{' '}
-                        </span>
-                        {displayDescription}
-                    </span>
-                    {isLongAbstract && (
-                        <button
-                            className={styles.expandBtn}
-                            onClick={(e) => toggleAbstract(doc.id, e)}
-                        >
-                            {isExpanded ? (
-                                <>{t('Collapse')} <ChevronUp size={14} /></>
-                            ) : (
-                                <>{t('Expand')} <ChevronDown size={14} /></>
-                            )}
-                        </button>
-                    )}
-                </div>
             </div>
         );
     };
 
     return (
         <PageTransition className={styles.container}>
-            {/* Header - Immediate animation */}
             <motion.header
                 className={styles.header}
                 initial={{ opacity: 0, y: -20 }}
@@ -339,65 +316,67 @@ const Documents: React.FC = () => {
                     {t('Past Paper Work Examples')}
                 </h2>
 
-                {gddTypeOrder.map(type => {
-                    const docs = gddsByType[type];
-                    if (!docs || docs.length === 0) return null;
+                <div className={styles.gddGroups}>
+                    {gddTypeOrder.map(type => {
+                        const items = gddsByType[type];
+                        if (!items) return null;
 
-                    const isExpanded = expandedCategories.has(type);
+                        const isExpanded = expandedCategories.has(type);
 
-                    return (
-                        <div key={type} className={`${styles.gddTypeGroup} ${isExpanded ? styles.expanded : ''}`}>
+                        return (
                             <div
-                                className={styles.gddTypeHeader}
-                                onClick={() => toggleCategory(type)}
-                                role="button"
-                                tabIndex={0}
-                                onKeyDown={(e) => e.key === 'Enter' && toggleCategory(type)}
+                                key={type}
+                                className={`${styles.gddTypeGroup} ${isExpanded ? styles.expanded : ''}`}
                             >
-                                <div className={styles.gddTypeIcon}>
-                                    {gddTypeIcons[type]}
+                                <div
+                                    className={styles.gddTypeHeader}
+                                    onClick={() => toggleCategory(type)}
+                                >
+                                    <div className={styles.gddTypeIcon}>
+                                        {gddTypeIcons[type]}
+                                    </div>
+                                    <div className={styles.gddTypeInfo}>
+                                        <h3 className={styles.gddTypeTitle}>
+                                            {t(gddTypeTranslationKeys[type])}
+                                        </h3>
+                                        <p className={styles.gddTypeDesc}>
+                                            {t(gddTypeDescTranslationKeys[type])}
+                                        </p>
+                                    </div>
+                                    <div className={styles.gddTypeCount}>
+                                        {items.length}
+                                    </div>
+                                    <div className={styles.expandIndicator}>
+                                        {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                                    </div>
                                 </div>
-                                <div className={styles.gddTypeInfo}>
-                                    <h3 className={styles.gddTypeTitle}>
-                                        {t(gddTypeTranslationKeys[type])}
-                                    </h3>
-                                    <p className={styles.gddTypeDesc}>
-                                        {language === 'EN' ? (
-                                            type === 'Test' ? 'Design tests completed during job applications, demonstrating system design and problem-solving skills.' :
-                                                type === 'Analysis' ? 'In-depth analysis of published game content, exploring design philosophy and system architecture.' :
-                                                    type === 'Methodology' ? 'Design methodologies and professional development tutorials to enhance professional skills.' :
-                                                        'Complete game design documents covering system design and level planning.'
-                                        ) : (language === 'CN' ? (
-                                            type === 'Test' ? '求职过程中完成的策划岗位测试题，展示系统设计与问题解决能力。' :
-                                                type === 'Analysis' ? '对已发布游戏内容的深度分析，探索设计理念与系统架构。' :
-                                                    type === 'Methodology' ? '设计方法论与职业发展教程，帮助提升专业能力。' :
-                                                        '完整的游戏设计文档，涵盖系统设计与关卡规划。'
-                                        ) : (
-                                            type === 'Test' ? '採用選考中に作成された企画職用テスト。システム設計と問題解決能力を示しています。' :
-                                                type === 'Analysis' ? 'リリース済みゲームタイトルの詳細な分析。デザイン哲学とシステム構成を掘り下げます。' :
-                                                    type === 'Methodology' ? 'デザイン手法とキャリア開発のチュートリアル。専門能力の向上を目的としています。' :
-                                                        'システム設計からレベルプランニングまで網羅した完全なゲーム企画書。'
-                                        ))}
-                                    </p>
-                                </div>
-                                <span className={styles.gddTypeCount}>{docs.length}</span>
-                                <div className={styles.expandIndicator}>
-                                    {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                                </div>
+
+                                <AnimatePresence>
+                                    {isExpanded && (
+                                        <motion.div
+                                            className={styles.gddTypeCards}
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: 'auto', opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.3 }}
+                                        >
+                                            <div className={styles.gddGrid}>
+                                                {items.map(renderGDDCard)}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
-                            <div className={`${styles.gddTypeCards} ${isExpanded ? styles.cardsExpanded : styles.cardsCollapsed}`}>
-                                {docs.map(renderGDDCard)}
-                            </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
+                </div>
             </motion.section>
 
             {selectedDoc && (
                 <PdfModal
+                    onClose={() => setSelectedDoc(null)}
                     url={selectedDoc.url}
                     title={selectedDoc.title}
-                    onClose={() => setSelectedDoc(null)}
                 />
             )}
         </PageTransition>

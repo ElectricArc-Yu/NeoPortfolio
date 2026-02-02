@@ -14,9 +14,9 @@ const t = (key: string) => {
 
 const tEn = (key: string) => {
     const translations: Record<string, string> = {
-        'items': 'items',
-        'People': 'people',
-        'Hours': 'hours',
+        'items': 'item',  // Return singular form, function adds 's' for plural
+        'People': 'people', // Already plural, excluded from adding 's'
+        'Hours': 'hour',   // Singular form
         'Solo Developer': 'Solo Developer'
     };
     return translations[key] || key;
@@ -33,12 +33,10 @@ describe('Formatter Utilities', () => {
             expect(formatUnit(1, 'items', 'EN', tEn)).toBe('1 item');
         });
 
-        it('should handle special cases like episodes not needing "s" if logic dictates (though currently it adds s)', () => {
-            // Note: Current implementation excludes 'Eps', 'Episodes', 'Items' from auto-pluralizing "s" in a specific way? 
-            // Let's re-read the code logic:
-            // const isPlural = num !== 1 && !['Eps', 'Episodes', 'Items'].includes(unitKey);
-            // This means 'Items' will NOT get an extra 's' if it's already plural-sounding or handled.
-            expect(formatUnit(12, 'Items', 'EN', tEn)).toBe('12 Items');
+        it('should not add extra s for excluded units like People', () => {
+            // 'People' is excluded from pluralization
+            expect(formatUnit(12, 'People', 'EN', tEn)).toBe('12 people');
+            expect(formatUnit(1, 'People', 'EN', tEn)).toBe('1 people');
         });
     });
 
@@ -72,11 +70,9 @@ describe('Formatter Utilities', () => {
         });
 
         it('should format hours correctly in English', () => {
-            // Note: with current tEn, 'Hours' translates to 'hours'
-            // and formatUnit will add another 's' if isPlural is true.
-            // For coverage, we just need to call it.
-            expect(formatDuration(10, 'EN', tEn)).toBe('10 hourss');
-            expect(formatDuration(1, 'EN', tEn)).toBe('1 hours');
+            // 'Hours' translates to 'hour' (singular), function adds 's' for plural
+            expect(formatDuration(10, 'EN', tEn)).toBe('10 hours');
+            expect(formatDuration(1, 'EN', tEn)).toBe('1 hour');
         });
     });
 

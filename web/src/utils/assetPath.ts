@@ -1,7 +1,10 @@
 // Helper function to resolve asset paths for GitHub Pages deployment
 // Prepends the base path when running in production on a subdirectory
 
-const BASE_PATH = import.meta.env.BASE_URL;
+const getBasePath = () => {
+    const base = import.meta.env.BASE_URL || '/';
+    return base.endsWith('/') ? base : `${base}/`;
+};
 
 export function getAssetPath(path: string): string {
     if (!path) return '';
@@ -13,5 +16,5 @@ export function getAssetPath(path: string): string {
 
     // Remove leading slash if present, then prepend base path
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    return `${BASE_PATH}${cleanPath}`;
+    return `${getBasePath()}${cleanPath}`;
 }

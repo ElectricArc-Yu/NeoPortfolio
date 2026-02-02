@@ -20,6 +20,11 @@ export interface SiteConfig {
         email: string;
     };
     pages: {
+        documents: {
+            titles: Record<string, string>;
+            subtitles: Record<string, string>;
+            gddTypeDescriptions: Record<string, Record<string, string>>;
+        };
         [key: string]: {
             titles: Record<string, string>;
             subtitles: Record<string, string>;

@@ -131,6 +131,10 @@ export const translations: Translations = {
         'View Certificate': 'View Certificate',
         'Verify Online': 'Verify Online',
         'Verified on': 'Verified on',
+        'Design Tests Description': 'Design tests completed during job applications, demonstrating system design and problem-solving skills.',
+        'Analysis & Research Description': 'In-depth analysis of published game content, exploring design philosophy and system architecture.',
+        'Methodology & Tutorials Description': 'Design methodologies and professional development tutorials to enhance professional skills.',
+        'Full Game Design Documents Description': 'Complete game design documents covering system design and level planning.',
     },
     CN: {
         'Commercial Projects': '商业项目',
@@ -262,6 +266,10 @@ export const translations: Translations = {
         'View Certificate': '查看证书',
         'Verify Online': '在线验证',
         'Verified on': '认证于 ',
+        'Design Tests Description': '求职过程中完成的策划岗位测试题，展示系统设计与问题解决能力。',
+        'Analysis & Research Description': '对已发布游戏内容的深度分析，探索设计理念与系统架构。',
+        'Methodology & Tutorials Description': '设计方法论与职业发展教程，帮助提升专业能力。',
+        'Full Game Design Documents Description': '完整的游戏设计文档，涵盖系统设计与关卡规划。',
     },
     JA: {
         'Commercial Projects': '商業プロジェクト',
@@ -393,5 +401,9 @@ export const translations: Translations = {
         'View Certificate': '証書を表示',
         'Verify Online': 'オンライン検証',
         'Verified on': '認定日 ',
+        'Design Tests Description': '採用選考中に作成された企画職用テスト。システム設計と問題解決能力を示しています。',
+        'Analysis & Research Description': 'リリース済みゲームタイトルの詳細な分析。デザイン哲学とシステム構成を掘り下げます。',
+        'Methodology & Tutorials Description': 'デザイン手法とキャリア開発のチュートリアル。専門能力の向上を目的としています。',
+        'Full Game Design Documents Description': 'システム設計からレベルプランニングまで網羅した完全なゲーム企画書。',
     }
 };

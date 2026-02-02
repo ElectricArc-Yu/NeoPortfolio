@@ -6,7 +6,7 @@ import { servicesData } from '../data/services';
 import { motion } from 'framer-motion';
 import { getLocalizedValue } from '../utils/i18n';
 import PageTransition from '../components/PageTransition';
-import { fadeInUp, staggerContainer } from '../utils/variants';
+import { fadeInUp } from '../utils/variants';
 
 const Services: React.FC = () => {
     const { language, t } = useLanguage();
@@ -88,16 +88,11 @@ const Services: React.FC = () => {
                     {getLocalizedValue(servicesData.sectionTitle, language)}
                 </motion.h2>
 
-                <motion.div
-                    className={styles.serviceGrid}
-                    variants={staggerContainer}
-                    initial="hidden"
-                    animate="visible"
-                >
+                <div className={styles.serviceGrid}>
                     {[...servicesData.items]
                         .sort((a, b) => b.showPriority - a.showPriority)
                         .map((service) => (
-                            <motion.div variants={fadeInUp} key={service.id} className={styles.serviceCard}>
+                            <div key={service.id} className={styles.serviceCard}>
                                 {service.icon && (
                                     <span className={styles.serviceIcon}>{service.icon}</span>
                                 )}
@@ -107,9 +102,9 @@ const Services: React.FC = () => {
                                 <p className={styles.serviceDesc}>
                                     {getLocalizedValue(service.descriptions, language)}
                                 </p>
-                            </motion.div>
+                            </div>
                         ))}
-                </motion.div>
+                </div>
             </section>
 
             {/* CTA Section */}

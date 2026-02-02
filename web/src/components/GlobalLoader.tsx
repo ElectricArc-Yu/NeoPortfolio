@@ -112,8 +112,8 @@ const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
 
         if (siteConfig.brand.favicon) urls.add(siteConfig.brand.favicon);
         if (siteConfig.pages) {
-            Object.values(siteConfig.pages).forEach(p => {
-                if (p.favicon) urls.add(p.favicon);
+            Object.values(siteConfig.pages).forEach((p: any) => {
+                if (p && 'favicon' in p && p.favicon) urls.add(p.favicon);
             });
         }
 

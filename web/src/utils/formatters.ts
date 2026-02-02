@@ -18,7 +18,8 @@ export const formatUnit = (value: number | string, unitKey: string, language: st
 
     // Default EN-style: Space between number and unit, pluralize if needed
     const num = typeof value === 'string' ? parseFloat(value) : value;
-    const isPlural = num !== 1 && !['Eps', 'Episodes', 'Items'].includes(unitKey);
+    const excludedUnits = ['Eps', 'Episodes', 'Items', 'People'];
+    const isPlural = num !== 1 && !excludedUnits.some(u => u.toLowerCase() === unitKey.toLowerCase());
     const finalUnit = isPlural ? `${localizedUnit}s` : localizedUnit;
 
     return `${value} ${finalUnit}`;

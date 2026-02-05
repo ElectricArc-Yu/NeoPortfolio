@@ -212,6 +212,12 @@ const Documents: React.FC = () => {
     // Render GDD Card
     const renderGDDCard = (doc: PublicDoc) => {
         const targetPosition = getLocalizedValue(doc.targetPositions, language);
+        const description = getLocalizedValue(doc.descriptions, language) || '';
+        const isLongAbstract = description.length > 150;
+        const isExpanded = expandedAbstracts.has(doc.id);
+        const displayDescription = isLongAbstract && !isExpanded
+            ? description.slice(0, 150) + '...'
+            : description;
 
         return (
             <div
@@ -248,6 +254,26 @@ const Documents: React.FC = () => {
                         </>
                     )}
                 </div>
+
+                {description && (
+                    <div className={styles.description}>
+                        <span className={styles.abstractText}>
+                            {displayDescription}
+                        </span>
+                        {isLongAbstract && (
+                            <button
+                                className={styles.expandBtn}
+                                onClick={(e) => toggleAbstract(doc.id, e)}
+                            >
+                                {isExpanded ? (
+                                    <>{t('Collapse')} <ChevronUp size={14} /></>
+                                ) : (
+                                    <>{t('Expand')} <ChevronDown size={14} /></>
+                                )}
+                            </button>
+                        )}
+                    </div>
+                )}
             </div>
         );
     };

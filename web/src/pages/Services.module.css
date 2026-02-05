@@ -22,8 +22,37 @@
 .subtitle {
     color: var(--text-secondary);
     font-size: 1.1rem;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 769px) {
+    .subtitle {
+        font-size: clamp(0.8rem, 2vw, 1.1rem);
+    }
+}
+
+/* Status Banner */
+.statusBanner {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    color: #f59e0b;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    justify-content: center;
+}
+
+.statusIcon {
+    font-size: 1.1rem;
 }
 
 /* Intro Section */
@@ -200,6 +229,10 @@
 
     .introParagraph {
         font-size: 1.1rem;
+    }
+
+    .subtitle {
+        font-size: clamp(0.7rem, 3.5vw, 1rem);
     }
 
     .serviceGrid {

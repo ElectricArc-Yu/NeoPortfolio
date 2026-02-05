@@ -23,6 +23,40 @@ const Services: React.FC = () => {
             .replace(/\n/g, '<br />');
     };
 
+    const formatServiceStatus = (status: string, lang: string) => {
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        const formatDatePart = (p: string, language: string) => {
+            const parts = p.trim().split('.');
+            const y = parts[0];
+            const m = parts[1] ? parseInt(parts[1]) : null;
+            const d = parts[2] ? parseInt(parts[2]) : null;
+
+            if (language === 'EN') {
+                if (y && m && d) return `${months[m - 1]} ${d}, ${y}`;
+                if (y && m) return `${months[m - 1]} ${y}`;
+                return p;
+            }
+
+            if (y && m && d) return `${y}年${m}月${d}日`;
+            if (y && m) return `${y}年${m}月`;
+            return p;
+        };
+
+        if (status.includes('-')) {
+            const [start, end] = status.split('-');
+            const sStr = formatDatePart(start, lang);
+            const eStr = formatDatePart(end, lang);
+
+            return t('Service Suspend Pattern')
+                .replace('{start}', sStr)
+                .replace('{end}', eStr);
+        } else {
+            const dateStr = formatDatePart(status, lang);
+            return t('Service Start Pattern').replace('{date}', dateStr);
+        }
+    };
+
     return (
         <PageTransition className={styles.container}>
             {/* Header */}
@@ -39,6 +73,17 @@ const Services: React.FC = () => {
                     {getLocalizedValue(siteConfig.pages.services.subtitles, language)}
                 </p>
             </motion.header>
+
+            {servicesData.serviceStatus && (
+                <motion.div
+                    className={styles.statusBanner}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                >
+                    <span className={styles.statusIcon}>⚠️</span>
+                    {formatServiceStatus(servicesData.serviceStatus, language)}
+                </motion.div>
+            )}
 
             {/* Intro + About Section */}
             <motion.section

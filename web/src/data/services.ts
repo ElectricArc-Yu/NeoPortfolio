@@ -186,5 +186,6 @@ export const servicesData: ServicesData = {
             icon: '📋',
             showPriority: 65
         }
-    ]
+    ],
+    serviceStatus: '2026.09-2027.08'
 };

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[机密] 技术尽职调查与工程审计报告</title>
+    <style>
+        :root {
+            /* 颜色变量 */
+            --color-text-primary: #1a1a1a;
+            --color-text-secondary: #4a4a4a;
+            --color-text-tertiary: #666666;
+            --color-accent: #2c3e50;
+            --color-border: #e0e0e0;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8f9fa;
+            
+            /* 风险等级颜色 */
+            --color-risk-critical: #d32f2f;
+            --color-risk-high: #f57c00;
+            --color-risk-medium: #fbc02d;
+            --color-risk-bg-critical: #ffebee;
+
+            /* 间距变量 */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+
+            /* 排版变量 */
+            --font-family-base: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
+            --line-height-base: 1.6;
+            --line-height-heading: 1.3;
+        }
+
+        /* 全局重置与基础样式 */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            font-size: 16px;
+            line-height: var(--line-height-base);
+            color: var(--color-text-primary);
+            background-color: #f0f2f5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1024px;
+            margin: 2rem auto;
+            padding: 3rem;
+            background-color: var(--color-bg);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* 头部样式 */
+        header {
+            margin-bottom: var(--spacing-xl);
+            border-bottom: 3px solid var(--color-risk-critical);
+            padding-bottom: var(--spacing-lg);
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: var(--line-height-heading);
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-text-primary);
+        }
+
+        .report-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            background-color: var(--color-bg-alt);
+            padding: var(--spacing-md);
+            border-radius: 4px;
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.85rem;
+            color: var(--color-text-tertiary);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            font-weight: 500;
+            color: var(--color-text-primary);
+        }
+
+        .meta-value.critical {
+            color: var(--color-risk-critical);
+            font-weight: 700;
+        }
+
+        /* 章节通用样式 */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+            text-align: justify;
+        }
+
+        /* 列表样式 */
+        ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* 表格样式 */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--color-border);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--color-bg-alt);
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        /* 风险等级标签样式 */
+        .risk-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .risk-critical {
+            color: var(--color-risk-critical);
+            background-color: var(--color-risk-bg-critical);
+        }
+
+        .risk-high {
+            color: var(--color-risk-high);
+            background-color: #fff3e0;
+        }
+
+        .risk-red-flag {
+            color: #b71c1c;
+            background-color: #ffcdd2;
+            border: 1px solid #b71c1c;
+        }
+
+        /* 强调文本 */
+        strong {
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+
+        .highlight-critical {
+            color: var(--color-risk-critical);
+            font-weight: 700;
+        }
+
+        /* 打印样式 */
+        @media print {
+            @page {
+                margin: 15mm;
+                size: A4;
+            }
+
+            body {
+                background: white;
+                font-size: 10.5pt;
+                color: #000;
+            }
+
+            .container {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                max-width: none;
+            }
+
+            header {
+                border-bottom: 2px solid #000;
+            }
+
+            h2 {
+                border-bottom: 1px solid #000;
+                margin-top: 1.5rem;
+            }
+
+            table {
+                page-break-inside: auto;
+            }
+
+            tr {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+
+            thead {
+                display: table-header-group;
+            }
+
+            tfoot {
+                display: table-footer-group;
+            }
+
+            .risk-critical, .risk-high, .risk-red-flag {
+                background: none !important;
+                border: 1px solid #000;
+                color: #000 !important;
+            }
+            
+            .meta-value.critical {
+                color: #000;
+                text-decoration: underline;
+            }
+
+            /* 避免分页截断 */
+            h1, h2, h3, .report-meta {
+                page-break-after: avoid;
+            }
+            
+            section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部信息 -->
+        <header>
+            <h1>[机密] 技术尽职调查与工程审计报告</h1>
+            <div class="report-meta">
+                <div class="meta-item">
+                    <span class="meta-label">项目代号</span>
+                    <span class="meta-value">*********</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">审计日期</span>
+                    <span class="meta-value">2026年1月30日</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">审计人</span>
+                    <span class="meta-value">于陈浩然</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">密级</span>
+                    <span class="meta-value">绝密 / 仅限高管阅览</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">风险评级</span>
+                    <span class="meta-value critical">极高危 (CRITICAL) - 需立即整改</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- 1. 执行摘要 -->
+            <section id="executive-summary">
+                <h2>1. 执行摘要 (Executive Summary)</h2>
+                <p>本报告阐述了对 ********* 项目进行的全面技术审计结果。审计范围涵盖源代码仓库、工程基础设施、C++ 实现细节、开发工作流以及数字资产安全性。</p>
+                
+                <h3>战略评估</h3>
+                <p>尽管该项目在创意层面展现了极高的野心——试图将高频动作 RPG 机制与复杂的关系模拟及生成式 AI 模块相结合——但其底层的技术基座目前处于<strong>运营停滞</strong>状态。</p>
+                <p>审计显示，该项目严重偏离了行业标准软件工程规范。我们在<strong>版本控制完整性</strong>、<strong>持续集成 (CI) 可靠性</strong>以及<strong>架构模块化</strong>方面发现了致命缺陷。此外，详细的代码分析揭示了核心游戏循环中存在严重的<strong>性能瓶颈</strong>（主线程同步 I/O）和<strong>稳定性风险</strong>（潜在的无限循环）。</p>
+                
+                <h3>关键结论</h3>
+                <p>当前的工程架构<strong>不足以支持</strong>内容量产或规模化扩展。在现有条件下，该软件<strong>极不可能</strong>通过主要主机平台（Sony/Microsoft）的技术要求清单 (TRC/XR)，也无法为内部开发团队提供最低限度的稳定性保障。</p>
+            </section>
+
+            <!-- 2. 关键风险评估矩阵 -->
+            <section id="risk-matrix">
+                <h2>2. 关键风险评估矩阵 (Critical Risk Assessment Matrix)</h2>
+                <p>下表按领域和严重程度对已识别的风险进行了分类：</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">风险领域</th>
+                                <th style="width: 15%;">严重程度</th>
+                                <th>关键发现摘要</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>基础设施</strong></td>
+                                <td><span class="risk-tag risk-critical">极危 (CRITICAL)</span></td>
+                                <td>Git LFS 系统性故障（30,000+ 对象异常）；构建流水线依赖个人消费级硬件；缺乏灾难恢复协议。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>代码稳定性</strong></td>
+                                <td><span class="risk-tag risk-critical">极危 (CRITICAL)</span></td>
+                                <td>在节奏与存档子系统中发现了灾难性故障向量（无限循环与阻塞式 I/O）；存在线程安全违规。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>架构设计</strong></td>
+                                <td><span class="risk-tag risk-high">高 (HIGH)</span></td>
+                                <td>高耦合度；逻辑驱动依赖硬编码数组（魔术数字）；滥用静态类；核心系统中存在语义冲突。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DevOps</strong></td>
+                                <td><span class="risk-tag risk-critical">极危 (CRITICAL)</span></td>
+                                <td>开发环境需要人工干预（环境变量）；编译依赖临时脚本；自动化覆盖率为零。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>合规性</strong></td>
+                                <td><span class="risk-tag risk-red-flag">越线 (RED FLAG)</span></td>
+                                <td>敏感 API 凭证以明文形式暴露；使用了未经验证的第三方二进制文件；存在软件许可违规迹象。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 3. 详细审计发现 -->
+            <section id="detailed-findings">
+                <h2>3. 详细审计发现 (Detailed Audit Findings)</h2>
+                
+                <h3>3.1 子系统审计矩阵</h3>
+                <p>针对关键源文件的可维护性、性能和稳定性进行的颗粒度评估：</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;">模块 / 文件</th>
+                                <th style="width: 15%;">功能域</th>
+                                <th style="width: 15%;">稳定性/性能</th>
+                                <th>严重缺陷摘要</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Rythmn_QTE_Vehicle.cpp</strong></td>
+                                <td>节奏逻辑</td>
+                                <td><span class="risk-tag risk-critical">极危</span></td>
+                                <td><strong>死锁风险：</strong> Tick 函数包含一个没有安全跳出机制的 <code>while</code> 循环。如果音符数据解析失败，将导致无限循环。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Save.cpp / DialogueWidget.cpp</strong></td>
+                                <td>持久化 / UI叙事</td>
+                                <td><span class="risk-tag risk-critical">极危</span></td>
+                                <td>
+                                    <strong>阻塞式 I/O：</strong> 在游戏主线程上使用了同步的 <code>FFileHelper::SaveStringToFile</code>。这必然导致自动保存时帧率骤降（卡顿）。<br>
+                                    <strong>资产脆弱性：</strong> 依赖带有硬编码字符串路径的 <code>StaticLoadObject</code>。重命名资产将导致静默运行时崩溃。
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>CombatSlotManager.cpp</strong></td>
+                                <td>AI 协同</td>
+                                <td>中</td>
+                                <td><strong>逻辑泄漏：</strong> 存在指向已销毁 AI 控制器的悬空指针风险；检测到冗余的自赋值代码。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AIAssignComponent.cpp</strong></td>
+                                <td>AI 生成</td>
+                                <td>中</td>
+                                <td><strong>生命周期不安全：</strong> 激进地销毁现有控制器而未检查其是否为玩家所有，存在编辑器崩溃风险。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>*********_unreal.Build.cs</strong></td>
+                                <td>构建配置</td>
+                                <td><span class="risk-tag risk-critical">极危</span></td>
+                                <td><strong>链接器错误：</strong> Public 模块中缺少 UMG 依赖项，必然导致非编辑器配置（Shipping/Staging）下的构建失败。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>3.2 软件架构模式</h3>
+                <ul>
+                    <li><strong>僵化的逻辑实现：</strong> 核心战斗机制依赖硬编码的数组索引（例如：显式引用 <code>Index [0]</code> 作为主要动作）。这种缺乏数据驱动的设计违反了<strong>开闭原则 (Open-Closed Principle)</strong>，微小的玩法调整也需要侵入性的代码重编译。</li>
+                    <li><strong>语义与命名违规：</strong> 关键子系统使用了非标准命名（例如将节奏管理器命名为 "Vehicle"），这增加了认知负荷并模糊了架构意图。</li>
+                    <li><strong>倒置的依赖链：</strong> UI 层 (Widget) 驱动核心游戏逻辑，通过手动索引计算来管理叙事流。这创造了一种脆弱的依赖关系，数据表的微小变动将导致级联逻辑故障。</li>
+                </ul>
+
+                <h3>3.3 基础设施与版本控制</h3>
+                <ul>
+                    <li><strong>系统性 VCS 不稳定：</strong> 代码仓库包含超过 30,000 个未跟踪或配置错误的 Git LFS 对象。这种配置错误导致 fetch 操作期间产生过量的 HTTP 请求开销，在客户端网络上模拟了拒绝服务 (DoS) 状态。</li>
+                    <li><strong>构建流水线脆弱性：</strong> 自动化构建过程依赖于标识为 <code>APPLETRUFFLELAP</code> 的单一代理（迹象表明这是一台个人笔记本电脑）。遥测显示频繁超时（>60分钟）。关键是，生产流水线跳过了 "Cook"（烘焙）和 "Package"（打包）阶段。</li>
+                </ul>
+            </section>
+
+            <!-- 4. 战略建议 -->
+            <section id="recommendations">
+                <h2>4. 战略建议 (Strategic Recommendations)</h2>
+                
+                <h3>第一阶段：维稳 (立即执行)</h3>
+                <ul>
+                    <li><strong>战略叫停：</strong> 暂停所有新功能开发（包括提议的 "UE 5.7 升级"），专注于核心稳定性。</li>
+                    <li><strong>死锁预防：</strong> 在 <code>Rythmn_QTE_Vehicle.cpp</code> 的所有 <code>while</code> 循环中实现迭代上限（例如 <code>SafetyCounter < 1000</code>），以防止运行时死机。</li>
+                    <li><strong>凭证安全：</strong> 立即撤销所有暴露的 API 密钥，并从提交历史中清除它们。</li>
+                </ul>
+
+                <h3>第二阶段：架构重构 (短期)</h3>
+                <ul>
+                    <li><strong>异步化重构：</strong> 重写 <code>Save.cpp</code>，利用 <code>USaveGame</code> 和 <code>UGameplayStatics::SaveGameToSlot</code>，将文件 I/O 移出游戏主线程。</li>
+                    <li><strong>依赖修复：</strong> 在 <code>Build.cs</code> 的公共依赖模块中添加 "UMG"，以确保发布版本构建成功。</li>
+                    <li><strong>仓库清理：</strong> 执行 <code>git filter-repo</code> 操作，清理无效的 LFS 对象并标准化 <code>.gitattributes</code>。</li>
+                </ul>
+
+                <h3>第三阶段：结构性整治 (中期)</h3>
+                <ul>
+                    <li><strong>解耦核心系统：</strong> 从硬编码数组逻辑过渡到<strong>数据资产 (Data Asset)</strong> 驱动的架构，赋予游戏策划更大权限并减少代码依赖。</li>
+                    <li><strong>迁移 CI/CD：</strong> 将构建代理从个人硬件迁移到基于云的解决方案（如 Azure VM 或 AWS EC2），以确保可靠性和可扩展性。</li>
+                </ul>
+            </section>
+
+            <!-- 附录：技术深钻 -->
+            <section id="appendix">
+                <h2>附录：技术深钻 (Technical Deep Dive)</h2>
+
+                <h3>附录 A：基础设施与 DevOps 诊断</h3>
+                <p><strong>A.1 Git LFS 配置病理</strong></p>
+                <ul>
+                    <li><strong>状态：</strong> <span class="highlight-critical">极危 (CRITICAL)</span></li>
+                    <li><strong>诊断：</strong> 仓库目前通过 Git LFS 追踪超过 30,000 个独立对象。对于此规模的项目而言，该数量属于异常。</li>
+                    <li><strong>根本原因：</strong> <code>.gitattributes</code> 配置将 LFS 过滤器无差别地应用于轻量级文件类型（如 .png, .docx, .txt），并包含冗余的大小写敏感条目。</li>
+                    <li><strong>运营影响：</strong>
+                        <ul>
+                            <li><strong>克隆延迟：</strong> 启动新克隆会触发数千次离散 HTTP 握手请求，耗尽网络连接限制并导致超时 (Status 504)。</li>
+                            <li><strong>虚假冲突：</strong> 本地二进制文件与远程指针之间的不匹配导致未修改资产持续显示“已修改”标记。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p><strong>A.2 构建代理 "APPLETRUFFLELAP"</strong></p>
+                <ul>
+                    <li><strong>状态：</strong> <span class="highlight-critical">不可接受 (UNACCEPTABLE)</span></li>
+                    <li><strong>风险分析：</strong> 依赖个人笔记本电脑进行全团队 CI/CD 构成了<strong>单点故障 (SPOF)</strong>。个人硬件缺乏可靠自动化构建所需的正常运行时间、热节流管理和网络冗余。</li>
+                </ul>
+
+                <h3>附录 B：代码库与架构深钻</h3>
+                <p><strong>B.1 关键稳定性违规</strong></p>
+                <ul>
+                    <li><strong>模块：</strong> <code>Rythmn_QTE_Vehicle.cpp</code>
+                        <ul>
+                            <li><strong>严重程度：</strong> <span class="highlight-critical">灾难性 (CATASTROPHIC)</span></li>
+                            <li><strong>缺陷：</strong> 循环缺乏安全跳出计数器。如果音符数据流损坏，<code>condition</code> 永远为真，导致应用程序<strong>硬锁死 (Hard Lock)</strong>。</li>
+                        </ul>
+                    </li>
+                    <li><strong>模块：</strong> <code>Save.cpp</code>
+                        <ul>
+                            <li><strong>严重程度：</strong> <span class="highlight-critical">极危 (CRITICAL)</span></li>
+                            <li><strong>影响：</strong> 每个自动保存间隔都会触发与磁盘写入延迟相等的完整帧冻结。这保证了游戏过程中会出现明显的卡顿，违反了标准性能预算。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p><strong>B.2 架构反模式</strong></p>
+                <ul>
+                    <li><strong>语义错误：</strong> 节奏/音乐机制的中央管理器被命名为 "Vehicle"（载具）。在虚幻引擎中，"Vehicle" 暗示基于物理的轮式运动。这种命名错误增加了入职时间和维护复杂性。</li>
+                    <li><strong>构建配置错误：</strong> <code>*********_unreal.Build.cs</code> 缺少 UMG 依赖，虽然在“编辑器”配置下可能编译通过，但保证会在单体打包（Shipping Builds）期间导致链接器错误 (LNK2019)。</li>
+                </ul>
+
+                <h3>附录 C：安全与合规报告</h3>
+                <p><strong>C.1 凭证管理漏洞</strong></p>
+                <ul>
+                    <li><strong>状态：</strong> <span class="highlight-critical">已泄露 (BREACHED)</span></li>
+                    <li><strong>证据：</strong> 项目 Wiki 条目 "Running NeMo with Docker"。</li>
+                    <li><strong>详情：</strong> 以 <code>nvapi-Fcwql...</code> 开头的 NVIDIA API 密钥以明文代码块形式记录，并附有“复制粘贴”的明确说明。</li>
+                    <li><strong>风险：</strong>
+                        <ul>
+                            <li><strong>财务风险：</strong> 恶意行为者可能使用此密钥消耗该组织付费的高成本云计算资源。</li>
+                            <li><strong>服务拒绝：</strong> 过度使用可能触发 NVIDIA 服务的自动封禁，导致项目 AI 能力瘫痪。</li>
+                            <li><strong>立即行动：</strong> 必须立即通过 NVIDIA 开发者门户撤销该密钥。必须清除包含该密钥的所有文档历史记录 (Git Scrubbing)。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p><strong>C.2 软件许可与法律合规</strong></p>
+                <ul>
+                    <li><strong>状态：</strong> <span class="highlight-critical">不合规 (NON-COMPLIANT)</span></li>
+                    <li><strong>证据：</strong> 多个设计文档包含带有 "激活 Windows" 覆盖层的截图。</li>
+                    <li><strong>暗示：</strong> 这表明生产环境使用了未授权或盗版的操作系统。</li>
+                    <li><strong>法律风险：</strong> 在未授权平台上进行商业软件开发违反了 Microsoft 的 EULA，使实体面临法律诉讼风险。这也导致项目失去许多政府拨款或发行商尽职调查的资格。</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

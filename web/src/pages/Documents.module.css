@@ -73,10 +73,9 @@
     position: relative;
     width: 100%;
     max-width: 1150px;
-    min-height: 180px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     text-decoration: none;
 }
 
@@ -410,7 +409,7 @@
 }
 
 .gddTypeGroup.expanded .gddTypeHeader {
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 5px;
     border-color: var(--accent-color);
     background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(168, 85, 247, 0.02) 100%);
     position: sticky;
@@ -448,13 +447,19 @@
 .gddTypeCards {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: 8px;
     padding-left: 0;
     padding-top: 10px;
     padding-right: 5px;
     padding-bottom: 5px;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gddGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .cardsCollapsed {
@@ -467,7 +472,7 @@
 .cardsExpanded {
     max-height: 2000px;
     opacity: 1;
-    margin-top: var(--spacing-lg);
+    margin-top: 5px;
     pointer-events: auto;
 }
 

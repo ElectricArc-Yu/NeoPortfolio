@@ -159,6 +159,26 @@ export const publicDocs: PublicDoc[] = [
         lengths: { CN: "28页", EN: "28 Pages", JA: "28ページ" },
         isInternal: false
     },
+    {
+        id: 'tech-due-diligence-audit',
+        titles: {
+            CN: "技术尽职调查与工程审计报告",
+            EN: "Technical Due Diligence & Engineering Audit Report",
+            JA: "技術デューデリジェンス＆エンジニアリング監査報告書"
+        },
+        date: '2026.01',
+        descriptions: {
+            CN: "针对某游戏项目的全面技术审计报告（脱敏版）。审计范围涵盖源代码仓库、工程基础设施、C++ 实现细节、开发工作流以及数字资产安全性。识别了版本控制完整性、持续集成可靠性、架构模块化等方面的关键风险，并提供了分阶段整改建议。",
+            EN: "A comprehensive technical audit report for a game project (redacted version). The audit scope covers source code repositories, engineering infrastructure, C++ implementation details, development workflows, and digital asset security. Identifies critical risks in version control integrity, CI reliability, and architectural modularity, with phased remediation recommendations.",
+            JA: "あるゲームプロジェクトに対する包括的な技術監査報告書（匿名化版）。監査範囲はソースコードリポジトリ、エンジニアリングインフラ、C++実装詳細、開発ワークフロー、デジタル資産のセキュリティを網羅。バージョン管理の完全性、CI信頼性、アーキテクチャのモジュール化における重要なリスクを特定し、段階的な改善提案を提示。"
+        },
+        url: '/assets/docs/audit.html',
+        category: 'GDD',
+        gddType: 'Analysis',
+        originalLangs: { CN: "中文", EN: "Chinese", JA: "中国語" },
+        lengths: { CN: "1页 (HTML)", EN: "1 Page (HTML)", JA: "1ページ (HTML)" },
+        isInternal: false
+    },
 
     // --- GDDs: Methodology (方法论/教程) ---
     {

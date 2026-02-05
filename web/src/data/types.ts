@@ -214,4 +214,5 @@ export interface ServicesData {
     sectionTitle: Localized;
     ctaText: Localized;
     items: ServiceItem[];
+    serviceStatus?: string;
 }

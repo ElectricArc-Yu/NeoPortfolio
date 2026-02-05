@@ -135,6 +135,8 @@ export const translations: Translations = {
         'Analysis & Research Description': 'In-depth analysis of published game content, exploring design philosophy and system architecture.',
         'Methodology & Tutorials Description': 'Design methodologies and professional development tutorials to enhance professional skills.',
         'Full Game Design Documents Description': 'Complete game design documents covering system design and level planning.',
+        'Service Suspend Pattern': 'Service suspended from {start} to {end}.',
+        'Service Start Pattern': 'Service officially starts from {date}.',
     },
     CN: {
         'Commercial Projects': '商业项目',
@@ -270,6 +272,8 @@ export const translations: Translations = {
         'Analysis & Research Description': '对已发布游戏内容的深度分析，探索设计理念与系统架构。',
         'Methodology & Tutorials Description': '设计方法论与职业发展教程，帮助提升专业能力。',
         'Full Game Design Documents Description': '完整的游戏设计文档，涵盖系统设计与关卡规划。',
+        'Service Suspend Pattern': '将在 {start} 至 {end} 暂停服务业务。',
+        'Service Start Pattern': '服务从 {date} 后正式开始。',
     },
     JA: {
         'Commercial Projects': '商業プロジェクト',
@@ -405,5 +409,7 @@ export const translations: Translations = {
         'Analysis & Research Description': 'リリース済みゲームタイトルの詳細な分析。デザイン哲学とシステム構成を掘り下げます。',
         'Methodology & Tutorials Description': 'デザイン手法とキャリア開発のチュートリアル。専門能力の向上を目的としています。',
         'Full Game Design Documents Description': 'システム設計からレベルプランニングまで網羅した完全なゲーム企画書。',
+        'Service Suspend Pattern': '{start} から {end} までサービスを一時停止いたします。',
+        'Service Start Pattern': 'サービスは {date} より正式に開始されます。',
     }
 };

@@ -45,14 +45,14 @@ export const resumeData: ResumeData = {
                 CN: [
                     "工作室统筹：在极度受限的种子轮环境下（3人核心团队），全权负责从立项、研发到投资人对接的全生命周期管理",
                     "核心玩法攻坚：主导 ARPG 核心战斗系统（乐器战斗+双角色协同）的研发，利用 UE 蓝图快速构建并验证 POC 原型",
-                    "IP 与世界观构建：搭建原创 IP 世界观底层架构（40+ 份文档，数万字设定），确立角色与区域设计的标准化规范，为后续内容量产奠定基础",
+                    "IP 与世界观构建：指导搭建原创 IP 世界观底层架构（40+ 份文档，数万字设定），确立角色与区域设计的标准化规范，为后续内容量产奠定基础",
                     "流程标准化：制定 10+ 项设计模板与评审规范（SDD/LDD/角色设定等），将设计迭代次数从 4-5 次大幅降低至 1-2 次，显著提升研发效能",
                     "跨职能协作与人才培养：作为设计负责人拆解项目 Scope，高效协调程序与美术资源，并成功培养 2 名初级成员具备独立决策能力"
                 ],
                 EN: [
                     "Studio Leadership: Orchestrated full studio operations from concept to investor readiness under strict seed-stage constraints (3-person core team).",
                     "Gameplay Innovation: Spearheaded R&D for core ARPG combat mechanics (Instrument Combat + Dual-Character System); built functional POC prototypes using UE Blueprints.",
-                    "IP Architecture: Constructed a comprehensive original IP foundation (40+ design docs), establishing scalable standards for character and world building.",
+                    "IP Architecture: Guided the construction of a comprehensive original IP foundation (40+ design docs), establishing scalable standards for character and world building.",
                     "Pipeline Optimization: Established standardized design workflows and review protocols, reducing design iteration cycles by 60% (from 4-5 to 1-2 passes).",
                     "Technical Direction: Managed project scope and cross-functional resources; mentored junior members to reach independent decision-making proficiency."
                 ],

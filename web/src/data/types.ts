@@ -202,6 +202,11 @@ export interface ServiceItem {
     descriptions: Localized;
     icon?: string;
     showPriority: number;
+    ctaTitle?: Localized; // Optional override for the button text
+    emailTemplate?: {
+        subject?: Localized;
+        body?: Localized;
+    };
 }
 
 /**
@@ -215,4 +220,8 @@ export interface ServicesData {
     ctaText: Localized;
     items: ServiceItem[];
     serviceStatus?: string;
+    contact?: {
+        email: string;
+        subjectPrefix?: Localized;
+    };
 }

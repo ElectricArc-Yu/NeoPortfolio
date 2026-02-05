@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { getLocalizedValue } from '../utils/i18n';
 import PageTransition from '../components/PageTransition';
 import { fadeInUp } from '../utils/variants';
+import { Mail } from 'lucide-react';
 
 const Services: React.FC = () => {
     const { language, t } = useLanguage();
@@ -99,9 +100,6 @@ const Services: React.FC = () => {
                             __html: getLocalizedValue(servicesData.intro, language) ?? ''
                         }}
                     />
-                    <a href="/contact" className={styles.ctaButton}>
-                        {t('Contact for Services')}
-                    </a>
                 </div>
             </motion.section>
 
@@ -138,15 +136,41 @@ const Services: React.FC = () => {
                         .sort((a, b) => b.showPriority - a.showPriority)
                         .map((service) => (
                             <div key={service.id} className={styles.serviceCard}>
-                                {service.icon && (
-                                    <span className={styles.serviceIcon}>{service.icon}</span>
-                                )}
-                                <h3 className={styles.serviceTitle}>
-                                    {getLocalizedValue(service.titles, language)}
-                                </h3>
-                                <p className={styles.serviceDesc}>
-                                    {getLocalizedValue(service.descriptions, language)}
-                                </p>
+                                <div className={styles.serviceContent}>
+                                    {service.icon && (
+                                        <span className={styles.serviceIcon}>{service.icon}</span>
+                                    )}
+                                    <h3 className={styles.serviceTitle}>
+                                        {getLocalizedValue(service.titles, language)}
+                                    </h3>
+                                    <p className={styles.serviceDesc}>
+                                        {getLocalizedValue(service.descriptions, language)}
+                                    </p>
+                                </div>
+                                {servicesData.contact && (() => {
+                                    const template = service.emailTemplate;
+                                    const defaultSubject = `${getLocalizedValue(servicesData.contact.subjectPrefix, language) || ''} ${getLocalizedValue(service.titles, language)}`;
+
+                                    const subject = template?.subject
+                                        ? getLocalizedValue(template.subject, language)
+                                        : defaultSubject;
+
+                                    const body = template?.body
+                                        ? getLocalizedValue(template.body, language)
+                                        : '';
+
+                                    const mailtoUrl = `mailto:${servicesData.contact.email}?subject=${encodeURIComponent(subject || '')}${body ? `&body=${encodeURIComponent(body)}` : ''}`;
+
+                                    return (
+                                        <a
+                                            href={mailtoUrl}
+                                            className={styles.inquiryButton}
+                                        >
+                                            <Mail size={16} />
+                                            {getLocalizedValue(service.ctaTitle, language) || t('Contact for Services')}
+                                        </a>
+                                    );
+                                })()}
                             </div>
                         ))}
                 </div>

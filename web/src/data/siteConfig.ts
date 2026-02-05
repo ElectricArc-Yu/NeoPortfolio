@@ -73,11 +73,11 @@ export const siteConfig: SiteConfig = {
     },
     pages: {
         services: {
-            titles: { CN: '服务', EN: 'Services', JA: 'サービス' },
+            titles: { CN: '有偿服务', EN: 'Professional Services', JA: '有償サービス' },
             subtitles: {
-                CN: '提供专业的游戏设计与咨询服务',
-                EN: 'Providing professional game design & consultancy services',
-                JA: 'プロフェッショナルなゲームデザインとコンサルティングサービスを提供'
+                CN: '提供专业的有偿游戏设计与咨询服务',
+                EN: 'Providing expert paid game design and consultancy services',
+                JA: 'プロフェッショナルな有償ゲームデザイン・コンサルティングを提供'
             },
             favicon: '/NeoPortfolio/services.ico'
         },

@@ -42,13 +42,13 @@ export const servicesData: ServicesData = {
     },
     sectionTitle: {
         EN: 'How I Can Help You',
-        CN: '服务项目',
+        CN: '有偿服务项目',
         JA: '提供可能なサービス'
     },
     ctaText: {
-        EN: "Whether you're a studio, indie team, or solo developer — if you need system design expertise, technical pipeline support, or academic consultation, I'd be glad to help. Reach out via [Contact](/contact) or [LinkedIn](https://www.linkedin.com/in/yuchenhaoran/).",
-        CN: "无论您是工作室、独立团队还是个人开发者——如果您需要系统设计专业知识、技术流水线支持或学术咨询，我很乐意提供帮助。请通过[联系页面](/contact)或[LinkedIn](https://www.linkedin.com/in/yuchenhaoran/)与我联系。",
-        JA: "スタジオ、インディーチーム、個人開発者を問わず、システム設計の専門知識、技術パイプラインのサポート、学術的なコンサルティングが必要な場合は、ぜひご連絡ください。[お問い合わせ](/contact)または[LinkedIn](https://www.linkedin.com/in/yuchenhaoran/)からどうぞ。"
+        EN: "If you have other specific requirements not listed above, or if you're a studio/developer looking for collaboration, feel free to reach out via [Contact](#/contact) or [LinkedIn](https://www.linkedin.com/in/yuchenhaoran/).",
+        CN: "如果您有上述未列出的其他需求，或者您是寻求项目合作的工作室与个人开发者，欢迎通过[联系页面](#/contact)或[LinkedIn](https://www.linkedin.com/in/yuchenhaoran/)与我联系。",
+        JA: "上記に記載のないその他のニーズや、プロジェクト協力を検討されているスタジオ・個人開発者の方は、[お問い合わせ](#/contact)または[LinkedIn](https://www.linkedin.com/in/yuchenhaoran/)よりお気軽にご連絡ください。"
     },
     items: [
         {
@@ -64,7 +64,19 @@ export const servicesData: ServicesData = {
                 JA: 'コアゲームプレイループ、経済システム、進行メカニクス、戦闘フレームワークを数学的モデリングとシミュレーション検証で設計。'
             },
             icon: '⚙️',
-            showPriority: 100
+            showPriority: 100,
+            emailTemplate: {
+                subject: {
+                    EN: '[Inquiry] Game System Design & Balancing',
+                    CN: '[咨询] 游戏系统设计与数值平衡',
+                    JA: '[お問い合わせ] ゲームシステム設計と数値バランス'
+                },
+                body: {
+                    EN: 'Dear Yu,\n\nI am interested in your System Design services. Specifically, I would like to discuss:',
+                    CN: '你好,\n\n我对您的系统设计服务很感兴趣。我想具体咨询关于：',
+                    JA: '于様、\n\nシステムデザインサービスに興味があります。具体的には以下の点について相談したいです：'
+                }
+            }
         },
         {
             id: 'technical-production',
@@ -79,7 +91,14 @@ export const servicesData: ServicesData = {
                 JA: 'UnityおよびUnreal Engineプロジェクト向けのパイプラインアーキテクチャ、カスタムツール、ビルド自動化、データ指向設計パターン。'
             },
             icon: '🔧',
-            showPriority: 10
+            showPriority: 10,
+            emailTemplate: {
+                subject: {
+                    EN: '[Technical] Pipeline & Tooling Support',
+                    CN: '[技术咨询] 流水线与工具链支持',
+                    JA: '[技術] パイプラインとツール作成の相談'
+                }
+            }
         },
         {
             id: 'gamification',
@@ -94,7 +113,19 @@ export const servicesData: ServicesData = {
                 JA: 'ヘルスケア、教育、研究プロジェクトなど、様々な分野の製品向けに游戏プレイメカニクス、インタラクション、UXを開発。'
             },
             icon: '🎮',
-            showPriority: 70
+            showPriority: 70,
+            emailTemplate: {
+                subject: {
+                    EN: '[Inquiry] Gamification & Interactive UX',
+                    CN: '[咨询] 游戏化设计与交互体验',
+                    JA: '[お問い合わせ] ゲーミフィケーションとインタラクティブUX'
+                },
+                body: {
+                    EN: 'Hi Yu,\n\nI am looking for gamification expertise for my project. Here are some details:',
+                    CN: '你好,\n\n我正在为我的项目寻找游戏化设计相关的专业建议。以下是一些细节：',
+                    JA: '于様、\n\nプロジェクトにゲーミフィケーションの導入を検討しています。詳細は以下の通りです：'
+                }
+            }
         },
         {
             id: 'ideation',
@@ -109,7 +140,14 @@ export const servicesData: ServicesData = {
                 JA: 'コアコンセプトの考案、オーディエンスのモチベーション理解、プロトタイプから本番までのアイデア精緻化・発展。'
             },
             icon: '💭',
-            showPriority: 80
+            showPriority: 80,
+            emailTemplate: {
+                subject: {
+                    EN: '[Concept] New Project Ideation & Visioning',
+                    CN: '[概念] 新项目构思与愿景定义',
+                    JA: '[コンセプト] 新規プロジェクトのアイデア構築'
+                }
+            }
         },
         {
             id: 'consultancy',
@@ -124,7 +162,19 @@ export const servicesData: ServicesData = {
                 JA: '既存ゲームシステムの専門分析、経済監査、GDDレビュー、学術的厳密性に基づく実行可能な改善提案。'
             },
             icon: '💡',
-            showPriority: 90
+            showPriority: 90,
+            emailTemplate: {
+                subject: {
+                    EN: '[Consultancy] Design & Economy Audit',
+                    CN: '[咨询] 设计与经济系统审计',
+                    JA: '[コンサルティング] デザインとエコノミーの監査'
+                },
+                body: {
+                    EN: 'Hello Yu,\n\nWe need an expert audit for our existing project. We are specifically concerned about:',
+                    CN: '你好,\n\n我们需要对现有项目进行专家级审计。我们比较关注：',
+                    JA: '于様、\n\n既存プロジェクトの専門的な監査をお願いしたいと考えています。特に気にしている点は：'
+                }
+            }
         },
         {
             id: 'ai-native',
@@ -139,7 +189,14 @@ export const servicesData: ServicesData = {
                 JA: 'AI支援開発ワークフロー、ゲームシステムへのLLM統合、プロシージャルコンテンツ生成、AI強化プロダクションパイプライン。'
             },
             icon: '🤖',
-            showPriority: 85
+            showPriority: 85,
+            emailTemplate: {
+                subject: {
+                    EN: '[AI] AI-Native Workflow Integration',
+                    CN: '[AI] AI原生工作流集成咨询',
+                    JA: '[AI] AIネイティブワークフロー導入の相談'
+                }
+            }
         },
         {
             id: 'academic-research',
@@ -154,7 +211,14 @@ export const servicesData: ServicesData = {
                 JA: 'ゲームデザイン理論、プレイヤーエンゲージメントモデリング、効用ベースの意思決定フレームワーク、出版品質の研究協力。'
             },
             icon: '📚',
-            showPriority: 75
+            showPriority: 75,
+            emailTemplate: {
+                subject: {
+                    EN: '[Research] Academic Collaboration Inquiry',
+                    CN: '[研究] 学术研究合作咨询',
+                    JA: '[研究] 学術研究の共同協力について'
+                }
+            }
         },
         {
             id: 'mentorship',
@@ -169,7 +233,14 @@ export const servicesData: ServicesData = {
                 JA: 'ゲームプロジェクトの戦略的な方向付け、キャリアパスのオリエンテーション、および複雑なコンセプトやアーキテクチャの課題を解決するための専門的な相談・質疑応答。'
             },
             icon: '🧭',
-            showPriority: 10
+            showPriority: 10,
+            emailTemplate: {
+                subject: {
+                    EN: '[Mentorship] Strategic Steering & Guidance',
+                    CN: '[导师] 策略引导与设计咨询',
+                    JA: '[メンターシップ] 戦略的ガイダンスと相談'
+                }
+            }
         },
         {
             id: 'documentation',
@@ -184,8 +255,23 @@ export const servicesData: ServicesData = {
                 JA: 'GDDアーキテクチャ、設計ドキュメント標準、LODベースの仕様システム、SSOTワークフローの実装。'
             },
             icon: '📋',
-            showPriority: 65
-        }
+            showPriority: 65,
+            emailTemplate: {
+                subject: {
+                    EN: '[Docs] Documentation & SSOT Implementation',
+                    CN: '[文档] 文档规范与 SSOT 实施咨询',
+                    JA: '[ドキュメント] 仕様書標準化とSSOTの導入'
+                }
+            }
+        },
     ],
-    serviceStatus: '2026.09-2027.08'
+    serviceStatus: '2026.09-2027.08',
+    contact: {
+        email: 'yu.chr@prelude.games',
+        subjectPrefix: {
+            EN: '[Service Inquiry]',
+            CN: '[服务咨询]',
+            JA: '[サービスのお問い合わせ]'
+        }
+    }
 };

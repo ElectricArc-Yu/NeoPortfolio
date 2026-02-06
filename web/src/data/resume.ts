@@ -146,7 +146,7 @@ export const resumeData: ResumeData = {
             },
             degrees: {
                 CN: "专科文凭 (软件技术)",
-                EN: "A.Eng (Software Technology)",
+                EN: "Diploma (Software Technology)",
                 JA: "短期大学士（ソフトウェア技術）"
             },
             gpa: "1.92/4.0"

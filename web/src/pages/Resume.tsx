@@ -284,6 +284,28 @@ const ResumeContent: React.FC = () => {
                             ))}
                         </div>
                     </motion.section>
+                </div>
+
+                <div className={styles.secondaryColumn}>
+                    {/* Skills Section */}
+                    <motion.section
+                        className={styles.section}
+                        variants={fadeInUp}
+                        initial="hidden"
+                        animate="visible"
+                    >
+                        <h2 className={styles.sectionTitle}>{t('Skills')}</h2>
+                        <div className={styles.skillsList}>
+                            {resumeData.skills.map((cat, i) => (
+                                <div key={i} className={styles.skillCategory}>
+                                    <h3 className={styles.categoryTitle}>{safeGetLocalizedValue(cat.categories, language, '')}</h3>
+                                    <div className={styles.skillList}>
+                                        {cat.items.map(item => <span key={item.name} className={`${styles.skillItem} ${item.highlight ? styles.highlightSkill : ''}`}>{item.name}</span>)}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.section>
 
                     {/* Education Section */}
                     <motion.section
@@ -306,36 +328,14 @@ const ResumeContent: React.FC = () => {
                                     <p className={styles.degree}>{safeGetLocalizedValue(edu.degrees, language, '')}</p>
                                     <div className={styles.eduMeta}>
                                         {edu.gpa && <span className={styles.gpa}>GPA: {edu.gpa}</span>}
-                                        {edu.awards && edu.awards.length > 0 && (
-                                            <div className={styles.awards}>
-                                                {edu.awards.map((award, j) => (
-                                                    <span key={j} className={styles.awardItem}>{award}</span>
-                                                ))}
-                                            </div>
-                                        )}
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                    </motion.section>
-                </div>
-
-                <div className={styles.secondaryColumn}>
-                    {/* Skills Section */}
-                    <motion.section
-                        className={styles.section}
-                        variants={fadeInUp}
-                        initial="hidden"
-                        animate="visible"
-                    >
-                        <h2 className={styles.sectionTitle}>{t('Skills')}</h2>
-                        <div className={styles.skillsList}>
-                            {resumeData.skills.map((cat, i) => (
-                                <div key={i} className={styles.skillCategory}>
-                                    <h3 className={styles.categoryTitle}>{safeGetLocalizedValue(cat.categories, language, '')}</h3>
-                                    <div className={styles.skillList}>
-                                        {cat.items.map(item => <span key={item.name} className={`${styles.skillItem} ${item.highlight ? styles.highlightSkill : ''}`}>{item.name}</span>)}
-                                    </div>
+                                    {edu.awards && edu.awards.length > 0 && (
+                                        <div className={styles.awards}>
+                                            {edu.awards.map((award, j) => (
+                                                <span key={j} className={styles.awardItem}>{award}</span>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                             ))}
                         </div>

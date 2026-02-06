@@ -64,7 +64,7 @@
 
 .mainGrid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 700px 350px;
     gap: var(--spacing-xl);
 }
 
@@ -288,37 +288,76 @@
     background: rgba(255, 255, 255, 0.05);
 }
 
-.schoolName {
-    font-size: 1.1rem;
+.educationHeaderFull {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.35rem;
+    overflow: hidden;
+}
+
+.schoolNameFull {
+    font-size: clamp(0.9rem, 1.3vw, 1.25rem);
     color: var(--text-primary);
-    margin-bottom: 2px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    width: 100%;
 }
 
-.degree {
-    color: var(--text-secondary);
-    margin-bottom: var(--spacing-sm);
+/* English state specific: Single-line small text */
+.enHeader {
+    align-items: center;
 }
 
-.eduMeta {
+.enHeader .schoolNameFull {
+    white-space: nowrap;
+    font-size: 0.95rem;
+    line-height: 20px;
+}
+
+.eduMetaRow {
     display: flex;
     justify-content: space-between;
-    font-size: 0.85rem;
+    align-items: center;
+    margin-bottom: 0.6rem;
 }
 
 .gpa {
+    font-size: 0.9rem;
     color: var(--accent-color);
-    font-weight: 600;
+    letter-spacing: -0.5px;
+    font-weight: 500;
 }
 
-.awards {
-    margin-top: var(--spacing-md);
-    padding-top: var(--spacing-sm);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+.degreeFull {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+}
+
+.awardsSection {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .awardItem {
-    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
     color: var(--accent-color);
+}
+
+.awardsListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.awardText {
+    font-size: 0.85rem;
+    font-weight: 600;
 }
 
 .certificationsListRow {

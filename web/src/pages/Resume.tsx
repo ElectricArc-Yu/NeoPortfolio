@@ -8,7 +8,7 @@ import type { Project, MainProject } from '../data/types';
 import { useLanguage } from '../context/LanguageContext';
 import { Link } from 'react-router-dom';
 import styles from './Resume.module.css';
-import { Mail, Phone, Send, X, ExternalLink, RefreshCw, AlertCircle, GraduationCap } from 'lucide-react';
+import { Mail, Phone, Send, X, ExternalLink, RefreshCw, AlertCircle, GraduationCap, Trophy } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import MediaGallery from '../components/MediaGallery';
@@ -321,19 +321,25 @@ const ResumeContent: React.FC = () => {
                         <div className={styles.educationList}>
                             {resumeData.education.map((edu, i) => (
                                 <div key={i} className={styles.educationItem}>
-                                    <div className={styles.eduHeader}>
-                                        <h3 className={styles.schoolName}>{safeGetLocalizedValue(edu.schools, language, '')}</h3>
-                                        <span className={styles.period}>{edu.period}</span>
+                                    <div className={`${styles.educationHeaderFull} ${language === 'EN' ? styles.enHeader : ''}`}>
+                                        <h3 className={styles.schoolNameFull}>{safeGetLocalizedValue(edu.schools, language, '')}</h3>
                                     </div>
-                                    <p className={styles.degree}>{safeGetLocalizedValue(edu.degrees, language, '')}</p>
-                                    <div className={styles.eduMeta}>
+                                    <div className={styles.eduMetaRow}>
+                                        <span className={styles.period}>{edu.period}</span>
                                         {edu.gpa && <span className={styles.gpa}>GPA: {edu.gpa}</span>}
                                     </div>
+                                    <p className={styles.degreeFull}>{safeGetLocalizedValue(edu.degrees, language, '')}</p>
+
                                     {edu.awards && edu.awards.length > 0 && (
-                                        <div className={styles.awards}>
-                                            {edu.awards.map((award, j) => (
-                                                <span key={j} className={styles.awardItem}>{award}</span>
-                                            ))}
+                                        <div className={styles.awardsSection}>
+                                            <div className={styles.awardItem}>
+                                                <Trophy size={14} style={{ marginRight: '6px' }} />
+                                                <div className={styles.awardsListContainer}>
+                                                    {edu.awards.map((award, j) => (
+                                                        <span key={j} className={styles.awardText}>{award}</span>
+                                                    ))}
+                                                </div>
+                                            </div>
                                         </div>
                                     )}
                                 </div>

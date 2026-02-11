@@ -22,7 +22,7 @@ export const publicDocs: PublicDoc[] = [
         isInternal: false,
         journal: 'Nature Human Behaviour (Desk Review)',
         impactFactor: '0',
-        preprintUrl: 'https://osf.io/preprints/psyarxiv/4ah7x_v1',
+        preprintUrl: '',
         externalUrl: ''
     },
     {
@@ -45,7 +45,7 @@ export const publicDocs: PublicDoc[] = [
         isInternal: false,
         journal: 'IEEE ToG (Desk Review)',
         impactFactor: '0',
-        preprintUrl: 'https://osf.io/preprints/psyarxiv/q7dzy_v1',
+        preprintUrl: '',
         externalUrl: ''
     },
     {

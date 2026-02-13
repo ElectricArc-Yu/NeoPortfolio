@@ -3,7 +3,7 @@ import type { PublicDoc } from './types';
 export const publicDocs: PublicDoc[] = [
     // --- Papers ---
     {
-        id: 'participation-utility-model',
+        id: 'taxonomy-of-participation',
         titles: {
             CN: "参与行为的结构化分类学：不确定性下的参与建模",
             EN: "A Structural Taxonomy of Participation: Engagement Modeling under Uncertainty",

@@ -2,29 +2,29 @@ import type { PublicDoc } from './types';
 
 export const publicDocs: PublicDoc[] = [
     // --- Papers ---
-    {
-        id: 'taxonomy-of-participation',
-        titles: {
-            CN: "参与行为的结构化分类学：不确定性下的参与建模",
-            EN: "A Structural Taxonomy of Participation: Engagement Modeling under Uncertainty",
-            JA: "参加行動の構造的タクソノミー（分類学）：不確実性下におけるエンゲージメント・モデリング"
-        },
-        date: '2026.02.11',
-        descriptions: {
-            CN: "不确定性下的用户参与通常被归结为系统层面的激励机制或潜在的心理状态。基于先前将参与性系统分解为产出、成本、时间投入、外在与内在动机、失败成本和风险结构等七个正交维度的设计理论框架，本文提供了该分类法的首次大规模实证验证。我分析了涵盖约500个Steam产品的14,717条玩家评论，通过轻量级本地大语言模型（Qwen-2.5-7B）进行解析，并通过跨架构三角验证（盛行率调整及偏差调整Kappa系数，平均PABAK = 0.81）确保了可靠性。研究确立了两个关键结构特征：(1) 正交性——两两相关矩阵呈现稀疏结构（平均|ρ| < 0.1），且单条评论的激活度较低（平均|P| ≈ 1.85），证实了28个子维度捕捉到了真正独立的设计变量，且被用户体验为离散且显著的交互点；(2) 最小完备性——96.56% 的玩家反馈能映射到该分类法中，24个主成分即可捕获90%的方差，且每个维度（包括长尾构造）都能解释简单模型无法观测到的独特子集。此外，在正面与负面反馈的相关结构中观察到了显著的参与度不对称现象。结果表明，参与感可以被视为一种结构上可解构的行为产物，而不仅仅由潜在心理状态所完整表征。",
-            EN: "Human participation under uncertainty is typically explained either through system-level incentives or through latent psychological states. Building on a prior design-theoretic framework that decomposes participatory systems into seven orthogonal dimensions spanning output, cost, temporal commitment, extrinsic and intrinsic motivation, failure cost, and risk structure, this paper provides the first large-scale empirical validation of that taxonomy. I analyze N = 14,717 player reviews across approximately 500 Steam titles, decoded via a lightweight local LLM (Qwen-2.5-7B) and validated through cross-architecture triangulation (Prevalence-Adjusted Bias-Adjusted Kappa, Mean PABAK = 0.81). Two structural properties are established: (1) Orthogonality—the pairwise correlation matrix exhibits sparse structure (mean |ρ| < 0.1) alongside low per-review activation (Mean |P | ≈ 1.85), confirming that the 28-subdimensions capture genuinely independent design variance that is experienced by users as discrete,salient interaction points; and (2) Minimal Completeness—96.56% of playerfeedback maps onto the taxonomy, 24 of 28 principal components are required to capture 90% of variance, and every dimension, including rare long-tail constructs, explains unique subsets that would be invisible to simpler models. Additionally, a notable engagement asymmetry is observed in the correlation structure between positive and negative feedback. These results demonstrate that engagement can be treated as a structurally deconstructible behavioral product, rather than being fully or exhaustively characterized by latent psychological states alone.",
-            JA: "不確実性下における人間の参加行動は、通常、システムレベルのインセンティブまたは潜在的な心理状態のいずれかによって説明される。本稿では、参加型システムを産出、コスト、時間的コミットメント、外的・内的動機付け、失敗コスト、およびリスク構造の7つの正交する次元に分解する先行のデザイン理論的枠組みに基づき、その分類法の初の大規模な実証研究を行う。約500のSteamタイトルにわたるN = 14,717件のプレイヤーレビューを分析し、軽量なローカルLLM（Qwen-2.5-7B）を用いてデコードし、クロスアーキテクチャ・トライアンギュレーション（普及率調整・バイアス調整済みカッパ係数、平均PABAK = 0.81）を通じて検証した。本研究では2つの構造的特性を確立した：(1) 正交性――ペアワイズ相関行列は希薄な構造（平均|ρ| < 0.1）を示し、レビューごとの活性化度も低い（平均|P| ≈ 1.85）。これは、28のサブ次元が、ユーザーによって離散的で顕著なインタラクションポイントとして体験される、真に独立したデザイン分散を捉えていることを裏付けている。(2) 最小完全性――プレイヤーのフィードバックの96.56%がこの分類法にマッピングされ、分散の90%を捉えるには28のうち24の主成分が必要であり、希少なロングテール要素を含む全次元が、単純なモデルでは不可視な固有のサブセットを説明している。さらに、ポジティブなフィードバックとネガティブなフィードバックの相関構造において、顕著なエンゲージメントの非対称性が観察された。これらの結果は、エンゲージメントが潜在的な心理状態のみによって特徴づけられるものではなく、構造的に解体可能な行動的成果物として扱えることを示している。"
-        },
-        category: 'Paper',
-        paperType: 'Full Paper',
-        originalLangs: { CN: "英文", EN: "English", JA: "英語" },
-        lengths: { CN: "24页", EN: "24 Pages", JA: "24ページ" },
-        isInternal: false,
-        journal: 'Nature Human Behaviour (Desk Review)',
-        impactFactor: '0',
-        preprintUrl: '',
-        externalUrl: ''
-    },
+    // {
+    //     id: 'taxonomy-of-participation',
+    //     titles: {
+    //         CN: "参与行为的结构化分类学：不确定性下的参与建模",
+    //         EN: "A Structural Taxonomy of Participation: Engagement Modeling under Uncertainty",
+    //         JA: "参加行動の構造的タクソノミー（分類学）：不確実性下におけるエンゲージメント・モデリング"
+    //     },
+    //     date: '2026.02.11',
+    //     descriptions: {
+    //         CN: "不确定性下的用户参与通常被归结为系统层面的激励机制或潜在的心理状态。基于先前将参与性系统分解为产出、成本、时间投入、外在与内在动机、失败成本和风险结构等七个正交维度的设计理论框架，本文提供了该分类法的首次大规模实证验证。我分析了涵盖约500个Steam产品的14,717条玩家评论，通过轻量级本地大语言模型（Qwen-2.5-7B）进行解析，并通过跨架构三角验证（盛行率调整及偏差调整Kappa系数，平均PABAK = 0.81）确保了可靠性。研究确立了两个关键结构特征：(1) 正交性——两两相关矩阵呈现稀疏结构（平均|ρ| < 0.1），且单条评论的激活度较低（平均|P| ≈ 1.85），证实了28个子维度捕捉到了真正独立的设计变量，且被用户体验为离散且显著的交互点；(2) 最小完备性——96.56% 的玩家反馈能映射到该分类法中，24个主成分即可捕获90%的方差，且每个维度（包括长尾构造）都能解释简单模型无法观测到的独特子集。此外，在正面与负面反馈的相关结构中观察到了显著的参与度不对称现象。结果表明，参与感可以被视为一种结构上可解构的行为产物，而不仅仅由潜在心理状态所完整表征。",
+    //         EN: "Human participation under uncertainty is typically explained either through system-level incentives or through latent psychological states. Building on a prior design-theoretic framework that decomposes participatory systems into seven orthogonal dimensions spanning output, cost, temporal commitment, extrinsic and intrinsic motivation, failure cost, and risk structure, this paper provides the first large-scale empirical validation of that taxonomy. I analyze N = 14,717 player reviews across approximately 500 Steam titles, decoded via a lightweight local LLM (Qwen-2.5-7B) and validated through cross-architecture triangulation (Prevalence-Adjusted Bias-Adjusted Kappa, Mean PABAK = 0.81). Two structural properties are established: (1) Orthogonality—the pairwise correlation matrix exhibits sparse structure (mean |ρ| < 0.1) alongside low per-review activation (Mean |P | ≈ 1.85), confirming that the 28-subdimensions capture genuinely independent design variance that is experienced by users as discrete,salient interaction points; and (2) Minimal Completeness—96.56% of playerfeedback maps onto the taxonomy, 24 of 28 principal components are required to capture 90% of variance, and every dimension, including rare long-tail constructs, explains unique subsets that would be invisible to simpler models. Additionally, a notable engagement asymmetry is observed in the correlation structure between positive and negative feedback. These results demonstrate that engagement can be treated as a structurally deconstructible behavioral product, rather than being fully or exhaustively characterized by latent psychological states alone.",
+    //         JA: "不確実性下における人間の参加行動は、通常、システムレベルのインセンティブまたは潜在的な心理状態のいずれかによって説明される。本稿では、参加型システムを産出、コスト、時間的コミットメント、外的・内的動機付け、失敗コスト、およびリスク構造の7つの正交する次元に分解する先行のデザイン理論的枠組みに基づき、その分類法の初の大規模な実証研究を行う。約500のSteamタイトルにわたるN = 14,717件のプレイヤーレビューを分析し、軽量なローカルLLM（Qwen-2.5-7B）を用いてデコードし、クロスアーキテクチャ・トライアンギュレーション（普及率調整・バイアス調整済みカッパ係数、平均PABAK = 0.81）を通じて検証した。本研究では2つの構造的特性を確立した：(1) 正交性――ペアワイズ相関行列は希薄な構造（平均|ρ| < 0.1）を示し、レビューごとの活性化度も低い（平均|P| ≈ 1.85）。これは、28のサブ次元が、ユーザーによって離散的で顕著なインタラクションポイントとして体験される、真に独立したデザイン分散を捉えていることを裏付けている。(2) 最小完全性――プレイヤーのフィードバックの96.56%がこの分類法にマッピングされ、分散の90%を捉えるには28のうち24の主成分が必要であり、希少なロングテール要素を含む全次元が、単純なモデルでは不可視な固有のサブセットを説明している。さらに、ポジティブなフィードバックとネガティブなフィードバックの相関構造において、顕著なエンゲージメントの非対称性が観察された。これらの結果は、エンゲージメントが潜在的な心理状態のみによって特徴づけられるものではなく、構造的に解体可能な行動的成果物として扱えることを示している。"
+    //     },
+    //     category: 'Paper',
+    //     paperType: 'Full Paper',
+    //     originalLangs: { CN: "英文", EN: "English", JA: "英語" },
+    //     lengths: { CN: "24页", EN: "24 Pages", JA: "24ページ" },
+    //     isInternal: false,
+    //     journal: 'Nature Human Behaviour (Desk Review)',
+    //     impactFactor: '0',
+    //     preprintUrl: '',
+    //     externalUrl: ''
+    // },
     {
         id: 'participation-utility-model',
         titles: {

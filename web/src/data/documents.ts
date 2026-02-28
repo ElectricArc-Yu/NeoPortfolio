@@ -20,6 +20,7 @@ export const publicDocs: PublicDoc[] = [
         lengths: { CN: "66页", EN: "66 Pages", JA: "66ページ" },
         isInternal: false,
         journal: 'NHB (Desk Review)',
+        publisher: 'Nature',
         impactFactor: '0',
         preprintUrl: '',
         externalUrl: ''
@@ -43,6 +44,7 @@ export const publicDocs: PublicDoc[] = [
         lengths: { CN: "28页", EN: "28 Pages", JA: "28ページ" },
         isInternal: false,
         journal: 'ESWA (Desk Review)',
+        publisher: 'Elsevier',
         impactFactor: '0',
         preprintUrl: 'https://doi.org/10.36227/techrxiv.177205021.16204089/v1',
         externalUrl: ''
@@ -66,6 +68,7 @@ export const publicDocs: PublicDoc[] = [
         lengths: { CN: "33页", EN: "33 Pages", JA: "33ページ" },
         isInternal: false,
         journal: 'TOCHI (Desk Review)',
+        publisher: 'ACM',
         impactFactor: '0',
         preprintUrl: 'https://doi.org/10.36227/techrxiv.177203276.63908007/v1',
         externalUrl: ''
@@ -89,6 +92,7 @@ export const publicDocs: PublicDoc[] = [
         lengths: { CN: "8页", EN: "8 Pages", JA: "8ページ" },
         isInternal: false,
         journal: 'IEEE ToG (Peer Review)',
+        publisher: 'IEEE',
         impactFactor: '0',
         preprintUrl: 'https://doi.org/10.36227/techrxiv.177212584.42401805/v1',
         externalUrl: ''
@@ -112,6 +116,7 @@ export const publicDocs: PublicDoc[] = [
         lengths: { CN: "4页", EN: "4 Pages", JA: "4ページ" },
         isInternal: false,
         journal: 'IEEE ToG (Peer Review)',
+        publisher: 'IEEE',
         impactFactor: '0',
         preprintUrl: 'https://doi.org/10.36227/techrxiv.177091887.71276991/v1',
         externalUrl: ''
@@ -152,6 +157,7 @@ export const publicDocs: PublicDoc[] = [
         originalLangs: { CN: "日文", EN: "Japanese", JA: "日本語" },
         lengths: { CN: "44页", EN: "44 Pages", JA: "44ページ" },
         isInternal: false,
+        publisher: 'None',
         targetPositions: { CN: "SE第三工作室 系统策划 (PVP向)", EN: "SE CBU III System Planner (PVP)", JA: "スクエニ 第三開発事業本部 システムプランナー (PVP担当)" }
     },
     {
@@ -169,6 +175,7 @@ export const publicDocs: PublicDoc[] = [
         originalLangs: { CN: "中文", EN: "Chinese", JA: "中国語" },
         lengths: { CN: "38页", EN: "38 Pages", JA: "38ページ" },
         isInternal: false,
+        publisher: 'None',
         targetPositions: { CN: "UGC玩法策划", EN: "UGC Gameplay Planner", JA: "UGCゲームプレイプランナー" }
     },
     {
@@ -186,6 +193,7 @@ export const publicDocs: PublicDoc[] = [
         originalLangs: { CN: "中文", EN: "Chinese", JA: "中国語" },
         lengths: { CN: "6页", EN: "6 Pages", JA: "6页" },
         isInternal: false,
+        publisher: 'None',
         targetPositions: { CN: "任务策划", EN: "Quest Designer", JA: "クエストプランナー" }
     },
     {
@@ -203,6 +211,7 @@ export const publicDocs: PublicDoc[] = [
         originalLangs: { CN: "中文", EN: "Chinese", JA: "中国語" },
         lengths: { CN: "36页", EN: "36 Pages", JA: "36ページ" },
         isInternal: false,
+        publisher: 'None',
         targetPositions: { CN: "预研项目策划", EN: "Pre-Research Project Designer", JA: "先行研究プロジェクトプランナー" }
     },
 
@@ -225,6 +234,7 @@ export const publicDocs: PublicDoc[] = [
         gddType: 'Analysis',
         originalLangs: { CN: "中文", EN: "Chinese", JA: "中国語" },
         lengths: { CN: "28页", EN: "28 Pages", JA: "28ページ" },
+        publisher: 'None',
         isInternal: false
     },
     {
@@ -245,6 +255,7 @@ export const publicDocs: PublicDoc[] = [
         gddType: 'Analysis',
         originalLangs: { CN: "中文", EN: "Chinese", JA: "中国語" },
         lengths: { CN: "1页 (HTML)", EN: "1 Page (HTML)", JA: "1ページ (HTML)" },
+        publisher: 'None',
         isInternal: false
     },
 
@@ -263,6 +274,7 @@ export const publicDocs: PublicDoc[] = [
         gddType: 'Methodology',
         originalLangs: { CN: "中文", EN: "Chinese", JA: "中国语" },
         lengths: { CN: "47页", EN: "47 Pages", JA: "47ページ" },
+        publisher: 'None',
         isInternal: true
     },
     {
@@ -279,6 +291,7 @@ export const publicDocs: PublicDoc[] = [
         gddType: 'Methodology',
         originalLangs: { CN: "中文", EN: "Chinese", JA: "中国語" },
         lengths: { CN: "8页", EN: "8 Pages", JA: "8ページ" },
+        publisher: 'None',
         isInternal: true
     },
 
@@ -297,6 +310,7 @@ export const publicDocs: PublicDoc[] = [
         gddType: 'GDD',
         originalLangs: { CN: "中文", EN: "Chinese", JA: "中国语" },
         lengths: { CN: "17页", EN: "17 Pages", JA: "17ページ" },
+        publisher: 'None',
         isInternal: false
     }
 ];

@@ -172,6 +172,8 @@ export type DocCategory = 'GDD' | 'Paper' | 'Lecture';
 export type PaperType = 'Letter' | 'Paper' | 'Full Paper' | 'Preprint' | 'Technical Report';
 export type GDDType = 'Test' | 'Analysis' | 'Methodology' | 'GDD';
 
+export type Publisher = 'IEEE' | 'ACM' | 'Springer' | 'Elsevier' | 'Wiley' | 'Nature' | 'Science' | 'Taylor & Francis' | 'Oxford' | 'Cambridge' | 'IOP' | 'GDC' | 'None';
+
 export interface PublicDoc {
     id: string;
     titles: Localized;
@@ -187,6 +189,7 @@ export interface PublicDoc {
     isInternal: boolean;
     targetPositions?: Localized;
 
+    publisher: Publisher;
     paperType?: PaperType;
     journal?: string;
     impactFactor?: string;

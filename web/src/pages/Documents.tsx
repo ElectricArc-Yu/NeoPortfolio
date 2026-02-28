@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { publicDocs } from '../data/documents';
 import type { GDDType, PublicDoc } from '../data/types';
@@ -34,11 +34,15 @@ const gddTypeDescTranslationKeys: Record<GDDType, string> = {
     GDD: 'Full Game Design Documents Description'
 };
 
+import BadgeWall from '../components/BadgeWall';
+import type { Publisher } from '../data/types';
+
 const Documents: React.FC = () => {
     const { language, t } = useLanguage();
     const [selectedDoc, setSelectedDoc] = useState<{ url: string; title: string } | null>(null);
     const [expandedAbstracts, setExpandedAbstracts] = useState<Set<string>>(new Set());
     const [expandedCategories, setExpandedCategories] = useState<Set<GDDType>>(new Set());
+    const [selectedPublisher, setSelectedPublisher] = useState<Publisher | null>(null);
 
     const toggleCategory = (type: GDDType) => {
         setExpandedCategories(prev => {
@@ -82,10 +86,16 @@ const Documents: React.FC = () => {
         return new Date(year, month, day);
     };
 
-    // Group by category
-    const papers = publicDocs
-        .filter(d => d.category === 'Paper')
-        .sort((a, b) => {
+    // Filter documents by publisher if one is selected
+    const filteredDocs = useMemo(() => {
+        if (!selectedPublisher) return publicDocs;
+        return publicDocs.filter(doc => doc.publisher === selectedPublisher);
+    }, [selectedPublisher]);
+
+    // Group by category using filtered list
+    const papers = filteredDocs
+        .filter((d: PublicDoc) => d.category === 'Paper')
+        .sort((a: PublicDoc, b: PublicDoc) => {
             const ifA = parseFloat(a.impactFactor || '0') || 0;
             const ifB = parseFloat(b.impactFactor || '0') || 0;
             if (ifB !== ifA) return ifB - ifA;
@@ -100,23 +110,23 @@ const Documents: React.FC = () => {
             return typePriority(b.paperType) - typePriority(a.paperType);
         });
 
-    const lectures = publicDocs
-        .filter(d => d.category === 'Lecture')
-        .sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime());
+    const lectures = filteredDocs
+        .filter((d: PublicDoc) => d.category === 'Lecture')
+        .sort((a: PublicDoc, b: PublicDoc) => parseDate(b.date).getTime() - parseDate(a.date).getTime());
 
-    const gdds = publicDocs.filter(d => d.category === 'GDD');
+    const gdds = filteredDocs.filter((d: PublicDoc) => d.category === 'GDD');
 
     // Group GDDs by type and sort by date (newest first)
-    const gddsByType = gdds.reduce((acc, doc) => {
+    const gddsByType = gdds.reduce((acc: Record<string, PublicDoc[]>, doc: PublicDoc) => {
         const type = doc.gddType || 'GDD';
         if (!acc[type]) acc[type] = [];
         acc[type].push(doc);
         return acc;
-    }, {} as Record<GDDType, PublicDoc[]>);
+    }, {} as Record<string, PublicDoc[]>);
 
     // Sort each group by date
     Object.keys(gddsByType).forEach(type => {
-        gddsByType[type as GDDType].sort((a, b) => {
+        gddsByType[type as GDDType].sort((a: PublicDoc, b: PublicDoc) => {
             return parseDate(b.date).getTime() - parseDate(a.date).getTime();
         });
     });
@@ -292,7 +302,13 @@ const Documents: React.FC = () => {
                 <p className={styles.subtitle}>
                     {getLocalizedValue(siteConfig.pages.documents.subtitles, language)}
                 </p>
+                <BadgeWall
+                    docs={publicDocs}
+                    selectedPublisher={selectedPublisher}
+                    onSelectPublisher={setSelectedPublisher}
+                />
             </motion.header>
+
 
             {/* Papers Section */}
             {papers.length > 0 && (
@@ -302,10 +318,12 @@ const Documents: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className={styles.sectionTitle}>
-                        <BookOpen size={20} />
-                        {t('Academic Papers')}
-                    </h2>
+                    {!selectedPublisher && (
+                        <h2 className={styles.sectionTitle}>
+                            <BookOpen size={20} />
+                            {t('Academic Papers')}
+                        </h2>
+                    )}
                     <div className={styles.grid}>
                         {papers.map(renderPaperCard)}
                     </div>
@@ -320,10 +338,12 @@ const Documents: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className={styles.sectionTitle}>
-                        <Mic size={20} />
-                        {t('Lectures & Writing')}
-                    </h2>
+                    {!selectedPublisher && (
+                        <h2 className={styles.sectionTitle}>
+                            <Mic size={20} />
+                            {t('Lectures & Writing')}
+                        </h2>
+                    )}
                     <div className={styles.grid}>
                         {lectures.map(renderPaperCard)}
                     </div>
@@ -337,10 +357,12 @@ const Documents: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
             >
-                <h2 className={styles.sectionTitle}>
-                    <FileText size={20} />
-                    {t('Past Paper Work Examples')}
-                </h2>
+                {!selectedPublisher && (
+                    <h2 className={styles.sectionTitle}>
+                        <FileText size={20} />
+                        {t('Past Paper Work Examples')}
+                    </h2>
+                )}
 
                 <div className={styles.gddGroups}>
                     {gddTypeOrder.map(type => {

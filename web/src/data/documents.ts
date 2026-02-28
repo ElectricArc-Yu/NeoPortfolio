@@ -1,30 +1,75 @@
 import type { PublicDoc } from './types';
 
 export const publicDocs: PublicDoc[] = [
-    // --- Papers ---
-    // {
-    //     id: 'taxonomy-of-participation',
-    //     titles: {
-    //         CN: "参与行为的结构化分类学：不确定性下的参与建模",
-    //         EN: "A Structural Taxonomy of Participation: Engagement Modeling under Uncertainty",
-    //         JA: "参加行動の構造的タクソノミー（分類学）：不確実性下におけるエンゲージメント・モデリング"
-    //     },
-    //     date: '2026.02.11',
-    //     descriptions: {
-    //         CN: "不确定性下的用户参与通常被归结为系统层面的激励机制或潜在的心理状态。基于先前将参与性系统分解为产出、成本、时间投入、外在与内在动机、失败成本和风险结构等七个正交维度的设计理论框架，本文提供了该分类法的首次大规模实证验证。我分析了涵盖约500个Steam产品的14,717条玩家评论，通过轻量级本地大语言模型（Qwen-2.5-7B）进行解析，并通过跨架构三角验证（盛行率调整及偏差调整Kappa系数，平均PABAK = 0.81）确保了可靠性。研究确立了两个关键结构特征：(1) 正交性——两两相关矩阵呈现稀疏结构（平均|ρ| < 0.1），且单条评论的激活度较低（平均|P| ≈ 1.85），证实了28个子维度捕捉到了真正独立的设计变量，且被用户体验为离散且显著的交互点；(2) 最小完备性——96.56% 的玩家反馈能映射到该分类法中，24个主成分即可捕获90%的方差，且每个维度（包括长尾构造）都能解释简单模型无法观测到的独特子集。此外，在正面与负面反馈的相关结构中观察到了显著的参与度不对称现象。结果表明，参与感可以被视为一种结构上可解构的行为产物，而不仅仅由潜在心理状态所完整表征。",
-    //         EN: "Human participation under uncertainty is typically explained either through system-level incentives or through latent psychological states. Building on a prior design-theoretic framework that decomposes participatory systems into seven orthogonal dimensions spanning output, cost, temporal commitment, extrinsic and intrinsic motivation, failure cost, and risk structure, this paper provides the first large-scale empirical validation of that taxonomy. I analyze N = 14,717 player reviews across approximately 500 Steam titles, decoded via a lightweight local LLM (Qwen-2.5-7B) and validated through cross-architecture triangulation (Prevalence-Adjusted Bias-Adjusted Kappa, Mean PABAK = 0.81). Two structural properties are established: (1) Orthogonality—the pairwise correlation matrix exhibits sparse structure (mean |ρ| < 0.1) alongside low per-review activation (Mean |P | ≈ 1.85), confirming that the 28-subdimensions capture genuinely independent design variance that is experienced by users as discrete,salient interaction points; and (2) Minimal Completeness—96.56% of playerfeedback maps onto the taxonomy, 24 of 28 principal components are required to capture 90% of variance, and every dimension, including rare long-tail constructs, explains unique subsets that would be invisible to simpler models. Additionally, a notable engagement asymmetry is observed in the correlation structure between positive and negative feedback. These results demonstrate that engagement can be treated as a structurally deconstructible behavioral product, rather than being fully or exhaustively characterized by latent psychological states alone.",
-    //         JA: "不確実性下における人間の参加行動は、通常、システムレベルのインセンティブまたは潜在的な心理状態のいずれかによって説明される。本稿では、参加型システムを産出、コスト、時間的コミットメント、外的・内的動機付け、失敗コスト、およびリスク構造の7つの正交する次元に分解する先行のデザイン理論的枠組みに基づき、その分類法の初の大規模な実証研究を行う。約500のSteamタイトルにわたるN = 14,717件のプレイヤーレビューを分析し、軽量なローカルLLM（Qwen-2.5-7B）を用いてデコードし、クロスアーキテクチャ・トライアンギュレーション（普及率調整・バイアス調整済みカッパ係数、平均PABAK = 0.81）を通じて検証した。本研究では2つの構造的特性を確立した：(1) 正交性――ペアワイズ相関行列は希薄な構造（平均|ρ| < 0.1）を示し、レビューごとの活性化度も低い（平均|P| ≈ 1.85）。これは、28のサブ次元が、ユーザーによって離散的で顕著なインタラクションポイントとして体験される、真に独立したデザイン分散を捉えていることを裏付けている。(2) 最小完全性――プレイヤーのフィードバックの96.56%がこの分類法にマッピングされ、分散の90%を捉えるには28のうち24の主成分が必要であり、希少なロングテール要素を含む全次元が、単純なモデルでは不可視な固有のサブセットを説明している。さらに、ポジティブなフィードバックとネガティブなフィードバックの相関構造において、顕著なエンゲージメントの非対称性が観察された。これらの結果は、エンゲージメントが潜在的な心理状態のみによって特徴づけられるものではなく、構造的に解体可能な行動的成果物として扱えることを示している。"
-    //     },
-    //     category: 'Paper',
-    //     paperType: 'Full Paper',
-    //     originalLangs: { CN: "英文", EN: "English", JA: "英語" },
-    //     lengths: { CN: "24页", EN: "24 Pages", JA: "24ページ" },
-    //     isInternal: false,
-    //     journal: 'Nature Human Behaviour (Desk Review)',
-    //     impactFactor: '0',
-    //     preprintUrl: '',
-    //     externalUrl: ''
-    // },
+    {
+        id: 'A Type of Social Mechanics: A First-Principles Formal Framework for Systemic Stress, Normalization Traps, and Social Phase Transitions',
+        titles: {
+            CN: "一种社会力学：针对系统性压力、归一化陷阱与社会相变的第一性原理形式化框架",
+            EN: "A Type of Social Mechanics: A First-Principles Formal Framework for Systemic Stress, Normalization Traps, and Social Phase Transitions",
+            JA: "社会力学の一種：システム的ストレス、規格化の罠、および社会的相転移のための第一原理に基づく形式的フレームワーク"
+        },
+        date: '2026.02.01',
+        descriptions: {
+            CN: "现代社会正面临着以生育率骤降、普遍职业倦怠和深刻社会原子化为特征的结构性危机。然而，当代社会科学在微观个体决策与宏观系统性崩溃之间仍缺乏统一的物理框架。本文提出了“社会力学（Social Mechanics）”理论框架，将人类集体建模为受网络拓扑和热力学定律约束的非平衡动力系统。我们首先形式化了社会运动学中的“归一化陷阱（Normalization Trap）”：在由局部信息网络放大的评估指标压力下，受限于生理极限的个体相对位移不可避免地趋于零。这种加速度失配产生了一种非对称的“社会热机”，将有用功沿权力梯度激进提取，并将摩擦产生的系统废热向下耗散至边缘节点。模型表明，当累积压力突破个体承载阈值时，代理将启动“主动拓扑剪枝（Topological Pruning）”作为物理自我保护机制。一旦这种剪枝超过临界点，将引发压力向存活节点的急剧转移，最终导致社会网络内不可逆的相变和连锁雪崩。",
+            EN: "Modern societies globally are confronting structural crises characterized by plummeting fertility rates, widespread occupational burnout, and profound social atomization. However, contemporary social sciences, while having developed extensive quantitative models for isolated phenomena, still lack a unified quantitative physical framework capable of bridging micro-level individual decisionmaking with macro-level systemic collapse. This paper proposes the theoretical framework of Social Mechanics, modeling human collectives as non-equilibrium dynamical systems constrained by network topology and thermodynamic laws. We first formalize the Normalization Trap of Social Kinematics: Under an exponentially expanding systemic evaluation metric (L max) amplified by local information networks, the relative social displacement of individuals (d ′ i)bounded by biological limits of absolute work capacity (C bio)-inevitably converges to zero. This acceleration mismatch, immersed in exceptionally high effective systemic damping (η eff), engenders an asymmetric Social Heat Engine. Useful work is aggressively extracted bidirectionally along power gradients and familial bonds, while the environmental stress (systemic waste heat) generated by internal friction is forcibly dissipated downward to marginal nodes. Our model demonstrates that when the accumulated total nodal stress inevitably breaches an individual's intrinsic carrying capacity threshold (τ i), the microagent will initiate active Topological Pruning as a mechanism of physical selfpreservation. We indicate that once such node-level pruning surpasses the critical tipping point (t crit) of the systemic stress capacity (C sys), it triggers an acute transfer of stress to surviving nodes, ultimately resulting in an irreversible phase transition and cascading avalanche within goal-directed social networks. This framework may offer preliminary quantitative indicators relevant to the systemic stress of complex human organizations.",
+            JA: "現代社会は、出生率の急落、広範な燃え尽き症候群、そして深刻な社会的原子化といった構造的危機に直面しています。しかし、社会科学においては、ミクロレベルの意思決定とマクロレベルのシステム崩壊を橋渡しする統一的な物理学的フレームワークが依然として欠如しています。本論文では、人間集団をネットワークトポロジーと熱力学の法則に基づく非平衡力学系としてモデル化する「社会力学（Social Mechanics）」の理論的フレームワークを提案します。まず、社会的キネマティクスにおける「規格化の罠（Normalization Trap）」を定式化し、拡大する評価指標と生物学的限界の乖離によって個人の相対的な社会的変位がゼロに収束する仕組みを解明します。この加速度のミスマッチは、非対称な「社会的熱機関」を生み出し、有用な仕事を権力勾配に沿って抽出する一方、内部摩擦による「排熱（システムストレス）」を周辺ノードへと強制的に散逸させます。本モデルは、累計ストレスが個人の許容閾値を超えた際、自己保存メカニメントとして「能動的トポロジー剪定（Topological Pruning）」が開始されることを示しています。この剪定が臨界点を超えると生存ノードへのストレス急転を誘発し、組織内での不可逆的な相転移と連鎖的な崩壊を引き起こします。"
+        },
+        category: 'Paper',
+        paperType: 'Full Paper',
+        originalLangs: { CN: "英文", EN: "English", JA: "英語" },
+        lengths: { CN: "66页", EN: "66 Pages", JA: "66ページ" },
+        isInternal: false,
+        journal: 'NHB (Desk Review)',
+        impactFactor: '0',
+        preprintUrl: '',
+        externalUrl: ''
+    },
+    {
+        id: 'large-scale-automated-auditing-of-user-feedback-in-games',
+        titles: {
+            CN: "大规模游戏用户反馈的自动审计：一种面向生产部署的资源高效本体导向框架",
+            EN: "Large-Scale Automated Auditing of User Feedback in Games: A Resource-Efficient Ontology-Guided Framework for Production Deployment",
+            JA: "ゲームにおけるユーザーフィードバックの大規模自動監査：プロダクション導入に向けたリソース効率の高いオントロジー誘導型フレームワーク"
+        },
+        date: '2026.02.01',
+        descriptions: {
+            CN: "游戏开发者在处理大规模用户反馈以识别可落地的设计弱点时，面临着关键的运营瓶颈。手动专家分析成本高昂（每小时 25-100 美元），而现有的情感分析工具缺乏诊断审计所需的结构化粒度。本文提出了一种资源高效的本体导向专家系统，通过零样本推理，仅利用提示工程（无需模型微调或带标注的训练数据），自动将玩家反馈解码为经过验证的 28 维设计分类法。我们在单台消费级 GPU（RTX 4080 笔记本）上，用约 40 小时处理了涵盖 887 个条目的 N = 14,574 条 Steam 评论。跨三种不同模型的架构验证得出的平均 PABAK = 0.82，表明模型间具有高度一致性。该系统实现了 96.8% 的覆盖率，单条评论的平均边际成本低于 0.0002 美元，仅为人工专家编码成本的不到千分之一。该框架将用户评论分析从周期性的手动审计转化为持续的自动化运营智能，为资源受限和中小规模的开发者普及了先进的设计分析能力。",
+            EN: "Game developers face critical operational bottlenecks in processing large-scale user feedback to identify actionable design weaknesses. Manual expert analysis is prohibitively expensive ($25.00 ∼ 100.00 per hour), while existing sentiment analysis tools lack the structural granularity required for diagnostic auditing. This paper presents a resource-efficient ontology-guided expert system that automatically decodes player feedback into a validated 28-dimensional design taxonomy via zero-shot inference-requiring only prompt engineering, without model fine-tuning or annotated training data. We processed N = 14, 574 Steam reviews spanning 887 titles using Qwen-2.5-7B on a single consumer GPU (RTX 4080 Laptop) in approximately 40 hours. Multi-architecture validation across three diverse models yielded a mean PABAK = 0.82, indicating high inter-model consistency. The system achieved 96.8% coverage at an average marginal cost below $0.0002 per review-representing an analysis cost below 1/1,000th of manual expert coding. Comprehensive validation through multi-evidence triangulation establishes robustness: bootstrap PCA stability [1] (24 of 28 components for 90% variance), permutation-tested correlations (p < 0.001), and low multicollinearity (mean VIF = 1.08). Comparative baselines confirm substantial advantages over BERT zero-shot and S-BERT clustering. This framework transforms user review analysis from periodic manual audits into continuous, automated operational intelligence-democratizing advanced design analytics for resource-constrained developers. ",
+            JA: "ゲーム開発者は、実行可能な設計上の弱点を特定するために、大規模なユーザーフィードバックを処理する際、運用上のボトルネックに直面しています。専門家による手動分析は非常に高コストであり、既存の感情分析ツールは診断監査に必要な構造的な粒度を欠いています。本論文では、モデルの微調整や教師データを必要とせず、プロンプトエンジニアリングのみを用いるゼロショット推論を介して、プレイヤーのフィードバックを検証済みの28次元設計分類法（タクソノミー）に自動的にデコードする、リソース効率の高いオントロジー誘導型エキスパートシステムを提案します。N = 14,574のSteamレビュー（887タイトル）を、単一の一般向けGPUを使用して約40時間で処理しました。検証の結果、高いモデル間一貫性（平均PABAK = 0.82）と96.8%の網羅率を達成し、レビューあたりの分析コストを手動分析の1/1,000以下に抑制することに成功しました。本フレームワークは、ユーザーレビュー分析を定期的な手動監査から継続的な自動分析へと変革し、リソースの限られた開発者にも高度なデザイン・アナリティクスを提供することを可能にします。"
+        },
+        category: 'Paper',
+        paperType: 'Full Paper',
+        originalLangs: { CN: "英文", EN: "English", JA: "英語" },
+        lengths: { CN: "28页", EN: "28 Pages", JA: "28ページ" },
+        isInternal: false,
+        journal: 'ESWA (Desk Review)',
+        impactFactor: '0',
+        preprintUrl: 'https://doi.org/10.36227/techrxiv.177205021.16204089/v1',
+        externalUrl: ''
+    },
+    {
+        id: 'design-theoretic-taxonomy-for-participatory-systems',
+        titles: {
+            CN: "参与式系统的设计理论分类法：正交性、极简完备性与双层诊断架构",
+            EN: "A Design-Theoretic Taxonomy for Participatory Systems: Orthogonality, Minimal Completeness, and the Dual-Layer Diagnostic Architecture",
+            JA: "参加型システムのためのデザイン理論的タクソノミー：直交性、最小完備性、および二層診断アーキテクチャ"
+        },
+        date: '2026.02.01',
+        descriptions: {
+            CN: "交互系统中的人类参与通常通过系统级的设计特征或潜在的心理状态来分析，这在客观机制与主观体验之间创造了某种解释鸿沟。我们开发了一种设计理论分类法，通过双层诊断架构来弥合这一鸿沟：将客观系统属性（信号源）与主体感知（解码器）分离。我们建立了一个七维正交向量空间，将参与倾向分解为：产出收益、成本、时间投入、外在/内在动机、失败成本和风险结构。通过对 N = 14,717 条玩家评论的大规模实证验证，我们证明了三个基本属性：正交性、极简完备性（28 个分量中的 24 个可捕获 90% 方差）以及行为效度（96.08% 覆盖率）。这些结果表明，通过双层架构，参与可以作为一种结构上可审计的行为产物进行诊断。",
+            EN: "Human participation in interactive systems is typically analyzed through either system-level design features or latent psychological states, creating an explanatory gap between objective mechanics and subjective experience. We develop a design-theoretic taxonomy that bridges this gap through a dual-layer diagnostic architecture: separating objective system properties (Signal Source) from agent perception (Decoder). We establish a seven-dimensional orthogonal vector space decomposing participatory propensity into: Output, Cost, Temporal Commitment, Extrinsic/Intrinsic Motivation, Failure Cost, and Risk Structure. Through largescale empirical validation on 𝑁 = 14,717 player reviews, we demonstrate three fundamental properties: (1) Orthogonality-dimensions exhibit weak correlation (modal |𝜌 | < 0.1) and function as independent design levers; (2) Minimal Completeness-24 of 28 components required for 90% variance capture, with each dimension explaining unique behavioral variance; (3) Behavioral Validity-96.08% coverage of substantive feedback, with systematic identification of residual categories falling outside structural design scope. We establish two critical theoretical advances: (1) The Structural Asymmetry of Failure-demonstrating that engagement success follows conjunctive logic (all dimensions must satisfy thresholds) while failure follows disjunctive logic (any single dimension violation triggers churn), explaining the systematic differences in user feedback complexity and correlation patterns; (2) Recursive Structural Applicability-evidence that the taxonomy applies recursively across micro (action), meso (session), and macro (lifecycle) granularities, validating cross-domain transferability beyond gaming to education, workplace, and civic systems. The taxonomy exhibits strong structural properties: low inter-dimensional correlation, linear PCA variance decay indicating genuine high-dimensionality, and empirical necessity of rare dimensions. These results establish that engagement can be treated as a structurally auditable behavioral product, with the dual-layer architecture enabling precise diagnosis of whether system failure lies in signal source (design deficiency), decoder (user expectation mismatch), or interface mapping (perceptual misalignment). This framework transforms abstract motivational theories into operationalizable design guidance by characterizing the objective signal space within which psychological mechanisms operate.",
+            JA: "インタラクティブシステムにおける参加行動は、通常、デザイン特徴または心理状態のいずれかを通じて分析されますが、客観的なメカニズムと主観的な体験の間には説明のギャップが存在します。本研究では、設計属性（信号源）とエージェントの知覚（デコーダー）を分離する二層診断アーキテクチャを通じて、このギャップを埋めるデザイン理論的分類法（タクソノミー）を開発しました。参加性向を、アウトプット、コスト、時間、動機、失敗コスト、リスク構造からなる7次元の直交ベクトル空間として定義し、14,717件のレビューを用いた検証により、その直交性、最小完備性、および行動的妥当性を証明しました。このフレームワークにより、エンゲージメントの失敗原因が設計上の欠陥（信号源）、期待の不一致（デコーダー）、または認識の不整合（マッピング）のどこにあるかを正確に診断することが可能になります。"
+        },
+        category: 'Paper',
+        paperType: 'Full Paper',
+        originalLangs: { CN: "英文", EN: "English", JA: "英語" },
+        lengths: { CN: "33页", EN: "33 Pages", JA: "33ページ" },
+        isInternal: false,
+        journal: 'TOCHI (Desk Review)',
+        impactFactor: '0',
+        preprintUrl: 'https://doi.org/10.36227/techrxiv.177203276.63908007/v1',
+        externalUrl: ''
+    },
     {
         id: 'participation-utility-model',
         titles: {
@@ -43,9 +88,9 @@ export const publicDocs: PublicDoc[] = [
         originalLangs: { CN: "英文", EN: "English", JA: "英語" },
         lengths: { CN: "8页", EN: "8 Pages", JA: "8ページ" },
         isInternal: false,
-        journal: 'IEEE ToG (Desk Review)',
+        journal: 'IEEE ToG (Peer Review)',
         impactFactor: '0',
-        preprintUrl: '',
+        preprintUrl: 'https://doi.org/10.36227/techrxiv.177212584.42401805/v1',
         externalUrl: ''
     },
     {
@@ -68,7 +113,7 @@ export const publicDocs: PublicDoc[] = [
         isInternal: false,
         journal: 'IEEE ToG (Peer Review)',
         impactFactor: '0',
-        preprintUrl: '',
+        preprintUrl: 'https://doi.org/10.36227/techrxiv.177091887.71276991/v1',
         externalUrl: ''
     },
     /** example

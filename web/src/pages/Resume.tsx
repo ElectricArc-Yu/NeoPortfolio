@@ -18,6 +18,7 @@ import { getRoleCategory } from '../utils/projectUtils';
 import { getLocalizedValue } from '../utils/i18n';
 import CertModal from '../components/CertModal';
 import ResumeErrorBoundary from '../components/ResumeErrorBoundary';
+import ResumeExporter from '../components/ResumeExporter';
 import { fadeInUp } from '../utils/variants';
 
 // 安全数据访问函数
@@ -245,7 +246,10 @@ const ResumeContent: React.FC = () => {
         <div className={styles.resumeContentWrapper}>
             <motion.header className={styles.header} variants={fadeInUp} initial="hidden" animate="visible">
                 <h1 className={styles.name}>{safeGetLocalizedValue(siteConfig.pages.resume.titles, language, '')}</h1>
-                <p className={styles.subtitle}>{safeGetLocalizedValue(siteConfig.pages.resume.subtitles, language, '')}</p>
+                <div className={styles.subtitleRow}>
+                    <p className={styles.subtitle}>{safeGetLocalizedValue(siteConfig.pages.resume.subtitles, language, '')}</p>
+                    <ResumeExporter />
+                </div>
                 <p className={styles.about}>{safeGetLocalizedValue(resumeData.about, language, '')}</p>
                 <div className={styles.contactInfo}>
                     <div className={styles.contactItem}><Mail size={16} /><a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a></div>

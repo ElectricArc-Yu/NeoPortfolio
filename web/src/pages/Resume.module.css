@@ -24,7 +24,16 @@
 .subtitle {
     font-size: 1.5rem;
     color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+.subtitleRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
     margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
 }
 
 .about {

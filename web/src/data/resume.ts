@@ -109,7 +109,22 @@ export const resumeData: ResumeData = {
     ],
     education: [
         {
-            period: "2023 - 2024",
+            period: "2026.09 - 2027.09",
+            schools: {
+                CN: "蒂赛德大学",
+                EN: "Teesside University",
+                JA: "ティーズサイド大学"
+            },
+            degrees: {
+                CN: "文学硕士 (游戏设计)",
+                EN: "M.A (Games Design)",
+                JA: "文学修士（ゲームデザイン）"
+            },
+            gpa: "Offer Received",
+            awards: []
+        },
+        {
+            period: "2023.09 - 2024.09",
             schools: {
                 CN: "上海温哥华电影学院",
                 EN: "Shanghai Vancouver Film School",
@@ -124,7 +139,7 @@ export const resumeData: ResumeData = {
             awards: ["Talent Scheme Scholarship"]
         },
         {
-            period: "2021 - 2023",
+            period: "2021.09 - 2023.06",
             schools: {
                 CN: "南昌理工学院",
                 EN: "Nanchang Institute of Technology",
@@ -138,7 +153,7 @@ export const resumeData: ResumeData = {
             gpa: "2.59/4.0"
         },
         {
-            period: "2018 - 2021",
+            period: "2018.09 - 2021.06",
             schools: {
                 CN: "南昌理工学院",
                 EN: "Nanchang Institute of Technology",

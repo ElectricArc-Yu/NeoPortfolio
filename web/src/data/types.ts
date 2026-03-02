@@ -186,8 +186,8 @@ export interface PublicDoc {
 
     category: DocCategory;
     gddType?: GDDType;
-    originalLangs: Localized;
-    lengths: Localized;
+    originalLangs: Localized | string; // Full localized object OR shorthand: 'CN', 'EN', 'JA', etc.
+    lengths: Localized | string;       // Full localized object OR shorthand: just a number like '8' (pages auto-generated)
     isInternal: boolean;
     targetPositions?: Localized;
 

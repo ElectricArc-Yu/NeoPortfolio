@@ -10,7 +10,7 @@ import { projects } from '../data/projects';
 import { publicDocs } from '../data/documents';
 import { mediaSeries } from '../data/media';
 import { siteConfig } from '../data/siteConfig';
-import { getLocalizedValue } from './i18n';
+import { getLocalizedValue, resolveLength } from './i18n';
 
 
 export type ExportMode = 'academic' | 'professional' | 'full';
@@ -135,7 +135,7 @@ function buildPapers(lang: string): string {
         const journal = p.journal || '';
         const publisher = p.publisher !== 'None' ? p.publisher : '';
         const paperType = p.paperType || '';
-        const pages = locStr(p.lengths, lang);
+        const pages = resolveLength(p.lengths, lang);
         const link = p.preprintUrl || p.externalUrl || '';
         const isPaper = p.category === 'Paper';
         const categoryLabel = isPaper

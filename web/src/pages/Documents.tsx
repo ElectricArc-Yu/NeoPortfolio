@@ -5,7 +5,7 @@ import type { GDDType, PublicDoc } from '../data/types';
 import PdfModal from '../components/PdfModal';
 import styles from './Documents.module.css';
 import { siteConfig } from '../data/siteConfig';
-import { getLocalizedValue } from '../utils/i18n';
+import { getLocalizedValue, resolveOriginalLang, resolveLength } from '../utils/i18n';
 import { FileText, BookOpen, ChevronDown, ChevronUp, FlaskConical, GraduationCap, ClipboardList, FileCode, Mic, ExternalLink, Presentation } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -190,9 +190,9 @@ const Documents: React.FC = () => {
                 <div className={styles.paperBasicInfo}>
                     <span>{doc.date}</span>
                     <span className={styles.separator}>|</span>
-                    <span>{getLocalizedValue(doc.lengths, language)}</span>
+                    <span>{resolveLength(doc.lengths, language)}</span>
                     <span className={styles.separator}>|</span>
-                    <span>{getLocalizedValue(doc.originalLangs, language)}</span>
+                    <span>{resolveOriginalLang(doc.originalLangs, language)}</span>
                 </div>
 
                 <div className={styles.description}>
@@ -265,7 +265,7 @@ const Documents: React.FC = () => {
                 <div className={styles.paperBasicInfo}>
                     <span>{doc.date}</span>
                     <span className={styles.separator}>|</span>
-                    <span>{getLocalizedValue(doc.originalLangs, language)}</span>
+                    <span>{resolveOriginalLang(doc.originalLangs, language)}</span>
                     {doc.duration && (
                         <>
                             <span className={styles.separator}>|</span>
@@ -346,11 +346,11 @@ const Documents: React.FC = () => {
                     <span className={styles.metaItem}>{doc.date}</span>
                     <span className={styles.separator}>|</span>
                     <span className={styles.metaItem}>
-                        {getLocalizedValue(doc.originalLangs, language)}
+                        {resolveOriginalLang(doc.originalLangs, language)}
                     </span>
                     <span className={styles.separator}>|</span>
                     <span className={styles.metaItem}>
-                        {getLocalizedValue(doc.lengths, language)}
+                        {resolveLength(doc.lengths, language)}
                     </span>
                     {targetPosition && (
                         <>

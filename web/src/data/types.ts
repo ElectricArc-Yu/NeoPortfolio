@@ -146,6 +146,7 @@ export interface ResumeData {
         degrees: Localized;
         gpa?: string;
         awards?: string[];
+        status?: 0 | 1; // 0 = completed, 1 = in progress (shows "Offer Received" instead of GPA)
     }[];
     certifications?: {
         id: string;
@@ -171,6 +172,7 @@ export interface ResumeData {
 export type DocCategory = 'GDD' | 'Paper' | 'Lecture';
 export type PaperType = 'Letter' | 'Paper' | 'Full Paper' | 'Preprint' | 'Technical Report';
 export type GDDType = 'Test' | 'Analysis' | 'Methodology' | 'GDD';
+export type LectureType = 'Lecture' | 'Conference';
 
 export type Publisher = 'IEEE' | 'ACM' | 'Springer' | 'Elsevier' | 'Wiley' | 'Nature' | 'Science' | 'Taylor & Francis' | 'Oxford' | 'Cambridge' | 'IOP' | 'GDC' | 'None';
 
@@ -194,6 +196,12 @@ export interface PublicDoc {
     journal?: string;
     impactFactor?: string;
     preprintUrl?: string;
+
+    // Lecture-specific fields
+    lectureType?: LectureType; // 'Lecture' or 'Conference'
+    venue?: string; // Full name of conference/school/platform (e.g. "Games for Change")
+    duration?: string; // e.g. "45 min"
+    deckUrl?: string; // Link to slides/deck
 }
 
 /**

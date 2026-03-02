@@ -120,8 +120,9 @@ export const resumeData: ResumeData = {
                 EN: "M.A (Games Design)",
                 JA: "文学修士（ゲームデザイン）"
             },
-            gpa: "Offer Received",
-            awards: []
+            gpa: "",
+            awards: [],
+            status: 1
         },
         {
             period: "2023.09 - 2024.09",

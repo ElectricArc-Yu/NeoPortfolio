@@ -6,7 +6,7 @@ import PdfModal from '../components/PdfModal';
 import styles from './Documents.module.css';
 import { siteConfig } from '../data/siteConfig';
 import { getLocalizedValue } from '../utils/i18n';
-import { FileText, BookOpen, ChevronDown, ChevronUp, FlaskConical, GraduationCap, ClipboardList, FileCode, Mic } from 'lucide-react';
+import { FileText, BookOpen, ChevronDown, ChevronUp, FlaskConical, GraduationCap, ClipboardList, FileCode, Mic, ExternalLink, Presentation } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -219,6 +219,103 @@ const Documents: React.FC = () => {
         );
     };
 
+    // Render Lecture Card - Distinct layout from Paper
+    const renderLectureCard = (doc: PublicDoc) => {
+        const description = getLocalizedValue(doc.descriptions, language) || '';
+        const isLongAbstract = description.length > 150;
+        const isExpanded = expandedAbstracts.has(doc.id);
+        const displayDescription = isLongAbstract && !isExpanded
+            ? description.slice(0, 150) + '...'
+            : description;
+        const lectureTypeLabel = doc.lectureType === 'Conference'
+            ? t('Conference')
+            : t('Lecture');
+        const directUrl = doc.externalUrl || doc.preprintUrl || '';
+
+        return (
+            <div key={doc.id} className={`${styles.paperCard} ${styles.lectureCard}`}>
+                {/* Row 1: Venue + Type Badge + Direct Link */}
+                <div className={styles.lectureTopRow}>
+                    <div className={styles.lectureVenueArea}>
+                        <span className={styles.lectureTypeBadge}>{lectureTypeLabel}</span>
+                        {doc.venue && (
+                            <span className={styles.lectureVenue}>{doc.venue}</span>
+                        )}
+                    </div>
+                    {directUrl && (
+                        <button
+                            className={styles.lectureLinkBtn}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                window.open(directUrl, '_blank', 'noopener,noreferrer');
+                            }}
+                        >
+                            <ExternalLink size={13} />
+                            {t('View')}
+                        </button>
+                    )}
+                </div>
+
+                {/* Row 2: Presentation Title */}
+                <h3 className={styles.lectureTitle}>
+                    {getLocalizedValue(doc.titles, language)}
+                </h3>
+
+                {/* Row 3: Date | Language | Duration | Deck */}
+                <div className={styles.paperBasicInfo}>
+                    <span>{doc.date}</span>
+                    <span className={styles.separator}>|</span>
+                    <span>{getLocalizedValue(doc.originalLangs, language)}</span>
+                    {doc.duration && (
+                        <>
+                            <span className={styles.separator}>|</span>
+                            <span>{doc.duration}</span>
+                        </>
+                    )}
+                    {doc.deckUrl && (
+                        <>
+                            <span className={styles.separator}>|</span>
+                            <a
+                                href={doc.deckUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.deckLink}
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <Presentation size={13} />
+                                Deck
+                            </a>
+                        </>
+                    )}
+                </div>
+
+                {/* Row 4: Abstract */}
+                {description && (
+                    <div className={styles.description}>
+                        <span className={styles.abstractText}>
+                            <span className={styles.abstractLabel}>
+                                {t('Abstract')}:{' '}
+                            </span>
+                            {displayDescription}
+                        </span>
+                        {isLongAbstract && (
+                            <button
+                                className={styles.expandBtn}
+                                onClick={(e) => toggleAbstract(doc.id, e)}
+                            >
+                                {isExpanded ? (
+                                    <>{t('Collapse')} <ChevronUp size={14} /></>
+                                ) : (
+                                    <>{t('Expand')} <ChevronDown size={14} /></>
+                                )}
+                            </button>
+                        )}
+                    </div>
+                )}
+            </div>
+        );
+    };
+
     // Render GDD Card
     const renderGDDCard = (doc: PublicDoc) => {
         const targetPosition = getLocalizedValue(doc.targetPositions, language);
@@ -302,11 +399,6 @@ const Documents: React.FC = () => {
                 <p className={styles.subtitle}>
                     {getLocalizedValue(siteConfig.pages.documents.subtitles, language)}
                 </p>
-                <BadgeWall
-                    docs={publicDocs}
-                    selectedPublisher={selectedPublisher}
-                    onSelectPublisher={setSelectedPublisher}
-                />
             </motion.header>
 
 
@@ -318,6 +410,11 @@ const Documents: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
+                    <BadgeWall
+                        docs={publicDocs}
+                        selectedPublisher={selectedPublisher}
+                        onSelectPublisher={setSelectedPublisher}
+                    />
                     {!selectedPublisher && (
                         <h2 className={styles.sectionTitle}>
                             <BookOpen size={20} />
@@ -339,13 +436,13 @@ const Documents: React.FC = () => {
                     transition={{ duration: 0.5 }}
                 >
                     {!selectedPublisher && (
-                        <h2 className={styles.sectionTitle}>
+                        <h2 className={`${styles.sectionTitle} ${styles.lectureSectionTitle}`}>
                             <Mic size={20} />
                             {t('Lectures & Writing')}
                         </h2>
                     )}
                     <div className={styles.grid}>
-                        {lectures.map(renderPaperCard)}
+                        {lectures.map(renderLectureCard)}
                     </div>
                 </motion.section>
             )}

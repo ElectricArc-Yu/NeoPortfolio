@@ -323,31 +323,41 @@ const ResumeContent: React.FC = () => {
                             {t('Education')}
                         </h2>
                         <div className={styles.educationList}>
-                            {resumeData.education.map((edu, i) => (
-                                <div key={i} className={styles.educationItem}>
-                                    <div className={`${styles.educationHeaderFull} ${language === 'EN' ? styles.enHeader : ''}`}>
-                                        <h3 className={styles.schoolNameFull}>{safeGetLocalizedValue(edu.schools, language, '')}</h3>
-                                    </div>
-                                    <div className={styles.eduMetaRow}>
-                                        <span className={styles.period}>{edu.period}</span>
-                                        {edu.gpa && <span className={styles.gpa}>GPA: {edu.gpa}</span>}
-                                    </div>
-                                    <p className={styles.degreeFull}>{safeGetLocalizedValue(edu.degrees, language, '')}</p>
+                            {resumeData.education.map((edu, i) => {
+                                const isInProgress = edu.status === 1;
+                                const offerLabel = language === 'CN' ? '已录取'
+                                    : language === 'JA' ? '合格通知済み'
+                                        : 'Offer Received';
+                                return (
+                                    <div key={i} className={`${styles.educationItem} ${isInProgress ? styles.educationInProgress : ''}`}>
+                                        <div className={`${styles.educationHeaderFull} ${language === 'EN' ? styles.enHeader : ''}`}>
+                                            <h3 className={styles.schoolNameFull}>{safeGetLocalizedValue(edu.schools, language, '')}</h3>
+                                        </div>
+                                        <div className={styles.eduMetaRow}>
+                                            <span className={styles.period}>{edu.period}</span>
+                                            {isInProgress ? (
+                                                <span className={styles.offerBadge}>{offerLabel}</span>
+                                            ) : (
+                                                edu.gpa && <span className={styles.gpa}>GPA: {edu.gpa}</span>
+                                            )}
+                                        </div>
+                                        <p className={styles.degreeFull}>{safeGetLocalizedValue(edu.degrees, language, '')}</p>
 
-                                    {edu.awards && edu.awards.length > 0 && (
-                                        <div className={styles.awardsSection}>
-                                            <div className={styles.awardItem}>
-                                                <Trophy size={14} style={{ marginRight: '6px' }} />
-                                                <div className={styles.awardsListContainer}>
-                                                    {edu.awards.map((award, j) => (
-                                                        <span key={j} className={styles.awardText}>{award}</span>
-                                                    ))}
+                                        {edu.awards && edu.awards.length > 0 && (
+                                            <div className={styles.awardsSection}>
+                                                <div className={styles.awardItem}>
+                                                    <Trophy size={14} style={{ marginRight: '6px' }} />
+                                                    <div className={styles.awardsListContainer}>
+                                                        {edu.awards.map((award, j) => (
+                                                            <span key={j} className={styles.awardText}>{award}</span>
+                                                        ))}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
+                                        )}
+                                    </div>
+                                );
+                            })}
                         </div>
                     </motion.section>
                 </div>

@@ -297,6 +297,54 @@
     background: rgba(255, 255, 255, 0.05);
 }
 
+/* In-progress education (status: 1) */
+.educationInProgress {
+    border-color: rgba(16, 185, 129, 0.3);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(16, 185, 129, 0.04) 100%);
+    position: relative;
+}
+
+.educationInProgress::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #10b981, #34d399, #10b981);
+    border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+    animation: progressShimmer 3s ease-in-out infinite;
+}
+
+@keyframes progressShimmer {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.educationInProgress:hover {
+    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow: 0 5px 20px rgba(16, 185, 129, 0.15);
+}
+
+.offerBadge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.2rem 0.7rem;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+    color: #fff;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
 .educationHeaderFull {
     height: 20px;
     display: flex;

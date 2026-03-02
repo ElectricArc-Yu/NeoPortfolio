@@ -63,18 +63,24 @@ function buildEducation(lang: string): string {
     const items = resumeData.education.map(edu => {
         const school = locStr(edu.schools, lang);
         const degree = locStr(edu.degrees, lang);
+        const isInProgress = edu.status === 1;
+        const offerLabel = isInProgress
+            ? (lang === 'CN' ? '已录取' : lang === 'JA' ? '合格通知済み' : 'Offer Received')
+            : '';
         const awards = edu.awards?.length
             ? `<div class="awards">🏆 ${edu.awards.map(a => escapeHtml(a)).join(', ')}</div>`
             : '';
         return `
-        <div class="edu-item">
+        <div class="edu-item ${isInProgress ? 'edu-in-progress' : ''}">
             <div class="edu-header">
                 <strong>${escapeHtml(school)}</strong>
                 <span class="period">${edu.period}</span>
             </div>
             <div class="edu-meta">
                 <span class="degree">${escapeHtml(degree)}</span>
-                ${edu.gpa ? `<span class="gpa">GPA: ${edu.gpa}</span>` : ''}
+                ${isInProgress
+                ? `<span class="offer-badge">${offerLabel}</span>`
+                : (edu.gpa ? `<span class="gpa">GPA: ${edu.gpa}</span>` : '')}
             </div>
             ${awards}
         </div>`;
@@ -118,31 +124,46 @@ function buildExperience(lang: string): string {
 }
 
 function buildPapers(lang: string): string {
-    const papers = publicDocs.filter(d => d.category === 'Paper');
-    if (papers.length === 0) return '';
+    // Include both Papers and Lectures, sorted by date descending
+    const allDocs = publicDocs
+        .filter(d => d.category === 'Paper' || d.category === 'Lecture')
+        .sort((a, b) => b.date.localeCompare(a.date));
+    if (allDocs.length === 0) return '';
 
-    const items = papers.map(p => {
+    const items = allDocs.map(p => {
         const title = locStr(p.titles, lang);
         const journal = p.journal || '';
         const publisher = p.publisher !== 'None' ? p.publisher : '';
         const paperType = p.paperType || '';
         const pages = locStr(p.lengths, lang);
         const link = p.preprintUrl || p.externalUrl || '';
+        const isPaper = p.category === 'Paper';
+        const categoryLabel = isPaper
+            ? (lang === 'CN' ? '论文' : lang === 'JA' ? '論文' : 'Paper')
+            : (lang === 'CN' ? '演讲' : lang === 'JA' ? '講演' : 'Conference');
 
         return `
         <div class="paper-item">
             <div class="paper-title">${link ? `<a href="${link}" target="_blank">${escapeHtml(title)}</a>` : escapeHtml(title)}</div>
             <div class="paper-meta">
+                <span class="category-tag ${isPaper ? 'category-paper' : 'category-lecture'}">${categoryLabel}</span>
                 ${publisher ? `<span class="publisher-badge">${escapeHtml(publisher)}</span>` : ''}
                 ${journal ? `<span class="journal">${escapeHtml(journal)}</span>` : ''}
-                ${paperType ? `<span class="paper-type">${escapeHtml(paperType)}</span>` : ''}
+                ${paperType ? `<span class="paper-type-tag">${escapeHtml(paperType)}</span>` : ''}
                 ${pages ? `<span class="pages">${escapeHtml(pages)}</span>` : ''}
                 <span class="date">${p.date}</span>
             </div>
         </div>`;
     }).join('');
 
-    return wrapSection(lang === 'CN' ? '学术论文' : lang === 'JA' ? '学術論文' : 'Academic Papers', items);
+    const hasPapers = allDocs.some(d => d.category === 'Paper');
+    const hasLectures = allDocs.some(d => d.category === 'Lecture');
+    const sectionTitle = hasPapers && hasLectures
+        ? (lang === 'CN' ? '学术论文与演讲' : lang === 'JA' ? '学術論文と講演' : 'Academic Papers & Lectures')
+        : hasPapers
+            ? (lang === 'CN' ? '学术论文' : lang === 'JA' ? '学術論文' : 'Academic Papers')
+            : (lang === 'CN' ? '演讲' : lang === 'JA' ? '講演' : 'Lectures');
+    return wrapSection(sectionTitle, items);
 }
 
 function buildSkills(lang: string): string {
@@ -609,6 +630,22 @@ function getStylesheet(): string {
             font-weight: 500;
         }
 
+        .edu-in-progress {
+            border-left-color: #10b981;
+            background: linear-gradient(135deg, var(--gray-50) 0%, rgba(16, 185, 129, 0.04) 100%);
+        }
+
+        .offer-badge {
+            font-size: 7.5pt;
+            font-weight: 800;
+            padding: 1px 8px;
+            border-radius: 3px;
+            background: #10b981;
+            color: #fff;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
         /* ── Papers ── */
         .paper-item {
             margin-bottom: 10px;
@@ -652,8 +689,34 @@ function getStylesheet(): string {
             letter-spacing: 0.3px;
         }
 
+        .category-tag {
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-size: 7pt;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .category-paper {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fcd34d;
+        }
+
+        .category-lecture {
+            background: #ffedd5;
+            color: #9a3412;
+            border: 1px solid #fdba74;
+        }
+
+        .paper-type-tag {
+            font-style: italic;
+            color: #b45309;
+            font-weight: 500;
+        }
+
         .journal { font-weight: 500; color: var(--black-secondary); }
-        .paper-type { font-style: italic; }
         .date { color: var(--blue-primary); font-weight: 500; }
 
         /* ── Skills ── */

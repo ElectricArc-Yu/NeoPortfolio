@@ -19,8 +19,8 @@ export const publicDocs: PublicDoc[] = [
         originalLangs: 'EN',
         lengths: '66',
         isInternal: false,
-        journal: 'NHB (Desk Review)',
-        publisher: 'Nature',
+        journal: 'Choosing',
+        publisher: 'None',
         impactFactor: '0',
         preprintUrl: '',
         externalUrl: ''
@@ -44,7 +44,7 @@ export const publicDocs: PublicDoc[] = [
         lengths: '28',
         isInternal: false,
         journal: 'ESWA (Desk Review)',
-        publisher: 'Elsevier',
+        publisher: 'None',
         impactFactor: '0',
         preprintUrl: 'https://doi.org/10.36227/techrxiv.177205021.16204089/v1',
         externalUrl: ''
@@ -68,7 +68,7 @@ export const publicDocs: PublicDoc[] = [
         lengths: '33',
         isInternal: false,
         journal: 'TOCHI (Desk Review)',
-        publisher: 'ACM',
+        publisher: 'None',
         impactFactor: '0',
         preprintUrl: 'https://doi.org/10.36227/techrxiv.177203276.63908007/v1',
         externalUrl: ''
@@ -92,7 +92,7 @@ export const publicDocs: PublicDoc[] = [
         lengths: '8',
         isInternal: false,
         journal: 'IEEE ToG (Peer Review)',
-        publisher: 'IEEE',
+        publisher: 'None',
         impactFactor: '0',
         preprintUrl: 'https://doi.org/10.36227/techrxiv.177212584.42401805/v1',
         externalUrl: ''
@@ -116,7 +116,7 @@ export const publicDocs: PublicDoc[] = [
         lengths: '4',
         isInternal: false,
         journal: 'IEEE ToG (Peer Review)',
-        publisher: 'IEEE',
+        publisher: 'None',
         impactFactor: '0',
         preprintUrl: 'https://doi.org/10.36227/techrxiv.177091887.71276991/v1',
         externalUrl: ''

@@ -38,14 +38,15 @@ function buildHeader(lang: string): string {
     const role = locStr(resumeData.header.roles, lang);
     const about = locStr(resumeData.about, lang);
     const email = siteConfig.contact.email;
-    const links = resumeData.header.links
-        .map(l => {
+    const websiteLabel = lang === 'CN' ? '个人网站' : lang === 'JA' ? '個人サイト' : 'Personal Website';
+    const links = [
+        ...resumeData.header.links.map(l => {
             const label = locStr(l.labels, lang);
             const url = locStr(l.urls, lang);
             return url ? `<a href="${url}" target="_blank">${escapeHtml(label)}</a>` : '';
-        })
-        .filter(Boolean)
-        .join(' · ');
+        }),
+        `<a href="https://prelude.games" target="_blank">${escapeHtml(websiteLabel)}</a>`
+    ].filter(Boolean).join(' · ');
 
     return `
     <header class="resume-header">

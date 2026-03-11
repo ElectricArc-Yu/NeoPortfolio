@@ -32,8 +32,8 @@ export const resumeData: ResumeData = {
             },
             roles: {
                 CN: "创意总监",
-                EN: "Founder",
-                JA: "創業者"
+                EN: "Creative Direct",
+                JA: "クリエイティブディレクター"
             },
             period: "2024.05 - Present",
             sizes: {
@@ -132,9 +132,9 @@ export const resumeData: ResumeData = {
                 JA: "上海バンクーバー映画学院"
             },
             degrees: {
-                CN: "高等文凭 (游戏设计)",
-                EN: "Diploma (Game Design)",
-                JA: "高等ディプロマ（ゲームデザイン）"
+                CN: "硕士预科文凭 (游戏设计)",
+                EN: "Pre-Master Diploma (Game Design)",
+                JA: "修士予備校卒業証書（ゲームデザイン）"
             },
             gpa: "3.30/4.0",
             awards: ["Talent Scheme Scholarship"]

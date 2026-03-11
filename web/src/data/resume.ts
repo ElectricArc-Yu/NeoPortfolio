@@ -15,7 +15,8 @@ export const resumeData: ResumeData = {
         },
         links: [
             { labels: { CN: "GitHub", EN: "GitHub", JA: "GitHub" }, urls: { CN: "https://github.com/ElectricArc-Yu", EN: "https://github.com/ElectricArc-Yu" } },
-            { labels: { CN: "LinkedIn", EN: "LinkedIn", JA: "LinkedIn" }, urls: { CN: "https://linkedin.com/in/yuchenhaoran", EN: "https://linkedin.com/in/yuchenhaoran" } }
+            { labels: { CN: "LinkedIn", EN: "LinkedIn", JA: "LinkedIn" }, urls: { CN: "https://linkedin.com/in/yuchenhaoran", EN: "https://linkedin.com/in/yuchenhaoran" } },
+            { labels: { CN: "个人网站", EN: "Personal Website", JA: "個人サイト" }, urls: { CN: "https://prelude.games", EN: "https://prelude.games", JA: "https://prelude.games" } }
         ]
     },
     about: {

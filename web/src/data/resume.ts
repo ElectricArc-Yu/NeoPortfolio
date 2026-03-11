@@ -84,21 +84,21 @@ export const resumeData: ResumeData = {
             },
             details: {
                 CN: [
-                    "商业化成果：主导 3 款 MC 商业模组设计，累计销量突破 100 万份，首周即跻身畅销榜，发售月维持平台前五，保持 4.5/5.0 高评分",
+                    "商业化成果：主导 3 款 MC 商业模组设计，累计销量突破 100 万份，首周即跻身畅销榜，预估毛利 1000 万 RMB，保持 4.5/5.0 高评分",
                     "核心循环设计：设计《辐射生存》的自动化建造+机甲战斗循环，以及《恐怖岛》的 SAN 值+饱食度双资源生存压力模型",
                     "内容量产落地：完成 8 大核心系统架构，统筹落地 80+ 种武器、50+ 种怪物/BOSS、100+ 种建筑方块及 15+ 个特色生物群系",
                     "数据驱动调优：基于 2000+ 条玩家反馈进行词云分析，精准定位体验痛点，迭代后实现销售额提升 10%、评分提升 0.2",
                     "项目管理：作为唯一策划协调 12 人研发团队，引入 Git 工作流与命名规范，成功将开发周期从 4 个月压缩至 2 个月"
                 ],
                 EN: [
-                    "Market Performance: Led design for 3 Minecraft commercial mods achieving 1M+ total sales; consistently charted in Top 5 post-launch with a 4.5/5.0 rating.",
+                    "Market Performance: Led design for 3 Minecraft commercial mods achieving 1M+ total sales with 10M RMB estimated profit, consistently charted in Top 5 post-launch with a 4.5/5.0 rating.",
                     "Systems Design: Engineered complex core loops including automation/mech combat for 'Nuclear Survival' and dual-resource management for 'Horror Isle'.",
                     "Content Delivery: Architected 8 core systems and supervised production of 80+ weapons, 50+ enemies, and 15+ biomes.",
                     "Data-Driven Iteration: Analyzed 2,000+ user feedback points to identify pain points, resulting in a 10% revenue uplift and 0.2 rating increase after updates.",
                     "Production Efficiency: Coordinated a 12-person team as the sole designer; introduced Git workflows and naming standards, cutting development cycles by 50%."
                 ],
                 JA: [
-                    "市場成果：Minecraft商用MOD 3作品のデザインを主導し、累計販売数100万本以上を達成。発売初月からランキングトップ5入りし、評価4.5/5.0を維持",
+                    "市場成果：Minecraft商用MOD 3作品のデザインを主導し、累計販売数100万本以上を達成、1000万RMBの予想利益を達成。発売初月からランキングトップ5入りし、評価4.5/5.0を維持",
                     "システムデザイン：「Nuclear Survival」の自動化＋メカ戦闘や、「Horror Isle」のSAN値＋満腹度管理など、コアとなるゲームループを設計",
                     "コンテンツ実装：8つの主要システムを構築し、80種以上の武器、50種以上の敵キャラクター、15以上のバイオームの実装を指揮",
                     "データ主導の改善：2,000件以上のユーザーフィードバックを分析して課題を特定。改善アップデートにより売上10%増、評価スコア0.2ポイント向上を実現",

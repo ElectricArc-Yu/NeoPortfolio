@@ -19,10 +19,10 @@ export const publicDocs: PublicDoc[] = [
         originalLangs: 'EN',
         lengths: '66',
         isInternal: false,
-        journal: 'Choosing',
+        journal: 'CMOT (Desk Review)',
         publisher: 'None',
         impactFactor: '0',
-        preprintUrl: '',
+        preprintUrl: 'https://doi.org/10.36227/techrxiv.177273922.25923198/v1',
         externalUrl: ''
     },
     {

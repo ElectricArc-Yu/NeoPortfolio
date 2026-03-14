@@ -67,7 +67,7 @@ export const publicDocs: PublicDoc[] = [
         originalLangs: 'EN',
         lengths: '33',
         isInternal: false,
-        journal: 'TOCHI (Desk Review)',
+        journal: 'IJHCS (Desk Review)',
         publisher: 'None',
         impactFactor: '0',
         preprintUrl: 'https://doi.org/10.36227/techrxiv.177203276.63908007/v1',

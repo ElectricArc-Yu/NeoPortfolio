@@ -4,9 +4,9 @@ export const publicDocs: PublicDoc[] = [
     {
         id: 'validation',
         titles: {
-            CN: "参与式系统的系统锚定感知分类学与显式算子：初步经验实证",
+            CN: "A System-Anchored Perceptual Taxonomy and Closed-Form Operator for Participatory Systems: A Preliminary Empirical Validation",
             EN: "A System-Anchored Perceptual Taxonomy and Closed-Form Operator for Participatory Systems: A Preliminary Empirical Validation",
-            JA: "参加型システムにおけるシステム準拠知覚タクソノミーと陽形式作用素：予備的実証検証"
+            JA: "A System-Anchored Perceptual Taxonomy and Closed-Form Operator for Participatory Systems: A Preliminary Empirical Validation"
         },
         date: '2026.02.14',
         descriptions: {
@@ -28,9 +28,9 @@ export const publicDocs: PublicDoc[] = [
     {
         id: 'ppfro',
         titles: {
-            CN: "面向参与式系统的显式算子",
+            CN: "A Closed-Form Operator for Participatory Systems",
             EN: "A Closed-Form Operator for Participatory Systems",
-            JA: "参加型システムにおける陽形式作用素"
+            JA: "A Closed-Form Operator for Participatory Systems"
         },
         date: '2026.02.14',
         descriptions: {
@@ -52,9 +52,9 @@ export const publicDocs: PublicDoc[] = [
     {
         id: 'tsab',
         titles: {
-            CN: "面向参与式系统的系统锚定感知分类学",
+            CN: "A System-Anchored Perceptual Taxonomy for Participatory System",
             EN: "A System-Anchored Perceptual Taxonomy for Participatory Systems",
-            JA: "参加型システムにおけるシステム準拠知覚タクソノミー"
+            JA: "A System-Anchored Perceptual Taxonomy for Participatory System"
         },
         date: '2026.02.14',
         descriptions: {
@@ -76,9 +76,9 @@ export const publicDocs: PublicDoc[] = [
     {
         id: 'mygo',
         titles: {
-            CN: "面向参与式系统的诊断导向框架",
+            CN: "A Diagnostic-Oriented Framework for Participatory Systems",
             EN: "A Diagnostic-Oriented Framework for Participatory Systems",
-            JA: "参加型システムにおける診断指向フレームワーク"
+            JA: "A Diagnostic-Oriented Framework for Participatory Systems"
         },
         date: '2026.02.14',
         descriptions: {

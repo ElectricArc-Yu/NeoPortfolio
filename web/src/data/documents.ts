@@ -98,6 +98,35 @@ export const publicDocs: PublicDoc[] = [
         externalUrl: ''
     },
 
+    // ─── Test Lecture Entry ───
+    // {
+    //     id: 'test-conference-talk',
+    //     titles: {
+    //         CN: "参与式系统设计：从理论到量化审计",
+    //         EN: "Participatory System Design: From Theory to Quantitative Auditing",
+    //         JA: "参加型システム設計：理論から定量的監査へ"
+    //     },
+    //     date: '2026.03',
+    //     descriptions: {
+    //         CN: "探讨如何将参与式设计理论转化为可量化、可审计的设计诊断工具，通过双层架构将系统属性与用户感知分离，实现结构化的体验评估。",
+    //         EN: "Exploring how to transform participatory design theory into quantifiable, auditable design diagnostic tools through a dual-layer architecture that separates system properties from user perception.",
+    //         JA: "参加型デザイン理論を、システム属性とユーザー認知を分離する二層アーキテクチャにより定量的かつ監査可能なデザイン診断ツールへと変換する方法を探求する。"
+    //     },
+    //     category: 'Lecture',
+    //     lectureType: 'Conference',
+    //     venue: 'Games for Change (G4C)',
+    //     duration: '45 min',
+    //     deckUrl: 'https://example.com/deck',
+    //     originalLangs: 'EN',
+    //     lengths: '45 min',
+    //     isInternal: false,
+    //     journal: '',
+    //     publisher: 'GDC',
+    //     impactFactor: '0',
+    //     preprintUrl: '',
+    //     externalUrl: 'https://example.com/talk'
+    // },
+
     // --- GDDs: Test Papers (策划测试题) ---
 
     {

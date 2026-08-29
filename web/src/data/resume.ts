@@ -5,7 +5,7 @@ export const resumeData: ResumeData = {
         names: {
             CN: "于陈浩然",
             EN: "Yu Chenhaoran",
-            JA: "Yu Chenhaoran"
+            JA: "于 陳浩然"
         },
         email: "YuChenhaoran@Preludegames.com",
         roles: {
@@ -15,50 +15,53 @@ export const resumeData: ResumeData = {
         },
         links: [
             { labels: { CN: "GitHub", EN: "GitHub", JA: "GitHub" }, urls: { CN: "https://github.com/ElectricArc-Yu", EN: "https://github.com/ElectricArc-Yu" } },
-            { labels: { CN: "LinkedIn", EN: "LinkedIn", JA: "LinkedIn" }, urls: { CN: "https://linkedin.com/in/yuchenhaoran", EN: "https://li    about: {
-        CN: "游戏设计师与开发者，关注核心玩法体验与系统设计。具备程序与策划背景，参与核心玩法原型验证与设计方案落地。",
-        EN: "Game designer and developer focusing on core gameplay mechanics and system design. Experienced in prototyping, gameplay validation, and feature implementation.",
-        JA: "ゲームデザイナー・開発者。ゲームプレイ体験とシステム設計を重視し、プロトタイプの検証および仕様の実装を担当。"
+            { labels: { CN: "LinkedIn", EN: "LinkedIn", JA: "LinkedIn" }, urls: { CN: "https://linkedin.com/in/yuchenhaoran", EN: "https://linkedin.com/in/yuchenhaoran" } }
+        ]
+    },
+    about: {
+        CN: "具备策划与技术复合背景的游戏设计师，专注于核心玩法设计、系统架构搭建与快速原型验证。注重在资源约束下通过严谨的机制设计与敏捷工程实践，将抽象创意转化为扎实可落地的可玩体验。",
+        EN: "Hybrid Game Designer & Developer focused on core gameplay design, systemic architecture, and rapid prototyping. Dedicated to translating abstract creative concepts into robust, playable experiences through disciplined design and agile engineering under resource constraints.",
+        JA: "企画とプログラミングの双方に知見を持つゲームデザイナー。コアゲームプレイ設計、システム構築、プロトタイプ検証を軸に活動。限られたリソースの中で論理的な設計とアジャイルな実装を組み合わせ、抽象的なアイデアを実行可能な体験へと具現化することに注力している。"
     },
     experience: [
         {
             companies: {
                 CN: "上海尤古多拉希尔科技有限公司",
                 EN: "Prelude Games",
-                JA: "Prelude Games"
+                JA: "Prelude Games (上海尤古多拉希尔科技)"
             },
             roles: {
-                CN: "创意总监",
-                EN: "Creative Direct",
-                JA: "クリエイティブディレクター"
+                CN: "联合创始人 / 创意总监",
+                EN: "Co-Founder / Creative Director",
+                JA: "共同創業者 / クリエイティブディレクター"
             },
             period: "2024.05 - Present",
             sizes: {
-                CN: "0-20人",
-                EN: "0-20 employees",
-                JA: "0-20人"
+                CN: "3-15人",
+                EN: "3-15 employees",
+                JA: "3-15人"
             },
             details: {
                 CN: [
-                    "项目推进：负责初创团队（3人）的项目推进，参与立项规划、研发管理及对外沟通",
-                    "玩法设计：负责 ARPG 核心战斗系统（乐器机制与双角色协同）设计，使用 UE 蓝图搭建与验证原型",
-                    "世界观设定：参与原创 IP 世界观架构搭建与文档编写，制定角色与场景设定规范",
-                    "流程整理：梳理设计文档与评审规范，协助团队提高沟通与设计迭代效率",
-                    "团队协作：负责策划模块的任务拆解，配合程序与美术推进开发，协助新人熟悉工作流程"
+                    "团队与项目推进：作为初创团队核心成员，经历从3人种子团队逐步拓展至15人跨职能团队的完整研发周期，参与立项、原型研发与外部合作沟通",
+                    "核心玩法攻坚：主导原创ARPG项目（Project FR）核心战斗原型研发，基于UE蓝图与GAS框架搭建并验证“乐器战斗+双角色协同”核心玩法闭环",
+                    "IP 与世界观架构：构建原创IP底层世界观体系（输出40+份架构文档与数万字设定资料），确立区域、势力与角色设计的标准化规范，保障多产品线设定自洽",
+                    "流程与设计规范化：制定设计文档规范（GDD/SDD）与评审机制，优化跨职能协作流程，降低沟通磨合成本并提升迭代效率",
+                    "阶段收尾与资产归档：在项目阶段性调整与资源受限周期中，主导完成核心设计方案、代码工程及美术/世界观资产的结构化归档与知识沉淀，为后续资产复用与项目重启奠定基础"
                 ],
                 EN: [
-                    "Project Operations: Managed day-to-day operations and milestone tracking for a 3-person core startup team.",
-                    "Gameplay Design: Designed core ARPG combat mechanics (instrument mechanics and dual-character synergy); built functional prototypes using UE Blueprints.",
-                    "Worldbuilding: Participated in establishing the IP worldbuilding framework and design documentation for characters and regions.",
-                    "Workflow Organization: Standardized design templates and review guidelines to improve team iteration efficiency.",
-                    "Cross-Functional Coordination: Broke down design scopes, coordinated with programmers and artists, and assisted onboarding junior members."
+                    "Team & Project Growth: As a core founding member, contributed across the development lifecycle from an initial 3-person seed team expanding to a 15-person cross-functional group, managing scoping, prototyping, and partner communications.",
+                    "Core Gameplay Prototyping: Led combat prototype R&D for an original ARPG (Project FR), leveraging Unreal Engine Blueprints and GAS to construct and validate the 'Instrument Combat + Companion Synergy' loop.",
+                    "IP & Worldbuilding Architecture: Authored foundational universe documentation for an original IP (40+ design specs and comprehensive lore bibles), establishing standardized frameworks across factions and characters for multi-genre alignment.",
+                    "Pipeline Standardization: Established design document standards (GDD/SDD) and structured review workflows, improving cross-functional efficiency and reducing iteration overhead.",
+                    "Milestone Conclusion & Asset Archival: Following team restructuring and resource realignment, oversaw the systematic archival of design specifications, codebase modules, and creative lore assets, preserving key intellectual properties for future deployment."
                 ],
                 JA: [
-                    "プロジェクト推進：3名のスタートアップチームにおいて進捗管理、企画立案、対外連携を担当",
-                    "ゲームプレイ設計：ARPGのコア戦闘システム（楽器メカニクス＋デュアルキャラクター）を設計し、UEブループリントでプロトタイプを検証",
-                    "世界観構築：オリジナルIPの世界観設定およびドキュメント作成に参加し、キャラクター・エリア設定の基準を策定",
-                    "プロセス整備：デザインテンプレートとレビュー基準を整理し、仕様検討の効率化を支援",
-                    "チーム連携：プランニング業務のタスク分解を行い、エンジニア・アーティストと連携して開発を進行"
+                    "チーム拡大とプロジェクト推進：創業コアメンバーとして、3名の立ち上げ期から15名規模への組織拡大と開発進行を担当。企画立案からプロトタイプ検証、外部連携まで幅広く推進",
+                    "コアプレイの研究開発：オリジナルARPG（Project FR）において、UEブループリントおよびGASを活用した「楽器戦闘＋バディ連携」のコア戦闘メカニクスを構築・検証",
+                    "IP・世界観の基盤構築：オリジナルIPの基盤設計を主導（40以上の設定資料・仕様書を作成）。勢力・キャラクター設計の標準規格を策定し、複数タイトル間での整合性を担保",
+                    "制作プロセスの標準化：ゲームデザイン仕様書（GDD/SDD）のテンプレートとレビュー基準を整備し、職種間のコミュニケーションコストを削減",
+                    "マイルストーン完了と資産アーカイブ：組織の体制変更とリソース制約に伴い、主要な設計書、プログラムモジュール、世界観設定の構造化アーカイブを主導。将来の再起動や資産活用に向けた基盤を整備"
                 ]
             }
         },
@@ -66,7 +69,7 @@ export const resumeData: ResumeData = {
             companies: {
                 CN: "湖南诺汐游科技有限公司",
                 EN: "Hunan Nuoxiyou Technology Co. Ltd.",
-                JA: "Hunan Nuoxiyou Technology Co. Ltd."
+                JA: "Hunan Nuoxiyou Technology Co. Ltd. (湖南諾汐遊科技)"
             },
             roles: {
                 CN: "主策划",
@@ -75,52 +78,31 @@ export const resumeData: ResumeData = {
             },
             period: "2023.02 - 2023.07",
             sizes: {
-                CN: "0-20人",
-                EN: "0-20 employees",
-                JA: "0-20人"
+                CN: "12人",
+                EN: "12 employees",
+                JA: "12人"
             },
             details: {
                 CN: [
-                    "模组设计：负责多款 Minecraft 商业模组的玩法与系统设计，累计销量超 100 万份，保持良好用户评价",
-                    "系统与循环：设计《辐射生存》的建造与战斗循环，以及《恐怖岛》的资源消耗与生存机制",
-                    "内容落地：规划并推进 8 大核心系统，协同落地武器、敌人、建筑方块及生物群系等内容",
-                    "体验优化：整理与分析玩家反馈，持续调整数值与机制，提升游戏稳定性与体验",
-                    "协作与规范：配合研发团队推进开发进度，协助建立 Git 工作流与资源命名规范"
+                    "商业化模组设计：主导 3 款 Minecraft 商业模组的系统设计与数值调优，累计销量突破 100 万份，上线后进入平台畅销榜前列，综合评分保持 4.5/5.0",
+                    "核心循环设计：主导设计《辐射生存》的自动化建造与机甲对抗循环，以及《恐怖岛》的 SAN 值与饱食度多维生存资源模型",
+                    "内容量产与落地：完成 8 大核心系统架构设计，统筹推进 80+ 种武器装备、50+ 种怪物行为及 15+ 个特色生物群系的配置与落地",
+                    "数据驱动体验调优：基于 2,000+ 条玩家社区反馈定位体验瓶颈，针对性调整前期资源获取曲线与引导节奏，显著改善玩家留存与好评率",
+                    "团队研发协作：作为策划负责人协调 12 人研发团队，推动建立 Git 分支管理与资产命名规范，保障版本交付的稳定性与研发效率"
                 ],
                 EN: [
-                    "Mod Design: Designed gameplay and systems for multiple commercial Minecraft mods (1M+ cumulative downloads).",
-                    "Systems Design: Designed core loops including base building/combat in 'Nuclear Survival' and resource management in 'Horror Isle'.",
-                    "Content Delivery: Planned core systems and coordinated delivery of weapons, enemies, building blocks, and biomes.",
-                    "Game Balancing: Analyzed player feedback to iterate on pacing, balance numbers, and overall player experience.",
-                    "Workflow Support: Coordinated development milestones with team members and helped establish Git workflows and asset naming conventions."
+                    "Commercial Mod Design: Led systems design and numerical balancing for 3 commercial Minecraft mods, achieving 1M+ total sales, consistently charting near the top of platform sales lists with a 4.5/5.0 average user rating.",
+                    "Core Loop Architecture: Engineered core loops including automation/mech combat systems in 'Nuclear Survival' and multi-resource survival pressure dynamics in 'Horror Isle'.",
+                    "Content Pipeline Coordination: Architected 8 core subsystems and coordinated production pipelines for 80+ weapons, 50+ enemy archetypes, and 15+ custom biomes.",
+                    "Data-Driven Tuning: Analyzed 2,000+ player feedback points to diagnose early-game onboarding friction, rebalancing early progression curves to improve player retention and review sentiment.",
+                    "Team Workflow Optimization: Coordinated a 12-person development team as lead designer; established Git branch conventions and asset naming standards to ensure build stability and delivery efficiency."
                 ],
                 JA: [
-                    "MODデザイン：複数のMinecraft商用MODのゲームプレイ・システム設計を担当（累計100万DL以上）",
-                    "システム設計：「Nuclear Survival」の建設・戦闘ループや「Horror Isle」の資源管理メカニクスを設計",
-                    "コンテンツ実装：主要システムを設計し、武器、敵、建築ブロック、バイオームの実装を進行",
-                    "バランス調整：ユーザーフィードバックを整理・分析し、数値とメカニクスの改善を実施",
-                    "開発支援：開発進捗を管理し、Gitワークフローや命名規則の導入をサポート"
-                ]
-            }
-        }
-    ],��《恐怖岛》的 SAN 值+饱食度双资源生存压力模型",
-                    "内容量产落地：完成 8 大核心系统架构，统筹落地 80+ 种武器、50+ 种怪物/BOSS、100+ 种建筑方块及 15+ 个特色生物群系",
-                    "数据驱动调优：基于 2000+ 条玩家反馈进行分析，精准定位体验痛点，迭代后实现销售额提升 10%、评分提升 0.2",
-                    "项目管理：作为唯一策划协调 12 人研发团队，引入 Git 工作流与命名规范，成功将开发周期从 4 个月压缩至 2 个月"
-                ],
-                EN: [
-                    "Market Performance: Led design for 3 Minecraft commercial mods achieving 1M+ total sales with 10M RMB estimated profit, consistently charted in Top 5 post-launch with a 4.5/5.0 rating.",
-                    "Systems Design: Engineered complex core loops including automation/mech combat for 'Nuclear Survival' and dual-resource management for 'Horror Isle'.",
-                    "Content Delivery: Architected 8 core systems and supervised production of 80+ weapons, 50+ enemies, and 15+ biomes.",
-                    "Data-Driven Iteration: Analyzed 2,000+ user feedback points to identify pain points, resulting in a 10% revenue uplift and 0.2 rating increase after updates.",
-                    "Production Efficiency: Coordinated a 12-person team as the sole designer; introduced Git workflows and naming standards, cutting development cycles by 50%."
-                ],
-                JA: [
-                    "市場成果：Minecraft商用MOD 3作品のデザインを主導し、累計販売数100万本以上を達成、1000万RMBの予想利益を達成。発売初月からランキングトップ5入りし、評価4.5/5.0を維持",
-                    "システムデザイン：「Nuclear Survival」の自動化＋メカ戦闘や、「Horror Isle」のSAN値＋満腹度管理など、コアとなるゲームループを設計",
-                    "コンテンツ実装：8つの主要システムを構築し、80種以上の武器、50種以上の敵キャラクター、15以上のバイオームの実装を指揮",
-                    "データ主導の改善：2,000件以上のユーザーフィードバックを分析して課題を特定。改善アップデートにより売上10%増、評価スコア0.2ポイント向上を実現",
-                    "生産性向上：唯一のプランナーとして12名のチームを調整。Gitワークフローと命名規則を導入し、開発期間を4ヶ月から2ヶ月に半減"
+                    "商用MODの設計：Minecraft向け商用MOD 3作品のシステム設計と数値調整を主導。累計100万本以上の販売を記録し、プラットフォームの売上上位にランクイン（平均評価 4.5/5.0を維持）",
+                    "コアループ構築：「Nuclear Survival」における自動化工場とメカ戦闘のループ、「Horror Isle」におけるSAN値と飢えの多層的なサバイバルリソース構造を設計",
+                    "コンテンツ量産の推進：8つの基幹システムを設計し、80種以上の装備品、50種以上の敵挙動、15以上のバイオームの仕様策定と実装を統括",
+                    "データ主導の改善：2,000件以上のプレイヤーフィードバックを分析して序盤の離脱要因を特定し、リソース獲得曲線とチュートリアルを改善して満足度を向上",
+                    "チーム開発の効率化：12名のチームにおいてGit運用ルールとアセット命名規則の導入を推進し、開発サイクルの安定化と効率向上に貢献"
                 ]
             }
         }
@@ -267,10 +249,10 @@ export const resumeData: ResumeData = {
     ],
     cta: {
         texts: {
-            CN: "顾问咨询？商务合作？项目合作？工作机会？立即联系我！",
-            EN: "Consulting? Business? Project Collaboration? Job Opportunities? Contact Me Now!",
-            JA: "コンサルティング？ビジネス？プロジェクトのご相談？お仕事のご依頼？今すぐお問い合わせください！"
+            CN: "欢迎交流探讨游戏设计、项目合作或潜在机会，期待与您的联系。",
+            EN: "Always open to discussing game design, project collaborations, or potential opportunities. Looking forward to connecting.",
+            JA: "ゲームデザインの議論、プロジェクトのご相談、協業のご機会など、お気軽にご連絡ください。"
         },
-        link: "/contact"
+        link: "mailto:yu.chr@prelude.games"
     }
 };

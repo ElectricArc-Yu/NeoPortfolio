@@ -22,6 +22,10 @@ interface Particle {
 
 type LoaderPhase = 'loading' | 'welcome' | 'dissolving';
 
+// Flag to control transition animation visibility after loading completes
+// Set to false to hide the transition animation without deleting any code
+const SHOW_TRANSITION_ANIMATION = false;
+
 const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
     const [progress, setProgress] = useState(0);
     const [status, setStatus] = useState('Initializing...');
@@ -139,13 +143,18 @@ const GlobalLoader: React.FC<GlobalLoaderProps> = ({ onDone }) => {
             const elapsed = Date.now() - startTime;
             const remainingTime = Math.max(0, MIN_LOADING_TIME - elapsed);
 
-            // Wait for minimum time before showing welcome
+            // Wait for minimum time before completing loading
             setTimeout(() => {
                 setProgress(100);
                 setStatus('Ready');
                 addLog('System ready');
-                // Show welcome message
-                setTimeout(() => showWelcome(), 300);
+                if (SHOW_TRANSITION_ANIMATION) {
+                    // Show welcome message and transition animation
+                    setTimeout(() => showWelcome(), 300);
+                } else {
+                    // Transition animations hidden: complete loading directly
+                    setTimeout(() => onDone(), 300);
+                }
             }, remainingTime);
         };
 

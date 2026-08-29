@@ -15,13 +15,10 @@ export const resumeData: ResumeData = {
         },
         links: [
             { labels: { CN: "GitHub", EN: "GitHub", JA: "GitHub" }, urls: { CN: "https://github.com/ElectricArc-Yu", EN: "https://github.com/ElectricArc-Yu" } },
-            { labels: { CN: "LinkedIn", EN: "LinkedIn", JA: "LinkedIn" }, urls: { CN: "https://linkedin.com/in/yuchenhaoran", EN: "https://linkedin.com/in/yuchenhaoran" } }
-        ]
-    },
-    about: {
-        CN: "具备策划与技术双重背景的游戏设计师，专注于核心体验与系统架构搭建。擅长在资源受限环境下快速验证核心玩法，将抽象的设计构想转化为高品质的可执行方案。",
-        EN: "Hybrid Game Designer & Developer specializing in core mechanics and system architecture. Expert in rapidly validating core gameplay loops under strict resource constraints and translating high-level concepts into production-ready solutions.",
-        JA: "デザインとプログラミングの双方に精通したゲームデザイナー。体験とシステム構築を専門とする。限られたリソースの中でコアゲームプレイを迅速に検証し、抽象的なコンセプトを実行可能なソリューションへ具現化することに長けている。"
+            { labels: { CN: "LinkedIn", EN: "LinkedIn", JA: "LinkedIn" }, urls: { CN: "https://linkedin.com/in/yuchenhaoran", EN: "https://li    about: {
+        CN: "游戏设计师与开发者，关注核心玩法体验与系统设计。具备程序与策划背景，参与核心玩法原型验证与设计方案落地。",
+        EN: "Game designer and developer focusing on core gameplay mechanics and system design. Experienced in prototyping, gameplay validation, and feature implementation.",
+        JA: "ゲームデザイナー・開発者。ゲームプレイ体験とシステム設計を重視し、プロトタイプの検証および仕様の実装を担当。"
     },
     experience: [
         {
@@ -43,25 +40,25 @@ export const resumeData: ResumeData = {
             },
             details: {
                 CN: [
-                    "工作室统筹：在极度受限的种子轮环境下（3人核心团队），全权负责从立项、研发到投资人对接的全生命周期管理",
-                    "核心玩法攻坚：主导 ARPG 核心战斗系统（乐器战斗+双角色协同）的研发，利用 UE 蓝图快速构建并验证 POC 原型",
-                    "IP 与世界观构建：指导搭建原创 IP 世界观底层架构（40+ 份文档，数万字设定），确立角色与区域设计的标准化规范，为后续内容量产奠定基础",
-                    "流程标准化：制定 10+ 项设计模板与评审规范（SDD/LDD/角色设定等），将设计迭代次数从 4-5 次大幅降低至 1-2 次，显著提升研发效能",
-                    "跨职能协作与人才培养：作为设计负责人拆解项目 Scope，高效协调程序与美术资源，并成功培养 2 名初级成员具备独立决策能力"
+                    "项目推进：负责初创团队（3人）的项目推进，参与立项规划、研发管理及对外沟通",
+                    "玩法设计：负责 ARPG 核心战斗系统（乐器机制与双角色协同）设计，使用 UE 蓝图搭建与验证原型",
+                    "世界观设定：参与原创 IP 世界观架构搭建与文档编写，制定角色与场景设定规范",
+                    "流程整理：梳理设计文档与评审规范，协助团队提高沟通与设计迭代效率",
+                    "团队协作：负责策划模块的任务拆解，配合程序与美术推进开发，协助新人熟悉工作流程"
                 ],
                 EN: [
-                    "Studio Leadership: Orchestrated full studio operations from concept to investor readiness under strict seed-stage constraints (3-person core team).",
-                    "Gameplay Innovation: Spearheaded R&D for core ARPG combat mechanics (Instrument Combat + Dual-Character System); built functional POC prototypes using UE Blueprints.",
-                    "IP Architecture: Guided the construction of a comprehensive original IP foundation (40+ design docs), establishing scalable standards for character and world building.",
-                    "Pipeline Optimization: Established standardized design workflows and review protocols, reducing design iteration cycles by 60% (from 4-5 to 1-2 passes).",
-                    "Technical Direction: Managed project scope and cross-functional resources; mentored junior members to reach independent decision-making proficiency."
+                    "Project Operations: Managed day-to-day operations and milestone tracking for a 3-person core startup team.",
+                    "Gameplay Design: Designed core ARPG combat mechanics (instrument mechanics and dual-character synergy); built functional prototypes using UE Blueprints.",
+                    "Worldbuilding: Participated in establishing the IP worldbuilding framework and design documentation for characters and regions.",
+                    "Workflow Organization: Standardized design templates and review guidelines to improve team iteration efficiency.",
+                    "Cross-Functional Coordination: Broke down design scopes, coordinated with programmers and artists, and assisted onboarding junior members."
                 ],
                 JA: [
-                    "スタジオ運営：シード期の厳しい制約下（3名のコアチーム）で、コンセプト立案から投資家対応に至るまでの全プロセスを統括",
-                    "ゲームプレイ開発：ARPGのコア戦闘システム（楽器戦闘＋デュアルキャラクター）の研究開発を主導し、UEブループリントを用いてPOCプロトタイプを構築・検証",
-                    "IP構築：オリジナルIPの世界観基盤（40以上のドキュメント）を構築し、キャラクターやエリア設定の標準化を確立してスケールアップに対応",
-                    "プロセス最適化：10以上のデザインテンプレートとレビュー基準を策定し、設計の反復回数を4〜5回から1〜2回へと大幅に削減",
-                    "チームマネジメント：デザイン責任者としてスコープ管理を行い、限られたリソースを最適配分。ジュニアメンバー2名を独り立ちできるレベルまで育成"
+                    "プロジェクト推進：3名のスタートアップチームにおいて進捗管理、企画立案、対外連携を担当",
+                    "ゲームプレイ設計：ARPGのコア戦闘システム（楽器メカニクス＋デュアルキャラクター）を設計し、UEブループリントでプロトタイプを検証",
+                    "世界観構築：オリジナルIPの世界観設定およびドキュメント作成に参加し、キャラクター・エリア設定の基準を策定",
+                    "プロセス整備：デザインテンプレートとレビュー基準を整理し、仕様検討の効率化を支援",
+                    "チーム連携：プランニング業務のタスク分解を行い、エンジニア・アーティストと連携して開発を進行"
                 ]
             }
         },
@@ -84,8 +81,29 @@ export const resumeData: ResumeData = {
             },
             details: {
                 CN: [
-                    "商业化成果：主导 3 款 MC 商业模组设计，累计销量突破 100 万份，首周即跻身畅销榜，预估毛利 1000 万 RMB，保持 4.5/5.0 高评分",
-                    "核心循环设计：设计《辐射生存》的自动化建造+机甲战斗循环，以及《恐怖岛》的 SAN 值+饱食度双资源生存压力模型",
+                    "模组设计：负责多款 Minecraft 商业模组的玩法与系统设计，累计销量超 100 万份，保持良好用户评价",
+                    "系统与循环：设计《辐射生存》的建造与战斗循环，以及《恐怖岛》的资源消耗与生存机制",
+                    "内容落地：规划并推进 8 大核心系统，协同落地武器、敌人、建筑方块及生物群系等内容",
+                    "体验优化：整理与分析玩家反馈，持续调整数值与机制，提升游戏稳定性与体验",
+                    "协作与规范：配合研发团队推进开发进度，协助建立 Git 工作流与资源命名规范"
+                ],
+                EN: [
+                    "Mod Design: Designed gameplay and systems for multiple commercial Minecraft mods (1M+ cumulative downloads).",
+                    "Systems Design: Designed core loops including base building/combat in 'Nuclear Survival' and resource management in 'Horror Isle'.",
+                    "Content Delivery: Planned core systems and coordinated delivery of weapons, enemies, building blocks, and biomes.",
+                    "Game Balancing: Analyzed player feedback to iterate on pacing, balance numbers, and overall player experience.",
+                    "Workflow Support: Coordinated development milestones with team members and helped establish Git workflows and asset naming conventions."
+                ],
+                JA: [
+                    "MODデザイン：複数のMinecraft商用MODのゲームプレイ・システム設計を担当（累計100万DL以上）",
+                    "システム設計：「Nuclear Survival」の建設・戦闘ループや「Horror Isle」の資源管理メカニクスを設計",
+                    "コンテンツ実装：主要システムを設計し、武器、敵、建築ブロック、バイオームの実装を進行",
+                    "バランス調整：ユーザーフィードバックを整理・分析し、数値とメカニクスの改善を実施",
+                    "開発支援：開発進捗を管理し、Gitワークフローや命名規則の導入をサポート"
+                ]
+            }
+        }
+    ],��《恐怖岛》的 SAN 值+饱食度双资源生存压力模型",
                     "内容量产落地：完成 8 大核心系统架构，统筹落地 80+ 种武器、50+ 种怪物/BOSS、100+ 种建筑方块及 15+ 个特色生物群系",
                     "数据驱动调优：基于 2000+ 条玩家反馈进行分析，精准定位体验痛点，迭代后实现销售额提升 10%、评分提升 0.2",
                     "项目管理：作为唯一策划协调 12 人研发团队，引入 Git 工作流与命名规范，成功将开发周期从 4 个月压缩至 2 个月"
